@@ -34,6 +34,43 @@ const timeRows = [
 <div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
   <aside class="pf-sidebar">
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
+    <nav class="pf-sidebar-nav">
+      <div class="pf-nav-item" class:list={[type === 'dashboard' && 'active']}>
+        <Icon name="grid-2x2" /><span>Dashboard</span>
+      </div>
+      <div class="pf-nav-group" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'expanded']}>
+        <div class="pf-nav-item" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'active']}>
+          <Icon name="bolt" /><span>Activities</span><Icon name="chevron-up" class="chevron" />
+        </div>
+        <div class="pf-nav-submenu" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'show']}>
+          <div class="pf-nav-item sub" class:list={[type === 'time-logs' && 'active']}>
+            <Icon name="clock" /><span>Time Logs</span>
+          </div>
+          <div class="pf-nav-item sub" class:list={[type === 'screen-captures' && 'active']}>
+            <Icon name="play-square" /><span>Screen Captures</span>
+          </div>
+        </div>
+      </div>
+      <div class="pf-nav-group" class:list={[['projects', 'tasks'].includes(type) && 'expanded']}>
+        <div class="pf-nav-item" class:list={[['projects', 'tasks'].includes(type) && 'active']}>
+          <Icon name="briefcase" /><span>Work</span><Icon name="chevron-down" class="chevron" />
+        </div>
+        <div class="pf-nav-submenu" class:list={[['projects', 'tasks'].includes(type) && 'show']}>
+          <div class="pf-nav-item sub" class:list={[type === 'projects' && 'active']}>
+            <Icon name="folder" /><span>Projects</span>
+          </div>
+          <div class="pf-nav-item sub" class:list={[type === 'tasks' && 'active']}>
+            <Icon name="list-check" /><span>Tasks</span>
+          </div>
+        </div>
+      </div>
+      <div class="pf-nav-item">
+        <Icon name="users" /><span>Organization</span><Icon name="chevron-down" class="chevron" />
+      </div>
+      <div class="pf-nav-item">
+        <Icon name="gear" /><span>Settings</span>
+      </div>
+    </nav>
   </aside>
   <div class="pf-app-main">
     <header class="pf-appbar"><span>Productivity / <b>{type.replaceAll('-', ' ')}</b></span><div><i></i> Sundial active <em></em> Capture enabled</div></header>
