@@ -1,0 +1,382 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WorkforceProductivityCta from '../components/WorkforceProductivityCta.astro';
+import Icon from '../components/Icon.astro';
+---
+<Layout title="Pricing Plans | Ralvie AI" description="Choose the Ralvie AI plan that fits your business.">
+  <Header title="Ralvie AI" theme="light" />
+  <main class="pricing-page">
+    <section class="pricing-hero">
+      <div class="hero-copy"><span class="eyebrow">PRICING</span><h1>Pricing That<br /><span>Fits Every Business</span></h1><p>Find the right Ralvie plan to streamline daily work and transform customer communication — with flexible options built for growing teams.</p></div>
+    </section>
+    <section class="plans-area"><div class="price-wrap"><div class="plans-toolbar"><div class="product-tabs" role="tablist" aria-label="Ralvie AI product"><button type="button" role="tab" class="product-tab active" data-product="productivity" aria-selected="true"><span class="tab-icon"><Icon name="chart-bar" /></span> Ralvie AI Productivity</button><button type="button" role="tab" class="product-tab" data-product="frontdesk" aria-selected="false"><span class="tab-icon"><Icon name="headset" /></span> Ralvie AI Frontdesk</button></div><div id="plans-heading" class="plans-heading"></div><div class="billing-controls"><span>Monthly</span><button type="button" class="billing-toggle" aria-label="Switch to yearly billing" aria-pressed="false"><i></i></button><span>Yearly</span><b>Save up to 17%</b></div></div>
+      <div id="pricing-content" class="pricing-content" aria-live="polite"></div>
+    </div></section>
+    <section id="demo" class="final-cta"><WorkforceProductivityCta variant="home" /></section>
+  </main>
+  <Footer theme="light" />
+</Layout>
+<script>
+  const yes='yes', no='no';
+  const productivity={heading:'Productivity Suite Plans',subtitle:'Track time, manage projects, and boost team efficiency with<br>AI-powered productivity intelligence.',featured:'Premium',plans:[
+    ['Freemium','Best for exploring basic features.','0',null,'Free forever',['Up to 5 users','10 Projects','5 Tags','1 AI summarization per user/day','Set budgets, mark as billed','Limited AI tags & summaries']],
+    ['Starter','Great for individuals or small teams.','4','40','per user',['Up to 50 users','50 Projects','50 Tags','2 AI summarizations per user/day','AI-based Timesheet','Idle time detection','Auto work reminders']],
+    ['Freelancer','Ideal for freelancers or solo professionals.','3','30','per user',['Up to 5 users','50 Projects','20 Tags','3 AI summarizations per user/day','Project dashboard access','Export PDF, DOC, TXT','Set billable hourly rates']],
+    ['Premium','Best for medium sized businesses.','9','90','per user',['Up to 300 users','300 Projects','300 Tags','3 AI summarizations per user/day','Punch in/Out tracking','Manage Teams and roles','BioTime & AD integration']],
+    ['Enterprise','Custom plan for large sized organizations.','Custom','Custom','',['Includes Premium features','Supports multiple currencies','Live, branded report exports','Private cloud option','Custom requirements']]],columns:['Freemium','Starter','Freelancer','Premium','Enterprise'],rows:[
+    ['Users','Up to 5','Up to 50','Up to 5','Up to 300','Unlimited'],['Projects','10','50','50','300','Unlimited'],['Tags','5','50','20','300','Unlimited'],['AI Summarization (per user/day)','1','2','3','3','Unlimited'],['Set Budgets & Mark as Billed',yes,yes,yes,yes,yes],['AI-based Timesheet',no,yes,yes,yes,yes],['Idle Time Detection',no,yes,yes,yes,yes],['Auto Work Reminders',no,yes,yes,yes,yes],['Project Dashboard Access',no,no,yes,yes,yes],['Export PDF, DOC, TXT',no,no,yes,yes,yes],['Set Billable Hourly Rates',no,no,yes,yes,yes],['Punch In/Out Tracking',no,no,no,yes,yes],['Manage Teams & Roles',no,no,no,yes,yes],['BioTime & AD Integration',no,no,no,yes,yes],['Multiple Currencies',no,no,no,no,yes],['Live Branded Report Exports',no,no,no,no,yes],['Private Cloud Option',no,no,no,no,yes]]};
+  const frontdesk={heading:'AI Frontdesk Plans',subtitle:'Automate customer calls, SMS, and workflows — 24/7, without hiring more staff.',featured:'Professional',plans:[
+    ['Solopreneur','Perfect for freelancers and solo businesses.','39','390','',['150 voice minutes','150 SMS messages','100+ premium voices','Multilingual support','Basic call routing','Standard analytics']],
+    ['Starter','For growing businesses ready to automate more.','99','990','',['300 voice minutes','300 SMS messages','6,000+ integrations','Call transcription & summaries','Up to 5 workflow automations','CRM integrations + API access']],
+    ['Professional','Ideal for teams with higher call volumes.','299','2,990','',['1,000 voice minutes','1,000 SMS messages','Advanced analytics & reporting','Workflow automation (unlimited)','Priority support (chat + email)','Call whispering/monitoring']],
+    ['Business','For businesses that need scale and reliability.','599','5,990','',['2,500 voice minutes','2,500 SMS messages','Extended data retention (12 months)','Slack/Teams support','Workflow & automation at scale','Priority support']],
+    ['Enterprise','Enterprise-ready with full customization.','1,199','11,990','',['5,000 voice minutes','5,000 SMS messages','HIPAA, SOC2, GDPR','Dedicated support representative','Custom integrations','Custom SLAs + guaranteed uptime']]],columns:['Solopreneur','Starter','Professional','Business','Enterprise'],rows:[
+    ['Voice Minutes','150','300','1,000','2,500','5,000'],['SMS Messages','150','300','1,000','2,500','5,000'],['Premium Voices','100+','100+','100+','100+','100+'],['Multilingual Support',yes,yes,yes,yes,yes],['Call Routing','Basic','Basic','Advanced','Advanced','Advanced'],['Integrations',no,'6,000+','6,000+','6,000+','Custom'],['Transcriptions & Summaries',no,yes,yes,yes,yes],['Workflow Automations',no,'Up to 5','Unlimited','Unlimited','Unlimited'],['Analytics','Standard','Standard','Advanced','Advanced','Advanced'],['Data Retention','3 months','6 months','6 months','12 months','Custom'],['Support Level','Email','Email','Priority','Priority','Dedicated Rep'],['Call Whispering/Monitoring',no,no,yes,yes,yes],['Compliance',no,no,no,no,'HIPAA, SOC2, GDPR'],['Custom SLAs',no,no,no,no,yes]]};
+  frontdesk.subtitle='Automate customer calls, SMS, and workflows — 24/7,<br>without hiring more staff.';
+  let product='productivity',billing='monthly'; const data={productivity,frontdesk};
+  const originals={productivity:{'4':'48','3':'36','9':'108'},frontdesk:{'39':'468','99':'1,188','299':'3,588','599':'7,188','1,199':'14,388'}};
+  function price(plan){const annual=billing==='yearly', amount=(annual?plan[3]:null)||plan[2];if(amount==='Custom')return '<div class="price custom">Custom</div><small>Enterprise-ready</small>';const old=annual&&amount!=='0'?`<del>$${originals[product][plan[2]]}</del>`:'';return `<div class="price">$${amount}<sup>/${annual?'yr':'mo'}</sup>${old}</div><small>${amount==='0'?'Free forever':annual?'Billed annually':plan[4]||'Billed monthly'}</small>`}
+  function mark(value){return value===yes?'<span class="check">✓</span>':value===no?'<span class="cross">×</span>':value}
+  function render(){const item=data[product],featureIndex=item.columns.indexOf(item.featured)+1;const cards=item.plans.map(plan=>`<article class="plan-card ${plan[0]===item.featured?'featured':''}">${plan[0]===item.featured?'<span class="popular">MOST POPULAR</span>':''}<h3>${plan[0]}</h3><p class="description">${plan[1]}</p>${price(plan)}<button class="trial ${plan[0]===item.featured?'primary':''}">${plan[0]==='Enterprise'?'Contact sales':'Start free trial'} <b>→</b></button><ul>${plan[5].map(feature=>`<li><span>✓</span>${feature}</li>`).join('')}</ul></article>`).join('');const rows=item.rows.map(row=>`<tr><th>${row[0]}</th>${row.slice(1).map((cell,i)=>`<td class="${i+1===featureIndex?'highlight':''}">${mark(cell)}</td>`).join('')}</tr>`).join('');document.querySelector('#pricing-content').innerHTML=`<div class="plans-heading"><h2>${item.heading}</h2><p>${item.subtitle}</p></div><div class="plans-grid">${cards}</div><section class="compare"><header><h2>Compare Plans by Features</h2><p>Find the perfect fit for your business needs</p></header><div class="table-scroll"><table><thead><tr><th>Features</th>${item.columns.map((column,i)=>`<th class="${i+1===featureIndex?'highlight':''}">${column}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div></section>`}
+  function syncPlansHeading(){const heading=document.querySelector('#pricing-content .plans-heading'),toolbar=document.querySelector('.plans-toolbar'),billingControls=toolbar?.querySelector('.billing-controls');if(heading&&toolbar&&billingControls){toolbar.querySelectorAll('.plans-heading').forEach(existing=>existing.remove());toolbar.insertBefore(heading,billingControls)}}
+  document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>{product=button.dataset.product;document.querySelectorAll('[data-product]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});render();syncPlansHeading()}));
+  document.querySelector('.billing-toggle').addEventListener('click',event=>{billing=billing==='monthly'?'yearly':'monthly';const b=event.currentTarget;b.classList.toggle('active',billing==='yearly');b.setAttribute('aria-pressed',String(billing==='yearly'));b.setAttribute('aria-label',billing==='yearly'?'Switch to monthly billing':'Switch to yearly billing');render();syncPlansHeading()});render();syncPlansHeading();
+</script>
+<style is:global>
+.pricing-page{--ink:#1e2130;--muted:#686a78;--purple:#4b3bd6;font-family:var(--font-sans,Arial,sans-serif);color:var(--ink);background:#fff}.pricing-hero{min-height:0;padding:100px 20px 32px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:28px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 1% 7%,#dbe9ff 0,transparent 29%),radial-gradient(circle at 92% 35%,#e8e3ff 0,transparent 31%),#fff}.hero-copy{position:relative;z-index:1}.eyebrow{display:inline-block;padding:7px 14px;border-radius:99px;background:#e8e8ff;color:#6656da;font-size:10px;font-weight:800;letter-spacing:1.5px}.hero-copy h1{margin:18px 0 13px;font-size:39px;line-height:1.05;letter-spacing:-1.7px;font-weight:800}.hero-copy h1 span{color:#3c49cc}.hero-copy p{margin:0;color:#5f6271;font-size:14px;line-height:1.55}.plans-area{padding:28px 0 112px;background:linear-gradient(116deg,#f7ecf8 0%,#eef1ff 48%,#f9f5fe 100%)}.price-wrap{width:min(1120px,calc(100% - 40px));margin:auto}.pricing-controls{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;width:min(1120px,calc(100% - 40px));margin:0 auto}.product-tabs{display:flex;padding:4px;border-radius:9px;background:#fff;box-shadow:0 4px 14px #4b3bd616}.product-tab{display:flex;align-items:center;gap:7px;border:0;border-radius:7px;padding:9px 16px;background:transparent;color:#4d5061;font-weight:700;font-size:12px;cursor:pointer}.product-tab.active{color:#fff;background:#4235d2;box-shadow:0 4px 9px #4235d266}.tab-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px}.tab-icon :global(svg){width:16px;height:16px}.billing-controls{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700;color:#565968}.billing-controls b{padding:5px 10px;border-radius:99px;background:#cceee6;color:#159477;font-size:10px}.billing-toggle{width:32px;height:18px;border:0;border-radius:99px;background:#d6d4fb;padding:2px;cursor:pointer}.billing-toggle i{display:block;width:14px;height:14px;border-radius:50%;background:white;box-shadow:0 1px 3px #7775}.billing-toggle.active{background:#4235d2}.billing-toggle.active i{transform:translateX(14px)}.plans-heading{text-align:center;margin-bottom:35px}.plans-heading h2,.compare h2{font-size:20px;letter-spacing:-.6px;margin:0 0 8px}.plans-heading p,.compare header p{margin:0;color:var(--muted);font-size:12px}.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}.plan-card{position:relative;padding:18px 18px 16px;background:white;border-radius:14px;box-shadow:0 10px 20px #66518f13;min-height:270px}.plan-card h3{font-size:15px;margin:0 0 4px}.description{height:31px;margin:0 0 10px;color:#727483;font-size:10px;line-height:1.35}.price{color:#4b43d5;font-size:23px;font-weight:800;letter-spacing:-.8px;line-height:1}.price sup{font-size:10px;color:#666;letter-spacing:0;margin-left:3px}.price del{margin-left:7px;font-size:10px;color:#999;font-weight:500;letter-spacing:0}.price.custom{font-size:24px}.plan-card small{display:block;height:22px;margin-top:6px;color:#858694;font-size:9px}.trial{width:100%;height:31px;margin:6px 0 12px;border:1px solid #d6d1ff;border-radius:6px;background:#f7f5ff;color:#5146d4;font-size:10px;font-weight:800;cursor:pointer}.trial.primary{color:white;border:0;background:linear-gradient(100deg,#3538ce,#5d39dd);box-shadow:0 5px 10px #4934be42}.plan-card ul{padding:0;margin:0;list-style:none}.plan-card li{display:flex;gap:8px;margin:7px 0;color:#5e6070;font-size:10px;line-height:1.15}.plan-card li span{color:#584cdc;font-weight:800}.popular{position:absolute;right:17px;top:-10px;padding:4px 11px;border-radius:99px;background:#3c39c5;color:#fff;font-size:8px;font-weight:800;box-shadow:0 3px 7px #3c39c577}.compare{padding-top:72px;background:#fff;margin:70px calc((min(1120px,calc(100vw - 40px)) - 100vw)/2) -112px}.compare header{text-align:center;margin-bottom:32px}.table-scroll{width:min(1120px,calc(100% - 40px));margin:auto;border-radius:14px;box-shadow:0 8px 24px #4d357d0c;overflow:auto}table{width:100%;min-width:720px;border-collapse:collapse;background:#fff;font-size:10px}th,td{height:37px;padding:0 16px;border-bottom:1px solid #eeeef4;text-align:center;color:#666978}thead th{font-size:10px;color:#30313b;font-weight:800;background:#faf9ff}thead th:first-child,tbody th{text-align:left}tbody th{color:#525361;font-weight:700}.highlight{background:#f3f0ff!important;color:#5146d1!important;font-weight:800}.check{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#eceaff;color:#5b4be0;font-weight:800}.cross{color:#c8c8d1;font-size:15px}.pricing-cta{width:min(1986px,100%);height:380px;margin:0 auto 78px;border-radius:15px;overflow:hidden;position:relative;display:grid;place-items:center;text-align:center;color:white;background:radial-gradient(circle at 50% 50%,#16102d,#080812 67%)}.cta-lines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(119,52,243,.58) 17px 25px,transparent 26px 39px);opacity:.76;filter:blur(.3px)}.cta-content{position:relative}.cta-content>span{display:inline-block;border-radius:99px;padding:6px 12px;background:#30294b;color:#ada6d6;font-size:9px;font-weight:800;letter-spacing:1.5px}.cta-content h2{font-size:28px;line-height:1.02;letter-spacing:-1px;margin:20px 0 12px}.cta-content em{color:#bd80ff;font-style:normal}.cta-content p{margin:0;color:#b7b2cc;font-size:12px;line-height:1.55}.cta-content a{display:inline-block;margin-top:22px;padding:12px 22px;border-radius:7px;color:white;background:linear-gradient(100deg,#3144de,#6c45e4);font-size:11px;font-weight:800;text-decoration:none}@media(max-width:760px){.pricing-hero{min-height:0;padding-top:90px}.hero-copy h1{font-size:32px}.pricing-controls{gap:14px;flex-direction:column}.plans-grid{grid-template-columns:1fr}.plan-card{min-height:auto}.compare{margin-bottom:-80px}.pricing-cta{height:350px;border-radius:0;margin-bottom:45px}.cta-content h2{font-size:24px}.table-scroll{width:100%}th,td{padding:0 12px}.product-tab{padding:9px;font-size:10px}}
+</style>
+<style is:global>
+  /* Pricing refinements: Financial Services typography and SaaS-style mesh/glass surfaces. */
+  .pricing-page {
+    color: #273054;
+    background: #f9fbff;
+  }
+
+  .pricing-page .pricing-hero {
+    min-height: 0;
+    padding-top: calc(var(--header-height) + 36px);
+    padding-bottom: 40px;
+    gap: 28px;
+    background:
+      radial-gradient(circle at 8% 18%, rgba(47, 155, 179, .16), transparent 31%),
+      radial-gradient(circle at 92% 16%, rgba(49, 96, 202, .18), transparent 31%),
+      radial-gradient(circle at 55% 100%, rgba(109, 91, 215, .12), transparent 35%),
+      linear-gradient(150deg, #fcfeff, #f2f6ff);
+  }
+
+  .pricing-page .hero-copy h1 {
+    color: #182040;
+  }
+
+  .pricing-page .hero-copy p {
+    max-width: 670px;
+    margin-inline: auto;
+    color: #68728b;
+    font-size: 1rem;
+    line-height: 1.75;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .pricing-page .eyebrow {
+    border: 1px solid rgba(76, 109, 207, .2);
+    background: rgba(235, 239, 255, .78);
+    color: #5267c6;
+    box-shadow: 0 10px 30px rgba(54, 77, 145, .08);
+  }
+
+  .pricing-page .plans-area {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 5% 12%, rgba(47, 155, 179, .10), transparent 26%),
+      radial-gradient(circle at 95% 18%, rgba(73, 93, 210, .13), transparent 29%),
+      radial-gradient(circle at 50% 76%, rgba(124, 94, 221, .10), transparent 32%),
+      #f4f7fc;
+  }
+
+  .pricing-page .plans-area::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(82, 99, 185, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(82, 99, 185, .045) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, #000, transparent 60%);
+  }
+
+  .pricing-page .price-wrap { position: relative; z-index: 1; }
+  .pricing-page .product-tabs {
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, .70);
+    box-shadow: 0 18px 42px rgba(43, 57, 96, .12);
+    backdrop-filter: blur(18px);
+  }
+  .pricing-page .product-tab { padding: 11px 18px; font-size: 12px; }
+  .pricing-page .product-tab.active { background: linear-gradient(120deg, #218f9e, #3f62cb); }
+  .pricing-page .billing-controls {
+    gap: 12px;
+    padding: 5px 7px 5px 16px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .70);
+    box-shadow: 0 18px 42px rgba(43, 57, 96, .12);
+    backdrop-filter: blur(18px);
+    font-size: 13px;
+  }
+  .pricing-page .billing-toggle { width: 40px; height: 22px; padding: 3px; background: #cfd4f8; }
+  .pricing-page .billing-toggle i { width: 16px; height: 16px; }
+  .pricing-page .billing-toggle.active { background: linear-gradient(120deg, #218f9e, #3f62cb); }
+  .pricing-page .billing-toggle.active i { transform: translateX(18px); }
+  .pricing-page .billing-controls b { padding: 7px 11px; border: 1px solid rgba(73, 179, 159, .2); }
+  .pricing-page .plans-heading h2, .pricing-page .compare h2 { color: #202a4b; font-size: clamp(1.55rem, 2.2vw, 2.1rem); font-weight: 600; }
+  .pricing-page .plans-heading p, .pricing-page .compare header p { color: #68728b; font-size: 14px; }
+  .pricing-page .plans-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+  .pricing-page .plan-card {
+    min-height: 342px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .76);
+    box-shadow: 0 20px 48px rgba(38, 50, 91, .11), inset 0 1px rgba(255, 255, 255, .92);
+    backdrop-filter: blur(18px);
+  }
+  .pricing-page .plan-card h3 { font-size: 18px; color: #273054; }
+  .pricing-page .description { height: 36px; font-size: 12px; color: #70798f; }
+  .pricing-page .price { font-size: 31px; color: #3e61c9; }
+  .pricing-page .price sup, .pricing-page .price del { font-size: 11px; }
+  .pricing-page .plan-card small { height: 24px; font-size: 11px; color: #7c8498; }
+  .pricing-page .trial { height: 38px; margin: 8px 0 15px; font-size: 11px; border-radius: 9px; }
+  .pricing-page .trial.primary { background: linear-gradient(120deg, #218f9e, #3f62cb); }
+  .pricing-page .plan-card li { margin: 8px 0; font-size: 11px; color: #5f6782; }
+  .pricing-page .popular { background: linear-gradient(120deg, #218f9e, #3f62cb); }
+  .pricing-page .compare { padding-top: 92px; }
+  .pricing-page .table-scroll { border: 1px solid rgba(222, 228, 238, .9); box-shadow: 0 20px 48px rgba(38, 50, 91, .10); }
+  .pricing-page table { font-size: 12px; }
+  .pricing-page th, .pricing-page td { height: 45px; color: #647089; }
+  .pricing-page thead th { font-size: 11px; color: #273054; background: rgba(248, 250, 255, .92); }
+  .pricing-page tbody th { color: #38415a; }
+  .pricing-page .highlight { background: rgba(237, 237, 255, .72) !important; color: #3f62cb !important; }
+  .pricing-page .check { background: #e3efff; color: #386fce; }
+  @media (max-width: 760px) {
+    .pricing-page .pricing-hero { min-height: 440px; padding-top: calc(var(--header-height) + 55px); padding-bottom: 70px; }
+    .pricing-page .plans-grid { grid-template-columns: 1fr; }
+    .pricing-page .billing-controls { flex-wrap: wrap; }
+    .pricing-page .plan-card { padding: 21px; }
+    .pricing-page .plans-heading p { line-height: 1.5; }
+  }
+</style>
+<style is:global>
+  /* Pricing hero and product switcher align with the AI Phone Receptionist hero. */
+  .pricing-page .hero-copy h1 {
+    margin: 1.45rem 0 1.6rem;
+    color: #151c43;
+    font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+  }
+  .pricing-page .hero-copy h1 span {
+    display: inline;
+    padding: 0;
+    background: linear-gradient(120deg, #3157e8, #8a5fe7) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .pricing-page .pricing-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 48px);
+    gap: 18px;
+  }
+  .pricing-page .product-tabs {
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .70);
+    box-shadow: 0 18px 42px rgba(43, 57, 96, .12);
+    backdrop-filter: blur(18px);
+  }
+  .pricing-page .product-tab {
+    padding: 14px 28px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: none;
+    font-size: 14px;
+  }
+  .pricing-page .product-tab.active {
+    background: linear-gradient(135deg, #315bea, #7f6cf7);
+    box-shadow: 0 14px 32px rgba(61, 99, 245, .25);
+  }
+  .pricing-page .billing-controls { justify-self: auto; }
+  @media (max-width: 760px) {
+    .pricing-page .pricing-controls { width: min(100% - 40px, 520px); }
+    .pricing-page .pricing-controls { flex-direction: column; }
+    .pricing-page .product-tabs { gap: 0; }
+    .pricing-page .product-tab { flex: 1; justify-content: center; padding: 12px 10px; font-size: 11px; }
+  }
+  .pricing-page .hero-copy h1 {
+    max-width: 940px;
+    font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    overflow: visible;
+    padding-bottom: 0.1em;
+  }
+  .pricing-page .hero-copy h1 span {
+    display: block;
+    background: none !important;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: #4f55e7 !important;
+    -webkit-text-fill-color: #4f55e7;
+    padding-bottom: 0.06em;
+  }
+  .pricing-page .hero-copy h1 {
+    font-family: var(--font-sans, Arial, sans-serif);
+    font-size: clamp(3.5rem, 5.9vw, 6.7rem) !important;
+    font-weight: 400 !important;
+    letter-spacing: -.065em !important;
+    line-height: 1.06 !important;
+    color: #252466 !important;
+    overflow: visible !important;
+    padding-bottom: .18em !important;
+  }
+  .pricing-page .hero-copy h1 span {
+    display: block;
+    background: linear-gradient(100deg, #4a62ef 0%, #8062ea 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  .pricing-page button.product-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, #315bea, #7f6cf7) !important;
+    box-shadow: 0 14px 32px rgba(61, 99, 245, .25) !important;
+  }
+  .pricing-page .plans-area {
+    background: #fff !important;
+  }
+  .pricing-page .plans-area::before { display: none; }
+  .pricing-page button.billing-toggle,
+  .pricing-page button.billing-toggle.active {
+    background-color: transparent !important;
+    background-image: linear-gradient(110deg, #4163ed, #7658ed) !important;
+  }
+  .pricing-page .compare {
+    margin: 70px 0 0;
+    padding-bottom: 72px;
+  }
+  .pricing-page .table-scroll { width: 100%; }
+  .pricing-page table { font-size: 16px; }
+  .pricing-page th,
+  .pricing-page td {
+    height: 62px;
+    padding-inline: 22px;
+    line-height: 1.5;
+  }
+  .pricing-page thead th { font-size: 15px; }
+  .pricing-page thead th:first-child { padding-left: 48px; }
+  .pricing-page tbody th {
+    padding-left: 48px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .pricing-page .plans-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 38px;
+  }
+  .pricing-page .plans-toolbar .plans-heading {
+    margin: 0;
+    grid-column: 2;
+  }
+  .pricing-page .plans-toolbar .plans-heading h2 {
+    margin-bottom: 7px;
+  }
+  .pricing-page .plans-toolbar .plans-heading p {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+  .pricing-page .plans-toolbar .billing-controls {
+    grid-column: 3;
+    justify-self: end;
+  }
+  .pricing-page .plans-toolbar .product-tabs { grid-column: 1; justify-self: start; }
+  .pricing-page .price-wrap { width: min(calc(100% - 32px), 2200px); }
+  .pricing-page .plans-grid { align-items: stretch; gap: 12px; }
+  .pricing-page .plan-card { height: auto; min-height: 0; display: block; }
+  .pricing-page .plan-card { padding-inline: 18px; }
+  .pricing-page .plan-card li {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .pricing-page .plan-card ul { margin-top: 0; }
+  .pricing-page .trial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 48px;
+    height: 48px;
+    border-color: rgba(62, 78, 204, .22);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .65);
+    color: #20265a;
+    font-size: 16px;
+    font-weight: 700;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .pricing-page .trial b { font-size: 25px; font-weight: 400; line-height: 1; }
+  .pricing-page .price.custom {
+    display: flex;
+    align-items: center;
+    min-height: 31px;
+  }
+  .pricing-page .trial.primary {
+    border: 0;
+    background: linear-gradient(110deg, #4163ed, #7658ed) !important;
+    box-shadow: 0 18px 34px rgba(69, 76, 199, .32) !important;
+  }
+  .pricing-page .trial:hover { transform: translateY(-2px); }
+  .pricing-page .popular {
+    top: -17px;
+    right: 50%;
+    padding: 9px 19px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 999px;
+    background: linear-gradient(110deg, #4163ed, #7658ed) !important;
+    box-shadow: 0 12px 27px rgba(69, 76, 199, .30) !important;
+    font-size: 9px;
+    letter-spacing: .05em;
+    transform: translateX(50%);
+  }
+  @media (max-width: 760px) {
+    .pricing-page .hero-copy h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+    .pricing-page .plans-toolbar { grid-template-columns: 1fr; gap: 18px; }
+    .pricing-page .plans-toolbar .product-tabs,
+    .pricing-page .plans-toolbar .plans-heading,
+    .pricing-page .plans-toolbar .billing-controls { grid-column: auto; }
+    .pricing-page .plans-toolbar .product-tabs,
+    .pricing-page .plans-toolbar .billing-controls { justify-self: center; }
+    .pricing-page .plan-card { height: auto; min-height: 0; }
+  }
+</style>

@@ -1,0 +1,726 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import PhoneInboxDemo from '../components/PhoneInboxDemo.astro';
+import ralvieLogoIcon from '../assets/Ralvie-logo-icon.svg';
+import customerPortrait from '../assets/ai_phone_receptionist_Customer.jpg';
+import ai01 from '../assets/AI Agent_01.mp3';
+import ai02 from '../assets/AI Agent_02.mp3';
+import ai03 from '../assets/AI Agent_03.mp3';
+import ai04 from '../assets/AI Agent_04.mp3';
+import ai05 from '../assets/AI Agent_05.mp3';
+import ai06 from '../assets/AI Agent_06.mp3';
+import customer01 from '../assets/Customer_01.mp3';
+import customer02 from '../assets/Customer_02.mp3';
+import customer03 from '../assets/Customer_03.mp3';
+import customer04 from '../assets/Customer_04.mp3';
+import customer05 from '../assets/Customer_05.mp3';
+import customer06 from '../assets/Customer_06.mp3';
+
+const title = 'AI Phone Receptionist for Business | Ralvie AI Frontdesk';
+const description = 'Answer every business call with Ralvie AI Frontdesk. Handle questions, qualify leads, book appointments, route calls, access business data, and support customers 24/7.';
+
+const features = [
+  ['phone', 'Answers every call', 'Instant, always-on coverage for evenings, weekends, peak hours, and everything in between.'],
+  ['chat', 'Understands natural conversations', 'Callers can speak normally, interrupt, ask follow-ups, and change direction without a phone tree.'],
+  ['book', 'Finds the right answer', 'Use approved websites, documents, policies, product details, and live business information.'],
+  ['bolt', 'Takes action during the call', 'Book appointments, capture leads, retrieve data, and trigger connected workflows in real time.'],
+  ['users', 'Brings in a human', 'Route sales, support, and urgent conversations to the right team using your business rules.'],
+];
+
+const useCases = [
+  ['chat', 'Customer questions', 'Resolve routine questions with the business information you approve.'],
+  ['sparkles', 'Product & service enquiries', 'Share availability, package, product, and service details without the wait.'],
+  ['target', 'Lead qualification', 'Ask the right questions, capture requirements, and route high-intent opportunities.'],
+  ['calendar', 'Appointment booking', 'Find availability and confirm appointments through your connected calendar workflow.'],
+  ['refresh', 'Smart call routing', 'Understand why someone called, then resolve or route without keypad menus.'],
+  ['clock', 'After-hours coverage', 'Keep your business responsive even when your team is offline.'],
+];
+
+const sources = [
+  ['globe', 'Websites'], ['document', 'Documents'], ['link', 'APIs'], ['database', 'Databases'], ['users', 'CRMs'], ['squares', 'Business systems'],
+];
+
+const industries = [
+  ['building', 'Hotels & hospitality'], ['heart', 'Healthcare & clinics'], ['home', 'Real estate'],
+  ['briefcase', 'Retail & ecommerce'], ['wrench', 'Automotive & services'], ['academic-cap', 'Education'],
+];
+
+const faqs = [
+  ['What is an AI phone receptionist?', 'A voice-based AI agent that answers incoming calls, understands callers, responds naturally, and performs configured front-desk tasks.'],
+  ['Can Ralvie answer calls after business hours?', 'Yes. Ralvie can provide 24/7 coverage, including evenings, weekends, overflow periods, and holidays.'],
+  ['Can callers speak naturally?', 'Yes. Callers explain what they need in their own words instead of relying on keypad menus or predefined commands.'],
+  ['Can Ralvie transfer calls to my team?', 'Yes. Calls can be routed or transferred according to your configured business rules when human assistance is needed.'],
+  ['Can it book appointments and qualify leads?', 'Yes. Ralvie can connect to scheduling workflows, ask qualification questions, collect caller details, and route opportunities.'],
+  ['Can it connect with our CRM or other software?', 'Yes. Ralvie supports workflows through APIs, webhooks, Zapier, calendars, databases, CRMs, and other supported systems.'],
+  ['Does Ralvie support multiple languages?', 'Yes. Ralvie supports multilingual voice experiences for customers across different language preferences.'],
+  ['Do we need to replace our phone system?', 'Not necessarily. Ralvie can fit into existing call-routing workflows based on your telephony setup and business needs.'],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+---
+
+<Layout title={title} description={description}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  <main class="phone-page pt-(--header-height)">
+    <section class="hero relative overflow-hidden">
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="container-page hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow"><span class="pulse"></span> AI phone receptionist</span>
+          <h1><span class="hero-line ink">Your Frontdesk,</span><span class="hero-line">Now Powered</span><span class="hero-line">by Ralvie AI.</span></h1>
+          <p class="lead">Answer every call. Understand every customer. Take action in real time.</p>
+          <p>Ralvie AI Frontdesk handles enquiries naturally, accesses your business knowledge, books appointments, captures leads, and routes callers to the right team—24/7.</p>
+          <div class="hero-actions">
+            <a href="#demo" class="primary">Start your free trial <Icon name="arrow-right" class="h-4 w-4" /></a>
+            <a href="#demo" class="secondary"><Icon name="calendar" class="h-4 w-4" /> Book a demo</a>
+          </div>
+          <div class="proof"><span>Natural conversations</span><span>24/7 answering</span><span>Smart transfers</span><span>Multilingual</span></div>
+        </div>
+
+        <div class="call-shell reveal" id="conversation">
+          <div class="call-top"><span class="avatar"><Icon name="phone" /></span><div><b>Ralvie Frontdesk</b><small>Live incoming call</small></div><span class="live">● Live</span></div>
+          <div class="call-participants" data-call-demo>
+            <div class="call-readout"><p class="call-status" data-call-status>Press play to hear the conversation</p><span class="call-timer" data-call-timer>00:00</span></div>
+            <article class="participant" data-participant="ai"><span class="participant-avatar ralvie-avatar"><img src={ralvieLogoIcon.src} alt="Ralvie AI" /></span><div><b>Ralvie AI Frontdesk</b><small>AI receptionist</small></div><i class="voice-bars">{[1,2,3,4,5].map(() => <span></span>)}</i></article>
+            <button class="call-play" type="button" data-call-toggle aria-label="Play call"><span class="play-symbol">▶</span><span class="pause-symbol" aria-hidden="true"><i></i><i></i></span></button>
+            <article class="participant" data-participant="customer"><span class="participant-avatar customer-avatar"><img src={customerPortrait.src} alt="Customer" /></span><div><b>Customer</b><small>Incoming caller</small></div><i class="voice-bars">{[1,2,3,4,5].map(() => <span></span>)}</i></article>
+            {[ai01,customer01,ai02,customer02,ai03,customer03,ai04,customer04,ai05,customer05,ai06,customer06].map((src,index) => <audio preload="metadata" src={src} data-call-audio data-speaker={index % 2 === 0 ? 'ai' : 'customer'}></audio>)}
+          </div>
+          <div class="call-controls"><div><button type="button" class="control-button" aria-label="Mute call"><Icon name="microphone" /></button><button type="button" class="control-button end-call" data-call-end aria-label="End call"><Icon name="phone" /></button><button type="button" class="control-button" aria-label="Open keypad"><Icon name="squares" /></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement section">
+      <div class="container-page narrow reveal">
+        <span class="eyebrow">Always ready</span>
+        <h2><span class="statement-line">Your business should never have to</span><span class="statement-line">choose between answering calls and</span><span class="statement-line">getting work done.</span></h2>
+        <p>Customers call because they want something now. Ralvie becomes your intelligent first point of contact—without voicemail dead ends, rigid phone menus, or asking customers to repeat themselves.</p>
+      </div>
+    </section>
+
+    <section class="section soft capabilities-section">
+      <div class="container-page">
+        <div class="section-title reveal"><span class="eyebrow">One intelligent front desk</span><h2>More than an answering service.<br />An AI that gets things done.</h2></div>
+        <div class="feature-grid">
+          {features.map(([icon, name, copy], index) => <article class:list={['glass reveal', index === 0 && 'featured']}><span class="icon"><Icon name={icon} /></span><h3>{name}</h3><p>{copy}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section process">
+      <div class="container-page">
+        <div class="section-title reveal"><span class="eyebrow">How every call flows</span><h2>From “hello” to resolution—<br />all in one conversation.</h2></div>
+        <div class="reception-flow reveal" aria-label="Five stages of an AI receptionist call">
+          <header class="reception-flow-head">
+            <div><span class="flow-mark"><Icon name="sparkles" /></span><p>RALVIE AI FRONTDESK</p><h3>From every call to a clear next step</h3></div>
+            <span class="flow-live"><i></i> Live</span>
+          </header>
+          <div class="reception-flow-body">
+            <div class="reception-flow-track" aria-hidden="true"></div>
+            <div class="reception-steps">
+              {[
+                ['phone', '01', 'Answer', 'Answers instantly, any time.'],
+                ['chat', '02', 'Understand', 'Listens naturally and finds intent.'],
+                ['book', '03', 'Resolve', 'Uses your approved business knowledge.'],
+                ['bolt', '04', 'Take action', 'Books, captures, and updates in real time.'],
+                ['users', '05', 'Connect', 'Routes the right calls to your team.'],
+              ].map(([icon, number, title, copy], index) => <article class:list={['reception-step', index === 1 && 'is-active']} style={`--step:${index}`}>
+                <span class="reception-icon"><Icon name={icon} /></span><small>{number}</small><h3>{title}</h3><p>{copy}</p>
+              </article>)}
+            </div>
+          </div>
+          <footer><span><i></i> Context updates automatically</span><small>Every stage moves the conversation forward</small></footer>
+        </div>
+      </div>
+    </section>
+
+    <div class="knowledge-usecases-flow">
+    <section class="section knowledge-parallax" data-knowledge-parallax>
+      <div class="knowledge-sticky">
+        <div class="container-page split">
+          <div class="knowledge-copy"><span class="eyebrow">Dynamic knowledge</span><h2>Give your AI more than a static FAQ.</h2><p class="large">Ralvie works with approved information across your business, so answers can stay contextual and useful while conversations lead directly to action.</p><a href="#demo" class="text-link">Explore connected intelligence <Icon name="arrow-right" class="h-4 w-4" /></a></div>
+          <div class="source-grid knowledge-sources">{sources.map(([icon, label]) => <div class="source"><span><Icon name={icon} /></span><b>{label}</b><small>Connected knowledge</small></div>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="usecases-scroll-stack">
+    <div class="use-cases-slot">
+    <section class="section use-cases-section">
+      <div class="container-page">
+        <div class="section-title reveal"><span class="eyebrow">Built for real calls</span><h2>One receptionist. Every reason customers call.</h2></div>
+        <div class="use-grid">{useCases.map(([icon, name, copy]) => <article class="use-card reveal"><span class="icon"><Icon name={icon} /></span><div><h3>{name}</h3><p>{copy}</p></div></article>)}</div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section conversation-band">
+      <div class="container-page split align-center">
+        <div class="reveal"><span class="eyebrow">Conversation, not navigation</span><h2>Lose the phone tree.<br />Keep the human feeling.</h2><p class="large">Customers speak naturally. Ralvie listens, understands context, asks relevant follow-up questions, and remembers what has already been discussed.</p></div>
+        <div class="compare-card reveal"><div class="old"><small>Traditional IVR</small><p>“Press 1 for Sales. Press 2 for Support. Press 3…”</p></div><div class="vs">instead</div><div class="new"><small>Ralvie</small><p>“Hi, thanks for calling. How can I help you today?”</p><div class="wave" aria-hidden="true">{[1,2,3,4,5,6,7,8,9,10,11,12].map((_,i) => <i style={`--h:${18 + (i % 5) * 8}px;--delay:${i * -0.09}s;--speed:${0.62 + (i % 4) * 0.08}s`}></i>)}</div></div></div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section soft">
+      <div class="container-page split align-center">
+        <div class="language-card reveal"><div class="globe"><Icon name="globe" class="h-16 w-16" /></div><span class="lang l1">Hello</span><span class="lang l2">Bonjour</span><span class="lang l3">Hola</span><span class="lang l4">नमस्ते</span><span class="lang l5">Hallo</span><span class="lang l6">Olá</span><span class="lang l7">مرحباً</span><span class="lang l8">こんにちは</span></div>
+        <div class="reveal"><span class="eyebrow">Multilingual voice</span><h2>Serve customers in the language they’re comfortable with.</h2><p class="large">One intelligent front desk can help your business support more regions and language preferences without building a separate reception team for each one.</p><div class="checks"><span><Icon name="check" /> Natural conversations</span><span><Icon name="check" /> Global customer experience</span><span><Icon name="check" /> Smarter escalation</span></div></div>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="container-page">
+        <div class="section-title reveal"><span class="eyebrow">Every call, visible</span><h2>Know what happened on every call.</h2><p>Monitor conversations, customer intent, transfers, appointments, and follow-up from one centralized view.</p></div>
+        <PhoneInboxDemo />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-page">
+        <div class="section-title reveal"><span class="eyebrow">Designed for your industry</span><h2>Built for businesses where every call matters.</h2></div>
+        <div class="industry-grid">{industries.map(([icon, name]) => <article class="industry reveal"><Icon name={icon} /><h3>{name}</h3><span>Explore use case <Icon name="arrow-right" class="h-4 w-4" /></span></article>)}</div>
+      </div>
+    </section>
+
+    <section class="section comparison soft">
+      <div class="container-page split">
+        <div class="reveal"><span class="eyebrow">A better first impression</span><h2>Move beyond traditional call handling.</h2><p class="large">AI when it helps. Humans when they matter.</p></div>
+        <div class="comparison-list reveal">{[['Phone-tree menus','Natural conversations'],['Business-hours coverage','Available 24/7'],['Send to voicemail','Answer immediately'],['Manual lead intake','Automated lead capture'],['Blind routing','Intent-based routing'],['Manual call notes','Conversation insights']].map(([oldWay,newWay]) => <div><span><Icon name="x-mark" />{oldWay}</span><b><Icon name="check" />{newWay}</b></div>)}</div>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Still have a question? Our team can walk you through how Ralvie fits your call flow.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right" class="h-4 w-4" /></a></div><div>{faqs.map(([q,a],i) => <details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div>
+    </section>
+
+    <section class="final-cta" id="demo"><div class="mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="#" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right" class="h-4 w-4"/></a><a href="#" class="secondary dark-button"><Icon name="calendar" class="h-4 w-4"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+  </main>
+  <Footer theme="light" />
+</Layout>
+
+<script>
+  const setupCallDemo = () => {
+    const demo = document.querySelector('[data-call-demo]');
+    if (!(demo instanceof HTMLElement) || demo.dataset.ready) return;
+    demo.dataset.ready = 'true';
+    const tracks = [...demo.querySelectorAll('[data-call-audio]')].filter((item): item is HTMLAudioElement => item instanceof HTMLAudioElement);
+    const toggle = demo.querySelector('[data-call-toggle]');
+    const status = demo.querySelector('[data-call-status]');
+    const timer = document.querySelector('[data-call-timer]');
+    const endCall = document.querySelector('[data-call-end]');
+    if (!(toggle instanceof HTMLButtonElement) || !tracks.length) return;
+    let index = 0;
+    let playing = false;
+    let elapsed = 0;
+    let timerId = 0;
+    const renderTimer = () => {
+      if (timer) timer.textContent = `${String(Math.floor(elapsed / 60)).padStart(2, '0')}:${String(elapsed % 60).padStart(2, '0')}`;
+    };
+    const startTimer = () => {
+      if (timerId) return;
+      timerId = window.setInterval(() => { elapsed += 1; renderTimer(); }, 1000);
+    };
+    const stopTimer = () => { window.clearInterval(timerId); timerId = 0; };
+    const showSpeaker = (speaker = '') => {
+      demo.querySelectorAll('[data-participant]').forEach((item) => item.classList.toggle('speaking', item.getAttribute('data-participant') === speaker));
+      if (status) status.textContent = speaker === 'ai' ? 'Ralvie AI Frontdesk is speaking' : speaker === 'customer' ? 'Customer is speaking' : 'Call paused';
+    };
+    const playCurrent = async () => {
+      playing = true;
+      demo.classList.add('is-playing');
+      startTimer();
+      toggle.setAttribute('aria-label', 'Pause call');
+      showSpeaker(tracks[index].dataset.speaker);
+      try { await tracks[index].play(); } catch { playing = false; demo.classList.remove('is-playing'); showSpeaker(); }
+    };
+    tracks.forEach((track, trackIndex) => track.addEventListener('ended', () => {
+      if (!playing || trackIndex !== index) return;
+      index = (index + 1) % tracks.length;
+      tracks[index].currentTime = 0;
+      void playCurrent();
+    }));
+    toggle.addEventListener('click', () => {
+      if (playing) {
+        playing = false;
+        tracks[index].pause();
+        stopTimer();
+        demo.classList.remove('is-playing');
+        toggle.setAttribute('aria-label', 'Play call');
+        showSpeaker();
+      } else void playCurrent();
+    });
+    endCall?.addEventListener('click', () => {
+      playing = false;
+      tracks.forEach((track) => { track.pause(); track.currentTime = 0; });
+      index = 0;
+      elapsed = 0;
+      stopTimer();
+      renderTimer();
+      demo.classList.remove('is-playing');
+      toggle.setAttribute('aria-label', 'Play call');
+      showSpeaker();
+      if (status) status.textContent = 'Call ended — press play to restart';
+    });
+  };
+  setupCallDemo();
+  document.addEventListener('astro:page-load', setupCallDemo);
+
+  const startKnowledgeParallax = () => {
+    const section = document.querySelector('[data-knowledge-parallax]');
+    if (!(section instanceof HTMLElement)) return;
+    const parallaxWindow = window as Window & { __ralvieKnowledgeCleanup?: () => void };
+    parallaxWindow.__ralvieKnowledgeCleanup?.();
+    const nextSection = document.querySelector('.usecases-scroll-stack');
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      section.style.setProperty('--knowledge-progress', progress.toFixed(4));
+      section.style.setProperty('--knowledge-left-x', `${progress * -115}vw`);
+      section.style.setProperty('--knowledge-right-x', `${progress * 115}vw`);
+      section.style.setProperty('--knowledge-left-rotation', `${progress * -45}deg`);
+      section.style.setProperty('--knowledge-right-rotation', `${progress * 45}deg`);
+      section.style.setProperty('--knowledge-opacity', Math.max(0, 1 - progress * 1.35).toFixed(4));
+      if (nextSection instanceof HTMLElement) {
+        const incomingProgress = Math.sqrt(progress);
+        nextSection.style.setProperty('--knowledge-progress', progress.toFixed(4));
+        nextSection.style.setProperty('--knowledge-inverse', (1 - progress).toFixed(4));
+        nextSection.style.marginTop = `${-100 - incomingProgress * 70}vh`;
+      }
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    parallaxWindow.__ralvieKnowledgeCleanup = () => {
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  };
+
+  startKnowledgeParallax();
+  document.addEventListener('astro:page-load', startKnowledgeParallax);
+
+</script>
+
+<script is:inline>
+  (() => {
+    const installUseCasesPin = () => {
+      const slot = document.querySelector('.use-cases-slot');
+      const stage = document.querySelector('.use-cases-section');
+      const cover = document.querySelector('.conversation-band');
+      if (!(slot instanceof HTMLElement) || !(stage instanceof HTMLElement) || !(cover instanceof HTMLElement)) return;
+
+      window.__ralvieUseCasesPinCleanup?.();
+      let frame = 0;
+
+      const clear = () => {
+        stage.style.removeProperty('position');
+        stage.style.removeProperty('top');
+        stage.style.removeProperty('right');
+        stage.style.removeProperty('left');
+        stage.style.removeProperty('width');
+        stage.style.removeProperty('z-index');
+        stage.style.removeProperty('background');
+      };
+
+      const update = () => {
+        frame = 0;
+        const pinTop = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+        const slotTop = slot.getBoundingClientRect().top;
+        const coverTop = cover.getBoundingClientRect().top;
+        const active = window.innerWidth > 900 && slotTop <= pinTop && coverTop > pinTop;
+        if (!active) {
+          clear();
+          return;
+        }
+        stage.style.setProperty('position', 'fixed', 'important');
+        stage.style.setProperty('top', `${pinTop}px`, 'important');
+        stage.style.setProperty('right', '0', 'important');
+        stage.style.setProperty('left', '0', 'important');
+        stage.style.setProperty('width', '100%', 'important');
+        stage.style.setProperty('z-index', '2', 'important');
+        stage.style.setProperty('background', '#f5f7ff', 'important');
+      };
+
+      const requestUpdate = () => {
+        if (!frame) frame = requestAnimationFrame(update);
+      };
+
+      const resize = () => {
+        clear();
+        requestUpdate();
+      };
+
+      update();
+      addEventListener('scroll', requestUpdate, { passive: true });
+      addEventListener('resize', resize, { passive: true });
+      window.__ralvieUseCasesPinCleanup = () => {
+        removeEventListener('scroll', requestUpdate);
+        removeEventListener('resize', resize);
+        if (frame) cancelAnimationFrame(frame);
+        clear();
+      };
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', installUseCasesPin, { once: true });
+    } else {
+      installUseCasesPin();
+    }
+    document.addEventListener('astro:page-load', installUseCasesPin);
+  })();
+</script>
+
+<style>
+  .phone-page{--ink:#151c43;--muted:#626984;--line:rgba(38,47,93,.12);--blue:#3d63f5;--violet:#7669f8;background:#fbfcff;color:var(--ink);overflow:hidden}.phone-page :global(h1),.phone-page :global(h2),.phone-page :global(h3){letter-spacing:-.035em}.hero{min-height:calc(100vh - var(--header-height));display:flex;align-items:center;padding:5.5rem 0 6.5rem;background:linear-gradient(180deg,#fbfcff 0%,#f4f6ff 100%)}.mesh{position:absolute;inset:0;pointer-events:none}.mesh i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3}.mesh i:nth-child(1){width:42rem;height:42rem;background:#9bbcff;top:-18rem;right:-8rem}.mesh i:nth-child(2){width:34rem;height:34rem;background:#d8b6ff;bottom:-17rem;left:-7rem}.mesh i:nth-child(3){width:26rem;height:26rem;background:#8ff0ed;top:34%;left:39%;opacity:.2}.hero-grid,.split{display:grid;grid-template-columns:1.02fr .98fr;gap:5rem;align-items:center;position:relative}.hero-copy{max-width:680px}.eyebrow{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;letter-spacing:.13em;font:700 .72rem var(--font-label);color:#4b59ac}.pulse{width:7px;height:7px;border-radius:50%;background:#5d7afb;box-shadow:0 0 0 5px rgba(93,122,251,.12)}h1{font-size:clamp(3.2rem,6.1vw,6.2rem);line-height:.99;margin:1.45rem 0 1.6rem;max-width:830px}h1 span{background:linear-gradient(120deg,#3157e8,#8a5fe7);background-clip:text;color:transparent}.hero-copy .lead{font-weight:650;color:var(--ink);font-size:1.25rem;margin-bottom:.65rem}.hero-copy>p:last-of-type{font-size:1.03rem;line-height:1.75;color:var(--muted);max-width:640px}.hero-actions{display:flex;gap:.8rem;margin:2rem 0 1.7rem}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.9rem 1.25rem;border-radius:12px;font-weight:700;font-size:.9rem}.primary{color:white;background:linear-gradient(135deg,#315bea,#7f6cf7);box-shadow:0 14px 32px rgba(61,99,245,.25)}.secondary{color:var(--ink);background:rgba(255,255,255,.72);border:1px solid var(--line);backdrop-filter:blur(12px)}.proof{display:flex;flex-wrap:wrap;gap:.65rem 1.25rem;color:#727992;font-size:.76rem}.proof span:before{content:'✓';color:#4f70eb;margin-right:.35rem}.call-shell,.glass,.source,.compare-card,.language-card,.dashboard{background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.85);box-shadow:0 30px 70px rgba(61,77,135,.14),inset 0 1px white;backdrop-filter:blur(22px)}.call-shell{position:relative;border-radius:28px;padding:1.25rem;max-width:520px;justify-self:end;overflow:hidden}.call-shell:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(93,122,251,.08),rgba(174,113,243,.06));pointer-events:none}.call-top{display:flex;align-items:center;gap:.75rem;position:relative}.call-top .avatar{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#eef1ff;color:var(--blue)}.call-top b,.call-top small{display:block}.call-top b{font-size:.88rem}.call-top small{font-size:.72rem;color:var(--muted);margin-top:.15rem}.live{margin-left:auto;font-size:.7rem;color:#1f9c77;background:#e8fbf4;border-radius:999px;padding:.4rem .65rem}.orb{height:230px;display:grid;place-items:center;position:relative}.orb>span{position:absolute;border:1px solid rgba(95,107,235,.16);border-radius:50%;width:130px;height:130px;animation:ripple 3s ease-out infinite}.orb>span:nth-child(2){animation-delay:1s}.orb>span:nth-child(3){animation-delay:2s}.orb>div{width:94px;height:94px;display:grid;place-items:center;border-radius:50%;color:white;background:radial-gradient(circle at 35% 25%,#9ee8ff,#5c6cf1 52%,#5e2ea3);box-shadow:0 0 0 14px rgba(103,108,235,.08),0 18px 45px rgba(76,70,196,.3)}@keyframes ripple{from{transform:scale(.7);opacity:1}to{transform:scale(1.8);opacity:0}}.status{text-align:center;color:#5964bc;font-size:.72rem;font-weight:700;margin-top:-1rem}.messages{display:grid;gap:.65rem;margin:1rem 0}.messages p{font-size:.76rem;line-height:1.55;padding:.7rem .85rem;border-radius:12px;max-width:85%}.caller{justify-self:end;background:#eef0f8;color:#596078}.ralvie{background:#eef1ff;color:#34418f}.call-steps{display:flex;gap:.4rem;border-top:1px solid var(--line);padding-top:.85rem}.call-steps span{font-size:.6rem;padding:.35rem .48rem;border-radius:999px;background:#f3f4f9;color:#767d93}.call-steps .done{color:#397a6a;background:#eaf8f3}.call-steps .active{color:#5266da;background:#edf0ff}.section{padding:7rem 0}.narrow{max-width:920px;text-align:center}.narrow h2,.section-title h2,.split h2,.faq h2{font-size:clamp(2.35rem,4vw,4rem);line-height:1.08;margin:1rem 0 1.25rem}.narrow p,.large,.section-title>p,.faq-grid>div>p{font-size:1.08rem;line-height:1.8;color:var(--muted)}.soft{background:linear-gradient(180deg,#f5f7ff,#fbfcff)}.section-title{text-align:center;max-width:800px;margin:0 auto 3.5rem}.feature-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}.glass{grid-column:span 2;border-color:var(--line);border-radius:20px;padding:1.6rem}.glass.featured{grid-column:span 3}.glass:nth-child(2){grid-column:span 3}.icon{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#e8edff,#f0eaff);color:#5066e4;margin-bottom:1.1rem}.glass h3,.use-card h3,.industry h3{font-size:1.05rem;margin-bottom:.55rem}.glass p,.use-card p{color:var(--muted);font-size:.9rem;line-height:1.65}.steps{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem}.steps>div{text-align:center;position:relative}.steps b{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;margin:0 auto .8rem;background:white;border:1px solid #dbe0fb;color:#5166de;position:relative;z-index:1}.steps span{font-size:.83rem;font-weight:700}.steps i{position:absolute;height:1px;background:#d8ddf4;top:24px;left:65%;width:70%}.process-note{max-width:630px;margin:3rem auto 0;display:flex;align-items:center;gap:1rem;background:#eef1ff;border:1px solid #dde3ff;padding:1rem 1.2rem;border-radius:15px;color:#4d598f}.process-note svg{flex:none;color:#6478e9}.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}.source{border-color:var(--line);border-radius:16px;padding:1.25rem}.source span{color:#5d70df}.source b,.source small{display:block}.source b{font-size:.88rem;margin-top:.7rem}.source small{font-size:.67rem;color:#9298aa;margin-top:.25rem}.text-link{display:inline-flex;gap:.5rem;align-items:center;margin-top:1.4rem;color:#405ed1;font-weight:700;font-size:.88rem}.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.use-card{display:flex;gap:1rem;padding:1.35rem;border:1px solid var(--line);border-radius:18px;background:white}.use-card .icon{flex:none;margin:0}.conversation-band{background:#171e49;color:#f7f8ff}.conversation-band .eyebrow{color:#a8b5ff}.conversation-band .large{color:#b8bfdc}.compare-card{border-radius:24px;padding:1.2rem;color:var(--ink)}.old,.new{padding:1.25rem;border-radius:16px}.old{background:#f2f3f8;color:#777d91}.new{background:linear-gradient(135deg,#edf1ff,#f5ecff);color:#303a79}.old small,.new small{text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:.65rem}.old p,.new p{font-size:1.04rem;line-height:1.5;margin-top:.5rem}.vs{text-align:center;font-size:.65rem;color:#8c93aa;padding:.5rem}.wave{display:flex;align-items:center;gap:3px;margin-top:1rem;height:40px}.wave i{width:3px;height:var(--h);border-radius:9px;background:linear-gradient(#70c7ee,#7165e7)}.language-card{height:390px;border-radius:50%;max-width:390px;width:100%;justify-self:center;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#fff 0,#eef2ff 55%,rgba(255,255,255,.4) 70%)}.globe{display:grid;place-items:center;width:130px;height:130px;border-radius:50%;color:white;background:linear-gradient(135deg,#5274ec,#8f65e3);box-shadow:0 25px 60px rgba(74,80,190,.25)}.lang{position:absolute;background:white;border:1px solid var(--line);padding:.55rem .8rem;border-radius:999px;font-weight:700;font-size:.75rem;box-shadow:0 10px 25px rgba(57,66,110,.1)}.l1{top:15%;left:10%}.l2{top:22%;right:4%}.l3{bottom:18%;left:5%}.l4{bottom:10%;right:12%}.checks{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}.checks span{display:flex;align-items:center;gap:.6rem;font-size:.88rem;font-weight:650}.checks svg{color:#4e6dde}.dashboard-section{background:linear-gradient(180deg,#fbfcff,#eff3ff)}.dashboard{max-width:1060px;margin:auto;border-radius:22px;padding:0;display:grid;grid-template-columns:180px 1fr;overflow:hidden;border-color:var(--line);box-shadow:0 40px 80px rgba(48,62,120,.16)}.dash-nav{background:#1a214d;color:#aeb6d8;padding:1.5rem;display:flex;flex-direction:column;gap:.5rem}.dash-nav b{color:white;margin-bottom:1.5rem}.dash-nav span{font-size:.73rem;padding:.65rem;border-radius:8px}.dash-nav .selected{background:#344078;color:white}.dash-main{padding:1.5rem;background:#f9faff}.dash-head{display:flex;justify-content:space-between;align-items:center}.dash-head small{color:#9298aa}.dash-head h3{margin-top:.2rem}.dash-head button{border:1px solid var(--line);border-radius:8px;padding:.55rem .75rem;color:#737a91;background:white;font-size:.7rem}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0}.metrics>div{background:white;border:1px solid var(--line);border-radius:12px;padding:1rem}.metrics small,.metrics b,.metrics em{display:block}.metrics small{font-size:.65rem;color:#858ca2}.metrics b{font-size:1.3rem;margin:.45rem 0}.metrics em{font-style:normal;color:#299578;font-size:.6rem}.activity{background:white;border:1px solid var(--line);border-radius:12px;padding:1rem}.activity>p{display:flex;align-items:center;gap:.7rem;border-top:1px solid var(--line);padding:.7rem 0;font-size:.7rem}.activity>p:first-of-type{margin-top:.7rem}.activity p small{margin-left:auto;color:#9499aa}.mini-avatar{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#edf0ff;color:#5267db}.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.industry{padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:white}.industry>svg{color:#556be0;width:28px;height:28px;margin-bottom:1.5rem}.industry>span{display:flex;align-items:center;gap:.4rem;color:#6e7690;font-size:.72rem;margin-top:1.5rem}.comparison-list{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden}.comparison-list>div{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}.comparison-list>div:last-child{border:0}.comparison-list span,.comparison-list b{display:flex;align-items:center;gap:.6rem;padding:1rem;font-size:.82rem}.comparison-list span{color:#9499a8}.comparison-list b{color:#33448e;background:#f5f7ff}.comparison-list svg{width:16px}.faq-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:6rem}.faq details{border-bottom:1px solid var(--line);padding:1.1rem 0}.faq summary{cursor:pointer;display:flex;justify-content:space-between;font-weight:700;list-style:none}.faq summary span{font-size:1.3rem;color:#596ddd}.faq details p{color:var(--muted);font-size:.88rem;line-height:1.7;padding:1rem 2rem 0 0}.final-cta{position:relative;text-align:center;overflow:hidden;background:#141b46;color:white;padding:8rem 0}.final-cta .container-page{position:relative}.final-cta h2{font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.05;margin:1rem 0}.final-cta p{color:#bac2df;margin-bottom:2rem}.final-cta .secondary{margin-left:.6rem}.dark-button{color:white;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}.mesh.dark i{opacity:.18}.reveal{animation:fade-up .7s ease both;animation-timeline:view();animation-range:entry 0% cover 25%}@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.reveal{animation:none}.orb>span{animation:none}}@media(max-width:900px){.hero{padding-top:4rem}.hero-grid,.split,.faq-grid{grid-template-columns:1fr;gap:3.5rem}.call-shell{justify-self:center}.feature-grid{grid-template-columns:1fr 1fr}.glass,.glass.featured,.glass:nth-child(2){grid-column:span 1}.steps{grid-template-columns:repeat(4,1fr);row-gap:2rem}.steps i{display:none}.use-grid,.industry-grid{grid-template-columns:1fr 1fr}.dashboard{grid-template-columns:1fr}.dash-nav{display:none}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:600px){h1{font-size:3.25rem}.section{padding:5rem 0}.hero-actions{flex-direction:column}.proof{display:grid;grid-template-columns:1fr 1fr}.call-shell{padding:1rem}.feature-grid,.use-grid,.industry-grid,.source-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.language-card{height:320px}.dashboard{font-size:.8rem}.dash-main{padding:.8rem}.metrics{grid-template-columns:1fr 1fr}.metrics>div{padding:.7rem}.activity p{font-size:.62rem}.final-cta .secondary{margin:.7rem 0 0}.comparison-list span,.comparison-list b{font-size:.72rem;padding:.8rem}.faq-grid{gap:2rem}}
+  .process{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#f7f8ff 100%);color:#20243c}.process:before,.process:after{content:'';position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}.process:before{width:34rem;height:34rem;top:-19rem;right:-8rem;background:rgba(116,96,241,.12)}.process:after{width:28rem;height:28rem;bottom:-19rem;left:-7rem;background:rgba(85,121,244,.09)}.process .container-page{position:relative;z-index:1}.reception-flow{overflow:hidden;border:1px solid rgba(103,111,172,.11);border-radius:32px;background:#f7f8fc;box-shadow:0 28px 70px rgba(46,54,112,.12),inset 0 1px #fff}.reception-flow-head{display:flex;align-items:center;justify-content:space-between;padding:2rem 2.35rem 1.85rem;background:rgba(255,255,255,.9);border-bottom:1px solid #e4e7f0}.reception-flow-head>div{display:grid;grid-template-columns:58px auto;align-items:center;column-gap:1rem}.flow-mark{display:grid;grid-row:span 2;place-items:center;width:58px;height:58px;border-radius:18px;color:#fff;background:linear-gradient(135deg,#5858e8,#8a69ee);box-shadow:0 14px 27px rgba(101,81,228,.24)}.flow-mark svg{width:25px}.reception-flow-head p{margin:0;color:#989fb2;font:700 .67rem var(--font-label);letter-spacing:.08em}.reception-flow-head h3{margin:.25rem 0 0;color:#252940;font-size:1.25rem;letter-spacing:-.035em}.flow-live{padding:.58rem .9rem;border-radius:999px;background:#e5f8ef;color:#24956e;font-size:.76rem;font-weight:800}.flow-live i,.reception-flow footer i{display:inline-block;width:7px;height:7px;margin-right:.42rem;border-radius:50%;background:#27b985}.reception-flow-body{position:relative;padding:4.1rem 3.9%}.reception-steps{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:1.35rem}.reception-flow-track{position:absolute;z-index:0;top:50%;left:10%;right:10%;height:3px;transform:translateY(-50%);background:#dbe0f0}.reception-step{position:relative;min-height:280px;padding:2.5rem 1.1rem 1.25rem;border:1px solid #dfe3ef;border-radius:25px;background:rgba(249,250,254,.74);text-align:center;transition:transform .45s ease,background .45s ease,box-shadow .45s ease,border-color .45s ease}.reception-step:after{content:'';position:absolute;top:50%;right:-1.35rem;width:1.35rem;height:3px;transform:translateY(-50%);background:#dbe0f0}.reception-step:last-child:after{display:none}.reception-icon{display:grid;place-items:center;width:92px;height:92px;margin:0 auto 1.75rem;border-radius:27px;color:#8a88c9;background:#edebfb;transition:inherit}.reception-icon svg{width:34px;height:34px}.reception-step small{display:block;color:#abb1c1;font-size:.78rem;font-weight:800;letter-spacing:.08em}.reception-step h3{margin:.72rem 0 0;color:#73798f;font-size:1.15rem;letter-spacing:-.035em}.reception-step p{max-width:170px;margin:.8rem auto 0;color:#959bad;font-size:.76rem;line-height:1.55;opacity:0;transform:translateY(5px);transition:opacity .4s ease,transform .4s ease}.reception-step.is-active{z-index:2;border-color:rgba(105,93,237,.18);background:#fff;box-shadow:0 22px 36px rgba(69,72,140,.14);transform:translateY(-8px)}.reception-step.is-active .reception-icon{color:#fff;background:linear-gradient(135deg,#5c58e7,#8067ec);box-shadow:0 16px 30px rgba(91,82,222,.3)}.reception-step.is-active h3{color:#292b49}.reception-step.is-active p{opacity:1;transform:none}.reception-flow footer{display:flex;justify-content:space-between;padding:1.25rem 2.35rem;background:rgba(255,255,255,.87);border-top:1px solid #e4e7f0;color:#73798d;font-size:.78rem}.reception-flow footer small{color:#a3a9b9;font-size:.7rem}@media (prefers-reduced-motion:no-preference){.reception-step{animation:flow-focus 15s ease-in-out infinite}.reception-step:nth-child(1){animation-delay:-3s}.reception-step:nth-child(2){animation-delay:0s}.reception-step:nth-child(3){animation-delay:3s}.reception-step:nth-child(4){animation-delay:6s}.reception-step:nth-child(5){animation-delay:9s}.reception-step.is-active{animation-name:flow-focus-active}@keyframes flow-focus{0%,16%,100%{transform:none;background:rgba(249,250,254,.74);box-shadow:none}6%,11%{transform:translateY(-8px);background:#fff;box-shadow:0 22px 36px rgba(69,72,140,.14)}}@keyframes flow-focus-active{0%,16%,100%{transform:translateY(-8px);background:#fff;box-shadow:0 22px 36px rgba(69,72,140,.14)}6%,11%{transform:translateY(-14px);box-shadow:0 28px 45px rgba(69,72,140,.2)}}}.process .eyebrow{color:#5b58d8}@media(max-width:980px){.reception-flow-body{padding:2rem}.reception-steps{grid-template-columns:repeat(3,1fr)}.reception-flow-track,.reception-step:after{display:none}}@media(max-width:640px){.reception-flow{border-radius:22px}.reception-flow-head{padding:1.25rem;align-items:flex-start}.reception-flow-head>div{grid-template-columns:42px auto;column-gap:.75rem}.flow-mark{width:42px;height:42px;border-radius:13px}.flow-mark svg{width:19px}.reception-flow-head h3{font-size:.95rem}.flow-live{padding:.45rem .65rem;font-size:.65rem}.reception-flow-body{padding:1rem}.reception-steps{grid-template-columns:1fr;gap:.7rem}.reception-step{min-height:0;padding:1rem;display:grid;grid-template-columns:54px 1fr;column-gap:1rem;text-align:left;align-items:center}.reception-icon{width:54px;height:54px;margin:0;grid-row:span 2;border-radius:16px}.reception-icon svg{width:22px;height:22px}.reception-step small{font-size:.66rem}.reception-step h3{margin:.2rem 0;font-size:1rem}.reception-step p{display:none}.reception-step.is-active{transform:none}.reception-flow footer{padding:1rem 1.25rem}.reception-flow footer small{display:none}}
+  @media (max-width: 600px) {
+    .call-participants{grid-template-columns:1fr;gap:3.8rem;padding:5.75rem .15rem 1rem}
+    .participant{width:100%;min-height:205px}
+    .call-play{top:50%;width:66px;height:66px;transform:translate(-50%,-50%)}
+    .call-readout{top:1rem}
+    .call-controls{padding-top:.85rem}
+  }
+</style>
+
+<style is:global>
+  html:has(.phone-page) {
+    scrollbar-width: none;
+  }
+
+  html:has(.phone-page)::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<style>
+  .phone-page {
+    overflow: visible;
+  }
+
+  .call-shell .messages {
+    align-content: start;
+    grid-auto-rows: max-content;
+  }
+
+  .call-shell .messages p {
+    align-self: start;
+    block-size: fit-content;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .wave i {
+    animation: audio-frequency var(--speed) ease-in-out var(--delay) infinite alternate;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+
+  @keyframes audio-frequency {
+    0% { transform: scaleY(0.28); opacity: 0.65; }
+    45% { transform: scaleY(1); opacity: 1; }
+    70% { transform: scaleY(0.5); opacity: 0.8; }
+    100% { transform: scaleY(0.82); opacity: 0.95; }
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.08;
+    overflow: visible;
+    padding-bottom: 0.1em;
+  }
+
+  .hero-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero-line:last-child {
+    padding-bottom: 0.06em;
+  }
+
+  .hero-line.ink {
+    background: none;
+    color: var(--ink);
+  }
+
+  .phone-page .eyebrow {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 0.62rem 0.9rem;
+    border: 1px solid rgba(70, 91, 196, 0.32);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(105, 151, 255, 0.2), rgba(154, 104, 238, 0.2));
+    box-shadow: 0 10px 28px rgba(64, 81, 164, 0.09);
+    backdrop-filter: blur(16px);
+  }
+
+  .conversation-band .eyebrow,
+  .process .eyebrow,
+  .final-cta .eyebrow {
+    border-color: rgba(139, 157, 255, 0.36);
+    background: linear-gradient(135deg, rgba(93, 126, 255, 0.24), rgba(151, 88, 231, 0.2));
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.1);
+    color: #b8c4ff;
+  }
+
+  .statement .narrow {
+    max-width: 1200px;
+  }
+
+  .statement h2 {
+    font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+  }
+
+  .statement-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .capabilities-section .section-title {
+    max-width: 1120px;
+  }
+
+  .capabilities-section .section-title h2 {
+    font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+    white-space: nowrap;
+  }
+
+  .language-card .l5 { top: 45%; left: -7%; }
+  .language-card .l6 { top: 46%; right: -2%; }
+  .language-card .l7 { top: 5%; left: 43%; }
+  .language-card .l8 { bottom: 2%; left: 40%; }
+
+  .language-card .lang {
+    animation: language-float 3.6s ease-in-out infinite;
+  }
+
+  .language-card .l2 { animation-delay: -0.45s; }
+  .language-card .l3 { animation-delay: -0.9s; }
+  .language-card .l4 { animation-delay: -1.35s; }
+  .language-card .l5 { animation-delay: -1.8s; }
+  .language-card .l6 { animation-delay: -2.25s; }
+  .language-card .l7 { animation-delay: -2.7s; }
+  .language-card .l8 { animation-delay: -3.15s; }
+
+  @keyframes language-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .language-card .lang { animation: none; }
+  }
+
+  .feature-grid .icon,
+  .use-grid .icon,
+  .source-grid .source > span {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border-radius: 13px;
+    background: #e8f0ff;
+    color: #3f72e8;
+  }
+
+  .feature-grid article:nth-child(6n + 2) .icon,
+  .use-grid article:nth-child(6n + 2) .icon,
+  .source-grid .source:nth-child(6n + 2) > span { background: #ffe7ea; color: #ef596b; }
+  .feature-grid article:nth-child(6n + 3) .icon,
+  .use-grid article:nth-child(6n + 3) .icon,
+  .source-grid .source:nth-child(6n + 3) > span { background: #f1eaff; color: #8759e8; }
+  .feature-grid article:nth-child(6n + 4) .icon,
+  .use-grid article:nth-child(6n + 4) .icon,
+  .source-grid .source:nth-child(6n + 4) > span { background: #e2faed; color: #1fb976; }
+  .feature-grid article:nth-child(6n + 5) .icon,
+  .use-grid article:nth-child(6n + 5) .icon,
+  .source-grid .source:nth-child(6n + 5) > span { background: #fff0e8; color: #cf6b3d; }
+  .feature-grid article:nth-child(6n + 6) .icon,
+  .use-grid article:nth-child(6n + 6) .icon,
+  .source-grid .source:nth-child(6n + 6) > span { background: #e3f5fc; color: #1598df; }
+
+  .industry-grid .industry > svg {
+    box-sizing: content-box;
+    padding: 12px;
+    border-radius: 13px;
+    background: #e8f0ff;
+    color: #3f72e8;
+  }
+  .industry-grid .industry:nth-child(6n + 2) > svg { background: #ffe7ea; color: #ef596b; }
+  .industry-grid .industry:nth-child(6n + 3) > svg { background: #f1eaff; color: #8759e8; }
+  .industry-grid .industry:nth-child(6n + 4) > svg { background: #e2faed; color: #1fb976; }
+  .industry-grid .industry:nth-child(6n + 5) > svg { background: #fff0e8; color: #cf6b3d; }
+  .industry-grid .industry:nth-child(6n + 6) > svg { background: #e3f5fc; color: #1598df; }
+
+  @media (max-width: 700px) {
+    .statement-line {
+      white-space: normal;
+    }
+
+    .capabilities-section .section-title h2 {
+      white-space: normal;
+    }
+  }
+
+  .hero-grid{grid-template-columns:minmax(0,.88fr) minmax(570px,1.12fr);gap:3.5rem}.call-shell{width:100%;max-width:650px}.call-participants{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2.6rem;min-height:350px;padding:2rem .7rem 1rem}.participant{display:grid;justify-items:center;gap:.65rem;min-height:225px;padding:1.45rem .8rem;border:1px solid rgba(78,96,179,.12);border-radius:20px;background:rgba(255,255,255,.56);text-align:center;transition:.3s ease}.participant-avatar{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;color:#536be7;background:linear-gradient(145deg,#edf2ff,#ebe8ff);box-shadow:0 10px 30px rgba(70,86,180,.12)}.participant-avatar svg{width:30px;height:30px}.participant b,.participant small{display:block}.participant b{font-size:.8rem}.participant small{margin-top:.2rem;color:var(--muted);font-size:.62rem}.participant.speaking{transform:translateY(-5px);border-color:rgba(88,105,238,.42);background:rgba(241,244,255,.92);box-shadow:0 18px 40px rgba(68,78,191,.18)}.participant.speaking .participant-avatar{animation:speaker-pulse 1.15s ease-in-out infinite;box-shadow:0 0 0 10px rgba(93,108,239,.09),0 15px 35px rgba(70,74,196,.25)}.call-play{position:absolute;z-index:3;top:50%;left:50%;display:grid;place-items:center;width:76px;height:76px;border:6px solid rgba(255,255,255,.9);border-radius:50%;color:#fff;background:linear-gradient(145deg,#4168ed,#7a61ed);box-shadow:0 15px 34px rgba(64,75,205,.3);font-size:1.25rem;transform:translate(-50%,-58%)}.pause-symbol{display:none;align-items:center;justify-content:center;gap:7px}.pause-symbol i{display:block;width:5px;height:24px;border-radius:4px;background:currentColor;box-shadow:0 1px 2px rgba(28,36,100,.18)}.is-playing .play-symbol{display:none}.is-playing .pause-symbol{display:flex}.voice-bars{display:flex;align-items:center;justify-content:center;gap:3px;height:18px}.voice-bars span{width:3px;height:5px;border-radius:4px;background:#7180dd}.speaking .voice-bars span{animation:voice-bar .55s ease-in-out infinite alternate}.speaking .voice-bars span:nth-child(2),.speaking .voice-bars span:nth-child(4){animation-delay:-.25s}.speaking .voice-bars span:nth-child(3){animation-delay:-.4s}.call-status{position:absolute;bottom:.2rem;left:0;width:100%;text-align:center;color:#5964bc;font-size:.7rem;font-weight:700}.call-participants audio{display:none}.call-controls{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:1rem .25rem .1rem}.call-timer{min-width:62px;color:#59627e;font-size:.75rem;font-weight:750;font-variant-numeric:tabular-nums}.call-controls>div{display:flex;gap:.55rem}.control-button{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(68,82,151,.12);border-radius:50%;color:#566482;background:rgba(255,255,255,.68)}.control-button svg{width:18px}.end-call{color:#fff;border-color:#ef5a68;background:#ef5a68}.end-call svg{transform:rotate(135deg)}@keyframes speaker-pulse{50%{transform:scale(1.06)}}@keyframes voice-bar{to{height:17px}}
+  .call-participants{padding-top:5.75rem}.call-readout{position:absolute;top:1.15rem;left:50%;display:grid;justify-items:center;gap:.35rem;width:max-content;transform:translateX(-50%)}.call-readout .call-status{position:static;width:auto;white-space:nowrap}.call-readout .call-timer{min-width:0;text-align:center}.call-controls{justify-content:center}.call-controls>div{justify-content:center}
+  .participant-avatar.ralvie-avatar{border:0;background:#fff;box-shadow:0 13px 30px rgba(78,61,157,.14),0 5px 18px rgba(214,122,57,.1),inset 0 1px #fff}.participant-avatar.ralvie-avatar img{display:block;width:42px;height:48px;object-fit:contain}.call-play,.call-play:focus,.call-play:focus-visible{outline:0}
+  .call-play{border:0;box-shadow:0 6px 28px rgba(55,65,170,.32),0 2px 8px rgba(55,65,170,.2)}
+  .participant-avatar.customer-avatar{overflow:hidden;background:#fff}.participant-avatar.customer-avatar img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center}
+
+  @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .knowledge-usecases-flow {
+      position: relative;
+      background: #f5f7ff;
+    }
+
+    .usecases-scroll-stack {
+      position: relative;
+      z-index: 2;
+      margin-top: -100vh;
+      background: transparent;
+      will-change: margin-top;
+    }
+
+    .knowledge-parallax {
+      --knowledge-progress: 0;
+      --knowledge-left-x: 0vw;
+      --knowledge-right-x: 0vw;
+      --knowledge-left-rotation: 0deg;
+      --knowledge-right-rotation: 0deg;
+      --knowledge-opacity: 1;
+      position: relative;
+      height: 200vh;
+      min-height: 1280px;
+      padding: 0;
+      z-index: 1;
+      background: transparent;
+    }
+
+    .knowledge-sticky {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: flex-start;
+      height: 100vh;
+      min-height: 640px;
+      box-sizing: border-box;
+      padding-top: clamp(3rem, 7vh, 4.75rem);
+      padding-bottom: clamp(8rem, 16vh, 11rem);
+      overflow: hidden;
+    }
+
+    .knowledge-sticky > .split {
+      width: 100%;
+    }
+
+    .knowledge-copy,
+    .knowledge-sources {
+      will-change: transform, opacity;
+    }
+
+    .knowledge-copy {
+      transform: translate3d(var(--knowledge-left-x), 0, 0) rotate(var(--knowledge-left-rotation));
+      transform-origin: left center;
+      opacity: var(--knowledge-opacity);
+    }
+
+    .knowledge-sources {
+      transform: translate3d(var(--knowledge-right-x), 0, 0) rotate(var(--knowledge-right-rotation));
+      transform-origin: right center;
+      opacity: var(--knowledge-opacity);
+    }
+
+    .use-cases-section {
+      --knowledge-inverse: 1;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      min-height: calc(100vh - var(--header-height));
+      height: calc(100vh - var(--header-height));
+      box-sizing: border-box;
+      z-index: 2;
+      padding: 0 0 3rem;
+      background: #f5f7ff;
+    }
+
+    .use-cases-slot {
+      position: relative;
+      height: 200vh;
+    }
+
+    .use-cases-section > .container-page {
+      width: 100%;
+    }
+
+    .use-cases-section .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .use-cases-section .section-title h2 {
+      font-size: clamp(2.5rem, 3.5vw, 3.75rem);
+    }
+
+    .use-cases-section .use-card {
+      padding: 1rem 1.15rem;
+    }
+
+    .conversation-band {
+      position: relative;
+      z-index: 3;
+      min-height: calc(100vh - var(--header-height) - 1rem);
+      margin-top: -100vh;
+      box-shadow: 0 -24px 55px rgba(10, 15, 44, 0.14);
+    }
+  }
+
+  @media (max-width: 900px), (prefers-reduced-motion: reduce) {
+    .knowledge-usecases-flow,
+    .usecases-scroll-stack {
+      background: #f5f7ff;
+    }
+
+    .usecases-scroll-stack {
+      margin-top: 0 !important;
+    }
+
+    .usecases-scroll-stack .use-cases-section {
+      position: relative !important;
+      top: auto !important;
+    }
+
+    .knowledge-parallax,
+    .use-cases-section {
+      background: transparent;
+    }
+
+    .knowledge-parallax {
+      padding-bottom: 15rem;
+    }
+
+    .use-cases-section {
+      padding-top: 0;
+    }
+  }
+</style>

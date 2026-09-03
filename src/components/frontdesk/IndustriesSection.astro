@@ -1,0 +1,75 @@
+---
+import Icon from '../Icon.astro';
+
+const industries = [
+  {
+    name: 'Hotels and Resorts',
+    icon: 'building',
+    accent: 'var(--accent-cyan)',
+    description: 'Ralvie can answer reservation and amenity questions, assist guests, handle after-hours enquiries and route conversations to the appropriate hotel department.',
+  },
+  {
+    name: 'Clinics and Healthcare Providers',
+    icon: 'heart',
+    accent: 'var(--accent-coral)',
+    description: 'Ralvie can manage general enquiries, collect patient information and assist with appointment requests while following the workflows defined by the organisation.',
+  },
+  {
+    name: 'Real Estate Businesses',
+    icon: 'home',
+    accent: 'var(--accent-blue)',
+    description: 'Ralvie can qualify buyers, sellers and tenants, answer property questions and schedule conversations or viewings with the appropriate agent.',
+  },
+  {
+    name: 'Local and Home-Service Businesses',
+    icon: 'wrench',
+    accent: 'var(--accent-teal)',
+    description: 'Ralvie can collect service requirements, confirm service areas and help customers schedule an appointment without waiting for a manual response.',
+  },
+  {
+    name: 'Professional Services',
+    icon: 'briefcase',
+    accent: 'var(--accent-violet)',
+    description: 'Ralvie can manage initial enquiries, collect client information and route potential customers to the appropriate consultant or specialist.',
+  },
+  {
+    name: 'Educational Institutions',
+    icon: 'academic-cap',
+    accent: 'var(--accent-amber)',
+    description: 'Ralvie can answer questions about programmes, admissions, enrolment and campus services while connecting specialised enquiries with the correct department.',
+  },
+  {
+    name: 'Sales and Marketing Teams',
+    icon: 'megaphone',
+    accent: 'var(--accent-magenta)',
+    description: 'Ralvie can engage inbound leads immediately, collect their requirements and ensure every opportunity receives a timely response.',
+  },
+  {
+    name: 'Customer Support Teams',
+    icon: 'headset',
+    accent: 'var(--accent-cyan)',
+    description: 'Ralvie can resolve frequently asked questions, create support requests and transfer complex issues with the relevant customer context.',
+  },
+];
+---
+
+<section id="industries" class="section relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">Built for customer-focused businesses</p>
+      <h2 class="text-headline-lg text-on-surface">Adapt Ralvie to Your Industry and Workflow</h2>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {industries.map((industry) => (
+        <div class="glass-card">
+          <span class="icon-tile" style={`--tint: ${industry.accent}`}>
+            <Icon name={industry.icon} class="h-5 w-5" />
+          </span>
+          <h3 class="text-body-lg mt-4 font-semibold text-on-surface">{industry.name}</h3>
+          <p class="text-body-md mt-3 text-on-surface-variant">{industry.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

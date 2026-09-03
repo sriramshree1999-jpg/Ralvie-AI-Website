@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import '../../../styles/customer-support.css';
+import '../../../styles/support-typography-fix.css';
+
+const title = '24/7 AI Customer Support | Ralvie AI Frontdesk';
+const description = 'Provide 24/7 customer support with Ralvie AI Frontdesk. Answer calls, chats, web voice, SMS, email, and support enquiries around the clock with AI-powered conversations, connected knowledge, smart routing, and human escalation.';
+
+const channels = [
+  ['phone', 'AI Phone Receptionist', 'Answer incoming calls after hours, during peaks, or around the clock.'],
+  ['chat', 'Website Chatbot', 'Give visitors immediate answers without waiting for live-chat availability.'],
+  ['microphone', 'Web Voicebot', 'Let customers speak directly with your website at any hour.'],
+  ['mail', 'AI Email Manager', 'Understand and organize enquiries arriving outside office hours.'],
+  ['chat', 'SMS Support', 'Continue configured support conversations through text.'],
+  ['form', 'Website Forms', 'Collect structured support requests at any time.'],
+];
+const sources = [
+  ['globe', 'Websites', 'Policies, product pages, help content'],
+  ['document', 'Documents', 'Manuals, procedures, internal guides'],
+  ['book', 'Knowledge bases', 'Approved answers and support content'],
+  ['link', 'APIs', 'Current data from connected systems'],
+  ['database', 'Databases', 'Relevant operational information'],
+  ['users', 'CRM systems', 'Connected customer context'],
+];
+const workflow = ['Connect approved knowledge', 'Configure support rules', 'Connect customer channels', 'Connect business systems', 'Customers ask for help', 'AI responds or acts', 'Escalate when needed', 'Keep the context'];
+const industries = ['Hospitality', 'Healthcare & clinics', 'SaaS & technology', 'Ecommerce & retail', 'Real estate', 'Automotive', 'Professional services', 'Multi-location businesses'];
+const faqs = [
+  ['What is 24/7 AI customer support?', 'It is an always-available support layer that helps customers through calls, website chat, web voice, SMS, email, and connected workflows.'],
+  ['Can Ralvie answer support calls?', 'Yes. The AI Phone Receptionist can handle configured support conversations through natural voice interactions and route customers when human assistance is required.'],
+  ['Can Ralvie support customers through website chat?', 'Yes. The Website Chatbot can answer approved questions, use connected knowledge, capture information, and guide customers to the right next step.'],
+  ['Can customers speak directly with the website?', 'Ralvie Web Voicebot can provide a conversational voice experience through supported website implementations.'],
+  ['Can Ralvie handle support emails and SMS?', 'Ralvie can help organize email conversations, prepare contextual responses, and support configured two-way SMS conversations and follow-ups.'],
+  ['Can Ralvie use our support documentation?', 'Ralvie can be configured with approved websites, documents, knowledge sources, and other business information.'],
+  ['Can Ralvie retrieve customer-specific information?', 'Where systems are connected and configured, Ralvie can participate in workflows that retrieve relevant business or customer information.'],
+  ['What happens when AI cannot resolve an issue?', 'Ralvie can route, transfer, or escalate the conversation to the appropriate team according to your support workflow.'],
+  ['Does Ralvie support multiple languages?', 'Multilingual conversations can be supported across applicable channels depending on the configured language capabilities.'],
+  ['Can Ralvie support customers after business hours?', 'Yes. Ralvie can answer approved questions, collect structured details, start configured workflows, and prepare follow-up at night, on weekends, and during holidays.'],
+  ['Is Ralvie intended to replace the support team?', 'No. It expands first-line availability and automates repetitive work while human teams handle complex, sensitive, and high-value situations.'],
+];
+const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="support-page pt-(--header-height)">
+    <section class="support-hero mesh-bg">
+      <div class="support-shell hero-grid">
+        <div class="hero-copy">
+          <span class="hero-eyebrow"><span class="pulse"></span> 24/7 AI customer support</span>
+          <h1><span class="hero-line ink">Be Available Every Time</span><span class="hero-line">Your Customers Need Help.</span></h1>
+          <p class="hero-lead">Support that doesn’t clock out.</p>
+          <p class="hero-detail">Ralvie gives your business an always-on support layer across voice, chat, web voice, SMS, email, and forms—answering routine questions, collecting context, and escalating complex issues day or night.</p>
+          <div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div>
+        </div>
+        <div class="app-window hero-app hero-inbox-ui" aria-label="Ralvie AI Frontdesk support inbox demonstration">
+          <header class="inbox-title">Inbox</header>
+          <div class="inbox-workspace">
+            <aside class="inbox-list">
+              {[
+                ['phone','Maya Chen','+1 (416) 555-0142','Call completed','Inbound'],
+                ['chat','Ethan Walker','Chat ID #NC-1048','Asked about integrations','Web chat'],
+                ['microphone','Emma Thompson','+1 (647) 555-0168','Voicemail · Callback requested','Voicemail'],
+                ['arrow-right','Ryan Cooper','+1 (437) 555-0182','Manual call · Demo follow-up','Outbound'],
+                ['chat','Olivia Martin','SMS · +1 (289) 555-0174','Pricing and availability','SMS'],
+              ].map(([icon,name,contact,summary,type],i)=><article class:list={[i===0&&'selected']}>
+                <span class={`inbox-channel channel-${i+1}`}><Icon name={icon}/></span>
+                <div><b>{name}</b><small>{contact}</small><p>{summary}</p></div>
+                <time>{i<2?'Today':'Yesterday'}</time><em>{type}</em>
+              </article>)}
+            </aside>
+            <section class="inbox-detail">
+              <header><div><b>Maya Chen</b><small>+1 (416) 555-0142 · Call completed · Today, 12:50 PM</small></div><span>Share</span></header>
+              <nav><b>Recording & Transcript</b><span>Summary & Analysis</span><span>Smart Call Analysis</span></nav>
+              <div class="recording"><button aria-label="Play call recording"><Icon name="arrow-right"/></button><b>Call Recording & Transcript</b></div>
+              <div class="transcript">
+                <p class="ai">Hi! This is Ralvie AI Frontdesk. How can I help you today?<i>AI</i></p>
+                <p class="caller">Can you check the delivery date for my replacement device?</p>
+                <p class="ai">Absolutely. Your replacement is scheduled to arrive tomorrow between 10 AM and 2 PM.<i>AI</i></p>
+                <p class="caller">Great. Please send the tracking link by text.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro"><div class="support-shell narrow center"><span class="eyebrow">Customer problems don’t wait for business hours</span><h2>Your team has working hours. <em>Your customer experience doesn’t have to.</em></h2><p>When someone needs help at 11:30 PM, on Sunday morning, or during a peak period, Ralvie can answer immediately, understand the request, collect the right details, and begin the next workflow.</p><div class="statement-row"><span>Day, night, weekend, or holiday</span><span>Instant first response</span><span>Human help when needed</span></div></div></section>
+
+    <section class="section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">One 24/7 support layer across every channel</span><h2>Customers can reach you <em>the way they prefer.</em></h2><p>Different channels. One always-available Frontdesk that keeps conversations moving when your team is offline or already busy.</p></div><div class="channel-grid">{channels.map(([icon,name,copy],i)=><article class={`feature-card tone-${i+1}`}><span><Icon name={icon} /></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section"><div class="support-shell split"><div class="copy"><span class="eyebrow">First-line AI support</span><h2>Answer common questions <em>instantly.</em></h2><p>Business hours, account access, order status, compatibility, appointments, returns, and basic troubleshooting can be answered from approved knowledge at any hour.</p><ul><li>Customers get immediate answers</li><li>After-hours demand is handled as it arrives</li><li>Your team starts the day with less backlog</li></ul></div><div class="app-window faq-visual"><div class="visual-title"><span><Icon name="sparkles" /></span><div><small>Always-on knowledge assistant</small><b>Approved answers</b></div><em>24/7</em></div>{[['Where is my order?','Your replacement is in transit and scheduled to arrive tomorrow.'],['What is the return window?','Eligible products can be returned within 30 days of delivery.'],['Can I change my appointment?','Yes. I can help find another available time right now.']].map(([q,a],i)=><article><span>0{i+1}</span><div><b>{q}</b><p>{a}</p></div></article>)}</div></div></section>
+
+    <section class="section knowledge-band"><div class="support-shell"><div class="section-head center light"><span class="eyebrow">Knowledge-powered AI</span><h2>Use your business knowledge <em>around the clock.</em></h2><p>Always-on support becomes more useful when approved guidance is combined with current information from connected business systems.</p></div><div class="source-grid">{sources.map(([icon,name,copy])=><article><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div><div class="knowledge-compare"><div><small>Static knowledge</small><b>Policies · Manuals · Troubleshooting · FAQs</b></div><Icon name="plus"/><div><small>Dynamic business data</small><b>Orders · Accounts · Inventory · Appointments</b></div></div></div></section>
+
+    <section class="section soft-mesh"><div class="support-shell split"><div class="workflow-visual app-window"><header><small>Dynamic support workflow</small><b>Order status enquiry</b><span>Running</span></header>{[['Customer question','“Where is my order?”'],['Intent detected','Order status'],['Details collected','Order NS-4821'],['System checked','Shipment in transit'],['Answer delivered','Tomorrow, 10 AM–2 PM']].map(([label,value],i)=><div class="flow-row"><i>{i+1}</i><span><small>{label}</small><b>{value}</b></span>{i<4&&<em>↓</em>}</div>)}</div><div class="copy"><span class="eyebrow">Dynamic support workflow</span><h2>From “Where is my order?” to <em>an actual answer.</em></h2><p>Instead of sending customers elsewhere, Ralvie can collect the required details, retrieve connected data, respond with available information, and escalate when more help is required.</p><strong class="closing">Support becomes a workflow—not just a conversation.</strong></div></div></section>
+
+    <section class="section"><div class="support-shell split"><div class="copy"><span class="eyebrow">Conversational AI & support intake</span><h2>Understand the issue and collect context <em>before escalation.</em></h2><p>Customers shouldn’t need the perfect keyword. Ralvie asks relevant follow-up questions and gives the support team structured context instead of “It’s not working.”</p><ul><li>Product and affected location</li><li>Error and troubleshooting attempted</li><li>Priority and preferred contact method</li></ul></div><div class="intake-card app-window"><header><div><b>Support intake</b><small>Northstar Devices</small></div><span>Priority · High</span></header>{[['Customer','Jordan Lee'],['Product','Access Hub S4'],['Issue','Device not connecting to network'],['Location','Harbour Office'],['Error','Connection timeout'],['Attempted','Restarted device and router'],['Contact','Phone']].map(([label,value])=><div><small>{label}</small><b>{value}</b></div>)}<footer><Icon name="check"/> Ready for technical support</footer></div></div></section>
+
+    <section class="section soft-mesh"><div class="support-shell split"><div class="escalation-card app-window"><div class="escalation-head"><span><Icon name="headset"/></span><div><small>Smart escalation</small><b>Technical support handoff</b></div><em>Ready</em></div><div class="summary-box"><small>AI conversation summary</small><p>Customer reports a single Access Hub S4 showing a network timeout. Device and router were restarted. Operations are affected at Harbour Office.</p></div><div class="handoff"><span>AI resolved routine intake</span><Icon name="arrow-right"/><span>Specialist receives context</span></div></div><div class="copy"><span class="eyebrow">Smart escalation</span><h2>Automate the routine. <em>Escalate the important.</em></h2><p>Complex issues, sensitive situations, high-priority accounts, requests for a person, and anything outside approved scope can move to the right human team.</p><strong class="closing">Customers repeat less. Agents start with more information.</strong></div></div></section>
+
+    <section class="section crm-section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">AI CRM & channel continuity</span><h2>One customer. Multiple conversations. <em>More context.</em></h2><p>Website chat, phone, email, SMS, and forms can contribute to a connected support journey.</p></div><div class="crm-app app-window"><aside><b>Jordan Lee</b><span>Northstar Devices</span><small>Customer since 2024</small><hr/>{['Overview','Activity','Calls','Messages','Tickets'].map((x,i)=><em class:list={[i===1&&'active']}>{x}</em>)}</aside><main><header><div><small>Customer activity</small><b>Connected timeline</b></div><span>All channels</span></header>{[['Website chat','Asked about a network timeout','Today · 9:08 AM'],['AI phone support','Completed guided troubleshooting','Today · 9:14 AM'],['Support ticket','Escalated to technical support','Today · 9:18 AM'],['SMS follow-up','Diagnostic guide delivered','Today · 9:22 AM']].map(([type,text,time],i)=><article><i class={`dot d${i+1}`}></i><div><b>{type}</b><p>{text}</p></div><time>{time}</time></article>)}</main></div></div></section>
+
+    <section class="section action-band"><div class="support-shell split"><div class="copy light"><span class="eyebrow">Workflow automation</span><h2>A good support conversation often needs <em>something to happen.</em></h2><p>Capture details, update a customer record, create a service request, retrieve business information, route a customer, send follow-up, or trigger an API workflow.</p><strong class="closing">Answer → Understand → Act</strong></div><div class="automation"><div class="node trigger"><small>Trigger</small><b>New support request</b></div><i></i><div class="node"><small>AI action</small><b>Classify & collect details</b></div><i></i><div class="branches"><div class="node"><small>Routine</small><b>Answer & follow up</b></div><div class="node"><small>Complex</small><b>Route to specialist</b></div></div></div></div></section>
+
+    <section class="section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Support analytics</span><h2>Turn conversations into <em>operational visibility.</em></h2><p>See support volume, response patterns, common topics, channel demand, escalation, and outcomes.</p></div><div class="dashboard app-window"><header><div><b>Customer support overview</b><small>Last 7 days</small></div><button>Export</button></header><div class="kpis">{[['Conversations','1,284','+14%'],['AI handled','82%','+6%'],['Human escalations','96','-11%'],['Open follow-ups','28','-8%']].map(([label,value,change])=><article><small>{label}</small><b>{value}</b><em>{change}</em></article>)}</div><div class="charts"><article><b>Conversation volume</b><div class="bars">{[44,68,53,81,64,92,74].map((h)=><i style={`--h:${h}%`}></i>)}</div></article><article><b>Top support topics</b>{[['Account access',78],['Order status',64],['Device setup',48],['Appointments',34]].map(([label,w])=><div class="topic"><span>{label}</span><i><b style={`--w:${w}%`}></b></i><em>{w}</em></div>)}</article></div></div></div></section>
+
+    <section class="section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">How it works</span><h2>Customer support configured <em>around your business.</em></h2></div><div class="steps-grid">{workflow.map((item,i)=><article><span>{String(i+1).padStart(2,'0')}</span><h3>{item}</h3></article>)}</div></div></section>
+
+    <section class="section comparison soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Before & after Ralvie</span><h2>Answer faster. Resolve more. <em>Escalate smarter.</em></h2></div><div class="compare-table"><div class="compare-row head"><span>Traditional support</span><span>Ralvie AI Frontdesk</span></div>{[['Business-hours availability','24/7 AI coverage'],['Queue or rigid IVR','Natural conversation'],['Manual email triage','AI-assisted organization'],['Agents collect every detail','AI support intake'],['Fragmented channels','Connected Frontdesk workflow'],['Manual routing and notes','Intent routing and AI summaries']].map(([before,after])=><div class="compare-row"><span><Icon name="x-mark"/>{before}</span><span><Icon name="check"/>{after}</span></div>)}</div></div></section>
+
+    <section class="section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Built for many support teams</span><h2>Customer support for <em>different industries.</em></h2></div><div class="industry-grid">{industries.map((item,i)=><article><span><Icon name={i%2?'building':'briefcase'}/></span><h3>{item}</h3></article>)}</div></div></section>
+
+    <section class="section human-band"><div class="support-shell split"><div class="copy"><span class="eyebrow">Support without removing the human team</span><h2>Let each handle the work <em>they’re best suited for.</em></h2><p>AI is strong at immediate responses, repetitive questions, information retrieval, structured intake, routine workflows, and 24/7 availability.</p><p>Humans remain essential for complex problems, sensitive conversations, judgment, relationship management, exceptions, and high-value situations.</p></div><div class="balance"><article><span>AI</span><b>Speed & consistency</b><small>Routine support at scale</small></article><Icon name="plus"/><article><span>Human</span><b>Judgment & empathy</b><small>Complex customer needs</small></article></div></div></section>
+
+    <section class="section faq soft-mesh"><div class="support-shell faq-layout"><div class="faq-column faq-column-left"><div class="section-head"><span class="eyebrow">Frequently asked questions</span><h2>AI customer support, <em>explained.</em></h2><p>An intelligent first point of contact, with human help when it matters.</p></div><div class="faq-list">{faqs.slice(0,3).map(([q,a],i)=><details open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div><div class="faq-column"><div class="faq-list">{faqs.slice(3).map(([q,a])=><details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></div></section>
+
+    <section class="final-cta" id="get-started"><div class="cta-mesh" aria-hidden="true"><i></i><i></i><i></i></div><div class="support-shell center"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Be Available Every Time<br/><em>Your Customers Need Help.</em></h2><p>Provide a responsive first layer across calls, chat, web voice, SMS, email, and forms—day, night, weekend, or holiday.</p><div class="cta-actions"><a class="primary-btn" href="#">Talk to Ralvie AI <Icon name="arrow-right"/></a><a class="secondary-btn" href="#"><Icon name="calendar"/> Book a demo</a></div><small>24/7 availability. Connected knowledge. Smart routing. Human handoff.</small></div></section>
+  </main>
+  <Footer theme="light" />
+</Layout>

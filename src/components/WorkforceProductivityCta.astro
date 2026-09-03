@@ -1,0 +1,241 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  variant?: 'productivity' | 'home';
+}
+const { variant = 'productivity' } = Astro.props;
+---
+
+<section
+  class:list={['workforce-cta', variant === 'home' && 'workforce-cta--home']}
+  aria-labelledby="workforce-cta-title"
+>
+  <div class="workforce-cta__glow glow-one"></div><div class="workforce-cta__glow glow-two">
+  </div><div class="workforce-cta__inner">
+    <span class="workforce-cta__chip"
+      >{variant === 'home' ? 'Ralvie AI Platform' : 'Ralvie AI Productivity'}</span
+    >
+    {
+      variant === 'home' ? (
+        <>
+          <>
+            <h2 id="workforce-cta-title">
+              Improve Productivity & <span>Customer Communication</span> With AI
+            </h2>
+            <p>
+              Ralvie AI helps businesses improve operational visibility, workforce productivity,
+              reporting efficiency, and customer engagement through AI-powered automation.
+            </p>
+          </>
+        </>
+      ) : (
+        <>
+          <>
+            <h2 id="workforce-cta-title">
+              Improve Workforce Productivity <span>With Ralvie AI</span>
+            </h2>
+            <p>
+              Ralvie AI Productivity helps businesses improve workforce visibility, automate time
+              tracking, simplify reporting, and gain actionable insights into how teams spend their
+              time through AI-powered productivity management.
+            </p>
+          </>
+        </>
+      )
+    }
+    <div class="workforce-cta__actions">
+      <a class="workforce-cta__primary" href="#">Start Free Trial <Icon name="arrow-right" /></a><a
+        class="workforce-cta__secondary"
+        href="#"><Icon name="calendar" /> Book a Demo</a
+      >
+    </div><small
+      >{
+        variant === 'home'
+          ? 'One connected AI platform for productive teams and better customer experiences.'
+          : 'Smarter workforce visibility. Less manual reporting. Better productivity decisions.'
+      }</small
+    >
+  </div>
+</section>
+<style>
+  :global(.final-cta:has(.workforce-cta)) {
+    padding: 0 !important;
+    background: none !important;
+    text-align: initial !important;
+  }
+  :global(.final-cta:has(.workforce-cta) > :not(.workforce-cta)) {
+    display: none !important;
+  }
+  .workforce-cta {
+    position: relative;
+    display: grid;
+    min-height: 720px;
+    place-items: center;
+    overflow: hidden;
+    padding: 100px 24px;
+    background: linear-gradient(135deg, #171d4c 0%, #182453 50%, #151b47 100%);
+    color: #fff;
+    isolation: isolate;
+  }
+  .workforce-cta:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 52%, rgba(74, 117, 184, 0.25), transparent 42%),
+      linear-gradient(115deg, rgba(116, 84, 178, 0.2), transparent 34%);
+    z-index: -2;
+  }
+  .workforce-cta__glow {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(85px);
+    pointer-events: none;
+  }
+  .glow-one {
+    width: 520px;
+    height: 420px;
+    left: -90px;
+    bottom: -190px;
+    background: rgba(129, 89, 194, 0.25);
+  }
+  .glow-two {
+    width: 580px;
+    height: 390px;
+    right: 10%;
+    top: 28%;
+    background: rgba(55, 132, 191, 0.18);
+  }
+  .workforce-cta__inner {
+    display: flex;
+    width: min(1280px, 100%);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .workforce-cta__chip {
+    display: inline-flex;
+    min-height: 56px;
+    align-items: center;
+    padding: 0 34px;
+    border: 1px solid rgba(112, 134, 255, 0.3);
+    border-radius: 999px;
+    background: linear-gradient(100deg, rgba(54, 79, 145, 0.55), rgba(95, 66, 154, 0.42));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    color: #b7c1f4;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .workforce-cta h2 {
+    max-width: 1250px;
+    margin: 34px 0 0;
+    color: #fff;
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+  }
+  .workforce-cta h2 span {
+    display: block;
+  }
+  .workforce-cta--home h2 span {
+    display: inline;
+    background: linear-gradient(100deg, #c79cff, #8c78f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .workforce-cta p {
+    max-width: 1100px;
+    margin: 28px 0 0;
+    color: #b7bfd7;
+    font-size: clamp(16px, 1.45vw, 21px);
+    line-height: 1.7;
+  }
+  .workforce-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .workforce-cta__actions a {
+    display: inline-flex;
+    min-height: 70px;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    padding: 0 31px;
+    border-radius: 17px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      background 0.22s ease;
+  }
+  .workforce-cta__actions svg {
+    width: 21px;
+    height: 21px;
+  }
+  .workforce-cta__primary {
+    border: 1px solid rgba(130, 135, 255, 0.5);
+    background: linear-gradient(120deg, #4169ef, #7a61f0);
+    box-shadow: 0 18px 44px rgba(40, 59, 157, 0.42);
+  }
+  .workforce-cta__secondary {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(14px);
+  }
+  .workforce-cta__actions a:hover {
+    transform: translateY(-3px);
+  }
+  .workforce-cta__primary:hover {
+    box-shadow: 0 22px 52px rgba(52, 70, 188, 0.52);
+  }
+  .workforce-cta__secondary:hover {
+    background: rgba(119, 137, 204, 0.2);
+  }
+  .workforce-cta small {
+    margin-top: 34px;
+    color: #8994b7;
+    font-size: 13px;
+    font-weight: 650;
+  }
+  @media (max-width: 700px) {
+    .workforce-cta {
+      min-height: 650px;
+      padding: 82px 20px;
+    }
+    .workforce-cta__chip {
+      min-height: 46px;
+      padding: 0 22px;
+      font-size: 10px;
+    }
+    .workforce-cta h2 {
+      font-size: 38px;
+    }
+    .workforce-cta p {
+      font-size: 15px;
+    }
+    .workforce-cta__actions {
+      width: 100%;
+      flex-direction: column;
+    }
+    .workforce-cta__actions a {
+      width: 100%;
+      min-height: 60px;
+    }
+    .workforce-cta small {
+      line-height: 1.6;
+    }
+  }
+</style>

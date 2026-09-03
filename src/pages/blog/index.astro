@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { sanityClient, sanityConfigured, urlFor } from '../../lib/sanity';
+import { postsListQuery } from '../../lib/queries';
+
+interface PostSummary {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  mainImage?: any;
+  publishedAt: string;
+  author?: string;
+  categories?: string[];
+}
+
+const posts: PostSummary[] = sanityConfigured
+  ? await sanityClient.fetch(postsListQuery)
+  : [];
+---
+
+<Layout title="Blog - Ralvie AI" description="Insights, updates and stories from the Ralvie AI team.">
+  <Header title="Ralvie AI" />
+
+  <main class="pt-16">
+    <section class="container-page py-20">
+      <div class="mb-16 text-center">
+        <p class="text-label-sm mb-4 text-secondary">Insights &amp; Updates</p>
+        <h1 class="text-headline-lg text-on-surface">From the Blog</h1>
+      </div>
+
+      {!sanityConfigured && (
+        <div class="card-surface mx-auto max-w-2xl border-error/30 bg-error-container/10 p-6 text-center">
+          <p class="text-body-lg font-semibold text-error-container">Sanity CMS is not configured yet.</p>
+          <p class="text-body-md mt-2 text-error-container/80">
+            Set <code>SANITY_PROJECT_ID</code> and <code>SANITY_DATASET</code> in your
+            <code>.env</code> file, then create posts in the Studio (<code>/studio</code> app) to see them here.
+          </p>
+        </div>
+      )}
+
+      {sanityConfigured && posts.length === 0 && (
+        <p class="text-body-md text-center text-on-surface-variant">No posts published yet. Check back soon.</p>
+      )}
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            class="card-surface group flex flex-col overflow-hidden transition-colors hover:border-primary/40"
+          >
+            {post.mainImage && (
+              <img
+                src={urlFor(post.mainImage).width(600).height(340).url()}
+                alt={post.title}
+                class="h-48 w-full object-cover"
+                loading="lazy"
+              />
+            )}
+            <div class="flex flex-1 flex-col p-6">
+              {post.categories && post.categories.length > 0 && (
+                <p class="text-label-sm mb-2 text-secondary">
+                  {post.categories.join(' · ')}
+                </p>
+              )}
+              <h2 class="text-body-lg font-semibold text-on-surface group-hover:text-primary">
+                {post.title}
+              </h2>
+              {post.excerpt && (
+                <p class="text-body-md mt-3 flex-1 text-on-surface-variant">{post.excerpt}</p>
+              )}
+              <div class="text-body-md mt-4 flex items-center justify-between text-on-surface-variant/60">
+                <span>{post.author || 'Ralvie AI'}</span>
+                <time datetime={post.publishedAt}>
+                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

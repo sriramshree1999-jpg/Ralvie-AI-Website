@@ -1,0 +1,707 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import ProductivityFinalCta from '../../../components/ProductivityFinalCta.astro';
+import timeTrackingImage from '../../../assets/Time tracking.jpg';
+import '../../../styles/employee-productivity.css';
+import '../../../styles/time-tracking.css';
+import '../../../styles/ralvie-product-ui.css';
+
+const title = 'Automatic Time Tracking Software for Teams | Ralvie AI Productivity';
+const description =
+  'Track employee work time automatically with Ralvie AI Productivity. Reduce manual timers, capture active and idle time, map hours to projects and tasks, generate AI timesheets, and understand where work time goes.';
+
+const trackingContext = [
+  ['bolt', 'Active time', 'Understand when meaningful workplace activity is happening.'],
+  ['calendar', 'Idle time', 'Identify inactivity according to configured idle settings.'],
+  ['monitor', 'Applications', 'See which tools are used throughout the workday.'],
+  ['document', 'Documents & windows', 'Capture relevant context around work being performed.'],
+  ['clock', 'Work sessions', 'Understand how the employee’s day progresses over time.'],
+  ['folder', 'Projects & tasks', 'Connect captured time with actual business work.'],
+];
+const timeline = [
+  ['9:06 – 10:22', 'Product development', '1h 16m'],
+  ['10:22 – 10:38', 'Communication', '16m'],
+  ['10:38 – 11:47', 'Website project', '1h 09m'],
+  ['11:47 – 12:28', 'Team meeting', '41m'],
+  ['1:14 – 2:52', 'Client project', '1h 38m'],
+  ['2:52 – 3:07', 'Idle / break', '15m'],
+  ['3:07 – 4:32', 'Research & analysis', '1h 25m'],
+  ['4:32 – 5:24', 'Documentation', '52m'],
+];
+const workflow = [
+  ['Install Ralvie Sundial', 'Use the desktop application on supported Windows or macOS devices.'],
+  ['Configure the workday', 'Set working hours, schedules, idle preferences, and tracking rules.'],
+  ['Work normally', 'Use existing applications, documents, tools, and workflows.'],
+  ['Capture activity', 'Relevant workplace activity is recorded according to configured settings.'],
+  ['Add AI context', 'Associate captured activity with projects, tasks, and time records.'],
+  ['Review', 'Confirm activity, mapping, task context, and timesheets.'],
+  ['Analyze', 'Understand distribution, workloads, projects, and work patterns.'],
+];
+const faqs = [
+  [
+    'What is Ralvie AI Time Tracking?',
+    'Ralvie AI Time Tracking uses automatic workplace activity capture and AI-assisted work context to explain how time is distributed across applications, projects, tasks, and work sessions.',
+  ],
+  [
+    'Does Ralvie automatically track time?',
+    'Ralvie Sundial captures relevant workplace activity automatically according to configured settings, reducing dependence on manual timers.',
+  ],
+  [
+    'Do employees still need to use timers?',
+    'Ralvie is designed to reduce the need to manually start and stop timers for every work session.',
+  ],
+  [
+    'Can Ralvie track active and idle time?',
+    'Yes. Active and idle periods can be identified according to configured workplace settings.',
+  ],
+  [
+    'Can employees see where their time went?',
+    'Ralvie provides activity and time-related views showing how the workday was distributed.',
+  ],
+  [
+    'Can Ralvie track project time?',
+    'Captured activity can be connected with projects to help teams understand actual project effort.',
+  ],
+  [
+    'Can Ralvie track task-level time?',
+    'Ralvie can associate work activity with relevant tasks, providing more detailed time context.',
+  ],
+  [
+    'Does Ralvie generate timesheets?',
+    'Yes. Ralvie provides AI-assisted timesheet workflows using captured work activity as context.',
+  ],
+  [
+    'Can time tracking work offline?',
+    'Where supported, applicable activity can be captured locally while connectivity is unavailable and synchronized later.',
+  ],
+  [
+    'Can we configure work schedules?',
+    'Yes. Organizations can configure working days, hours, and related schedule settings.',
+  ],
+  [
+    'Can different employees have different schedules?',
+    'Ralvie supports work-schedule configurations appropriate to different workplace requirements.',
+  ],
+  [
+    'Can managers view time by project or team?',
+    'Reports provide broader views across employees, projects, tasks, and selected periods according to roles and permissions.',
+  ],
+  [
+    'Can time tracking help with workload planning?',
+    'Yes. Understanding where team time is distributed provides useful context for workload and resource-planning decisions.',
+  ],
+  [
+    'Is productivity measured only by tracked hours?',
+    'No. Time is one source of context and should be understood alongside projects, tasks, workload, work patterns, and outcomes.',
+  ],
+  [
+    'Is this employee surveillance software?',
+    'Ralvie is designed for productivity and work intelligence. Organizations should configure tracking transparently and follow applicable privacy requirements.',
+  ],
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="employee-page time-page pt-(--header-height)">
+    <section class="employee-hero time-hero mesh-bg">
+      <div class="employee-shell hero-copy">
+        <span class="pill">Automatic time tracking</span><h1>
+          <span class="time-title-lead">Track Time Automatically.</span>
+          <em>Understand the Work Behind Every Hour.</em>
+        </h1><p>
+          Ralvie AI Productivity helps teams move beyond manual timers and incomplete timesheets by
+          automatically capturing relevant work activity throughout the day. Understand active
+          time, idle periods, applications, projects, tasks, and work sessions while AI transforms
+          activity into structured timesheets and productivity insights.
+        </p><div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div><div class="hero-dashboard glass time-dashboard time-photo-dashboard">
+          <Image
+            src={timeTrackingImage}
+            alt="Employee using Ralvie AI automatic time tracking"
+            loading="eager"
+            class="time-hero-photo"
+          />
+          <div class="time-hero-widget time-widget-tracked">
+            <span class="purple"><Icon name="clock" /></span><strong>7h 52m<small>Tracked today</small></strong>
+          </div><div class="time-hero-widget time-widget-active">
+            <span class="green"><Icon name="bolt" /></span><strong>6h 58m<small>Active time</small></strong>
+          </div><div class="time-hero-widget time-widget-projects">
+            <span class="orange"><Icon name="folder" /></span><strong>4<small>Projects tracked</small></strong>
+          </div><div class="time-hero-widget time-widget-idle">
+            <span class="blue"><Icon name="clock" /></span><strong>54m<small>Idle time</small></strong>
+          </div>
+          <div class="mock-window-bar">
+            <span></span><span></span><span></span><b>Time intelligence</b><small>Today</small>
+          </div><div class="time-dashboard-body">
+            <header>
+              <div><small>Wednesday, August 25</small><h3>Your workday</h3></div><span
+                class="live-dot">Tracking active</span
+              >
+            </header><div class="time-kpis">
+              <article><small>Tracked time</small><strong>7h 52m</strong></article><article>
+                <small>Active time</small><strong>6h 58m</strong>
+              </article><article><small>Idle time</small><strong>54m</strong></article>
+            </div><div class="day-track">
+              <div>
+                <span style="--w:28%" class="dev"></span><span style="--w:16%" class="meeting"
+                ></span><span style="--w:24%" class="client"></span><span
+                  style="--w:8%"
+                  class="idle"></span><span style="--w:24%" class="research"></span>
+              </div><small><b>9 AM</b><b>12 PM</b><b>3 PM</b><b>5 PM</b></small>
+            </div><div class="time-bottom">
+              <article>
+                <small>Work distribution</small>{
+                  [
+                    ['Product development', '38%'],
+                    ['Client work', '27%'],
+                    ['Meetings', '14%'],
+                    ['Communication', '11%'],
+                  ].map(([name, value], i) => (
+                    <div>
+                      <>
+                        <i class={`dist-${i}`} />
+                        <span>{name}</span>
+                        <b>{value}</b>
+                      </>
+                    </div>
+                  ))
+                }
+              </article><article>
+                <span class="insight-spark"><Icon name="sparkles" /></span><small>AI insight</small
+                ><strong>Your strongest focus period was 9:35–11:12 AM.</strong>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-section">
+      <div class="employee-shell narrow center">
+        <span class="eyebrow">Stop spending time tracking time</span><h2>
+          Employees work normally.<br /><em>Ralvie captures the context.</em>
+        </h2><p>
+          Replace starting, stopping, correcting, estimating, and rebuilding timers with a clearer
+          activity-driven foundation for understanding how working time is actually used.
+        </p><div class="contrast">
+          <div><b>Manual tracking</b><span>Start. Stop. Forget. Estimate. Correct.</span></div><Icon
+            name="arrow-right"
+          /><div><b>With Ralvie</b><span>Work normally. Review reliable time context.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Work without the timer</span><h2>
+            Let the workday create<br /><em>the time record.</em>
+          </h2><p>
+            Ralvie automatically captures relevant workplace activity based on your configuration
+            while employees work naturally in the tools they already use—creating accurate,
+            dependable time context without constant timers or manual reconstruction.
+          </p>
+        </div><div class="visibility-grid">
+          {
+            trackingContext.map(([icon, name, copy], i) => (
+              <article class={`glass insight-card color-${i + 1}`}>
+                <>
+                  <span class="card-icon">
+                    <Icon name={icon} />
+                  </span>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="employee-shell split time-timeline-layout">
+        <div class="timeline glass time-timeline">
+          <header class="timeline-app-head">
+            <div><span class="card-icon"><Icon name="clock" /></span><span><small>Activity log</small><strong
+                  >Wednesday, August 25</strong
+                ></span></div><button type="button">Day view <Icon name="chevron-down" /></button>
+          </header><div class="timeline-summary">
+            <span><small>Tracked</small><strong>7h 52m</strong></span><span><small>Active</small><strong
+                >6h 58m</strong
+              ></span><span><small>Idle</small><strong>54m</strong></span>
+          </div>
+          {
+            timeline.map(([time, label, duration], i) => (
+              <div class="timeline-row">
+                <>
+                  <time>{time}<small>{i < 4 ? 'AM' : 'PM'}</small></time>
+                  <span class={`timeline-app-icon app-tone-${i}`}><Icon name={i === 1 ? 'chat' : i === 3 ? 'users' : i === 5 ? 'clock' : i === 7 ? 'document' : 'briefcase'} /></span>
+                  <strong>
+                    <span>{label}<small>{i === 5 ? 'Idle period' : i % 2 === 0 ? 'Auto logged' : 'Work session'}</small></span>
+                    <b>{duration}</b>
+                  </strong>
+                </>
+              </div>
+            ))
+          }
+        </div><div class="copy">
+          <span class="eyebrow">Workday timeline</span><h2>
+            <em>A clear timeline</em> instead of<br /><span class="time-timeline-title-rest">end-of-day guesswork.</span>
+          </h2><p>
+            Ralvie turns captured workplace activity into a clear, chronological account of the
+            day—showing when work happened, how long each session lasted, and where time moved
+            across applications, projects, tasks, meetings, and idle periods. Employees can review
+            reliable context in minutes, correct anything that needs attention, and finish the day
+            with a more complete record instead of rebuilding it from memory.
+          </p><strong class="closing-line">Your workday already contains the data.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="employee-shell split timesheet-build-layout">
+        <div class="copy">
+          <span class="eyebrow">AI-assisted time records</span><h2>
+            Build timesheets<br />from work that<br /><em>already happened.</em>
+          </h2><p>
+            Captured applications, documents, and work sessions become context. AI helps associate
+            them with projects and tasks before creating a structured record for review.
+          </p>
+        </div><div class="glass time-flow">
+          <header class="flow-app-head">
+            <span><Icon name="sparkles" /></span><div><small>Ralvie AI mapping</small><strong
+                >From activity to business context</strong
+              ></div><b>Live</b>
+          </header><div class="flow-track">
+          {
+            [
+              ['monitor', 'Work activity'],
+              ['sparkles', 'AI context'],
+              ['list-check', 'Task mapping'],
+              ['folder', 'Project mapping'],
+              ['chart-bar', 'Reports and Dashboard'],
+            ].map(([icon, label], i) => (
+              <div class={`flow-step step-${i + 1}`}>
+                <span class="flow-node-icon">
+                  <Icon name={icon} />
+                </span>
+                <strong>{label}<small>0{i + 1}</small></strong>
+                {i < 4 && <b>→</b>}
+              </div>
+            ))
+          }
+          </div><footer><span><i></i> Processing automatically</span><small
+              >Each step adds reliable work context</small
+            ></footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="section time-context-section">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Active time, schedules & offline work</span><h2>
+            Understand work time<br /><em>more accurately.</em>
+          </h2><p>
+            A laptop being open for eight hours does not mean eight hours of active work. Ralvie
+            adds schedule, idle, break, and connectivity context so time records are easier to trust.
+          </p>
+        </div><div class="time-context-grid">
+          <article class="glass context-card context-active">
+            <span class="card-icon"><Icon name="bolt" /></span><small>Idle detection</small><h3
+              >Active time vs idle time</h3
+            ><p>
+              Distinguish meaningful workplace activity, configured idle periods, expected breaks,
+              scheduled work, and activity outside normal hours.
+            </p><div class="context-meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article><article class="glass context-card context-schedule">
+            <span class="card-icon"><Icon name="calendar" /></span><small>Working hours</small><h3
+              >One system for different schedules</h3
+            ><p>
+              Configure working days, start and end times, break periods, business hours, team
+              schedules, and employee schedules.
+            </p><div class="schedule-chips"><span>Mon–Fri</span><span>9:00–17:30</span><span
+                >Flexible teams</span
+              ></div>
+          </article><article class="glass context-card context-offline">
+            <span class="card-icon"><Icon name="refresh" /></span><small>Offline tracking</small><h3
+              >Keep context through interruptions</h3
+            ><p>
+              Where supported, Sundial captures applicable workplace activity locally and
+              synchronizes relevant records when connectivity returns.
+            </p><strong><i></i> Synced successfully</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="employee-shell split">
+        <div class="glass distribution-visual">
+          <header><div><small>Time distribution</small><h3>How the workday was used</h3></div><b
+              >7h 52m</b
+            ></header>{
+            [
+              ['Product development', '2h 46m', 86],
+              ['Client projects', '1h 54m', 65],
+              ['Research', '1h 03m', 48],
+              ['Meetings', '58m', 42],
+              ['Communication', '44m', 34],
+              ['Documentation', '39m', 29],
+            ].map(([label, time, width], i) => (
+              <div class="distribution-row">
+                <span>{label}</span><i><b style={`--w:${width}%`} class={`tone-${i}`} /></i><strong
+                  >{time}</strong
+                >
+              </div>
+            ))
+          }
+        </div><div class="copy">
+          <span class="eyebrow">Time distribution</span><h2>
+            Understand more than <em>total hours.</em>
+          </h2><p>
+            Instead of seeing only “eight hours worked,” understand which projects, tasks,
+            meetings, communication, research, and documentation actually shaped those hours.
+          </p><ul>
+            <li>Find focused periods and fragmented workdays</li><li>
+              Identify tasks consuming unexpected effort
+            </li><li>See where workloads and priorities are concentrated</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section time-intelligence-cards">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Planning, workload & reporting</span><h2>
+            Turn captured time into <em>operational intelligence.</em>
+          </h2><p>
+            Historical time context helps teams improve estimates, understand workload, reduce
+            status chasing, and analyze effort across the organization.
+          </p>
+        </div><div class="intelligence-grid">
+          {
+            [
+              ['chart-bar', 'Better planning', 'Compare similar projects, find stages that repeatedly exceed estimates, and plan future work from historical evidence.'],
+              ['users', 'Workload visibility', 'See employees spread across too many priorities, sustained workloads, disproportionate project effort, and available capacity.'],
+              ['document', 'AI work summaries', 'Combine duration with activity context to generate clearer daily progress records that explain what happened.'],
+              ['squares', 'Reports & analytics', 'Analyze time by employee, team, project, task, application, date, and work category without rebuilding the data.'],
+            ].map(([icon, name, copy], i) => (
+              <article class={`glass intelligence-card tint-${i}`}>
+                <span class="card-icon"><Icon name={icon} /></span><h3>{name}</h3><p>{copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Designed for modern teams</span><h2>
+            Useful context for every<br /><em>way of working.</em>
+          </h2>
+        </div><div class="time-audience-grid">
+          {
+            [
+              ['users', 'Employees', 'Spend less time creating timesheets, review project activity, and understand personal work patterns.'],
+              ['chart-bar', 'Managers', 'Review team workload, project time, effort concentration, and resource-planning context.'],
+              ['folder', 'Project leads', 'Compare task effort, identify delays, improve estimates, and understand contribution.'],
+              ['squares', 'Operations', 'Analyze organizational time distribution, recurring patterns, application usage, and capacity.'],
+              ['globe', 'Remote & hybrid teams', 'Keep time context consistent across distributed employees, offices, homes, travel, and changing networks.'],
+              ['briefcase', 'Agencies & services', 'Understand effort across clients, engagements, deliverables, and multiple customer accounts.'],
+            ].map(([icon, name, copy]) => (
+              <article class="glass audience-time-card">
+                <span><Icon name={icon} /></span><div><h3>{name}</h3><p>{copy}</p></div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="employee-shell split">
+        <div class="project-time-visual glass">
+          <header>
+            <div><small>Project time tracking</small><h3>Website redesign</h3></div><strong
+              >49h 05m</strong
+            >
+          </header>{
+            [
+              ['Frontend development', '16h 42m', 84],
+              ['Content implementation', '8h 10m', 52],
+              ['Wireframing', '7h 18m', 46],
+              ['Responsive testing', '6h 35m', 41],
+              ['Research & planning', '5h 24m', 34],
+              ['QA & fixes', '4h 56m', 30],
+            ].map(([name, time, width], i) => (
+              <div class="project-time-row">
+                <>
+                  <span>{name}</span>
+                  <i>
+                    <b style={`--w:${width}%`} class={`bar-${i}`} />
+                  </i>
+                  <strong>{time}</strong>
+                </>
+              </div>
+            ))
+          }
+        </div><div class="copy">
+          <span class="eyebrow">Project & task time</span><h2>
+            Know where project effort is <em>actually going.</em>
+          </h2><p>
+            Understand total project time, daily and weekly effort, employee contribution,
+            application context, and the tasks consuming more time than expected.
+          </p><ul>
+            <li>Improve estimation and future proposals</li><li>
+              Plan resources from historical evidence
+            </li><li>Explain not only how long—but why</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section insight-band">
+      <div class="employee-shell">
+        <div class="section-head center light">
+          <span class="eyebrow">Time intelligence</span><h2>
+            Eight hours worked doesn’t tell <em>the whole story.</em>
+          </h2><p>
+            Move beyond a total-hours number and understand projects, tasks, meetings, applications,
+            focused work, context switches, and workload concentration.
+          </p>
+        </div><div class="question-grid">
+          {
+            [
+              'Which projects received the most time?',
+              'Which tasks consumed unexpected effort?',
+              'How much time went into meetings?',
+              'Which applications dominate the day?',
+              'Where is workload concentrated?',
+              'Which projects are taking longer?',
+            ].map((q) => <span>{q}</span>)
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="employee-shell split">
+        <div class="application-visual glass">
+          <div class="visual-head">
+            <div><small>Application intelligence</small><strong>This week</strong></div><span
+              >32h 18m</span
+            >
+          </div>{
+            [
+              ['VS Code', '2h 52m', 88],
+              ['Chrome', '1h 44m', 62],
+              ['Microsoft Teams', '1h 02m', 44],
+              ['Figma', '52m', 37],
+              ['Outlook', '39m', 29],
+              ['Jira', '31m', 23],
+            ].map(([app, time, width], i) => (
+              <div class="app-row">
+                <>
+                  <span class={`app-mark app-${i}`}>{String(app).slice(0, 2)}</span>
+                  <strong>{app}</strong>
+                  <i>
+                    <b style={`--w:${width}%`} />
+                  </i>
+                  <small>{time}</small>
+                </>
+              </div>
+            ))
+          }
+        </div><div class="copy">
+          <span class="eyebrow">Application & focus insights</span><h2>
+            See which tools consume <em>the workday.</em>
+          </h2><p>
+            Identify communication-heavy periods, meeting-heavy days, context switching, deep-work
+            windows, and opportunities to simplify workflows.
+          </p><div class="focus-callout">
+            <Icon name="bolt" /><span
+              ><small>Most focused period</small><strong
+                >9:32 AM – 11:18 AM · Product development</strong
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section privacy">
+      <div class="employee-shell split">
+        <div class="copy">
+          <span class="eyebrow">Privacy & control</span><h2>
+            Better visibility should have <em>clear boundaries.</em>
+          </h2><p>
+            Configure time tracking around workplace policies, employee schedules, idle preferences,
+            permissions, and legitimate organizational needs.
+          </p>
+        </div><div class="glass policy-card">
+          {
+            [
+              'Tracking operating hours',
+              'Working days and schedules',
+              'Configurable idle rules',
+              'Roles and permissions',
+              'Employee access to information',
+              'Offline capture and synchronization',
+            ].map((item) => (
+              <span>
+                <Icon name="shield-check" />
+                {item}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Automatic capture. Intelligent context.</span><h2>
+            How <em>Ralvie Time Tracking</em> works.
+          </h2>
+        </div><div class="workflow-grid">
+          {
+            workflow.map(([name, copy], i) => (
+              <article>
+                <>
+                  <span>0{i + 1}</span>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-workflow-section soft-mesh">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Time tracking is only the beginning</span><h2>
+            One workday powers the entire <em>productivity workflow.</em>
+          </h2>
+        </div><div class="glass platform-workflow">
+          {
+            [
+              ['target', 'Automatic activity tracking', 'Capture work context'],
+              ['monitor', 'Screen captures', 'Review visual work context'],
+              ['folder', 'Projects & tasks', 'Connect hours with work'],
+              ['sparkles', 'Summary agent', 'Explain progress'],
+              ['chart-bar', 'Reports & analytics', 'Understand broader patterns'],
+            ].map(([icon, label, copy], i) => (
+              <article>
+                <span><Icon name={icon} /></span><strong>{label}</strong><small>{copy}</small>{i < 4 && <b>→</b>}
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section comparison soft-mesh">
+      <div class="employee-shell">
+        <div class="section-head center">
+          <span class="eyebrow">Automatic vs manual tracking</span><h2>
+            Track less manually.<br /><em>Understand more.</em>
+          </h2>
+        </div><div class="compare-table">
+          <div class="compare-row head">
+            <span>Manual time tracking</span><span>Ralvie AI Time Tracking</span>
+          </div>{
+            [
+              ['Start and stop timers', 'Reduced timer dependence'],
+              ['Remember activity', 'Captured automatically'],
+              ['Recover forgotten hours', 'Review activity context'],
+              ['Idle and offline time', 'Configurable and supported'],
+              ['Project and task mapping', 'AI-assisted'],
+              ['Timesheets and summaries', 'AI-assisted and generated'],
+              ['Reporting', 'Activity-driven context'],
+            ].map(([before, after]) => (
+              <div class="compare-row">
+                <>
+                  <span>
+                    <Icon name="x-mark" />
+                    {before}
+                  </span>
+                  <span>
+                    <Icon name="check" />
+                    {after}
+                  </span>
+                </>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq soft-mesh">
+      <div class="employee-shell faq-layout">
+        <div class="faq-column faq-column-left">
+          <div class="section-head">
+            <span class="eyebrow">Frequently asked questions</span><h2>
+              Automatic time tracking, <em>explained.</em>
+            </h2><p>Better time records need better work context.</p>
+          </div><div class="faq-list">
+            {
+              faqs.slice(0, 5).map(([q, a], i) => (
+                <details open={i === 0}>
+                  <>
+                    <summary>
+                      {q}
+                      <span>+</span>
+                    </summary>
+                    <p>{a}</p>
+                  </>
+                </details>
+              ))
+            }
+          </div>
+        </div><div class="faq-column">
+          <div class="faq-list">
+            {
+              faqs.slice(5).map(([q, a]) => (
+                <details>
+                  <>
+                    <summary>
+                      {q}
+                      <span>+</span>
+                    </summary>
+                    <p>{a}</p>
+                  </>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ProductivityFinalCta />
+  </main><Footer theme="light" />
+</Layout>

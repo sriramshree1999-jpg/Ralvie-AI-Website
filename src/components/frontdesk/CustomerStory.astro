@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets';
+import livingWaterResorts from '../../assets/living-water resorts -01.jpg';
+
+const metrics = [
+  { target: 94, suffix: '%', prefix: '', label: 'After-hours calls answered automatically (estimated)' },
+  { target: 20, suffix: '%', prefix: '', label: 'Estimated increase in reservation enquiry conversions' },
+  { target: 20400, suffix: '', prefix: '$', format: 'comma', label: 'Estimated monthly revenue recovery' },
+  { target: 8, suffix: '×', prefix: '', label: 'Estimated return within the first quarter' },
+];
+---
+
+<section id="customer-story" class="section section-tint relative">
+  <div class="container-page">
+    <div class="section-head customer-story-head reveal">
+      <p class="chip text-label-sm">Customer success</p>
+      <h2 class="text-headline-lg text-on-surface lg:whitespace-nowrap">Ralvie in Action at Living Water Resorts</h2>
+    </div>
+
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <div class="space-y-5 text-center lg:text-left">
+        <p class="text-body-lg text-on-surface-variant">
+          Living Water Resorts is a luxury waterfront resort in Collingwood, Ontario, serving leisure, family and
+          corporate guests throughout the year. Its front desk handled approximately 150 daily calls covering
+          reservations, amenities, guest services and after-hours enquiries. High call volumes created delayed
+          responses and missed booking opportunities, with estimated lost booking revenue exceeding CAD $20,000 per
+          month.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          Ralvie deployed an AI Voice Receptionist with multilingual guest support, reservation enquiry handling, FAQ
+          automation, live call transfers and connected booking assistance.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <Image
+          src={livingWaterResorts}
+          alt="Living Water Resorts waterfront marina in Collingwood"
+          class="living-water-image aspect-[3/2] w-full rounded-3xl object-cover"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {metrics.map((m) => (
+        <div class="glass-card reveal text-center" data-metric>
+          <p class="metric-figure">
+            {m.prefix}<span data-counter data-target={m.target} data-format={m.format ?? ''}>0</span>{m.suffix}
+          </p>
+          <p class="text-body-md mt-3 text-on-surface-variant">{m.label}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-label-sm mt-4 text-center text-on-surface-variant/50">Figures above are estimates based on the deployment described.</p>
+
+    <div class="mx-auto mt-12 max-w-3xl text-center">
+      <p class="text-body-lg text-on-surface-variant">
+        During the first 90 days, reservation enquiries received immediate responses and the front-desk team spent
+        less time handling repetitive questions. Ralvie helped the resort improve availability while allowing
+        employees to focus more attention on guests already on the property.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .customer-story-head {
+    max-width: none;
+  }
+
+  .living-water-image {
+    border: 1px solid rgb(143 159 255 / 42%);
+    box-shadow:
+      0 0 34px rgb(72 101 255 / 17%),
+      0 0 58px rgb(171 63 255 / 8%),
+      0 22px 55px rgb(2 5 18 / 38%);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-counter]').forEach((el) => {
+    const target = Number(el.dataset.target ?? '0');
+    const format = el.dataset.format;
+
+    const render = (value: number) => {
+      const rounded = Math.round(value);
+      el.textContent = format === 'comma' ? rounded.toLocaleString('en-US') : String(rounded);
+    };
+
+    if (reducedMotion) {
+      render(target);
+      return;
+    }
+
+    const proxy = { value: 0 };
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(proxy, {
+          value: target,
+          duration: 1.6,
+          ease: 'power2.out',
+          onUpdate: () => render(proxy.value),
+        });
+      },
+    });
+  });
+</script>

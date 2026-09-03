@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import femaleSupportAgent from '../../assets/female-customer-support-agent.jpg';
+---
+
+<section class="section relative">
+  <div class="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+    <div class="reveal text-center lg:text-left">
+      <p class="chip text-label-sm">One connected AI receptionist</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">Your Complete AI Receptionist</h2>
+
+      <div class="mt-6 space-y-5">
+        <p class="text-body-lg text-on-surface-variant">
+          Customers reach businesses in different ways. Some call, some start a website chat, some send an email
+          and others submit a form or reply by text.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          Ralvie gives every customer an immediate and consistent experience across each of these channels. It
+          understands what the customer needs, provides accurate information and moves the conversation towards
+          the right outcome.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          Instead of managing separate tools for calls, messages, forms and follow-ups, your team can manage every
+          customer interaction through one connected AI receptionist platform.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <Image
+        src={femaleSupportAgent}
+        alt="Female customer support agent wearing a headset"
+        class="front-office-image aspect-[6/5] w-full rounded-3xl object-cover object-top"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .front-office-image {
+    border: 1px solid rgb(143 159 255 / 42%);
+    box-shadow:
+      0 0 0 1px rgb(143 159 255 / 10%),
+      0 22px 55px rgb(2 5 18 / 38%);
+  }
+</style>

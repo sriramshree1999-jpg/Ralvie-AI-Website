@@ -1,0 +1,85 @@
+---
+import Icon from '../Icon.astro';
+const BOOK_DEMO_URL = 'https://cal.com/ralvie-ai-fd';
+---
+
+<section class="relative overflow-hidden">
+  <div class="mesh-gradient">
+    <div class="mesh-blob-3"></div>
+    <div class="mesh-blob-4"></div>
+  </div>
+  <div class="noise-overlay"></div>
+
+  <div class="section hero-section flex flex-col items-center gap-0">
+    <div class="container-page flex flex-col items-center text-center">
+      <div class="hero-copy reveal flex flex-col items-center">
+        <p class="chip hero-label text-label-sm">
+          Ralvie AI Frontdesk
+        </p>
+
+        <h1 class="text-display-lg mt-6 max-w-5xl text-on-surface">
+          <span class="font-normal">Every customer conversation.</span>
+          <span class="hero-headline-gradient font-bold">One intelligent AI Frontdesk.</span>
+        </h1>
+
+        <p class="text-body-lg mt-6 max-w-4xl text-on-surface-variant">
+          Ralvie AI Frontdesk brings phone calls, website chat, email, SMS, web voice and website forms together in
+          one intelligent platform. It answers questions, captures and qualifies leads, books appointments, sends
+          follow-ups and connects customers with the right team — all while keeping your business available 24/7.
+        </p>
+      </div>
+    </div>
+
+    <!-- Full page-width waveform — intentionally breaks out of .container-page -->
+    <div class="hero-visual reveal relative -mt-14 h-80 w-full sm:-mt-20 sm:h-96 md:-mt-24 md:h-[30rem]">
+      <canvas id="hero-canvas" class="absolute inset-0 block h-full w-full" aria-hidden="true"></canvas>
+      <div class="absolute left-1/2 top-1/2 z-20 w-full -translate-x-1/2 -translate-y-1/2 px-6">
+        <div class="mx-auto flex w-full max-w-lg flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+          <a href="#phone" class="btn-primary">Start your free trial <Icon name="arrow-right" /></a>
+          <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer" class="btn-ghost hero-secondary-cta"><Icon name="calendar" /> Book a demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding-block: 3rem;
+  }
+
+  .hero-label {
+    font-size: 1rem;
+    box-shadow:
+      0 0 18px rgb(79 114 255 / 38%),
+      0 0 42px rgb(170 65 255 / 24%);
+  }
+
+  .hero-headline-gradient {
+    background: linear-gradient(135deg, #c5a7ff 0%, #7189c9 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .hero-secondary-cta {
+    background: rgb(6 11 31 / 82%);
+    border-color: rgb(154 165 196 / 38%);
+    box-shadow:
+      0 16px 42px rgb(2 5 18 / 48%),
+      inset 0 1px 0 rgb(255 255 255 / 8%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .hero-secondary-cta:hover {
+    background: rgb(14 22 57 / 90%);
+    border-color: rgb(143 159 255 / 58%);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding-block: 4.5rem;
+    }
+  }
+</style>

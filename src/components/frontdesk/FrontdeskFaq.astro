@@ -1,0 +1,103 @@
+---
+import Icon from '../Icon.astro';
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+export const faqs: Faq[] = [
+  {
+    q: 'Is Ralvie only an AI phone receptionist?',
+    a: 'No. The AI Phone Receptionist is one part of the Ralvie platform. Ralvie also supports website chat, email management, SMS conversations, browser-based voice interactions and intelligent website forms.',
+  },
+  {
+    q: 'Can Ralvie work with my existing business number?',
+    a: 'Ralvie can be connected to an existing call flow or assigned a dedicated business number, depending on your current phone setup and business requirements.',
+  },
+  {
+    q: 'Can Ralvie book appointments?',
+    a: 'Yes. Ralvie can connect with supported calendar platforms to check availability, schedule appointments and send confirmations through voice or digital channels.',
+  },
+  {
+    q: 'Can Ralvie transfer calls to my team?',
+    a: "Yes. Calls can be transferred based on the customer's request, department, location, urgency, language or other configured business rules.",
+  },
+  {
+    q: 'What happens when Ralvie cannot answer a question?',
+    a: "Ralvie can collect the customer's details, create a follow-up request or transfer the conversation to the appropriate employee based on your configured instructions.",
+  },
+  {
+    q: 'Can Ralvie support multiple languages?',
+    a: 'Yes. Ralvie can support multilingual conversations across voice and digital communication channels.',
+  },
+  {
+    q: 'Where does Ralvie get its information?',
+    a: 'Ralvie can use approved information from your website, documents, frequently asked questions, APIs, databases, CRM platforms and other connected business systems.',
+  },
+  {
+    q: 'Can my team review conversations?',
+    a: 'Yes. Authorised users can review available recordings, transcripts, summaries, customer information and conversation outcomes through the dashboard.',
+  },
+  {
+    q: 'Does Ralvie replace my existing team?',
+    a: 'Ralvie is designed to support your employees by managing repetitive, high-volume and after-hours conversations. Your team remains available for conversations that require human judgement, expertise or personal attention.',
+  },
+  {
+    q: 'How quickly can Ralvie be launched?',
+    a: 'The launch time depends on the amount of business knowledge, communication channels, integrations and workflows required. Ralvie is designed to make configuration, testing and ongoing updates straightforward.',
+  },
+];
+---
+
+<section id="faq" class="section relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">Frequently asked questions</p>
+      <h2 class="text-headline-lg text-on-surface">Everything You Need to Know About Ralvie AI Frontdesk</h2>
+    </div>
+
+    <div class="reveal grid w-full grid-cols-1 items-start gap-4 lg:grid-cols-2">
+      {faqs.map((faq, i) => (
+        <div class="faq-item glass-card overflow-hidden p-0!">
+          <h3 class="m-0">
+            <button
+              type="button"
+              class="faq-trigger flex w-full items-center justify-between gap-4 p-6 text-left"
+              aria-expanded="true"
+              aria-controls={`faq-panel-${i}`}
+              id={`faq-trigger-${i}`}
+            >
+              <span class="text-body-lg font-semibold text-on-surface">{faq.q}</span>
+              <Icon name="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-on-surface-variant transition-transform" />
+            </button>
+          </h3>
+          <div id={`faq-panel-${i}`} role="region" aria-labelledby={`faq-trigger-${i}`} class="faq-panel">
+            <p class="text-body-md px-6 pb-6 text-on-surface-variant">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Progressive enhancement: every question and answer is already visible in
+  // the server-rendered HTML. JS turns the list into a collapsed accordion.
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
+    const panel = item.querySelector<HTMLElement>('.faq-panel');
+    const chevron = item.querySelector<HTMLElement>('.faq-chevron');
+    if (!trigger || !panel) return;
+
+    panel.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+      chevron?.classList.toggle('rotate-180', !expanded);
+    });
+  });
+</script>

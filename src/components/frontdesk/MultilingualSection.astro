@@ -1,0 +1,174 @@
+---
+import ralvieLogoIcon from '../../assets/Ralvie-logo-icon.svg';
+
+const greetings = ['Hello', 'Hola', 'Bonjour', 'こんにちは', 'مرحبا', 'Olá', '你好', 'Guten Tag'];
+
+// Scatter the greeting chips around the visual without overlapping the center
+const positions = [
+  'top:7%; left:8%;',
+  'top:6%; right:9%;',
+  'top:32%; left:5%;',
+  'top:34%; right:6%;',
+  'bottom:27%; left:7%;',
+  'bottom:25%; right:8%;',
+  'bottom:7%; left:20%;',
+  'bottom:6%; right:22%;',
+];
+
+const ringPaths = Array.from({ length: 20 }, (_, ring) => {
+  const points = Array.from({ length: 181 }, (_, point) => {
+    const angle = (point / 180) * Math.PI * 2;
+    const baseRadius = 55 + ring * 1.15;
+    const wave =
+      Math.sin(angle * 3 + ring * 0.22) * (7 + ring * 0.16) +
+      Math.sin(angle * 5 - ring * 0.16) * 3.2;
+    const radius = baseRadius + wave;
+    const x = 100 + Math.cos(angle) * radius;
+    const y = 100 + Math.sin(angle) * radius;
+    return `${point === 0 ? 'M' : 'L'}${x.toFixed(2)},${y.toFixed(2)}`;
+  });
+  return `${points.join(' ')} Z`;
+});
+---
+
+<section class="section relative overflow-hidden">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal">
+      <p class="chip text-label-sm">More human customer experiences</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">Communicate Naturally Across Languages and Situations</h2>
+
+      <div class="mt-6 space-y-5">
+        <p class="text-body-lg text-on-surface-variant">
+          Ralvie supports multilingual customer interactions across voice and digital channels, helping customers
+          communicate naturally in their preferred language while receiving a consistent level of service.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          It can also recognise conversational cues and adjust the tone of its response accordingly. When a
+          customer appears confused, concerned or frustrated, the conversation can become calmer and more
+          considerate. When the customer is ready to take action, Ralvie can guide the interaction towards the
+          next step without creating unnecessary delays.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          Multilingual communication and conversation behaviour can be configured according to your customers,
+          locations and business requirements.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal glass-card language-panel relative flex h-96 items-center justify-center" aria-hidden="true">
+      <div class="mesh-gradient">
+        <div class="mesh-blob-4"></div>
+      </div>
+      <div class="language-logo relative z-10 h-52 w-52 shrink-0">
+        <svg class="language-wave-ring absolute inset-0 h-full w-full" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="language-ring-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff2bbf" />
+              <stop offset="35%" stop-color="#8d4dff" />
+              <stop offset="68%" stop-color="#6f8cff" />
+              <stop offset="100%" stop-color="#ff7a2f" />
+            </linearGradient>
+          </defs>
+          {ringPaths.map((path, index) => (
+            <path
+              class="language-wave-path"
+              d={path}
+              fill="none"
+              stroke="url(#language-ring-gradient)"
+              stroke-width={index % 4 === 0 ? 0.9 : 0.55}
+              opacity={0.34 + index * 0.025}
+              style={`--language-wave-index:${index}`}
+            />
+          ))}
+        </svg>
+        <img src={ralvieLogoIcon.src} alt="" class="language-logo-mark absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 object-contain" />
+      </div>
+      {greetings.map((g, i) => (
+        <span
+          class="chip language-chip text-body-md float-chip absolute normal-case tracking-normal text-on-surface"
+          style={`--float-delay:${i * 0.6}s; ${positions[i % positions.length]}`}
+        >
+          {g}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .language-panel {
+    overflow: hidden;
+    padding: 1.5rem;
+    border-radius: 1.75rem;
+  }
+
+  .language-chip {
+    z-index: 10;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+  }
+
+  .language-logo {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .language-wave-ring {
+    overflow: visible;
+    filter:
+      drop-shadow(0 0 8px rgb(213 43 255 / 42%))
+      drop-shadow(0 0 18px rgb(72 101 255 / 22%));
+    animation: language-ring-spin 32s linear infinite;
+  }
+
+  .language-wave-path {
+    stroke-dasharray: 5 2;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: language-wave-pulse 3.6s ease-in-out infinite alternate;
+    animation-delay: calc(var(--language-wave-index) * -0.14s);
+  }
+
+  .language-logo-mark {
+    filter:
+      drop-shadow(0 10px 12px rgb(2 5 18 / 68%))
+      drop-shadow(0 0 14px rgb(171 63 255 / 44%));
+  }
+
+  @keyframes language-ring-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes language-wave-pulse {
+    0% {
+      opacity: 0.3;
+      stroke-dashoffset: 0;
+      transform: scale(0.91) rotate(-2deg);
+    }
+    50% {
+      opacity: 0.76;
+    }
+    100% {
+      opacity: 0.92;
+      stroke-dashoffset: -28;
+      transform: scale(1.07) rotate(2deg);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .language-panel {
+      padding: 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .language-wave-ring,
+    .language-wave-path {
+      animation: none;
+    }
+  }
+</style>

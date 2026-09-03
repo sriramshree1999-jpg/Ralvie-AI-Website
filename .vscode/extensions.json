@@ -1,4 +1,15 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "dsznajder.es7-react-js-snippets",
+    "PKief.material-icon-theme",
+    "GitHub.copilot",
+    "ms-vscode.vscode-typescript-next",
+    "msjsdiag.debugger-for-chrome",
+    "wakatime.vscode-wakatime"
+  ],
   "unwantedRecommendations": []
 }

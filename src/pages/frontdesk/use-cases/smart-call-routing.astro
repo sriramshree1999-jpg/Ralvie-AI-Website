@@ -1,0 +1,92 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import '../../../styles/customer-support.css';
+import '../../../styles/support-typography-fix.css';
+import '../../../styles/smart-call-routing.css';
+import '../../../styles/smart-call-routing-overrides.css';
+
+const title = 'Smart AI Call Routing & Call Transfer | Ralvie AI Frontdesk';
+const description = 'Route every caller to the right person, department, location, or workflow with Ralvie AI Frontdesk. Understand caller intent, answer routine questions, capture context, and intelligently transfer calls when human assistance is needed.';
+const routes = [
+  ['Sales enquiry', 'Sales team', 'briefcase'],
+  ['Technical issue', 'Technical support', 'headset'],
+  ['Billing question', 'Finance', 'document'],
+  ['Appointment request', 'Scheduling workflow', 'calendar'],
+  ['Specific employee', 'Staff directory', 'users'],
+  ['General question', 'Ralvie answers', 'sparkles'],
+];
+const dimensions = [
+  ['users', 'Staff directory', 'Find employees by name, department, role, location, or configured destination.'],
+  ['building', 'Department & location', 'Route one phone number across teams, offices, branches, clinics, or properties.'],
+  ['briefcase', 'Product & customer type', 'Send prospects, customers, partners, and product enquiries to the right specialists.'],
+  ['globe', 'Language & region', 'Combine language, intent, and region within one configured routing workflow.'],
+  ['clock', 'Time & availability', 'Use different destinations during business hours, after hours, weekends, and holidays.'],
+  ['target', 'Priority & escalation', 'Give urgent issues, enterprise accounts, and high-value opportunities an appropriate path.'],
+];
+const workflow = ['Connect your phone workflow', 'Add routing destinations', 'Define routing rules', 'Add approved knowledge', 'Caller speaks naturally', 'Ralvie understands intent', 'Choose the best next step', 'Transfer with context', 'Use fallback rules'];
+const faqs = [
+  ['What is Ralvie AI Smart Call Routing?', 'It uses conversational AI and configured business rules to understand why someone is calling and direct the conversation to the right answer, workflow, person, department, or team.'],
+  ['Is it different from traditional IVR?', 'Yes. Instead of numbered menus, callers explain what they need naturally and Ralvie uses that context to choose the next step.'],
+  ['Can callers ask for a specific employee?', 'Yes. A configured staff directory can identify employees by name and initiate the appropriate routing workflow without requiring an extension.'],
+  ['Can Ralvie route by department or location?', 'Yes. Routing logic can use departments, locations, products, customer type, language, schedules, and other configured business context.'],
+  ['Can Ralvie qualify leads before transferring?', 'Yes. Sales workflows can collect company, locations, expected volume, requirements, and timeline before selecting the appropriate sales team.'],
+  ['Can Ralvie answer instead of transferring?', 'Yes. When approved knowledge covers the request, Ralvie can resolve routine enquiries without an unnecessary transfer.'],
+  ['What if the destination is unavailable?', 'Fallback rules can route to another person or team, return to AI assistance, collect callback details, or create a follow-up workflow.'],
+  ['Is smart routing available 24/7?', 'Yes. Ralvie can provide always-on first-line handling with different business-hours and after-hours routing rules.'],
+];
+const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="support-page routing-page pt-(--header-height)">
+    <section class="support-hero routing-hero">
+      <i class="route-orb orb-one"></i><i class="route-orb orb-two"></i>
+      <div class="support-shell routing-hero-grid">
+        <div class="hero-copy">
+          <span class="hero-eyebrow"><span class="pulse"></span> Smart AI call routing</span>
+          <h1><span class="hero-line ink">Understand</span><span class="hero-line ink">Every Caller.</span><span class="hero-line">Route Every Conversation</span><span class="hero-line">to the Right Place.</span></h1>
+          <p class="hero-lead">Replace “Press 1” with “How can I help?”</p>
+          <p class="hero-detail">Ralvie understands why a customer is calling, answers routine enquiries, collects useful context, and transfers the conversation to the right person, department, location, or workflow.</p>
+          <div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div>
+        </div>
+        <div class="routing-builder app-window" id="routing-demo">
+          <header><div><b>What it can do</b></div><span>Actions during the call</span></header>
+          <div class="transfer-bar"><Icon name="phone"/><b>Transfer the call</b><span>Active</span></div>
+          <article class="scenario-card">
+            <header><b>Technical support transfer</b><span>On</span></header>
+            <dl><div><dt>Scenario description</dt><dd>When a customer needs technical assistance</dd></div><div><dt>Destination</dt><dd>North America · Technical Support</dd></div><div><dt>Voice response</dt><dd>“Please hold while I connect you with our technical support team.”</dd></div><div><dt>Transfer type</dt><dd>Context-aware transfer</dd></div></dl>
+            <footer><span><Icon name="check"/> Availability confirmed</span><button>Edit routing</button></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section route-intro"><div class="support-shell center"><span class="eyebrow">Natural conversation, intelligent destination</span><h2><span class="route-intro-line">Callers know what they want—even</span><span class="route-intro-line">when they <em>don’t know your phone tree.</em></span></h2><p>Let people ask for support, billing, a named employee, pricing, or an appointment in their own words. Ralvie understands the request before deciding whether to answer, act, or transfer.</p><div class="route-sentence"><span>Caller speaks</span><Icon name="arrow-right"/><span>Intent understood</span><Icon name="arrow-right"/><span>Right destination</span></div></div></section>
+
+    <section class="section route-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Intelligent call routing</span><h2>Route by intent—not <em>button presses.</em></h2><p>Smarter routing begins by understanding the conversation.</p></div><div class="intent-grid">{routes.map(([intent,destination,icon])=><article><span><Icon name={icon}/></span><div><small>Caller intent</small><b>{intent}</b></div><Icon name="arrow-right"/><div><small>Destination</small><b>{destination}</b></div></article>)}</div></div></section>
+
+    <section class="section"><div class="support-shell split"><div class="copy"><span class="eyebrow">Staff directory routing</span><h2>“Can you connect me <em>with Michael Chen?”</em></h2><p>Customers do not need extensions or internal department codes. Ralvie can find a configured employee by name, clarify only when necessary, and route according to availability.</p><ul><li>Match name, department, role, and location</li><li>Handle similar or duplicate names carefully</li><li>Use fallback rules when someone is unavailable</li></ul></div><div class="directory-card app-window"><header><b>Staff directory</b><span>42 people</span></header><div class="directory-search"><Icon name="search"/> Michael Chen</div>{[['MC','Michael Chen','Enterprise Sales · Toronto','Available'],['MJ','Michael Cheng','Customer Success · Vancouver','In a call'],['ML','Michelle Chen','Billing · Toronto','Available']].map(([initials,name,meta,status],i)=><article class:list={[i===0&&'selected']}><span>{initials}</span><div><b>{name}</b><small>{meta}</small></div><em>{status}</em></article>)}<footer>Best match selected · Ready to transfer</footer></div></div></section>
+
+    <section class="section routing-band"><div class="support-shell"><div class="section-head center light"><span class="eyebrow">Contextual routing</span><h2>Combine the signals that determine <em>where a call belongs.</em></h2></div><div class="dimension-grid">{dimensions.map(([icon,name,copy])=><article><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section route-mesh"><div class="support-shell split"><div class="handoff-card app-window"><header><div><small>Incoming transfer</small><b>Sarah Mitchell</b></div><span>Connected</span></header>{[['Company','Northline Properties'],['Reason','Billing enquiry'],['Issue','Duplicate charge on latest invoice'],['Invoice','INV-10482'],['Requested team','Billing'],['Urgency','Standard']].map(([label,value])=><div><small>{label}</small><b>{value}</b></div>)}<footer><Icon name="check"/> Context delivered before the agent answers</footer></div><div class="copy"><span class="eyebrow">Context-aware handoff</span><h2>Don’t make customers <em>start over after transfer.</em></h2><p>Ralvie can collect customer details, the reason for contact, qualification information, and troubleshooting context before connecting a human.</p><strong class="closing">The receiving team gets more than a phone call. They get context.</strong></div></div></section>
+
+    <section class="section"><div class="support-shell split"><div class="copy"><span class="eyebrow">AI-first resolution</span><h2>Not every call <em>needs a transfer.</em></h2><p>A customer asking for support may only need business hours, an order update, appointment information, or a simple approved answer. Ralvie resolves routine requests first and keeps human access easy.</p></div><div class="decision-card app-window"><header><b>Choose the best next step</b><span>Live</span></header>{[['Answer','Provide approved information'],['Retrieve','Check connected business data'],['Capture','Collect customer details'],['Book','Start scheduling workflow'],['Route','Connect to a human'],['Escalate','Start priority workflow']].map(([action,copy],i)=><article><i>{i+1}</i><div><b>{action}</b><small>{copy}</small></div><Icon name="arrow-right"/></article>)}</div></div></section>
+
+    <section class="section route-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">How it works</span><h2>Understand first. <em>Route second.</em></h2></div><div class="steps-grid routing-steps">{workflow.map((item,i)=><article><span>{String(i+1).padStart(2,'0')}</span><h3>{item}</h3></article>)}</div></div></section>
+
+    <section class="section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Call-routing analytics</span><h2>Understand why customers call—<em>and where they go.</em></h2></div><div class="route-dashboard app-window"><header><div><small>Call routing overview</small><b>Today</b></div><button>Export</button></header><div class="route-kpis">{[['Calls','428'],['AI resolved','184'],['Human transfers','196'],['Follow-up','28'],['Other workflows','20']].map(([label,value])=><article><small>{label}</small><b>{value}</b></article>)}</div><div class="route-charts"><article><b>Calls by destination</b>{[['Customer Support',32],['Sales',24],['Billing',13],['Customer Success',11]].map(([label,value])=><p><span>{label}</span><i><b style={`--w:${value}%`}></b></i><em>{value}%</em></p>)}</article><article class="latest-call"><small>Latest transfer</small><b>Sarah Mitchell · Northline Properties</b><p>Enterprise Sales · 18 locations</p><span><Icon name="check"/> Connected</span></article></div></div></div></section>
+
+    <section class="section comparison route-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Smart routing vs traditional IVR</span><h2>Make routing feel like <em>part of the conversation.</em></h2></div><div class="compare-table"><div class="compare-row head"><span>Traditional IVR</span><span>Ralvie AI Smart Call Routing</span></div>{[['Button presses','Natural conversation'],['Caller guesses department','AI understands intent'],['Extension required','Name-based routing'],['Blind transfer','Context-aware handoff'],['One route all day','Schedule-aware rules'],['After-hours voicemail','AI after-hours workflows']].map(([before,after])=><div class="compare-row"><span><Icon name="x-mark"/>{before}</span><span><Icon name="check"/>{after}</span></div>)}</div></div></section>
+
+    <section class="section faq"><div class="support-shell faq-layout"><div class="faq-column faq-column-left"><div class="section-head"><span class="eyebrow">Frequently asked questions</span><h2>Smart call routing, <em>explained.</em></h2><p>No complicated phone trees—just the right conversation routed to the right place.</p></div><div class="faq-list">{faqs.slice(0,3).map(([q,a],i)=><details open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div><div class="faq-column"><div class="faq-list">{faqs.slice(3).map(([q,a])=><details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></div></section>
+
+    <section class="final-cta routing-final" id="get-started"><div class="cta-mesh" aria-hidden="true"><i></i><i></i><i></i></div><div class="support-shell center"><span class="eyebrow">Stop making callers navigate your business</span><h2>Understand the Caller.<br/><em>Connect Them Faster.</em></h2><p>Answer routine questions, find staff by name, route by department, location, product, language, or customer need, and bring in humans with context.</p><div class="cta-actions"><a class="primary-btn" href="#">Book a demo <Icon name="arrow-right"/></a><a class="secondary-btn" href="#"><Icon name="phone"/> Talk to Ralvie AI</a></div><small>No complicated phone trees. Just the right conversation, routed to the right place.</small></div></section>
+  </main>
+  <Footer theme="light" />
+</Layout>

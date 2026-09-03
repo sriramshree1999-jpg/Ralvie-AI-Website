@@ -1,0 +1,55 @@
+---
+import Icon from '../Icon.astro';
+
+const branches = [
+  { label: 'SMS confirmation', icon: 'chat', accent: 'var(--accent-teal)' },
+  { label: 'Calendar booking', icon: 'calendar', accent: 'var(--accent-blue)' },
+  { label: 'CRM update', icon: 'database', accent: 'var(--accent-violet)' },
+  { label: 'Team notification', icon: 'users', accent: 'var(--accent-coral)' },
+];
+---
+
+<section class="section relative">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal">
+      <p class="chip text-label-sm">Automated follow-up</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">Keep Every Conversation Moving Forward</h2>
+
+      <div class="mt-6 space-y-5">
+        <p class="text-body-lg text-on-surface-variant">
+          Many customer interactions require follow-up after the initial call, message or form submission. Ralvie
+          can automatically send appointment confirmations, requested documents, payment links, directions,
+          instructions or additional information.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          It can create follow-up tasks for employees and move customer details into the appropriate CRM or
+          workflow — helping prevent opportunities from being forgotten while creating a more consistent
+          experience for every customer.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal glass-card">
+      <div class="mx-auto flex w-fit flex-col items-center">
+        <span class="chip text-label-sm normal-case tracking-normal">
+          <Icon name="sparkles" class="h-3.5 w-3.5 text-secondary" />
+          One customer conversation
+        </span>
+        <div class="flow-line--v h-8"></div>
+      </div>
+      <div class="flow-line"></div>
+
+      <div class="mt-6 grid grid-cols-2 gap-4">
+        {branches.map((b) => (
+          <div class="flex flex-col items-center gap-3 text-center">
+            <div class="flow-line--v h-4"></div>
+            <span class="icon-tile" style={`--tint: ${b.accent}`}>
+              <Icon name={b.icon} class="h-5 w-5" />
+            </span>
+            <span class="text-label-sm text-on-surface-variant">{b.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

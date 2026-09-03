@@ -1,0 +1,152 @@
+---
+import Icon from '../Icon.astro';
+
+const clockWavePaths = Array.from({ length: 38 }, (_, strand) => {
+  const centered = strand - 18.5;
+  const points = Array.from({ length: 201 }, (_, point) => {
+    const angle = (point / 200) * Math.PI * 2;
+    const baseRadius = 70 + centered * 0.34;
+    const wave =
+      Math.sin(angle * 3 + strand * 0.16) * (7.5 + Math.abs(centered) * 0.08) +
+      Math.sin(angle * 6 - strand * 0.11) * 3.4 +
+      Math.cos(angle * 2 + strand * 0.08) * 2.2;
+    const radius = baseRadius + wave;
+    const x = 100 + Math.cos(angle) * radius;
+    const y = 100 + Math.sin(angle) * radius;
+    return `${point === 0 ? 'M' : 'L'}${x.toFixed(2)},${y.toFixed(2)}`;
+  });
+  return `${points.join(' ')} Z`;
+});
+---
+
+<section class="section section-tint relative overflow-hidden">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal order-2 lg:order-1">
+      <p class="chip text-label-sm">Always on</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">Keep Your Business Available 24/7</h2>
+
+      <div class="mt-6 space-y-5">
+        <p class="text-body-lg text-on-surface-variant">
+          Customer enquiries do not always arrive during office hours. Ralvie answers calls and digital
+          conversations during evenings, weekends, holidays and high-volume periods. Customers receive an
+          immediate response instead of waiting for your business to reopen or leaving a voicemail that may be
+          reviewed later.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          Your team can define exactly what Ralvie should handle after hours, what information it can provide and
+          which conversations should be escalated.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal order-1 flex justify-center lg:order-2">
+      <div class="clock-visual relative flex h-64 w-64 items-center justify-center sm:h-80 sm:w-80" aria-hidden="true">
+        <svg class="clock-waveform absolute inset-0 h-full w-full" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="clock-wave-gradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#47dfff" />
+              <stop offset="52%" stop-color="#7985ff" />
+              <stop offset="100%" stop-color="#d63bff" />
+            </linearGradient>
+          </defs>
+          {clockWavePaths.map((path, index) => (
+            <path
+              class="clock-wave-path"
+              d={path}
+              fill="none"
+              stroke="url(#clock-wave-gradient)"
+              stroke-width={index % 5 === 0 ? 0.85 : 0.45}
+              style={`--clock-wave-index:${index}`}
+            />
+          ))}
+        </svg>
+        <span class="clock-ring" style="width:100%; height:100%;"></span>
+        <span class="clock-ring" style="width:74%; height:74%;"></span>
+        <span class="clock-ring" style="width:48%; height:48%;"></span>
+        <span class="clock-sweep"></span>
+        <span class="clock-sweep clock-sweep--delay"></span>
+        <div class="node-dot relative z-10 flex h-20 w-20 flex-col items-center justify-center text-on-surface">
+          <Icon name="clock" class="h-5 w-5 text-secondary" />
+          <span class="text-label-sm mt-1">24/7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clock-ring {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid var(--color-outline-variant);
+    z-index: 2;
+  }
+  .clock-waveform {
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    opacity: 0.86;
+    filter:
+      drop-shadow(0 0 9px rgb(71 223 255 / 34%))
+      drop-shadow(0 0 18px rgb(214 59 255 / 24%));
+    animation: clock-wave-ring-spin 34s linear infinite;
+  }
+  .clock-wave-path {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: clock-wave-pulse 4.2s ease-in-out infinite alternate;
+    animation-delay: calc(var(--clock-wave-index) * -0.11s);
+  }
+  .clock-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 50%;
+    transform-origin: top center;
+    background: linear-gradient(180deg, var(--accent-cyan), transparent);
+    animation: clock-spin 10s linear infinite;
+    z-index: 3;
+  }
+  .clock-sweep--delay {
+    background: linear-gradient(180deg, var(--accent-violet), transparent);
+    animation-duration: 14s;
+    animation-direction: reverse;
+    opacity: 0.6;
+  }
+  @keyframes clock-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes clock-wave-ring-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes clock-wave-pulse {
+    0% {
+      opacity: 0.24;
+      transform: scale(0.91) rotate(-2.5deg);
+    }
+    55% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.94;
+      transform: scale(1.07) rotate(2.5deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .clock-sweep,
+    .clock-waveform,
+    .clock-wave-path {
+      animation: none;
+    }
+  }
+</style>

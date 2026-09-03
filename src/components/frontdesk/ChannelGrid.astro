@@ -1,0 +1,95 @@
+---
+import Icon from '../Icon.astro';
+
+interface Channel {
+  id: string;
+  name: string;
+  icon: string;
+  accent: string;
+  paragraphs: string[];
+}
+
+const channels: Channel[] = [
+  {
+    id: 'phone',
+    name: 'AI Phone Receptionist',
+    icon: 'phone',
+    accent: 'var(--accent-cyan)',
+    paragraphs: [
+      'Ralvie answers incoming business calls with a natural and professional voice. It understands why the customer is calling, asks relevant follow-up questions and responds using your approved business information.',
+    ],
+  },
+  {
+    id: 'chatbot',
+    name: 'AI Website Chatbot',
+    icon: 'chat',
+    accent: 'var(--accent-violet)',
+    paragraphs: [
+      'Ralvie engages website visitors the moment they need assistance. It answers product, service and company questions, captures visitor information and recommends the next step based on the conversation.',
+    ],
+  },
+  {
+    id: 'email',
+    name: 'AI Email Manager',
+    icon: 'mail',
+    accent: 'var(--accent-coral)',
+    paragraphs: [
+      'Ralvie helps your business manage incoming customer emails without allowing important enquiries to remain unanswered. It understands the content and intent of each message, provides appropriate responses and collects any missing information needed to continue the conversation.',
+    ],
+  },
+  {
+    id: 'sms',
+    name: 'SMS Texting Agent',
+    icon: 'chat',
+    accent: 'var(--accent-teal)',
+    paragraphs: [
+      'Ralvie continues customer conversations through convenient two-way text messaging. It can respond to incoming messages, send appointment confirmations, share booking links and provide information requested during a phone call or website conversation.',
+    ],
+  },
+  {
+    id: 'voicebot',
+    name: 'AI Web Voicebot',
+    icon: 'microphone',
+    accent: 'var(--accent-amber)',
+    paragraphs: [
+      'Ralvie allows website visitors to speak directly with your AI through their browser. Visitors can ask questions using their voice instead of typing into a chatbot or making a traditional phone call.',
+    ],
+  },
+  {
+    id: 'forms',
+    name: 'Website Forms',
+    icon: 'form',
+    accent: 'var(--accent-blue)',
+    paragraphs: [
+      'Ralvie turns static website forms into active customer workflows. When someone submits a contact, enquiry, appointment or lead form, Ralvie can organise the submitted information and immediately begin the appropriate follow-up process.',
+    ],
+  },
+];
+---
+
+<section id="channels" class="section section-tint relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">One AI across every channel</p>
+      <h2 class="text-headline-lg text-on-surface">Meet Your AI Frontdesk Team</h2>
+      <p class="text-body-lg text-on-surface-variant">
+        One shared intelligence works across every customer-facing channel, helping your business respond faster
+        and deliver a consistent experience.
+      </p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {channels.map((channel) => (
+        <div id={channel.id} class="glass-card scroll-mt-24">
+          <span class="icon-tile" style={`--tint: ${channel.accent}`}>
+            <Icon name={channel.icon} class="h-5 w-5" />
+          </span>
+          <h3 class="text-body-lg mt-4 font-semibold text-on-surface">{channel.name}</h3>
+          {channel.paragraphs.map((p) => (
+            <p class="text-body-md mt-3 text-on-surface-variant">{p}</p>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,7 +1,8 @@
 {
   "name": "ralvie-ai-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Ralvie AI Website - Modern 3D Web Experience",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -9,9 +10,42 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint src",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "astro": "^7.1.4"
+    "@astrojs/react": "^3.2.1",
+    "@portabletext/to-html": "^5.0.2",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.19.1",
+    "@sanity/client": "^7.25.0",
+    "@sanity/image-url": "^2.1.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/three": "^0.156.0",
+    "astro": "^4.15.9",
+    "groq": "^6.6.0",
+    "gsap": "^3.15.0",
+    "motion": "^12.42.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.156.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.8.3",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.2.45",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.4.5"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "sharp@0.33.5": true
   }
 }

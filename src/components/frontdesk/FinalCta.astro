@@ -1,0 +1,82 @@
+---
+const BOOK_DEMO_URL = 'https://cal.com/ralvie-ai-fd';
+---
+
+<section class="final-cta-section relative">
+  <div class="final-cta-container">
+    <div class="final-cta-panel glass-card reveal relative overflow-hidden p-10! text-center lg:p-20!">
+      <div class="mesh-gradient">
+        <div class="mesh-blob-3"></div>
+        <div class="mesh-blob-4"></div>
+      </div>
+      <div class="noise-overlay"></div>
+
+      <p class="chip text-label-sm mx-auto">Meet Ralvie AI Frontdesk</p>
+      <h2 class="text-headline-lg mx-auto mt-6 max-w-4xl text-on-surface">Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2>
+
+      <p class="cta-primary-copy text-body-lg mx-auto mt-6 text-on-surface-variant">
+        Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br />
+        —voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br />
+        Capture more opportunities. Connect every conversation to the right next step.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="#phone" class="btn-primary">Try Ralvie AI Frontdesk</a>
+        <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer" class="btn-ghost final-cta-secondary">Book a Demo</a>
+      </div>
+
+      <p class="text-body-md mt-8 font-semibold text-on-surface">One AI Frontdesk. Every customer channel. Always ready.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    width: 100%;
+    min-height: 100svh;
+  }
+
+  .final-cta-container,
+  .final-cta-panel {
+    width: 100%;
+    min-height: 100svh;
+  }
+
+  .final-cta-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    border: 0;
+    border-radius: 0;
+    background-color: var(--color-surface-container-high);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .final-cta-panel:hover {
+    border-color: transparent;
+    background-color: var(--color-surface-container-high);
+    transform: none;
+  }
+
+  .final-cta-secondary {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .final-cta-secondary:hover {
+    border-color: rgba(153, 169, 255, 0.42);
+    background: linear-gradient(135deg, rgba(81, 108, 222, 0.3), rgba(127, 91, 210, 0.34));
+    box-shadow: 0 12px 30px rgba(29, 38, 105, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .cta-primary-copy {
+    max-width: 92rem;
+  }
+
+</style>

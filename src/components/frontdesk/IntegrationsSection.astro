@@ -1,0 +1,57 @@
+---
+import Icon from '../Icon.astro';
+import ralvieLogoIcon from '../../assets/Ralvie-logo-icon.svg';
+
+const categories = [
+  { name: 'CRM', icon: 'users' },
+  { name: 'Calendar', icon: 'calendar' },
+  { name: 'Help Desk', icon: 'headset' },
+  { name: 'Database', icon: 'database' },
+  null, // center hub
+  { name: 'Reservations', icon: 'calendar' },
+  { name: 'Messaging', icon: 'chat' },
+  { name: 'Sales', icon: 'target' },
+  { name: 'Internal Tools', icon: 'link' },
+];
+---
+
+<section id="integrations" class="section section-tint relative">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal">
+      <p class="chip text-label-sm">Connected to your business</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">Connect Ralvie With the Tools You Already Use</h2>
+
+      <p class="text-body-lg mt-6 text-on-surface-variant">
+        Ralvie AI Frontdesk can connect with more than 3,000 applications through APIs, webhooks and Zapier. It can
+        work with your CRM, calendar, help desk, reservation platform, property management system, database,
+        messaging applications and internal business tools.
+      </p>
+      <p class="text-body-lg mt-5 text-on-surface-variant">
+        Customer information can move automatically between Ralvie and your existing systems, reducing repetitive
+        data entry and helping your team maintain accurate records.
+      </p>
+
+      <a href="#integrations" class="btn-ghost mt-8">Explore Integrations</a>
+    </div>
+
+    <div class="reveal mx-auto grid w-full max-w-md grid-cols-3 gap-3 sm:gap-4">
+      {categories.map((cat) =>
+        cat ? (
+          <div class="glass-card flex flex-col items-center gap-2 p-4! text-center">
+            <span class="icon-tile h-10 w-10" style="--tint: var(--color-secondary)">
+              <Icon name={cat.icon} class="h-4 w-4" />
+            </span>
+            <span class="text-label-sm text-on-surface-variant">{cat.name}</span>
+          </div>
+        ) : (
+          <div
+            class="node-dot flex items-center justify-center p-3 text-center"
+            style="box-shadow: 0 0 32px -6px color-mix(in srgb, var(--color-primary) 70%, transparent);"
+          >
+            <img src={ralvieLogoIcon.src} alt="Ralvie" class="h-10 w-10 object-contain" />
+          </div>
+        )
+      )}
+    </div>
+  </div>
+</section>

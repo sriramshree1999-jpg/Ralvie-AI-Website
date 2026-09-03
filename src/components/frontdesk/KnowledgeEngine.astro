@@ -1,0 +1,56 @@
+---
+import Icon from '../Icon.astro';
+
+const staticSources = ['FAQs', 'Documents', 'Services', 'Policies', 'Company details'];
+const dynamicSources = ['Websites', 'APIs', 'Databases', 'CRM platforms', 'Reservation systems'];
+---
+
+<section id="knowledge-engine" class="section relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">Static and dynamic knowledge</p>
+      <h2 class="text-headline-lg text-on-surface">Give Ralvie the Knowledge to Represent Your Business</h2>
+      <p class="text-body-lg text-on-surface-variant">
+        Ralvie combines static and dynamic business knowledge to provide accurate and contextual responses. It is
+        not restricted to a small list of scripted questions and answers — Ralvie can retrieve approved
+        information from connected business sources and use it during live customer conversations.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div class="glass-card reveal">
+        <span class="icon-tile" style="--tint: var(--accent-blue)">
+          <Icon name="book" class="h-5 w-5" />
+        </span>
+        <h3 class="text-body-lg mt-4 font-semibold text-on-surface">Static Knowledge</h3>
+        <p class="text-body-md mt-3 text-on-surface-variant">
+          Static knowledge can include your frequently asked questions, uploaded documents, services, policies,
+          product information and company details. This gives Ralvie a reliable foundation for answering common
+          customer enquiries.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2 border-t border-outline-variant pt-5">
+          {staticSources.map((s) => (
+            <span class="chip text-label-sm normal-case tracking-normal">{s}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="glass-card reveal">
+        <span class="icon-tile" style="--tint: var(--accent-cyan)">
+          <Icon name="bolt" class="h-5 w-5" />
+        </span>
+        <h3 class="text-body-lg mt-4 font-semibold text-on-surface">Dynamic Knowledge</h3>
+        <p class="text-body-md mt-3 text-on-surface-variant">
+          Dynamic knowledge allows Ralvie to retrieve current information from websites, APIs, databases, CRM
+          platforms, reservation systems and other business applications — availability, inventory, appointment
+          slots, customer records or request status, instead of relying only on a fixed script.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2 border-t border-outline-variant pt-5">
+          {dynamicSources.map((s) => (
+            <span class="chip text-label-sm normal-case tracking-normal">{s}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

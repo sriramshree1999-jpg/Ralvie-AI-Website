@@ -1,0 +1,61 @@
+---
+const features = [
+  {
+    title: "AI-Powered Automation",
+    description: "Automate repetitive tasks with intelligent algorithms that learn from your patterns.",
+    icon: "⚡"
+  },
+  {
+    title: "Real-time Analytics",
+    description: "Get instant insights into your workflow with advanced analytics and reporting.",
+    icon: "📊"
+  },
+  {
+    title: "Seamless Integration",
+    description: "Connect with your favorite tools and services effortlessly.",
+    icon: "🔗"
+  },
+  {
+    title: "Enterprise Security",
+    description: "Bank-level encryption and compliance with industry standards.",
+    icon: "🔒"
+  },
+  {
+    title: "24/7 Support",
+    description: "Round-the-clock customer support to help you succeed.",
+    icon: "💬"
+  },
+  {
+    title: "Scalable Infrastructure",
+    description: "Grow without worrying about performance or reliability.",
+    icon: "🚀"
+  }
+];
+---
+
+<section id="features" class="section relative">
+  <div class="container-page">
+    <div class="section-head">
+      <p class="chip text-label-sm text-secondary">Why Choose Us</p>
+      <h2 class="text-headline-lg text-on-surface">
+        Powerful Features Built for Growth
+      </h2>
+      <p class="text-body-lg text-on-surface-variant">
+        Everything you need to transform your workflow and scale your business efficiently.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {features.map((feature) => (
+        <div class="card-surface group transition-colors">
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-surface-container-high text-2xl">
+            {feature.icon}
+          </div>
+          <h3 class="text-body-lg mb-2 font-semibold text-on-surface">{feature.title}</h3>
+          <p class="text-body-md text-on-surface-variant">{feature.description}</p>
+          <div class="mt-4 h-1 w-0 rounded-full bg-linear-to-r from-primary to-secondary transition-all group-hover:w-12"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

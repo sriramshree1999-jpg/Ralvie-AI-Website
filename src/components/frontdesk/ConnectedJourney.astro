@@ -1,0 +1,94 @@
+---
+import Icon from '../Icon.astro';
+import ralvieLogoIcon from '../../assets/Ralvie-logo-icon.svg';
+
+const channels = [
+  { name: 'Voice', icon: 'phone' },
+  { name: 'Chat', icon: 'chat' },
+  { name: 'Email', icon: 'mail' },
+  { name: 'SMS', icon: 'chat' },
+  { name: 'Web voice', icon: 'microphone' },
+  { name: 'Forms', icon: 'form' },
+];
+
+const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation', 'Support'];
+---
+
+<section class="section relative">
+  <div class="container-page">
+    <div class="section-head connected-journey-head reveal">
+      <p class="chip text-label-sm">Unified customer experience</p>
+      <h2 class="text-headline-lg text-on-surface lg:whitespace-nowrap">
+        Six Customer Channels. One Connected Experience.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-12">
+      <div class="reveal">
+        <div class="space-y-5">
+          <p class="text-body-lg text-on-surface-variant">
+            Every Ralvie channel works with the same business knowledge, customer context and automation rules.
+            A customer may begin by submitting a form, continue through SMS, speak with Ralvie over the phone and
+            later receive an email confirmation. Each interaction can remain connected instead of becoming a
+            separate and disconnected conversation.
+          </p>
+          <p class="text-body-lg text-on-surface-variant">
+            Ralvie identifies the customer's intent, provides the relevant information and determines the most
+            appropriate next action. It can book an appointment, share a link, create a request, update a
+            connected system or transfer the conversation to your team.
+            The complete customer journey is recorded in one platform, giving your business better visibility into
+            every interaction.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal glass-card intelligence-card">
+        <div class="flex items-center justify-between gap-3 sm:gap-6">
+          <div class="flex flex-col gap-3">
+            {channels.map((channel) => (
+              <span class="chip text-label-sm justify-start normal-case tracking-normal">
+                <Icon name={channel.icon} class="h-3.5 w-3.5 text-secondary" />
+                {channel.name}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flow-line w-full"></div>
+            <div
+              class="node-dot h-16 w-16 shrink-0 text-on-surface"
+              style="box-shadow: 0 0 32px -6px color-mix(in srgb, var(--color-primary) 70%, transparent);"
+            >
+              <img src={ralvieLogoIcon.src} alt="" class="h-8 w-8 object-contain" aria-hidden="true" />
+            </div>
+            <div class="flow-line w-full"></div>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            {actions.map((action) => (
+              <span class="chip text-label-sm justify-start normal-case tracking-normal">{action}</span>
+            ))}
+          </div>
+        </div>
+        <p class="text-label-sm mt-6 text-center text-on-surface-variant/60">
+          One shared intelligence, every channel, every action
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .connected-journey-head {
+    max-width: none;
+  }
+
+  .intelligence-card {
+    box-shadow:
+      inset 0 0 34px rgb(72 101 255 / 15%),
+      inset 0 0 72px rgb(171 63 255 / 9%),
+      0 0 36px rgb(72 101 255 / 17%),
+      0 0 62px rgb(171 63 255 / 8%),
+      0 18px 50px rgb(2 5 18 / 24%);
+  }
+</style>

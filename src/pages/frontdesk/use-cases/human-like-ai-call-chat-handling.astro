@@ -1,0 +1,216 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import ralvieLogoIcon from '../../../assets/Ralvie-logo-icon.svg';
+import customerPortrait from '../../../assets/ai_phone_receptionist_Customer.jpg';
+import ai01 from '../../../assets/AI Agent_01.mp3';
+import ai02 from '../../../assets/AI Agent_02.mp3';
+import ai03 from '../../../assets/AI Agent_03.mp3';
+import ai04 from '../../../assets/AI Agent_04.mp3';
+import ai05 from '../../../assets/AI Agent_05.mp3';
+import ai06 from '../../../assets/AI Agent_06.mp3';
+import customer01 from '../../../assets/Customer_01.mp3';
+import customer02 from '../../../assets/Customer_02.mp3';
+import customer03 from '../../../assets/Customer_03.mp3';
+import customer04 from '../../../assets/Customer_04.mp3';
+import customer05 from '../../../assets/Customer_05.mp3';
+import customer06 from '../../../assets/Customer_06.mp3';
+import '../../../styles/customer-support.css';
+import '../../../styles/support-typography-fix.css';
+import '../../../styles/human-call-chat.css';
+
+const title = 'Human-Like AI Call & Chat Handling | Ralvie AI Frontdesk';
+const description = 'Handle customer calls and chats with natural, human-like AI. Ralvie AI Frontdesk understands intent, follows context, answers questions, captures information, performs actions, and hands off to humans when needed.';
+const channels = [
+  ['phone','AI phone calls','Let callers explain what they need naturally—without navigating an IVR menu.'],
+  ['chat','Website chat','Hold contextual, multi-turn conversations instead of serving isolated FAQ answers.'],
+  ['microphone','Web voice','Give visitors a direct voice experience inside the browser.'],
+  ['mail','SMS follow-up','Continue configured conversations and next steps through text.'],
+];
+const flow = [
+  ['Listen','Understand what the customer says.'],['Interpret','Identify intent, details, and context.'],
+  ['Respond','Give a natural, relevant answer.'],['Clarify','Ask only for information that is missing.'],
+  ['Retrieve','Use approved knowledge and connected systems.'],['Act','Trigger the appropriate next step.'],
+  ['Escalate','Bring in a human when the situation requires it.'],
+];
+const intents = ['Sales enquiry','Support request','Appointment booking','Order status','Product information','Billing enquiry','Lead qualification','Human transfer'];
+const voices = [
+  ['SC','Sam','Calm & reassuring','Male','A relaxed, reassuring voice for reception, service updates, and conversational support.'],
+  ['CA','Cassidy','Professional & charming','Female','A polished English voice suited to customer care, qualification, and appointment conversations.'],
+  ['MN','Mark','Natural conversation','Male','A casual, approachable voice that keeps everyday customer interactions warm and direct.'],
+  ['MD','Marcus','Dynamic & balanced','Male','A confident conversational voice for sales enquiries, product discovery, and busy call flows.'],
+  ['ZO','Zoë','Clear & inviting','Female','A clear, informative voice with a friendly tone for guidance and multi-step conversations.'],
+  ['LB','Lauren','Friendly & empathetic','Female','A warm, polished voice designed to make support interactions feel personal and helpful.'],
+];
+const industries = ['Hospitality','Healthcare & clinics','Real estate','SaaS & technology','Automotive','Professional services','Multi-location businesses'];
+const faqs = [
+  ['What does human-like AI call handling mean?','It means callers can speak naturally while the AI follows context, asks relevant questions, responds conversationally, and moves the interaction toward an appropriate outcome.'],
+  ['Is Ralvie a traditional IVR?','No. Ralvie is designed around natural conversation rather than rigid “press 1” menus and keyword commands.'],
+  ['Does the AI pretend to be a human?','No. Ralvie can communicate naturally while remaining transparent that it is an AI assistant.'],
+  ['Can customers interrupt or correct information?','Ralvie can use the latest relevant information in the conversation so configured workflows can continue without forcing the customer to restart.'],
+  ['Does Ralvie remember earlier messages?','Ralvie maintains relevant conversational context so follow-up questions do not feel like a brand-new interaction.'],
+  ['Can Ralvie answer using our business information?','Yes. Responses can use approved websites, documents, FAQs, policies, procedures, APIs, databases, and connected workflows.'],
+  ['Can the AI transfer calls to humans?','Yes. Configured handoff rules can route a customer and preserve useful conversation context for the employee.'],
+  ['Does Ralvie support multiple languages?','Ralvie can support multilingual conversations across applicable voice and chat experiences according to configured language capabilities.'],
+];
+const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="support-page human-page pt-(--header-height)">
+    <section class="support-hero human-hero"><div class="support-shell human-hero-grid">
+      <div class="hero-copy"><span class="hero-eyebrow"><span class="pulse"></span> Human-like AI call & chat handling</span><h1><span class="hero-line ink">Customer</span><span class="hero-line ink">Conversations</span><span class="hero-line">That Feel Natural.</span></h1><p class="hero-lead">Not automated. Not scripted. Just responsive AI conversations.</p><p class="hero-detail">Ralvie AI Frontdesk understands natural language, follows context, asks relevant questions, performs configured actions, and brings in a human when needed—across voice and chat.</p><div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div></div>
+      <div class="conversation-console app-window" aria-label="Calls and chat support workspace"><header><img src={ralvieLogoIcon.src} alt="Ralvie AI"/><div><small>Ralvie AI Frontdesk</small><b>Conversation inbox</b></div><span>● Live</span></header><nav><b>All inbox</b><b class="active">Calls</b><b>Voicemails</b><b>Omnichannel</b><b>Chat</b></nav><div class="console-body"><aside>{[['EC','Emily Carter','Call completed'],['NL','Noah Laurent','Needs follow-up'],['SP','Sophie Patel','Chat · Active']].map(([i,n,s],x)=><article class:list={[x===0&&'selected']}><span>{i}</span><div><b>{n}</b><small>{s}</small></div><time>{x===0?'Now':`${x*4}m`}</time></article>)}</aside><main><div class="console-tabs"><b>Recording & transcript</b><span>Summary & analysis</span></div><div class="recording-row"><button>▶</button><b>Call recording · 02:14</b></div><div class="mini-transcript"><p class="customer">I need help changing an appointment for tomorrow.</p><p class="ai">Of course. May I have the booking name and the time you would prefer?</p><p class="customer">Emily Carter. Any time after 2 PM works.</p><p class="ai">Thanks, Emily. I found two available times and can update that for you now.</p></div></main></div></div>
+    </div></section>
+
+    <section class="section robot-section"><div class="support-shell split"><div class="copy"><span class="eyebrow">A better first interaction</span><h2>Your customers shouldn’t have to <em>talk like a robot.</em></h2><p>Traditional automation makes customers adapt to the system. Ralvie is designed so people can ask questions in their own words, change direction, add details, correct themselves, and continue without restarting.</p><strong class="closing">AI should adapt to the customer—not the other way around.</strong></div><div class="ivr-compare app-window"><div class="old"><small>Traditional automation</small><p>“Press 1 for Sales.”</p><p>“Please choose from the following options.”</p><p>“I didn’t understand that.”</p></div><div class="new"><small>Ralvie AI Frontdesk</small><p>“Thanks for calling. How can I help?”</p><span>Listening naturally…</span></div></div></div></section>
+
+    <section class="section channel-section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">One conversational AI</span><h2>Whether customers speak or type, <em>the experience stays intelligent.</em></h2></div><div class="human-channel-grid">{channels.map(([icon,name,copy])=><article><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section context-section" id="live-experience"><div class="support-shell split"><div class="interactive-chat app-window"><header><img src={ralvieLogoIcon.src} alt="Ralvie AI"/><div><b>Ralvie AI Frontdesk</b><small><i></i> Online now</small></div></header><main data-human-chat-body aria-live="polite"><p class="visitor" data-human-message data-kind="visitor">Do you offer solutions for enterprise teams?</p><p class="ai" data-human-message data-kind="ai">Yes. What are you looking to automate?</p><p class="visitor" data-human-message data-kind="visitor">Customer support and incoming enquiries. Around 8,000 a month.</p><p class="ai" data-human-message data-kind="ai" data-stage="qualify">That sounds like an enterprise setup. Shall I find a time with our team?</p><p class="visitor" data-human-message data-kind="visitor">Yes, please.</p><div class="chat-booking" data-human-message data-kind="ai" data-stage="book"><span><Icon name="calendar"/></span><div><b>Demo availability found</b><small>Tomorrow · 10:30 AM</small></div><Icon name="check"/></div><div class="chat-typing" data-human-typing><i></i><i></i><i></i></div></main><div class="chat-intent"><span data-human-status="understand">Understanding request</span><span data-human-status="qualify">Qualifying lead</span><span data-human-status="book">Booking demo</span></div><footer data-human-composer><span data-human-composer-text>Ask Ralvie anything…</span><button aria-label="Send message"><Icon name="arrow-right"/></button></footer></div><div class="copy"><span class="eyebrow">Context-aware conversation</span><h2>Every message shouldn’t feel like <em>the first message.</em></h2><p>Ralvie uses relevant information already provided in the conversation. Customers can ask follow-up questions, correct details, or change topics without repeating everything.</p><ul><li>Shared context across multiple questions</li><li>Dynamic follow-up questions</li><li>Natural corrections and interruptions</li></ul></div></div></section>
+
+    <section class="section flow-band"><div class="support-shell"><div class="section-head center light"><span class="eyebrow">Conversational flow</span><h2>Human-like AI should do more than <em>sound natural.</em></h2><p>A useful conversation connects understanding with real business action.</p></div><div class="conversation-flow">{flow.map(([name,copy],i)=><article><small>0{i+1}</small><span>{name}</span><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section phone-section"><div class="support-shell split"><div class="copy"><span class="eyebrow">AI phone handling</span><h2>Replace “Press 1” with <em>“How can I help?”</em></h2><p>Callers begin with the reason they actually called. Ralvie can collect details, retrieve configured information, provide an approved response, complete an action, or route the call.</p><ul><li>Natural incoming-call conversations</li><li>Corrections without restarting</li><li>Concise, real-time responses</li></ul></div><div class="interactive-call app-window"><header><span><Icon name="phone"/></span><div><b>Ralvie Frontdesk</b><small>Live incoming call</small></div><em>● Live</em></header><div class="interactive-call-body" data-human-call-demo><div class="call-readout"><p data-human-call-status>Press play to hear the conversation</p><strong data-human-call-timer>00:00</strong></div><div class="call-people"><article data-human-participant="ai"><span><img src={ralvieLogoIcon.src} alt="Ralvie AI"/></span><b>Ralvie AI Frontdesk</b><small>AI receptionist</small><i>{[1,2,3,4,5].map(()=><b></b>)}</i></article><button class="call-toggle" type="button" data-human-call-toggle aria-label="Play call"><span class="play">▶</span><span class="pause"><i></i><i></i></span></button><article data-human-participant="customer"><span><img src={customerPortrait.src} alt="Customer"/></span><b>Customer</b><small>Incoming caller</small><i>{[1,2,3,4,5].map(()=><b></b>)}</i></article></div>{[ai01,customer01,ai02,customer02,ai03,customer03,ai04,customer04,ai05,customer05,ai06,customer06].map((src,index)=><audio preload="metadata" src={src} data-human-call-audio data-speaker={index%2===0?'ai':'customer'}></audio>)}</div><footer><button aria-label="Mute"><Icon name="microphone"/></button><button class="end" data-human-call-end aria-label="End call"><Icon name="phone"/></button><button aria-label="Keypad"><Icon name="squares"/></button></footer></div></div></section>
+
+    <section class="section voice-library-section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Voice library</span><h2>Choose a voice that feels <em>right for your business.</em></h2><p>Match the sound of your AI Frontdesk to the conversation—professional, friendly, concise, consultative, or supportive.</p></div><div class="voice-library app-window"><header><div><small>Configured voice experience</small><h3>All voices</h3></div><label>⌕ <span>Search voices…</span></label><button>▽ Filters</button></header><div class="voice-filter"><span>Active filters:</span><b>Language: English <i>×</i></b></div><div class="voice-grid">{voices.map(([initials,name,tone,gender,copy],index)=><article data-voice-card><header><span>{initials}</span><div><h3>{name}</h3><small>{tone}</small></div>{index===1&&<em>Popular</em>}</header><div class="voice-tags"><span>Natural AI</span><span>English</span><span>{gender}</span></div><p>{copy}</p><footer><button data-voice-select><Icon name="plus"/> Select</button><button data-voice-preview>▷ <span>Preview</span></button></footer></article>)}</div></div></div></section>
+
+    <section class="section intent-section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Intent recognition</span><h2>Understand what customers want—<em>not only the words they use.</em></h2><p>Different phrases can point to the same need. Ralvie organizes natural language around meaningful business intent.</p></div><div class="intent-grid">{intents.map((x,i)=><span><i>{String(i+1).padStart(2,'0')}</i>{x}</span>)}</div></div></section>
+
+    <section class="section data-section"><div class="support-shell split"><div class="capture-card app-window"><header><span><Icon name="sparkles"/></span><div><small>Conversation intelligence</small><b>Business context captured</b></div></header><blockquote>“We run nine locations in Ontario and receive about 4,000 calls a month.”</blockquote><dl><div><dt>Locations</dt><dd>9</dd></div><div><dt>Region</dt><dd>Ontario, Canada</dd></div><div><dt>Monthly call volume</dt><dd>Approximately 4,000</dd></div><div><dt>Primary need</dt><dd>After-hours coverage</dd></div></dl><footer>Ready for CRM workflow <Icon name="arrow-right"/></footer></div><div class="copy"><span class="eyebrow">Conversational data capture</span><h2>Turn natural speech into <em>structured business context.</em></h2><p>Capture useful details throughout the interaction without making the customer complete a separate form. Qualification becomes part of the conversation.</p><strong class="closing">The customer gets help. Your team gets context.</strong></div></div></section>
+
+    <section class="section knowledge-band"><div class="support-shell"><div class="section-head center light"><span class="eyebrow">Knowledge-aware AI</span><h2>Natural conversation powered by <em>your business context.</em></h2><p>Use approved static knowledge and connected, real-time sources when the workflow requires them.</p></div><div class="knowledge-grid">{[['document','Approved knowledge','Websites, documents, FAQs, policies, procedures, and support guides.'],['database','Live information','Order status, availability, appointments, inventory, and customer records.'],['bolt','Configured actions','Scheduling, follow-up, CRM updates, routing, and service workflows.'],['users','Human handoff','Transfer the customer with the reason, details, and conversation summary intact.']].map(([icon,n,c])=><article><span><Icon name={icon}/></span><h3>{n}</h3><p>{c}</p></article>)}</div></div></section>
+
+    <section class="section analytics-section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Conversation analytics</span><h2>See what customers are <em>actually talking about.</em></h2></div><div class="conversation-dashboard app-window"><header><div><small>Conversation intelligence</small><b>Today’s overview</b></div><button>Last 24 hours</button></header><div class="conversation-kpis">{[['Conversations','1,284'],['Voice calls','486'],['Website chats','612'],['Human escalations','74'],['Leads captured','128'],['Appointments','46']].map(([n,v])=><article><small>{n}</small><b>{v}</b></article>)}</div><div class="analytics-body"><article><b>Conversation volume</b><div class="volume-bars">{[38,54,45,72,61,88,79,94,68,84].map(h=><i style={`--h:${h}%`}></i>)}</div></article><article><b>Common intent</b>{[['Product information','32%'],['Customer support','27%'],['Appointment booking','18%'],['Human request','9%']].map(([n,v])=><p><span>{n}</span><i><b style={`--w:${v}`}></b></i><em>{v}</em></p>)}</article></div></div></div></section>
+
+    <section class="section soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Built for conversations that matter</span><h2>One AI layer. <em>Many business settings.</em></h2></div><div class="industry-grid human-industries">{industries.map((x,i)=><article><span><Icon name={i%3===0?'building':i%3===1?'heart':'briefcase'}/></span><h3>{x}</h3></article>)}</div></div></section>
+
+    <section class="section"><div class="support-shell"><div class="section-head center"><span class="eyebrow">How it works</span><h2>From business knowledge to <em>natural customer conversations.</em></h2></div><div class="steps-grid human-steps">{['Connect your business knowledge','Define conversation rules','Activate voice and chat','Customer starts naturally','Ralvie follows the context','Ralvie responds clearly','Ralvie takes the next step','A human joins when needed'].map((x,i)=><article><span>{String(i+1).padStart(2,'0')}</span><h3>{x}</h3></article>)}</div></div></section>
+
+    <section class="section comparison soft-mesh"><div class="support-shell"><div class="section-head center"><span class="eyebrow">Before & after Ralvie</span><h2>Less menu navigation. <em>More useful conversation.</em></h2></div><div class="compare-table">{[['Rigid IVR menus','Open with “How can I help?”'],['Exact keywords required','Natural language understanding'],['Every question starts over','Relevant context carries forward'],['Static FAQ answers','Dynamic questions and actions'],['Customer repeats everything','Handoff includes conversation context'],['Business-hours bottlenecks','Always-on first response']].map(([a,b])=><div class="compare-row"><span><Icon name="x-mark"/>{a}</span><span><Icon name="check"/>{b}</span></div>)}</div></div></section>
+
+    <section class="section faq"><div class="support-shell faq-layout"><div class="faq-column faq-column-left"><div class="section-head"><span class="eyebrow">Frequently asked questions</span><h2>Human-like calls and chat, <em>explained.</em></h2><p>Natural conversation with structured business intelligence behind it.</p></div><div class="faq-list">{faqs.slice(0,4).map(([q,a],i)=><details open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div><div class="faq-column"><div class="faq-list">{faqs.slice(4).map(([q,a])=><details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></div></section>
+
+    <section class="final-cta human-final" id="get-started"><div class="cta-mesh" aria-hidden="true"><i></i><i></i><i></i></div><div class="support-shell center"><span class="eyebrow">AI that talks like a conversation—not a menu</span><h2>Make Every Customer Interaction <em>Feel More Natural.</em></h2><p>Give customers responsive AI conversations across calls and chat—powered by your knowledge, connected to action, and ready to involve your team when needed.</p><div class="cta-actions"><a class="primary-btn" href="#">Book a demo <Icon name="arrow-right"/></a><a class="secondary-btn" href="#live-experience"><Icon name="microphone"/> Talk to Ralvie AI</a></div><small>Meet Ralvie AI Human-Like Call & Chat Handling.</small></div></section>
+  </main>
+  <Footer theme="light" />
+</Layout>
+
+<script>
+  const setupHumanChat = () => {
+    const body = document.querySelector<HTMLElement>('[data-human-chat-body]');
+    if (!body || body.dataset.ready) return;
+    const messages = [...body.querySelectorAll<HTMLElement>('[data-human-message]')];
+    const typing = body.querySelector<HTMLElement>('[data-human-typing]');
+    const composer = document.querySelector<HTMLElement>('[data-human-composer]');
+    const composerText = document.querySelector<HTMLElement>('[data-human-composer-text]');
+    const statuses = [...document.querySelectorAll<HTMLElement>('[data-human-status]')];
+    if (!messages.length || !typing) return;
+    body.dataset.ready = 'true';
+    let run = 0;
+    const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
+    const setStage = (stage: string) => {
+      const order = ['understand','qualify','book'];
+      const current = order.indexOf(stage);
+      statuses.forEach((item,index) => {
+        item.classList.toggle('done', index < current);
+        item.classList.toggle('active', index === current);
+      });
+    };
+    const typeMessage = async (text: string, currentRun: number) => {
+      if (!composer || !composerText) return;
+      composer.classList.add('is-typing');
+      composerText.textContent = '';
+      for (const character of text) {
+        if (currentRun !== run) return;
+        composerText.textContent += character;
+        await wait(character === ' ' ? 16 : 27);
+      }
+      await wait(250);
+      composer.classList.add('is-sending');
+      await wait(170);
+      composer.classList.remove('is-typing','is-sending');
+      composerText.textContent = 'Ask Ralvie anything…';
+    };
+    const play = async () => {
+      const currentRun = ++run;
+      messages.forEach((item) => item.classList.remove('show'));
+      typing.classList.remove('show');
+      statuses.forEach((item) => item.classList.remove('done','active'));
+      body.scrollTop = 0;
+      await wait(500);
+      for (const [index,message] of messages.entries()) {
+        if (currentRun !== run) return;
+        if (message.dataset.kind === 'ai') {
+          typing.classList.add('show');
+          body.append(typing);
+          await wait(900);
+          typing.classList.remove('show');
+        } else {
+          await typeMessage(message.textContent?.trim() || '', currentRun);
+        }
+        message.classList.add('show');
+        body.scrollTo({top:body.scrollHeight,behavior:'smooth'});
+        if (index === 0) setStage('understand');
+        if (message.dataset.stage) setStage(message.dataset.stage);
+        await wait(message.dataset.kind === 'visitor' ? 650 : 900);
+      }
+      statuses.forEach((item) => { item.classList.add('done'); item.classList.remove('active'); });
+      await wait(2400);
+      if (currentRun === run) void play();
+    };
+    void play();
+  };
+
+  const setupHumanCall = () => {
+    const demo = document.querySelector<HTMLElement>('[data-human-call-demo]');
+    if (!demo || demo.dataset.ready) return;
+    const tracks = [...demo.querySelectorAll<HTMLAudioElement>('[data-human-call-audio]')];
+    const toggle = demo.querySelector<HTMLButtonElement>('[data-human-call-toggle]');
+    const status = demo.querySelector<HTMLElement>('[data-human-call-status]');
+    const timer = demo.querySelector<HTMLElement>('[data-human-call-timer]');
+    const end = document.querySelector<HTMLButtonElement>('[data-human-call-end]');
+    if (!tracks.length || !toggle) return;
+    demo.dataset.ready = 'true';
+    let index = 0, elapsed = 0, timerId = 0;
+    let playing = false;
+    const renderTimer = () => { if (timer) timer.textContent = `${String(Math.floor(elapsed/60)).padStart(2,'0')}:${String(elapsed%60).padStart(2,'0')}`; };
+    const stopTimer = () => { window.clearInterval(timerId); timerId = 0; };
+    const showSpeaker = (speaker = '') => {
+      demo.querySelectorAll('[data-human-participant]').forEach((item) => item.classList.toggle('speaking',item.getAttribute('data-human-participant')===speaker));
+      if (status) status.textContent = speaker === 'ai' ? 'Ralvie AI Frontdesk is speaking' : speaker === 'customer' ? 'Customer is speaking' : 'Call paused';
+    };
+    const playCurrent = async () => {
+      playing = true; demo.classList.add('is-playing'); toggle.setAttribute('aria-label','Pause call'); showSpeaker(tracks[index].dataset.speaker);
+      if (!timerId) timerId = window.setInterval(() => { elapsed += 1; renderTimer(); },1000);
+      try { await tracks[index].play(); } catch { playing = false; demo.classList.remove('is-playing'); stopTimer(); showSpeaker(); }
+    };
+    tracks.forEach((track,trackIndex) => track.addEventListener('ended',() => { if (!playing || trackIndex !== index) return; index = (index+1)%tracks.length; tracks[index].currentTime=0; void playCurrent(); }));
+    toggle.addEventListener('click',() => { if (playing) { playing=false; tracks[index].pause(); stopTimer(); demo.classList.remove('is-playing'); toggle.setAttribute('aria-label','Play call'); showSpeaker(); } else void playCurrent(); });
+    end?.addEventListener('click',() => { playing=false; tracks.forEach((track)=>{track.pause();track.currentTime=0;}); index=0;elapsed=0;stopTimer();renderTimer();demo.classList.remove('is-playing');toggle.setAttribute('aria-label','Play call');showSpeaker();if(status)status.textContent='Call ended — press play to restart'; });
+  };
+  const setupVoiceLibrary = () => {
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-voice-card]')];
+    cards.forEach((card) => {
+      if (card.dataset.ready) return;
+      card.dataset.ready = 'true';
+      card.querySelector('[data-voice-select]')?.addEventListener('click', () => {
+        cards.forEach((item) => item.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+      card.querySelector('[data-voice-preview]')?.addEventListener('click', () => {
+        const willPlay = !card.classList.contains('previewing');
+        cards.forEach((item) => item.classList.remove('previewing'));
+        card.classList.toggle('previewing', willPlay);
+        if (willPlay) window.setTimeout(() => card.classList.remove('previewing'), 2800);
+      });
+    });
+  };
+  const setupHumanDemos = () => { setupHumanChat(); setupHumanCall(); setupVoiceLibrary(); };
+  setupHumanDemos();
+  document.addEventListener('astro:page-load',setupHumanDemos);
+</script>

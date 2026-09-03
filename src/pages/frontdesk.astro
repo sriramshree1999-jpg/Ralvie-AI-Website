@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import FrontdeskHero from '../components/frontdesk/FrontdeskHero.astro';
+import Intro from '../components/frontdesk/Intro.astro';
+import ChannelGrid from '../components/frontdesk/ChannelGrid.astro';
+import ConnectedJourney from '../components/frontdesk/ConnectedJourney.astro';
+import AvailabilitySection from '../components/frontdesk/AvailabilitySection.astro';
+import ConversationSection from '../components/frontdesk/ConversationSection.astro';
+import ConversionFeatures from '../components/frontdesk/ConversionFeatures.astro';
+import MultilingualSection from '../components/frontdesk/MultilingualSection.astro';
+import KnowledgeEngine from '../components/frontdesk/KnowledgeEngine.astro';
+import BusinessActions from '../components/frontdesk/BusinessActions.astro';
+import FollowUpAutomation from '../components/frontdesk/FollowUpAutomation.astro';
+import DashboardPreview from '../components/frontdesk/DashboardPreview.astro';
+import IntegrationsSection from '../components/frontdesk/IntegrationsSection.astro';
+import HowItWorks from '../components/frontdesk/HowItWorks.astro';
+import AiRoles from '../components/frontdesk/AiRoles.astro';
+import IndustriesSection from '../components/frontdesk/IndustriesSection.astro';
+import CustomerStory from '../components/frontdesk/CustomerStory.astro';
+import PlatformComparison from '../components/frontdesk/PlatformComparison.astro';
+import FrontdeskFaq, { faqs } from '../components/frontdesk/FrontdeskFaq.astro';
+import FinalCta from '../components/frontdesk/FinalCta.astro';
+
+const title = 'AI Frontdesk for Calls, Chat, Email and SMS | Ralvie AI';
+const description =
+  'Ralvie AI Frontdesk manages calls, website chats, emails, SMS, web voice conversations and forms with one intelligent AI employee available 24/7.';
+
+// Reuses the exact Q&A rendered in FrontdeskFaq.astro, so the structured
+// data can never drift out of sync with what's visible on the page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <Header title="Ralvie AI" />
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  {/* Hero WebGL scene (public/scene.js) is a plain ES module, resolved via
+      this import map rather than bundled by Vite — must precede it in the
+      document so "three" and "three/addons/" resolve at parse time. */}
+  <script
+    type="importmap"
+    is:inline
+    set:html={JSON.stringify({
+      imports: {
+        three: 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js',
+        'three/addons/': 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/',
+        postprocessing: 'https://cdn.jsdelivr.net/npm/postprocessing@6.36.4/build/index.js',
+      },
+    })}
+  />
+  <script type="module" src="/scene.js" is:inline></script>
+
+  <main class="frontdesk-page pt-(--header-height)">
+    <FrontdeskHero />
+    <Intro />
+    <ChannelGrid />
+    <ConnectedJourney />
+    <AvailabilitySection />
+    <ConversationSection />
+    <ConversionFeatures />
+    <MultilingualSection />
+    <KnowledgeEngine />
+    <BusinessActions />
+    <FollowUpAutomation />
+    <DashboardPreview />
+    <IntegrationsSection />
+    <HowItWorks />
+    <AiRoles />
+    <IndustriesSection />
+    <CustomerStory />
+    <PlatformComparison />
+    <FrontdeskFaq />
+    <FinalCta />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* The footer uses a sticky reveal treatment. Keep the entire page canvas
+     opaque so it is only exposed after the final Frontdesk section. */
+  .frontdesk-page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: #060b1f;
+    isolation: isolate;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = gsap.context(() => {
+    if (reducedMotion) return;
+
+    // Section reveals — every section on this page marks its animatable
+    // pieces with `.reveal`. Content is full-opacity in the server-rendered
+    // HTML; this only runs (and only hides anything) once JS is active.
+    // `.hero-visual` also gets a slight scale-in (the hero's "fade and scale").
+    // Driven entirely by ScrollTrigger rather than a bare autoplay timeline —
+    // above-the-fold elements resolve their trigger as already-met on load,
+    // so this fires immediately for the hero and on-scroll for everything else.
+    gsap.utils.toArray<HTMLElement>('.reveal').forEach((el, i) => {
+      const isHeroVisual = el.classList.contains('hero-visual');
+      gsap.set(el, { opacity: 0, y: 24, scale: isHeroVisual ? 0.92 : 1 });
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: (i % 3) * 0.08,
+        scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
+      });
+    });
+  });
+
+  document.addEventListener('astro:before-swap', () => ctx.revert());
+</script>

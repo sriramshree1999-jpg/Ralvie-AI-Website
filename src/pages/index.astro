@@ -1,11 +1,822 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroScene from '../components/three/HeroScene';
+import { Image } from 'astro:assets';
+import ralvieLogo from '../assets/Ralvie-logo.svg';
+import ralvieIcon from '../assets/Ralvie-logo-icon.svg';
+import activityFeatureImage from '../assets/Automatic Activity Intelligence.jpg';
+import timeLogsFeatureImage from '../assets/Smart Time Logs.jpg';
+import screenCaptureFeatureImage from '../assets/Intelligent Screen Capture.jpg';
+import taskManagementFeatureImage from '../assets/Task Management.jpg';
+import projectVisibilityFeatureImage from '../assets/Project Visibility.jpg';
+import analyticsFeatureImage from '../assets/AI Analytics Dashboard.jpg';
+import zktecoIndiaImage from '../assets/ZKTECO India.jpg';
+import zktecoUsaImage from '../assets/ZKTeco USA.jpg';
+import livingWaterImage from '../assets/living water resorts -01.jpg';
+import lakesideImage from '../assets/lakeside_seafood_grill.jpg';
+import cranberryImage from '../assets/cranberry.jpg';
+import Icon from '../components/Icon.astro';
+import WorkforceProductivityCta from '../components/WorkforceProductivityCta.astro';
+import '../styles/home.css';
+const productivity = [
+  'Automatic activity intelligence',
+  'AI timesheets & project mapping',
+  'AI work summaries',
+  'Projects & tasks',
+  'Reports & analytics',
+  'Workforce visibility',
+];
+const channels = [
+  ['Phone', 'Natural AI voice, qualification and routing.', '/ai-phone-receptionist', '⌕'],
+  ['Website chat', 'Instant answers that turn visitors into leads.', '/ai-website-chatbot', '◌'],
+  ['Web voice', 'Let visitors speak naturally with your website.', '/ai-web-voicebot', '≋'],
+  ['Email', 'Understand, organize and action every message.', '/ai-email-manager', '✉'],
+  ['Smart forms', 'Capture context and trigger the right workflow.', '/ai-website-forms', '▤'],
+  ['Connected CRM', 'Keep every customer interaction in one view.', '/ai-crm', '◎'],
+];
+const steps = ['Understand', 'Automate', 'Connect', 'Act', 'Improve'];
+const outcomes = [
+  { value: 43, suffix: '%', label: 'Improved workforce productivity' },
+  { value: 5, suffix: '×', label: 'Faster reporting efficiency' },
+  { value: 68, suffix: '%', label: 'Better project visibility' },
+  { value: 24, suffix: '/7', label: 'AI customer engagement' },
+  { value: 37, suffix: '%', label: 'Increased lead conversion' },
+];
+const customerVoices = [
+  { image: zktecoIndiaImage, alt: 'ZKTeco India office', category: 'Workforce operations', title: 'ZKTeco India', description: 'Ralvie AI Productivity gives ZKTeco India clearer workforce visibility, automated activity tracking, and simpler team reporting.', quote: 'Ralvie AI Productivity gives our teams clearer visibility into daily activity and reporting, so we can spend more time improving operations.' },
+  { image: livingWaterImage, alt: 'Living Water Resort waterfront', category: 'Hospitality experience', title: 'Living Water Resort', description: 'Ralvie AI Frontdesk answers reservation and spa enquiries quickly, helping the resort deliver a smoother guest experience.', quote: 'A honeymoon couple from Germany booked their suite through the AI concierge at 2 AM. It felt like having a personal assistant.' },
+  { image: lakesideImage, alt: 'Lakeside Seafood and Grill patio', category: 'Guest communication', title: 'Lakeside Seafood & Grill', description: 'Ralvie AI Frontdesk helps the restaurant answer guest questions and manage reservation communication during busy hours.', quote: 'In under a week, the system learned our menu, policies, and workflows, then handled daily reservations and after-hours enquiries.' },
+  { image: cranberryImage, alt: 'Cranberry Golf Course', category: 'Reservations & enquiries', title: 'Cranberry Golf Course', description: 'Cranberry Golf Course handles reservations and guest enquiries more efficiently with fast, reliable AI support.', quote: 'A group of golfers booked dinner for eight through the AI without waiting on hold. It was like having a host available anytime.' },
+  { image: zktecoUsaImage, alt: 'ZKTeco USA facility', category: 'Business communications', title: 'ZKTeco USA', description: 'Ralvie AI Frontdesk handles inbound enquiries, captures leads, and routes each conversation to the right team faster.', quote: 'Ralvie Frontdesk reduced operational pressure, improved the caller experience, and lowered routine handling costs.' },
+];
+const platformFeatures = [
+  {
+    type: 'activity',
+    title: 'Automatic Activity Intelligence',
+    image: activityFeatureImage,
+    copy: 'Ralvie AI continuously understands application usage, active work sessions, browser activity, and operational patterns without manual input. It classifies activity in real time, giving teams an accurate view of how work hours are spent.',
+  },
+  {
+    type: 'time',
+    title: 'Smart Time Logs',
+    image: timeLogsFeatureImage,
+    copy: 'Automatically build detailed time logs from real work activity. Generate project-ready breakdowns, daily summaries, and exportable reports without the friction of traditional timesheets.',
+  },
+  {
+    type: 'capture',
+    title: 'Intelligent Screen Capture',
+    image: screenCaptureFeatureImage,
+    copy: 'Capture contextual screenshots at scheduled intervals with searchable activity details. Flexible frequency, scope, and privacy controls keep teams informed while supporting transparency and compliance.',
+  },
+  {
+    type: 'tasks',
+    title: 'Task Management',
+    image: taskManagementFeatureImage,
+    copy: 'Create, assign, prioritize, and monitor tasks across projects with complete team visibility. Real-time progress tracking keeps deadlines, workload, and every next action clear.',
+  },
+  {
+    type: 'projects',
+    title: 'Project Visibility',
+    image: projectVisibilityFeatureImage,
+    copy: 'See every project in one live view, identify work that is on track or at risk, and understand where attention is needed most through clear progress and contribution insights.',
+  },
+  {
+    type: 'analytics',
+    title: 'AI Analytics Dashboard',
+    image: analyticsFeatureImage,
+    copy: 'Bring productivity data into one customizable view. Track performance, time distribution, project KPIs, and workflow patterns with AI-generated insights and downloadable reports.',
+  },
+];
+const productivityUseCases = [
+  {
+    icon: 'monitor',
+    title: 'Hybrid & Remote Workforce Visibility',
+    copy: 'Understand how distributed teams work across tools and projects while preserving autonomy and reducing the need for constant status checks.',
+  },
+  {
+    icon: 'clock',
+    title: 'Automated Timesheets & Client Billing',
+    copy: 'Convert real activity into accurate time records, project breakdowns, and billing-ready reports without relying on manual timesheet entry.',
+  },
+  {
+    icon: 'folder',
+    title: 'Project Delivery & Resource Planning',
+    copy: 'See where time and effort are going, identify workload imbalances, and allocate people and resources to the work that needs them most.',
+  },
+  {
+    icon: 'target',
+    title: 'Performance & Workflow Improvement',
+    copy: 'Reveal focus patterns, recurring bottlenecks, and inefficient workflows so teams can improve operations with evidence instead of assumptions.',
+  },
+  {
+    icon: 'list-check',
+    title: 'Compliance & Audit Readiness',
+    copy: 'Maintain clear, searchable activity and time records that support internal reviews, client reporting, governance, and operational accountability.',
+  },
+  {
+    icon: 'squares',
+    title: 'Leadership & Executive Reporting',
+    copy: 'Give managers and executives a concise view of productivity, project health, capacity, and trends through customizable AI-powered reporting.',
+  },
+];
+const frontdeskFeatures = [
+  {
+    icon: 'phone',
+    title: 'AI Phone Receptionist',
+    copy: 'Answer every call with a natural AI voice that handles enquiries, qualifies callers, routes requests, and books appointments around the clock.',
+    href: '/ai-phone-receptionist',
+  },
+  {
+    icon: 'chat',
+    title: 'AI Website Chatbot',
+    copy: 'Give every website visitor an immediate, contextual response while capturing leads, answering questions, and guiding people to the right next step.',
+    href: '/ai-website-chatbot',
+  },
+  {
+    icon: 'mail',
+    title: 'AI Email Manager',
+    copy: 'Understand incoming email, prioritize important conversations, prepare relevant replies, and trigger follow-up actions without losing customer context.',
+    href: '/ai-email-manager',
+  },
+  {
+    icon: 'microphone',
+    title: 'AI Web Voicebot',
+    copy: 'Let visitors speak naturally with your website and receive instant voice assistance for questions, qualification, bookings, and support.',
+    href: '/ai-web-voicebot',
+  },
+  {
+    icon: 'form',
+    title: 'Intelligent Website Forms',
+    copy: 'Capture richer lead and customer information with adaptive forms that qualify submissions, route requests, and start connected workflows.',
+    href: '/ai-website-forms',
+  },
+  {
+    icon: 'database',
+    title: 'Connected AI CRM',
+    copy: 'Bring calls, chats, emails, forms, and follow-ups into one customer timeline so every interaction remains visible, useful, and actionable.',
+    href: '/ai-crm',
+  },
+];
+const frontdeskUseCases = [
+  {
+    icon: 'headset',
+    title: 'Customer Support',
+    copy: 'Resolve everyday customer questions quickly and route complex requests to the right team.',
+  },
+  {
+    icon: 'target',
+    title: 'Lead Management',
+    copy: 'Capture, qualify, organize, and move promising leads toward the right next action.',
+  },
+  {
+    icon: 'phone',
+    title: 'AI Call Handling',
+    copy: 'Answer calls around the clock, understand intent, and connect every caller appropriately.',
+  },
+  {
+    icon: 'chat',
+    title: 'AI Chat Support',
+    copy: 'Give website visitors fast, useful answers while preserving the full conversation context.',
+  },
+  {
+    icon: 'mail',
+    title: 'Email & SMS Automation',
+    copy: 'Automate timely replies and follow-ups across email and text without losing customer context.',
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Ralvie AI | AI Productivity & Customer Communication Platform"
+  description="Ralvie AI helps businesses improve workforce productivity and customer communication with intelligent automation across calls, chat, email, SMS, web voice, forms and customer interactions."
+  theme="light"
+  showScene={false}
+>
+  <Header title="Ralvie AI" theme="light" />
+  <main class="home">
+    <section class="hero">
+      <div class="mesh mesh-a"></div><div class="mesh mesh-b"></div><div class="mesh mesh-c"></div>
+      <div class="hero-scene"><HeroScene client:visible /></div>
+      <div class="hero-vignette"></div>
+      <div class="container-page hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span>Ralvie AI platform</div><h1>
+            <span>Intelligence for your workforce.</span><em>AI for every conversation.</em>
+          </h1><div class="hero-message">
+            <p>Understand how work gets done. Transform how every customer is served.</p><p
+              class="lead"
+            >
+              Ralvie brings productivity intelligence and customer communication automation into one
+              connected AI ecosystem—helping your business work smarter, respond faster, and turn
+              everyday activity into action.
+            </p>
+          </div><div class="actions">
+            <a class="primary" href="#demo">Book a demo <b>↗</b></a>
+          </div><div class="hero-proof">
+            <span>AI productivity</span><span>Customer communication</span><span
+              >Intelligent automation</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="outcomes" aria-labelledby="outcomes-heading">
+      <div class="outcomes-glow outcomes-glow-a"></div><div class="outcomes-glow outcomes-glow-b">
+      </div>
+      <div class="container-page outcomes-inner">
+        <header class="outcomes-head">
+          <div class="eyebrow"><span></span>Customer outcomes</div><h2 id="outcomes-heading">
+            Committed to your business<br /><em>from start to success.</em>
+          </h2><p>
+            Practical AI designed to create measurable impact across your workforce and customer
+            journey.
+          </p>
+        </header>
+        <div class="outcomes-grid">
+          {
+            outcomes.map((item, i) => (
+              <article class="outcome-card" style={`--delay:${i * 90}ms`}>
+                <>
+                  <strong>
+                    <span data-count={item.value}>0</span>
+                    {item.suffix}
+                  </strong>
+                  <p>{item.label}</p>
+                  <i />
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="product-showcase" aria-labelledby="products-heading">
+      <div class="container-page">
+        <header class="product-showcase-head">
+          <div class="eyebrow"><span></span>Two intelligent platforms</div><h2
+            id="products-heading"
+          >
+            AI built around the work<br /><em>that matters most.</em>
+          </h2><p>Improve how your team works and how every customer experiences your business.</p>
+        </header>
+        <div class="product-showcase-grid">
+          <article class="product-showcase-card productivity-product">
+            <div class="product-card-copy">
+              <div class="product-card-top">
+                <span class="product-badge">Ralvie AI Productivity</span>
+              </div><h3>Turn everyday work into actionable intelligence.</h3><p>
+                Automatically capture meaningful work activity, organize time, and map effort to
+                projects and tasks. Turn daily progress into clear reports and productivity insights
+                without adding manual tracking.
+              </p><div class="product-benefit">From activity to insight—in seconds</div><a
+                href="#productivity">Explore Productivity <span>→</span></a
+              >
+            </div>
+            <div class="product-visual productivity-visual reference-visual">
+              <div class="visual-grid"></div><div class="productivity-pill p-pill-one">
+                <span><Icon name="target" /></span><b>Automatic tracking</b>
+              </div><div class="productivity-pill p-pill-two">
+                <span><Icon name="clock" /></span><b>Time logs</b>
+              </div><div class="productivity-pill p-pill-three">
+                <span><Icon name="monitor" /></span><b>Screen captures</b>
+              </div><div class="productivity-pill p-pill-four">
+                <span><Icon name="folder" /></span><b>Projects</b>
+              </div><div class="productivity-pill p-pill-five">
+                <span><Icon name="list-check" /></span><b>Tasks</b>
+              </div><div class="productivity-pill p-pill-six">
+                <span><Icon name="squares" /></span><b>Dashboards</b>
+              </div><div class="productivity-center">
+                <div class="hero-bars"><i></i><i></i><i><span></span></i></div><Image
+                  src={ralvieLogo}
+                  alt="Ralvie AI"
+                /><strong>Enhance your productivity</strong>
+              </div>
+            </div>
+          </article>
+          <article class="product-showcase-card frontdesk-product">
+            <div class="product-card-copy">
+              <div class="product-card-top">
+                <span class="product-badge">Ralvie AI Frontdesk</span>
+              </div><h3>Be available for every customer, on every channel.</h3><p>
+                Deliver immediate support across phone, chat, web voice, email, SMS, and forms.
+                Ralvie answers questions, qualifies opportunities, books appointments, routes
+                requests, and keeps every interaction connected to the right customer context.
+              </p><div class="product-benefit">Always on. Always in context.</div><a
+                href="/frontdesk">Explore Frontdesk <span>→</span></a
+              >
+            </div>
+            <div class="product-visual frontdesk-visual reference-visual">
+              <div class="visual-grid"></div><div class="call-console">
+                <small>Ralvie Frontdesk</small><div class="call-core">
+                  <span class="circle-wave circle-wave-one"></span>
+                  <span class="circle-wave circle-wave-two"></span>
+                  <span class="circle-wave circle-wave-three"></span>
+                  <span class="circle-wave circle-wave-four"></span>
+                  <span class="voice-core-glow"></span><Image src={ralvieIcon} alt="" />
+                </div><b>AI conversation active</b><strong>00:10</strong><div class="call-actions">
+                  <i><Icon name="microphone" /></i><i class="hangup"><Icon name="phone" /></i><i
+                    ><Icon name="squares" /></i
+                  >
+                </div>
+              </div><div class="frontdesk-pill f-pill-one">
+                <span><Icon name="phone" /></span><b>AI Phone Receptionist</b>
+              </div><div class="frontdesk-pill f-pill-two">
+                <span><Icon name="chat" /></span><b>AI Website Chatbot</b>
+              </div><div class="frontdesk-pill f-pill-three">
+                <span><Icon name="mail" /></span><b>AI Email Manager</b>
+              </div><div class="frontdesk-pill f-pill-four">
+                <span><Icon name="database" /></span><b>AI CRM</b>
+              </div><div class="frontdesk-pill f-pill-five">
+                <span><Icon name="microphone" /></span><b>AI Web Voicebot</b>
+              </div><div class="frontdesk-pill f-pill-six">
+                <span><Icon name="form" /></span><b>Website Forms</b>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="statement">
+      <div class="container-page statement-grid">
+        <div>
+          <div class="eyebrow">About Ralvie</div><h2>AI that works across your business.</h2>
+        </div><div class="statement-copy">
+          <p>
+            Ralvie focuses on the two parts of modern business that matter most: <b
+              >how work gets done</b
+            > and <b>how customers get served.</b>
+          </p><p>One goal connects both—make everyday business operations more intelligent.</p>
+        </div>
+      </div>
+    </section>
+    <section class="productivity-features" aria-labelledby="productivity-features-title">
+      <div class="container-page">
+        <header class="productivity-features-head">
+          <span class="features-chip">Features</span>
+          <h2 id="productivity-features-title">
+            <span>Ralvie AI <em>Productivity</em></span>
+            <span><em>Platform Features</em></span>
+          </h2>
+          <p>
+            Turn daily work activity into clear, useful insights that help teams understand
+            productivity, reduce manual reporting, and make better operational decisions.
+          </p>
+        </header>
+        <div class="productivity-features-grid">
+          {
+            platformFeatures.map((feature) => (
+              <article class={`productivity-feature-card feature-${feature.type}`}>
+                <div class="feature-screen" aria-hidden="true">
+                  <Image src={feature.image} alt={`${feature.title} interface`} loading="lazy" />
+                </div>
+                <div class="feature-card-copy">
+                  <>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.copy}</p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="productivity-use-cases" aria-labelledby="productivity-use-cases-title">
+      <div class="container-page">
+        <header class="productivity-use-cases-head">
+          <span class="features-chip">Use cases</span>
+          <h2 id="productivity-use-cases-title">
+            <span>Ralvie AI <em>Productivity</em></span><br /><em>Use Cases</em>
+          </h2>
+          <p>
+            Put workplace intelligence into practice across everyday operations, from accurate time
+            reporting to better planning, performance, and decision-making.
+          </p>
+        </header>
+        <div class="productivity-use-cases-grid">
+          {
+            productivityUseCases.map((useCase) => (
+              <article class="productivity-use-case-card">
+                <div class="use-case-icon">
+                  <Icon name={useCase.icon} />
+                </div>
+                <h3>{useCase.title}</h3>
+                <p>{useCase.copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="workflow container-page">
+      <header class="section-headline">
+        <div class="eyebrow">Built for practical business AI</div><h2>
+          Intelligence that becomes part of the workflow.
+        </h2>
+      </header><div class="steps">
+        {
+          steps.map((step, i) => (
+            <div style={`--workflow-delay:${i * 7}s`}>
+              <>
+                <span>0{i + 1}</span>
+                <i />
+                <h3>{step}</h3>
+                <p>
+                  {
+                    [
+                      'Turn activity and conversations into context.',
+                      'Reduce repetitive work across the operation.',
+                      'Bring AI into tools your teams already use.',
+                      'Move from information to the next business step.',
+                      'Use better visibility to make better decisions.',
+                    ][i]
+                  }
+                </p>
+              </>
+            </div>
+          ))
+        }
+      </div><div class="industries">
+        <span>Built to adapt across</span>{
+          [
+            'Enterprise',
+            'SaaS & Technology',
+            'Hospitality',
+            'Healthcare',
+            'Real Estate',
+            'Retail & Ecommerce',
+            'Professional Services',
+          ].map((x) => <b>{x}</b>)
+        }
+      </div>
+    </section>
+    <section class="frontdesk-features-dark" aria-labelledby="frontdesk-features-title">
+      <div class="frontdesk-dark-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="container-page">
+        <header class="frontdesk-features-head">
+          <span class="frontdesk-dark-chip">Frontdesk features</span>
+          <h2 id="frontdesk-features-title">Ralvie AI <em>Frontdesk<br />Features</em></h2>
+          <p>
+            One intelligent customer communication layer for every channel—built to answer
+            instantly, preserve context, and turn conversations into meaningful business action.
+          </p>
+        </header>
+        <div class="frontdesk-features-grid">
+          {
+            frontdeskFeatures.map((feature) => (
+              <a class="frontdesk-feature-card" href={feature.href}>
+                <span class="frontdesk-feature-icon">
+                  <Icon name={feature.icon} />
+                </span>
+                <h3>{feature.title}</h3>
+                <p>{feature.copy}</p>
+                <span class="frontdesk-feature-link">
+                  Explore <b>❯❯</b>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="frontdesk-use-cases" aria-labelledby="frontdesk-use-cases-title">
+      <div class="container-page">
+        <header class="frontdesk-use-cases-head">
+          <span class="features-chip">Use cases</span>
+          <h2 id="frontdesk-use-cases-title"><span>Ralvie AI <em>Frontdesk</em></span><br /><em>Use Cases</em></h2>
+          <p>
+            Apply intelligent customer communication across the moments that matter most—from the
+            first enquiry to qualification, booking, support, routing, and follow-up.
+          </p>
+        </header>
+        <div class="frontdesk-use-cases-grid">
+          {
+            frontdeskUseCases.map((useCase) => (
+              <a class="frontdesk-use-case-card" href={useCase.title === 'Customer Support' ? '/frontdesk/use-cases/customer-support' : '#'}>
+                <span class="frontdesk-use-case-icon"><Icon name={useCase.icon} /></span>
+                <div class="frontdesk-use-case-copy">
+                  <h3>{useCase.title}</h3>
+                  <p>{useCase.copy}</p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="customer-voices" aria-labelledby="customer-voices-title">
+      <div class="container-page">
+        <header class="customer-voices-head">
+          <span class="customer-voices-chip">Customer Voices</span>
+          <h2 id="customer-voices-title">Real Businesses. <em>Real Results with Ralvie AI.</em></h2>
+          <p>
+            From operational productivity to customer communication, Ralvie AI helps modern
+            businesses work smarter, respond faster, and scale with confidence.
+          </p>
+        </header>
+
+        <div class="customer-voice-grid" aria-label="Customer stories">
+          <div class="customer-voice-viewport">
+          <div class="customer-voice-track">
+            {[0, 1].map((copy) => (
+              <div class="customer-voice-set" aria-hidden={copy === 1 ? 'true' : undefined}>
+                {customerVoices.map((voice) => (
+                  <article class="customer-voice-card">
+                    <div class="customer-voice-image"><Image src={voice.image} alt={copy === 1 ? '' : voice.alt} loading="lazy" /></div>
+                    <div class="customer-voice-content">
+                      <span>{voice.category}</span>
+                      <h4>{voice.title}</h4>
+                      <p>{voice.description}</p>
+                      <blockquote>“{voice.quote}”</blockquote>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ))}
+          </div>
+          </div>
+          <button class="customer-voice-arrow customer-voice-arrow-prev" type="button" aria-label="Show previous customer story" data-customer-voice-prev>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <button class="customer-voice-arrow customer-voice-arrow-next" type="button" aria-label="Show next customer story" data-customer-voice-next>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+          <div class="customer-voice-static" hidden>
+          <article class="customer-voice-card">
+            <div class="customer-voice-image"><Image src={zktecoIndiaImage} alt="ZKTeco India office" loading="lazy" /></div>
+            <div>
+              <span>Workforce operations</span>
+              <h4>ZKTeco India</h4>
+              <p>
+                Ralvie AI Productivity helps ZKTeco India improve workforce visibility, automate
+                activity tracking, and simplify reporting across teams. AI-powered productivity
+                insights, time analysis, and intelligent summaries support better planning,
+                stronger accountability, and more efficient day-to-day operations.
+              </p>
+              <blockquote>“Ralvie AI Productivity gave our teams clearer visibility into daily activity and reporting. We spend less time compiling information and more time using accurate insights to plan and improve operations.”</blockquote>
+            </div>
+          </article>
+            <article class="customer-voice-card">
+              <div class="customer-voice-image"><Image src={livingWaterImage} alt="Living Water Resort waterfront" loading="lazy" /></div>
+              <span>Hospitality experience</span>
+              <h4>Living Water Resort</h4>
+              <p>A premier lakeside destination combining luxury accommodations, wellness experiences, and first-class hospitality. Ralvie AI Frontdesk helps answer reservation and spa enquiries quickly and consistently for a smoother guest experience.</p>
+              <blockquote>“A honeymoon couple from Germany booked their suite entirely through the AI concierge at 2 AM. It felt like having a personal assistant for our trip.”</blockquote>
+            </article>
+            <article class="customer-voice-card">
+              <div class="customer-voice-image"><Image src={lakesideImage} alt="Lakeside Seafood and Grill patio" loading="lazy" /></div>
+              <span>Guest communication</span>
+              <h4>Lakeside Seafood &amp; Grill</h4>
+              <p>Located in the heart of Collingwood, the restaurant uses Ralvie AI Frontdesk to respond faster to guest questions, support reservation communication, and maintain reliable service during busy hours.</p>
+              <blockquote>“In under a week, the system was trained on menu details, dining policies, and special-event workflows, then launched to cover both daily reservations and after-hours enquiries.”</blockquote>
+            </article>
+            <article class="customer-voice-card">
+              <div class="customer-voice-image"><Image src={cranberryImage} alt="Cranberry Golf Course" loading="lazy" /></div>
+              <span>Reservations &amp; enquiries</span>
+              <h4>Cranberry Golf Course</h4>
+              <p>Known for its inviting atmosphere and memorable course experience, Cranberry Golf Course handles reservation enquiries and guest communication more efficiently with quick, reliable AI support.</p>
+              <blockquote>“A group of golfers easily secured a dinner booking for eight via the AI—without waiting on hold. It was like having a personal host ready to take care of us anytime.”</blockquote>
+            </article>
+            <article class="customer-voice-card">
+              <div class="customer-voice-image"><Image src={zktecoUsaImage} alt="ZKTeco USA facility" loading="lazy" /></div>
+              <span>Business communications</span>
+              <h4>ZKTeco USA</h4>
+              <p>Ralvie AI Frontdesk helps this leading physical security solutions provider handle inbound calls and enquiries intelligently, capture leads, and route each conversation to the right team faster.</p>
+              <blockquote>“Ralvie Frontdesk helped us reduce operational pressure while improving our caller experience. We optimized internal resources and lowered routine handling costs without compromising service quality.”</blockquote>
+            </article>
+          </div>
+        </div>
+      </div>
+      <script is:inline>
+        (() => {
+          const carousel = document.querySelector('.customer-voice-grid');
+          const track = carousel?.querySelector('.customer-voice-track');
+          const previous = carousel?.querySelector('[data-customer-voice-prev]');
+          const next = carousel?.querySelector('[data-customer-voice-next]');
+          if (!carousel || !track || !previous || !next) return;
+
+          const storyCount = 5;
+          let index = 0;
+          let timer;
+
+          const stepWidth = () => {
+            const card = track.querySelector('.customer-voice-card');
+            const set = track.querySelector('.customer-voice-set');
+            return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(set).gap || '0') : 0;
+          };
+          const render = (animate = true) => {
+            track.style.transition = animate ? 'transform 600ms cubic-bezier(.22,.75,.25,1)' : 'none';
+            track.style.transform = `translate3d(${-index * stepWidth()}px,0,0)`;
+          };
+          const moveNext = () => {
+            index += 1;
+            render();
+          };
+          const movePrevious = () => {
+            if (index === 0) {
+              index = storyCount;
+              render(false);
+              track.getBoundingClientRect();
+            }
+            index -= 1;
+            render();
+          };
+          const restart = () => {
+            window.clearInterval(timer);
+            timer = window.setInterval(moveNext, 8000);
+          };
+
+          track.addEventListener('transitionend', () => {
+            if (index >= storyCount) {
+              index = 0;
+              render(false);
+            }
+          });
+          previous.addEventListener('click', () => { movePrevious(); restart(); });
+          next.addEventListener('click', () => { moveNext(); restart(); });
+          window.addEventListener('resize', () => render(false));
+          render(false);
+          restart();
+        })();
+      </script>
+    </section>
+
+    <section class="trusted-awards" aria-labelledby="trusted-awards-title">
+      <div class="container-page">
+        <header class="trusted-awards-head">
+          <span class="trusted-awards-chip">Trusted by</span>
+          <h2 id="trusted-awards-title">Award-Winning AI Platforms<br /><em>Trusted by Modern Businesses &amp; Growing Teams</em></h2>
+          <p>Recognized for innovation in AI productivity analytics, operational intelligence, customer engagement, and business automation.</p>
+        </header>
+        <div class="award-badges" aria-label="Ralvie AI awards and directory badges">
+          <a href="https://www.saashub.com/ralvie-ai?utm_source=badge&amp;utm_campaign=badge&amp;utm_content=ralvie-ai&amp;badge_variant=color&amp;badge_kind=approved" target="_blank" rel="noopener noreferrer">
+            <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Approved on SaaSHub" loading="lazy" />
+          </a>
+          <a href="https://www.softwaresuggest.com" target="_blank" rel="noopener noreferrer">
+            <img class="software-suggest-badge" src="https://www.softwaresuggest.com/award_logo/customer-choice-winter-2025.png" alt="SoftwareSuggest Customer Choice Winter 2025" loading="lazy" />
+          </a>
+          <span class="aikaptan-badge"><iframe src="https://api.aikaptan.com/api/embed/featured-badge.html?slug=ralvie-ai-frontdesk" title="Ralvie AI Frontdesk — Featured on AI KAPTAN" width="270" height="62" loading="lazy" scrolling="no"></iframe></span>
+          <a href="https://www.producthunt.com/products/ralvie-ai/reviews/new?utm_source=badge-product_review&amp;utm_medium=badge&amp;utm_campaign=badge-ralvie-ai" target="_blank" rel="noopener noreferrer">
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1090301&amp;theme=light" alt="Review Ralvie AI on Product Hunt" width="250" height="54" loading="lazy" />
+          </a>
+          <div class="sf-root" data-id="3909336" data-badge="customers-love-us-black" data-variant-id="sf">
+            <a href="https://sourceforge.net/software/product/Ralvie-AI/" target="_blank" rel="noopener noreferrer">Ralvie AI Reviews</a>
+          </div>
+          <a href="https://open-launch.com" target="_blank" rel="noopener noreferrer" title="Powered by Open-Launch">
+            <img src="https://open-launch.com/images/badges/powered-by-light.svg" alt="Powered by Open-Launch" width="150" height="44" loading="lazy" />
+          </a>
+        </div>
+      </div>
+      <script is:inline>
+        (function () {
+          var sc = document.createElement('script');
+          sc.async = true;
+          sc.src = 'https://b.sf-syn.com/badge_js?sf_id=3909336&variant_id=sf';
+          var p = document.getElementsByTagName('script')[0];
+          p.parentNode.insertBefore(sc, p);
+        })();
+      </script>
+    </section>
+    <section id="platforms" class="platforms container-page" hidden>
+      <div class="platform-card">
+        <div class="platform-copy">
+          <div class="product-icon">⌁</div><span>Ralvie AI Productivity</span><h3>
+            See the work behind the work.
+          </h3><p>
+            Capture meaningful workplace activity and turn it into useful timesheets, summaries,
+            reports and productivity insights—without adding more work.
+          </p><a href="#productivity">Explore Productivity <b>→</b></a>
+        </div><div class="dashboard glass">
+          <div class="dash-top"><span>Work intelligence</span><small>This week⌄</small></div><div
+            class="score"
+          >
+            <div>
+              <small>Focus score</small><strong>86<sup>%</sup></strong><em>↑ 12% this week</em>
+            </div><div class="score-ring">86</div>
+          </div><div class="bars">
+            {[46, 67, 54, 88, 72, 91, 76].map((h) => <i style={`height:${h}%`} />)}
+          </div><div class="dash-labels">
+            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => <span>{d}</span>)}
+          </div>
+        </div>
+      </div>
+      <div id="productivity" class="feature-row">
+        {
+          productivity.map((item, i) => (
+            <div class="mini-card">
+              <>
+                <span>0{i + 1}</span>
+                <h4>{item}</h4>
+                <p>
+                  {
+                    [
+                      'Capture meaningful work patterns across tools and sessions.',
+                      'Turn activity into intelligent, project-ready time records.',
+                      'Make progress clear without manual documentation.',
+                      'Connect daily work with organizational priorities.',
+                      'Find focus, workload and productivity patterns.',
+                      'Plan resources with a clearer view of team activity.',
+                    ][i]
+                  }
+                </p>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+    <section class="frontdesk" hidden>
+      <div class="container-page">
+        <header class="front-head">
+          <div>
+            <div class="eyebrow">AI customer communication</div><h2>
+              Your AI Frontdesk for every customer conversation.
+            </h2>
+          </div><p>
+            Answer, understand, capture information and take action—24/7 across the entire customer
+            journey.
+          </p>
+        </header><div class="channel-grid">
+          {
+            channels.map(([title, copy, href, icon]) => (
+              <a href={href} class="channel-card">
+                <>
+                  <span class="channel-icon">{icon}</span>
+                  <div>
+                    <>
+                      <h3>{title}</h3>
+                      <p>{copy}</p>
+                    </>
+                  </div>
+                  <b>↗</b>
+                </>
+              </a>
+            ))
+          }
+        </div><div class="journey glass">
+          <div class="eyebrow">Connected customer intelligence</div><h3>
+            A customer may change channels. The context shouldn’t.
+          </h3><div class="journey-flow">
+            {
+              ['Website chat', 'Phone', 'SMS', 'Email', 'CRM', 'Appointment'].map((item, i) => (
+                <span>
+                  <i>{i + 1}</i>
+                  {item}
+                </span>
+              ))
+            }
+          </div><p>One customer. One journey. More context.</p>
+        </div>
+      </div>
+    </section>
+    <section id="demo" class="final-cta">
+      <WorkforceProductivityCta variant="home" />
+      <div class="mesh mesh-a"></div><div class="container-page">
+        <div class="eyebrow">Ready to put AI to work?</div><h2>
+          Improve productivity.<br /><em>Transform customer communication.</em>
+        </h2><p>One AI ecosystem. Smarter teams. Better customer conversations.</p><div
+          class="actions"
+        >
+          <a class="primary" href="mailto:hello@ralvie.com">Book a demo <b>↗</b></a><a
+            class="secondary"
+            href="#platforms">Explore the platform</a
+          >
+        </div>
+      </div>
+    </section>
+  </main><Footer theme="light" />
 </Layout>
+
+<script>
+  const outcomeSection = document.querySelector('.outcomes');
+  if (outcomeSection) {
+    const counters = outcomeSection.querySelectorAll<HTMLElement>('[data-count]');
+    counters.forEach((counter) => {
+      counter.textContent = '0';
+    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        outcomeSection.classList.add('is-visible');
+        counters.forEach((counter, index) => {
+          const target = Number(counter.dataset.count || 0);
+          const duration = 1400;
+          const delay = index * 90;
+          const started = performance.now() + delay;
+          const animate = (now: number) => {
+            const progress = Math.max(0, Math.min(1, (now - started) / duration));
+            const eased = 1 - Math.pow(1 - progress, 4);
+            counter.textContent = String(Math.round(target * eased));
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        });
+        observer.disconnect();
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+    );
+    observer.observe(outcomeSection);
+  }
+</script>

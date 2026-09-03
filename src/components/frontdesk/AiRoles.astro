@@ -1,0 +1,57 @@
+---
+import Icon from '../Icon.astro';
+
+const roles = [
+  {
+    name: 'AI Receptionist',
+    icon: 'headset',
+    accent: 'var(--accent-cyan)',
+    description: 'Answers incoming calls, provides company information, collects caller details and routes conversations to the appropriate team.',
+  },
+  {
+    name: 'AI Sales Representative',
+    icon: 'target',
+    accent: 'var(--accent-violet)',
+    description: 'Qualifies inbound leads, asks discovery questions and collects the information your sales team needs to continue the conversation.',
+  },
+  {
+    name: 'AI Support Advisor',
+    icon: 'shield-check',
+    accent: 'var(--accent-teal)',
+    description: 'Resolves common customer questions, provides approved instructions and escalates complex issues when human support is required.',
+  },
+  {
+    name: 'AI Booking Assistant',
+    icon: 'calendar',
+    accent: 'var(--accent-blue)',
+    description: "Checks calendar availability, schedules appointments and sends confirmation information through the customer's preferred channel.",
+  },
+  {
+    name: 'AI Reporting Agent',
+    icon: 'chart-bar',
+    accent: 'var(--accent-amber)',
+    description: 'Organises conversation outcomes and gives your team visibility into leads, appointments, enquiries and front-desk performance.',
+  },
+];
+---
+
+<section class="section section-tint relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">One platform. Multiple AI roles.</p>
+      <h2 class="text-headline-lg text-on-surface">Build the AI Frontdesk Team Your Business Needs</h2>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+      {roles.map((role, i) => (
+        <div class="glass-card">
+          <span class={`icon-tile ${i % 2 === 0 ? 'rounded-full' : ''}`} style={`--tint: ${role.accent}`}>
+            <Icon name={role.icon} class="h-5 w-5" />
+          </span>
+          <h3 class="text-body-lg mt-4 font-semibold text-on-surface">{role.name}</h3>
+          <p class="text-body-md mt-3 text-on-surface-variant">{role.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import Icon from '../Icon.astro';
+import ProductivityFeatureScreen from './ProductivityFeatureScreen.astro';
+import type { ProductivityFeaturePage } from '../../data/productivityFeaturePages';
+import '../../styles/productivity-features.css';
+
+interface Props { page: ProductivityFeaturePage }
+const { page } = Astro.props;
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
+---
+
+<Layout title={page.title} description={page.description}>
+  <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(faqSchema)} /></Fragment>
+  <Header theme="light" />
+  <main class:list={['pf-page', `theme-${page.key}`]}>
+    <section class="pf-hero">
+      <div class="pf-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="pf-shell pf-hero-grid">
+        <div class="pf-hero-copy pf-reveal">
+          <span class="pf-eyebrow"><i></i>{page.eyebrow}</span>
+          <h1 set:html={page.heroTitle}></h1>
+          <p class="pf-lead">{page.heroLead}</p>
+          <p>{page.heroBody}</p>
+          <div class="pf-actions"><a href="#get-started">Start Free Trial <Icon name="arrow-right" /></a><a href="#get-started"><Icon name="calendar" /> Book a Demo</a></div>
+          <div class="pf-support">{page.supporting.map(item => <span><Icon name="check" />{item}</span>)}</div>
+        </div>
+        <div class="pf-hero-product pf-reveal"><ProductivityFeatureScreen type={page.key} compact /></div>
+      </div>
+    </section>
+
+    <section class="pf-section pf-intro">
+      <div class="pf-shell pf-intro-grid">
+        <div><span class="pf-eyebrow">{page.introEyebrow}</span><h2 set:html={page.introTitle}></h2></div>
+        <p>{page.introText}</p>
+      </div>
+      <div class="pf-shell pf-highlight-grid">{page.highlights.map(([icon,title,text],index)=><article class={`pf-highlight tint-${index+1}`}><span><Icon name={icon} /></span><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </section>
+
+    <section class="pf-section pf-product-stage">
+      <div class="pf-mesh small" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">Ralvie product experience</span><h2>A clear workspace built around the way work actually happens.</h2><p>Recreated from the supplied Ralvie AI Productivity screens with fresh North American sample data.</p></div><ProductivityFeatureScreen type={page.key} /></div>
+    </section>
+
+    <section class="pf-section pf-stories">
+      <div class="pf-shell">{page.stories.map((story,index)=><article class:list={['pf-story', index % 2 && 'reverse']}><div class="pf-story-copy"><span class="pf-eyebrow">{story.eyebrow}</span><h2 set:html={story.title}></h2><p>{story.text}</p><ul>{story.points.map(point=><li><Icon name="check" />{point}</li>)}</ul></div><div class={`pf-story-art art-${index+1}`}><span class="art-orb"><Icon name={page.highlights[index][0]} /></span><div class="art-stack">{story.points.map((point,i)=><article style={`--i:${i}`}><small>0{i+1}</small><b>{point}</b><i></i></article>)}</div></div></article>)}</div>
+    </section>
+
+    <section class="pf-section pf-compare-section">
+      <div class="pf-shell pf-compare-grid"><div><span class="pf-eyebrow">A clearer way to work</span><h2>Move from fragmented records to connected work intelligence.</h2><p>Keep the tools and workflows your team already knows while adding richer workplace context.</p></div><div class="pf-compare">{page.comparison.map(([before,after])=><article><span><Icon name="x-mark" />{before}</span><b><Icon name="check" />{after}</b></article>)}</div></div>
+    </section>
+
+    <section class="pf-section pf-process-section">
+      <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">How it works</span><h2>From everyday activity to useful context.</h2></div><div class="pf-process">{page.process.map((step,index)=><article><span>0{index+1}</span><h3>{step}</h3>{index < page.process.length-1 && <i><Icon name="arrow-right" /></i>}</article>)}</div></div>
+    </section>
+
+    <section class="pf-section pf-responsible"><div class="pf-shell"><div class="pf-responsible-card"><div><span class="pf-eyebrow">{page.responsibility.eyebrow}</span><h2 set:html={page.responsibility.title}></h2><p>{page.responsibility.text}</p></div><div>{page.responsibility.points.map((point,index)=><article><span>0{index+1}</span><p>{point}</p></article>)}</div></div></div></section>
+
+    <section class="pf-section pf-faq"><div class="pf-shell pf-faq-grid"><div><span class="pf-eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Learn how this Ralvie AI Productivity capability fits into a responsible, connected work-intelligence workflow.</p></div><div>{page.faqs.map(([question,answer],index)=><details open={index===0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
+
+    <section class="pf-final" id="get-started"><div class="pf-mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="pf-shell"><span class="pf-eyebrow">{page.finalEyebrow}</span><h2 set:html={page.finalTitle}></h2><p>{page.finalText}</p><div class="pf-actions centered"><a href="#">Start Free Trial <Icon name="arrow-right" /></a><a href="#"><Icon name="calendar" /> Book a Demo</a></div></div></section>
+  </main>
+  <Footer theme="light" />
+</Layout>

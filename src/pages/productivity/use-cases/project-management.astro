@@ -1,0 +1,105 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import ProductivityFinalCta from '../../../components/ProductivityFinalCta.astro';
+import '../../../styles/employee-productivity.css';
+import '../../../styles/project-management.css';
+import '../../../styles/ralvie-product-ui.css';
+
+const title = 'AI Project Management Software for Teams | Ralvie AI Productivity';
+const description = 'Manage projects with real work intelligence using Ralvie AI Productivity. Connect activity, tasks, time, workload, AI summaries, and team insights to understand project progress and improve delivery.';
+
+const faqs = [
+  ['What is Ralvie AI Project Management?', 'Ralvie combines projects and tasks with workplace activity, time tracking, AI summaries, workload context, and productivity analytics to explain how project work is progressing.'],
+  ['Can we create projects and tasks in Ralvie?', 'Yes. Project and task workflows organize captured workplace activity around real business initiatives.'],
+  ['Can Ralvie automatically identify project activity?', 'Captured activity and AI-assisted workflows can help associate relevant work with projects and tasks.'],
+  ['Can project time be tracked automatically?', 'Automatic workplace activity provides context for understanding time spent on projects.'],
+  ['Can we see time at the task level?', 'Yes. Task-level context helps teams understand how much effort individual pieces of work require.'],
+  ['Does Ralvie provide project summaries?', 'AI Summary capabilities can generate structured progress updates using project-related activity.'],
+  ['Can managers see team workload?', 'Work-distribution insights help managers understand workload across employees and projects.'],
+  ['Can Ralvie identify project bottlenecks?', 'High task effort, concentrated workloads, repeated activity, and increasing project time provide useful signals to investigate.'],
+  ['Can Ralvie help improve project estimates?', 'Historical project and task effort provides stronger context when planning similar work.'],
+  ['Can employees review project timesheets?', 'AI-assisted workflows help employees review time associated with relevant projects and tasks.'],
+  ['Does Ralvie support remote projects?', 'Yes. Ralvie supports remote, hybrid, office, and distributed project teams.'],
+  ['Can Ralvie connect with Jira, Asana, or other tools?', 'Connected workflows can complement existing project systems depending on available integrations and configuration.'],
+  ['Does Ralvie replace our existing project-management tool?', 'It supports direct project workflows while also complementing existing platforms with work-intelligence context.'],
+  ['Does Ralvie measure project success only by hours?', 'No. Time is one source of context alongside progress, deliverables, workload, complexity, quality, and outcomes.'],
+  ['Is Ralvie intended for micromanagement?', 'No. Ralvie is designed for responsible project intelligence and should be used transparently according to workplace and privacy policies.'],
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="employee-page project-page pt-(--header-height)">
+    <section class="employee-hero project-hero mesh-bg">
+      <div class="employee-shell hero-copy">
+        <span class="pill">AI project management</span><h1 class="project-hero-title">Manage Projects<br />With the <em>Work Data</em><br /><em>Behind Them.</em></h1><p>
+          Ralvie AI Productivity connects projects with the activity, time, tasks, and people driving them forward. Track effort, generate AI updates, and understand workload and delivery without depending entirely on manual status reporting.
+        </p><div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div>
+        <div class="hero-dashboard glass project-command-center">
+          <header class="project-app-bar"><div><span class="app-dots"><i></i><i></i><i></i></span><strong>Project intelligence</strong></div><span><i></i> Live activity</span></header>
+          <div class="project-app-body">
+            <div class="project-app-title"><div><small>Website redesign</small><h3>Delivery command center</h3></div><span>On track</span></div>
+            <div class="project-health-row">
+              <article><small>Project health</small><strong>On Track</strong><i class="health-line"><b></b></i></article>
+              <article><small>Total time</small><strong>124h 38m</strong><em>+31h this week</em></article>
+              <article><small>Completed tasks</small><strong>28 / 36</strong><em>78% complete</em></article>
+            </div>
+            <div class="project-main-grid">
+              <article class="project-board"><header><strong>Current work</strong><span>View board</span></header><div class="board-columns"><div><small>IN PROGRESS · 3</small><span><b>Responsive product pages</b><em>Frontend · High</em></span><span><b>CMS integration</b><em>Platform · Medium</em></span></div><div><small>REVIEW · 2</small><span><b>Project analytics UI</b><em>Design · Today</em></span><span><b>Mobile navigation</b><em>QA · Tomorrow</em></span></div></div></article>
+              <article class="project-ai-card"><span><Icon name="sparkles" /></span><small>AI project update</small><p>Strong progress on frontend development and responsive implementation. CMS integration and final QA remain in progress.</p><b>Next: begin production QA</b></article>
+            </div>
+          </div>
+          <div class="project-widget widget-progress"><span><Icon name="chart-bar" /></span><strong>78%<small>Project progress</small></strong></div>
+          <div class="project-widget widget-team"><span><Icon name="users" /></span><strong>8<small>Active contributors</small></strong></div>
+          <div class="project-widget widget-risk"><span><Icon name="bolt" /></span><strong>2<small>Items need attention</small></strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-section"><div class="employee-shell narrow center"><span class="eyebrow">Beyond task status</span><h2>Know the status.<br /><em>Understand the work behind it.</em></h2><p>To do, in progress, and done do not explain who is contributing, where time is going, whether workload is balanced, or why one task is taking longer than expected.</p><div class="contrast"><div><b>Traditional boards</b><span>Status without the work context</span></div><Icon name="arrow-right" /><div><b>With Ralvie</b><span>Status + effort + activity + workload</span></div></div></div></section>
+
+    <section class="section soft-mesh"><div class="employee-shell split"><div class="copy"><span class="eyebrow">Automatic project activity</span><h2>Connect real work with <em>every project.</em></h2><p>Project work happens across development tools, design apps, documents, browsers, spreadsheets, communication tools, meetings, and business systems. Ralvie turns that activity into project intelligence.</p><strong class="closing-line">Everyday activity becomes project context.</strong></div><div class="glass activity-project-flow">{[
+      ['monitor','Activity detected','VS Code · Chrome · Figma'],['sparkles','AI context','Frontend & content work'],['folder','Project','Ralvie website'],['list-check','Task','Productivity use-case pages']
+    ].map(([icon,label,copy],i)=><article><span><Icon name={icon}/></span><div><small>0{i+1}</small><strong>{label}</strong><p>{copy}</p></div>{i<3&&<b>→</b>}</article>)}</div></div></section>
+
+    <section class="section"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Projects & actionable tasks</span><h2>Give big initiatives a<br /><em>clear work structure.</em></h2><p>Turn complex initiatives into an organized system of owners, priorities, milestones, tasks, deadlines, and dependencies. Bring activity, time, workload signals, AI summaries, and project analytics into one living record so everyone knows what is moving, what needs attention, and what to do next.</p></div><div class="project-structure-grid"><article class="glass project-form-card"><header><div><small>Project</small><h3>Website redesign</h3></div><b>Active</b></header>{['Owner · Maya Chen','8 team members','High priority','Due Sep 18','124h tracked'].map(x=><span><Icon name="check" />{x}</span>)}</article><article class="glass task-detail-card"><header><small>Task intelligence</small><span>In progress</span></header><h3>Build AI Frontdesk product page</h3><div><span><small>Assignee</small><strong>Frontend team</strong></span><span><small>Actual time</small><strong>6h 42m</strong></span></div><footer><small>Activity</small><b>VS Code</b><b>Chrome</b><b>Figma</b></footer></article><article class="glass task-effort-card"><header><small>Task effort</small><strong>AI Frontdesk website</strong></header>{[['Homepage','12h 18m',72],['Phone receptionist','8h 42m',55],['AI CRM','9h 10m',61],['Responsive QA','14h 36m',88]].map(([n,t,w])=><div><span>{n}</span><i><b style={`--w:${w}%`}></b></i><strong>{t}</strong></div>)}</article></div></div></section>
+
+    <section class="section project-dark-band"><div class="employee-shell"><div class="section-head center light"><span class="eyebrow">Project time & task intelligence</span><h2>Move beyond <em>estimated hours.</em></h2><p>Compare planned and actual effort, understand task complexity, and surface work that may become a delay before the deadline tells you.</p></div><div class="planned-actual-grid">{[['Frontend development','20h','31h','+11h'],['Responsive testing','8h','14h','+6h'],['CMS integration','16h','18h','+2h']].map(([name,planned,actual,diff])=><article><h3>{name}</h3><div><span><small>Planned</small><strong>{planned}</strong></span><span><small>Actual</small><strong>{actual}</strong></span></div><b>{diff}</b></article>)}</div></div></section>
+
+    <section class="section soft-mesh"><div class="employee-shell split"><div class="glass summary-studio"><header><span><Icon name="sparkles" /></span><div><small>Weekly project summary</small><strong>Generated from project activity</strong></div><b>AI</b></header><p>The team focused on completing Ralvie AI Productivity use-case pages. Employee Productivity and Time Tracking moved to implementation, while Project Management and responsive QA remain in progress.</p><div><span><small>Completed</small><b>Employee Productivity</b><b>Time Tracking</b></span><span><small>In progress</small><b>Project Management</b><b>Responsive QA</b></span></div><footer>Next priority: complete remaining use cases and begin integration testing.</footer></div><div class="copy"><span class="eyebrow">Project updates without the blank page</span><h2>Let the work <em>generate the update.</em></h2><p>Create daily, weekly, or custom-period summaries from underlying activity. Enter meetings with context already prepared and spend the time on blockers, priorities, dependencies, and decisions.</p><strong class="closing-line">Less status collection. More project management.</strong></div></div></section>
+
+    <section class="section"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Contribution & workload</span><h2>See who is contributing—<em>and where.</em></h2></div><div class="contribution-grid"><article class="glass contribution-card"><header><div><small>Team contribution</small><h3>Product launch</h3></div><b>112h 20m</b></header>{[['Engineering','46h 12m',84],['Design','21h 40m',55],['Marketing','18h 25m',47],['QA','16h 15m',42],['Documentation','9h 48m',28]].map(([n,t,w],i)=><div><span class={`team-dot tone-${i}`}></span><strong>{n}</strong><i><b style={`--w:${w}%`}></b></i><small>{t}</small></div>)}</article><article class="glass workload-card"><header><small>Workload visibility</small><h3>Allocation by contributor</h3></header>{[['Daniel','Website redesign 48%','Customer portal 31%','Support 21%'],['Priya','Website redesign 72%','Marketing 28%',''],['Alex','Platform 54%','Mobile app 46%','']].map(([name,a,b,c])=><div><strong>{name}</strong><span><i>{a}</i><i>{b}</i>{c&&<i>{c}</i>}</span></div>)}</article></div></div></section>
+
+    <section class="section project-health-section soft-mesh"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Project health & planning</span><h2>Investigate risk earlier.<br/><em>Estimate the next project better.</em></h2><p>Increasing time, long-running tasks, project switching, meeting load, concentrated workload, QA, and rework provide useful signals—not automatic conclusions, but better questions.</p></div><div class="health-signal-grid">{[
+      ['clock','Time acceleration','Effort rose 24% this week, signaling scope growth or an emerging delivery bottleneck.'],['list-check','Long-running task','Responsive QA is exceeding its estimate and may put the planned launch date at risk.'],['users','Concentrated workload','Two contributors carry 68% of total effort, creating dependency and capacity risk.'],['refresh','Repeated rework','Three QA cycles reveal recurring issues that may need a deeper root-cause review.'],['calendar','Meeting overhead','Coordination time increased 18%, reducing the hours available for focused project delivery.'],['chart-bar','Historical planning','Similar projects averaged 138 hours, providing a stronger baseline for the next estimate.']
+    ].map(([icon,name,copy],i)=><article class={`glass signal-${i}`}><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">One view for project managers</span><h2>Bring progress, time, tasks, and <em>workload together.</em></h2></div><div class="glass portfolio-dashboard"><header><div><small>Portfolio overview</small><h3>Project intelligence dashboard</h3></div><button>Download report</button></header><div class="portfolio-kpis">{[['Active projects','12'],['Tasks completed','84'],['Project time','426h'],['Overloaded members','3'],['Need attention','2'],['Average focus','2h 06m']].map(([n,v],i)=><article class={`kpi-${i}`}><small>{n}</small><strong>{v}</strong></article>)}</div><div class="portfolio-table"><header><span>Project</span><span>Progress</span><span>Time</span><span>Status</span></header>{[['Website redesign','78%','124h','On track'],['Customer portal','62%','96h','At risk'],['Mobile launch','88%','142h','On track']].map(([n,p,t,s])=><div><strong>{n}</strong><span><i><b style={`--w:${p}`}></b></i>{p}</span><span>{t}</span><b class:list={[s==='At risk'&&'risk']}>{s}</b></div>)}</div></div></div></section>
+
+    <section class="section soft-mesh"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Built for complex work</span><h2>Project intelligence for <em>every team.</em></h2></div><div class="project-team-grid">{[
+      ['sparkles','Product teams','Connect research, design, development, testing, and documentation to roadmaps, releases, and measurable delivery outcomes.'],['wrench','Engineering','Understand effort, technical complexity, workload, focus time, and delivery risk across every active engineering initiative.'],['megaphone','Marketing','Coordinate campaigns, content, creative production, approvals, analytics, and launches with a complete view of progress and effort.'],['briefcase','Agencies & services','Track activity, time, capacity, and deliverables across clients and engagements while protecting margins and delivery quality.'],['squares','Operations','Monitor internal initiatives, recurring processes, ownership, dependencies, and cross-functional work from one connected view.'],['globe','Remote & hybrid','Maintain shared project context, workload visibility, and clear accountability across distributed employees, locations, and time zones.']
+    ].map(([icon,name,copy],i)=><article class={`glass team-${i}`}><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div><div class="integration-strip glass"><span><Icon name="link" /></span><div><h3>Keep your existing project workflow</h3><p>Connect projects, tasks, assignments, statuses, workplace activity, and time context with Jira, Asana, Trello, and other business systems—giving teams richer intelligence without replacing the tools they already use.</p></div><b>Connected intelligence</b></div></div></section>
+
+    <section class="section comparison"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Before & after Ralvie</span><h2>Move from manual reporting to<br /><em>continuous context.</em></h2></div><div class="compare-table"><div class="compare-row head"><span>Traditional project workflow</span><span>With Ralvie AI Productivity</span></div>{[
+      ['Tasks updated manually','Work activity adds context'],['Status reports written manually','AI-generated summaries'],['Project hours rebuilt later','Automatic activity context'],['Workload based on assumptions','Workload supported by data'],['Task status is the primary signal','Status + effort + activity'],['Estimates based on memory','Historical work data'],['Problems appear near deadlines','Work patterns provide earlier context']
+    ].map(([a,b])=><div class="compare-row"><span><Icon name="x-mark" />{a}</span><span><Icon name="check" />{b}</span></div>)}</div></div></section>
+
+    <section class="section soft-mesh" id="how-it-works"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">Plan the project. Let intelligence explain progress.</span><h2 class="project-how-title">How Ralvie <em>Project Management</em> works.</h2></div><div class="project-workflow-grid">{[
+      ['folder','Create or connect','Define scope, owners, objectives, and milestones—or connect an existing project workspace.'],['list-check','Create tasks','Turn major goals into assigned, prioritized tasks with clear dependencies and deadlines.'],['briefcase','Work normally','Keep using the applications, communication tools, and workflows your team already knows.'],['target','Capture activity','Automatically collect relevant workplace signals according to your organization’s configuration.'],['sparkles','Add AI context','Organize captured activity around the right projects and tasks with useful AI-assisted context.'],['clock','Reveal effort','Compare time, activity, focus, and contribution to understand where project effort is really going.'],['document','Summarize progress','Generate evidence-based updates covering achievements, blockers, risks, and recommended next steps.'],['chart-bar','Analyze','Monitor project health, workload, progress, and historical trends to improve planning and delivery.']
+    ].map(([icon,name,copy],i)=><article class={`workflow-${i}`}><small>0{i+1}</small><span><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section faq soft-mesh"><div class="employee-shell faq-layout"><div class="faq-column faq-column-left"><div class="section-head"><span class="eyebrow">Frequently asked questions</span><h2>Project intelligence, <em>explained.</em></h2><p>Manage with better context—not more interruptions.</p></div><div class="faq-list">{faqs.slice(0,5).map(([q,a],i)=><details open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div><div class="faq-column"><div class="faq-list">{faqs.slice(5).map(([q,a])=><details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></div></section>
+
+    <ProductivityFinalCta />
+  </main>
+  <Footer theme="light" />
+</Layout>

@@ -1,0 +1,87 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+import ProductivityFinalCta from '../../../components/ProductivityFinalCta.astro';
+import '../../../styles/employee-productivity.css';
+import '../../../styles/dashboards-reports.css';
+import '../../../styles/ralvie-product-ui.css';
+
+const title = 'AI Productivity Dashboards & Reports | Ralvie AI Productivity';
+const description = 'Turn workplace activity, time, projects, tasks, and team patterns into clear AI-powered dashboards and reports with Ralvie AI Productivity.';
+const metrics = [
+  ['Active team members','42','+8%'],['Focused work','186h','+12%'],['Tasks completed','128','+19%'],['Project health','91%','+5%']
+];
+const faqs = [
+  ['What are productivity dashboards?', 'Productivity dashboards bring workplace activity, time, project, task, and workload signals into a clear visual view for employees and managers.'],
+  ['What reports can Ralvie generate?', 'Ralvie supports work activity, time, project, task, employee, team, and productivity reporting according to your organization’s configuration.'],
+  ['Can reports be filtered by team or project?', 'Yes. Dashboard and report views can provide context across people, teams, projects, tasks, departments, and selected periods.'],
+  ['Can employees access their own reports?', 'Employees can review relevant personal insights according to their role and organizational permissions.'],
+  ['Does Ralvie create AI work summaries?', 'Yes. AI-assisted summaries transform captured activity into concise progress and performance context.'],
+  ['Can reports be downloaded?', 'Relevant reports can be prepared for operational reviews, client reporting, billing, audits, or internal analysis.'],
+  ['Can dashboards show workload patterns?', 'Task, time, and activity context can reveal workload distribution, capacity, bottlenecks, and work that needs attention.'],
+  ['Is reporting based only on time?', 'No. Ralvie combines time with work context such as applications, projects, tasks, activity patterns, progress, and outcomes.'],
+];
+const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light"/><script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)}/>
+  <main class="employee-page reports-page pt-(--header-height)">
+    <section class="employee-hero reports-hero mesh-bg"><div class="employee-shell hero-copy">
+      <span class="pill">AI dashboards & reports</span>
+      <h1>See the Work. <em>Understand the Story.</em></h1>
+      <p>Transform everyday activity, time, projects, tasks, and team patterns into dashboards and reports that make performance easier to understand and decisions easier to make.</p>
+      <div class="hero-actions"><a href="#get-started" class="primary-btn">Start your free trial <Icon name="arrow-right"/></a><a href="#get-started" class="secondary-btn"><Icon name="calendar"/> Book a demo</a></div>
+      <div class="reports-hero-ui dashboard-app">
+        <header class="dashboard-app-head"><div><h3>Dashboard</h3><p>Overview of your workplace activity and insights.</p></div></header>
+        <nav class="dashboard-tabs"><b>Usage Insights</b><span>Member Activity Center</span></nav>
+        <div class="dashboard-controls"><h4>Daily Metrics</h4><div><button aria-label="Previous date">‹</button><span>02/09/2026 <Icon name="calendar"/></span><button aria-label="Next date">›</button><button aria-label="Refresh">↻</button><button class="download-report"><Icon name="download"/> Download Report</button></div></div>
+        <div class="daily-metrics">{[
+          ['users','325/80','Active/Inactive Users'],['monitor','47','Active Sundial Users'],['document','0','Work Log Creators'],['chart-bar','0%','Today’s Usage Rate']
+        ].map(([icon,value,label],i)=><article class={`daily-metric metric-${i}`}><span><Icon name={icon}/></span><strong>{value}</strong><small>{label}</small></article>)}</div>
+        <div class="ranking-grid">
+          <section class="ranking-card member-ranking"><header><h4>Member Ranking</h4><button>All Departments⌄</button></header><div class="ranking-table"><div class="ranking-row ranking-head"><span>Rank</span><span>Member Name</span><span>Department</span><span>Position</span><span>Total Score</span></div>{[
+            ['1','D','Deepak','Call Center Team','Customer Support','1'],['2','I','India R&D Center','—','—','1'],['3','N','Namit Thakur','Testing','Testing Trainee','1']
+          ].map(([rank,initial,name,department,position,score])=><div class="ranking-row"><span>{rank}</span><strong><i>{initial}</i>{name}</strong><span>{department}</span><span>{position}</span><b>{score}</b></div>)}</div><footer><span>Showing 1 to 3 of 3 entries</span><div><button>‹</button><b>1</b><button>›</button></div></footer></section>
+          <section class="ranking-card project-ranking"><header><h4>Project Usage Ranking</h4><label>⌕ <input aria-label="Search projects" placeholder="Search projects..."/></label></header><div class="project-ranking-table"><div><span>Project Name</span><span>Usage Rate ⓘ</span></div>{[['Ralvie Website','92%'],['Customer Portal','78%'],['Mobile Launch','64%']].map(([name,usage])=><div class="project-usage-row"><strong>{name}</strong><span><i><b style={`--w:${usage}`}></b></i>{usage}</span></div>)}<footer><span>Showing 1 to 3 of 3 entries</span><div><button>‹</button><b>1</b><button>›</button></div></footer></div></section>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section reports-connected"><div class="employee-shell center"><span class="eyebrow">ONE CONNECTED VIEW</span><h2>From Raw Activity to <em>Useful Business Context.</em></h2><p class="lead">Ralvie connects the signals behind daily work and turns them into clear, role-aware reporting.</p><div class="report-flow">{[
+      ['monitor','Activity','Relevant workplace signals are captured.'],['clock','Time','Work sessions become a reliable timeline.'],['folder','Projects','Effort connects to business initiatives.'],['list-check','Tasks','Detailed work maps to actionable tasks.'],['sparkles','AI context','AI organizes and explains the activity.'],['chart-bar','Insights','Clear reporting supports better decisions.']
+    ].map(([icon,label,copy],i)=><article class={`report-flow-${i}`}><small>0{i+1}</small><span><Icon name={icon}/></span><b>{label}</b><p>{copy}</p></article>)}</div></div></section>
+
+    <section class="section soft-mesh" id="reports"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">REPORTING INTELLIGENCE</span><h2>Every View Your Team Needs. <em>Without Manual Reporting.</em></h2><p>Replace scattered updates, disconnected spreadsheets, and time-consuming report preparation with a dependable reporting workspace. Turn live activity, effort, workload, and delivery data into clear operational insight that every stakeholder can understand and reuse.</p></div><div class="report-feature-grid">{[
+      ['chart-bar','Executive overview','Bring productivity, utilization, delivery, capacity, and workload trends into one leadership-ready view so decision-makers can identify changes and act with confidence.'],
+      ['users','Team performance','Understand how work moves across teams, compare focus and contribution patterns, and uncover where people need support without losing employee-level context.'],
+      ['clock','Time distribution','See how captured work time is distributed across applications, projects, tasks, and teams, revealing where attention is invested and where priorities may be drifting.'],
+      ['folder','Project intelligence','Compare effort, progress, task activity, ownership, and delivery health across your entire portfolio to quickly identify momentum, risk, and stalled initiatives.'],
+      ['sparkles','AI summaries','Transform detailed work signals into concise daily, weekly, and custom-period narratives that explain meaningful changes, emerging risks, and recommended next steps.'],
+      ['download','Scheduled reporting','Automatically prepare consistent, up-to-date reports for leaders, clients, billing, compliance, and operational reviews without repeating the same manual reporting process.']
+    ].map(([icon,name,text],i)=><article class={`glass report-feature f-${i}`}><span><Icon name={icon}/></span><h3>{name}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="section report-studio-section"><div class="employee-shell split"><div class="copy"><span class="eyebrow">CUSTOM REPORT STUDIO</span><h2>Build the Right<br/>Report for <em>Every</em><br/><em>Conversation.</em></h2><p>Choose the people, projects, metrics, and period that matter. Ralvie organizes the context into a clean report that is ready to review or share.</p><ul><li>Filter by department, employee, project, or task</li><li>Compare periods and identify meaningful changes</li><li>Use AI-generated summaries to explain the numbers</li><li>Export consistent operational and client reports</li></ul></div><div class="report-builder glass"><header><div><small>REPORT BUILDER</small><h3>Quarterly operations review</h3></div><span>Draft</span></header><div class="builder-fields"><label>Audience<strong>Leadership team</strong></label><label>Period<strong>Apr 1 — Jun 30</strong></label><label>Teams<strong>Product, Design, Customer</strong></label><label>Metrics<strong>Focus, workload, delivery</strong></label></div><div class="builder-preview"><small>INCLUDED SECTIONS</small>{['Executive summary','Team productivity trend','Project delivery health','Capacity and workload','Recommended actions'].map((x,i)=><p><span>{i+1}</span>{x}<b>Included</b></p>)}</div><button>Generate report <Icon name="sparkles"/></button></div></div></section>
+
+    <section class="section reports-dark"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">INSIGHT THAT LEADS TO ACTION</span><h2>Know What Changed. <em>Know What to Do Next.</em></h2><p>Move beyond static totals with signals designed to focus attention where it has the most value.</p></div><div class="dark-insight-grid">{[
+      ['01','Focus improved','Deep-work time increased 14% after meeting blocks were consolidated.'],['02','Workload risk','Two contributors are above their sustainable weekly capacity.'],['03','Project attention','The Atlas rollout has rising effort with limited task completion.'],['04','Delivery opportunity','Three recurring reporting tasks are ready for automation.']
+    ].map(([n,title,text])=><article><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="section"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">BUILT FOR EVERY VIEWPOINT</span><h2>One Source of Truth. <em>Different Levels of Detail.</em></h2></div><div class="audience-report-grid">{[
+      ['briefcase','Executives','See performance, capacity, delivery confidence, and operational trends in one concise view designed to support faster, evidence-based leadership decisions.'],
+      ['users','Managers','Understand team workload, focus, progress, and emerging blockers so you can rebalance priorities, remove friction, and support people before delivery is affected.'],
+      ['target','Project leaders','Connect effort and recent activity with milestones, tasks, budgets, ownership, and delivery health to keep every initiative moving toward its intended outcome.'],
+      ['document','Operations & HR','Create consistent workforce reporting with permission-aware context that supports planning, engagement reviews, compliance needs, and responsible operational oversight.'],
+      ['currency-coin','Finance & clients','Use reliable effort and utilization data to strengthen billing accuracy, simplify audits, explain project investment, and deliver transparent client-facing reviews.'],
+      ['monitor','Employees','Review personal work patterns, completed progress, focus time, and contribution context to communicate impact clearly and plan the next priorities with confidence.']
+    ].map(([icon,title,text],i)=><article class={`glass audience-${i}`}><span><Icon name={icon}/></span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section class="section soft-mesh"><div class="employee-shell"><div class="section-head center"><span class="eyebrow">BEFORE AND AFTER</span><h2>Reporting That Gives Time Back.</h2></div><div class="compare-table report-compare"><div class="compare-row head"><span>Before Ralvie</span><span>With Ralvie</span></div>{[['Manual spreadsheet preparation','Connected dashboard data'],['Scattered status updates','AI-generated work summaries'],['Lagging monthly visibility','Current operational context'],['Reports without explanation','Metrics connected to real work'],['One report for every audience','Role-aware views and exports']].map(([a,b])=><div class="compare-row"><span><Icon name="x-mark"/>{a}</span><span><Icon name="check"/>{b}</span></div>)}</div></div></section>
+
+    <section class="section faq soft-mesh"><div class="employee-shell faq-layout"><div class="faq-column faq-column-left"><div class="section-head"><span class="eyebrow">FREQUENTLY ASKED QUESTIONS</span><h2>Dashboards and reporting, <em>explained.</em></h2><p>Clear visibility without adding more administrative work.</p></div><div class="faq-list">{faqs.slice(0,3).map(([q,a],i)=><details open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div><div class="faq-column"><div class="faq-list">{faqs.slice(3).map(([q,a])=><details><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></div></section>
+
+    <ProductivityFinalCta />
+  </main><Footer/>
+</Layout>

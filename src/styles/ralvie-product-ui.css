@@ -1,0 +1,194 @@
+/* Marketing mockups based on the Ralvie AI Productivity application language. */
+:root {
+  --ralvie-ui-purple: #7b56d9;
+  --ralvie-ui-purple-soft: #f0ebfb;
+  --ralvie-ui-canvas: #f6f7f9;
+  --ralvie-ui-panel: #fff;
+  --ralvie-ui-border: #e4e5ea;
+  --ralvie-ui-ink: #17171c;
+  --ralvie-ui-muted: #737582;
+  --ralvie-ui-green: #19ad67;
+  --ralvie-ui-orange: #ec8a31;
+  --ralvie-ui-red: #ee565d;
+}
+.employee-page
+  :is(
+    .hero-dashboard,
+    .visual-card,
+    .timeline,
+    .summary-card,
+    .policy-card,
+    .project-time-visual,
+    .application-visual,
+    .time-dashboard,
+    .time-flow
+  ) {
+  border: 1px solid var(--ralvie-ui-border);
+  background: var(--ralvie-ui-canvas);
+  box-shadow: 0 18px 50px rgba(43, 45, 65, 0.1);
+  backdrop-filter: none;
+}
+.employee-page :is(.visual-head, .mapping-head, .mock-window-bar) {
+  border-color: var(--ralvie-ui-border);
+  background: #fff;
+}
+.employee-page :is(.time-entry, .mapped-work, .focus-message, .project-time-row, .app-row) {
+  border-color: var(--ralvie-ui-border);
+}
+.employee-page
+  :is(.visual-card, .project-time-visual, .application-visual, .timeline, .summary-card) {
+  color: var(--ralvie-ui-ink);
+}
+.employee-page :is(.visual-card, .project-time-visual, .application-visual) small {
+  color: var(--ralvie-ui-muted);
+}
+.employee-page :is(.visual-foot, .mapping-foot) {
+  background: #fafafa;
+}
+.employee-page :is(.visual-foot button, .flow-step > span, .insight-spark) {
+  background: var(--ralvie-ui-purple);
+}
+.employee-page .time-entry {
+  background: #fff;
+}
+.employee-page .time-entry:hover,
+.employee-page .app-row:hover {
+  background: #faf8ff;
+}
+.employee-page .time-entry > i {
+  background: var(--ralvie-ui-purple);
+}
+.employee-page .time-entry .c2 {
+  background: #3aa987;
+}
+.employee-page .time-entry .c3 {
+  background: #e8a047;
+}
+.employee-page .time-entry .c4 {
+  background: #4a8fd8;
+}
+.employee-page .mapping-stage {
+  background: #fff;
+}
+.employee-page .app-stack span,
+.employee-page .mapped-work .folder-mark {
+  background: var(--ralvie-ui-purple-soft);
+  color: var(--ralvie-ui-purple);
+}
+.employee-page .mapping-head span {
+  background: #e6f7ee;
+  color: #168450;
+}
+.employee-page .activity-ring {
+  background: #fff;
+}
+.employee-page .focus-message {
+  background: #f4f0fc;
+}
+.employee-page .hero-productivity-graph,
+.employee-page .metric-card {
+  border-color: var(--ralvie-ui-border);
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: 0 15px 36px rgba(41, 42, 58, 0.16);
+}
+.employee-page .graph-bars i {
+  background: linear-gradient(180deg, #a88be9, var(--ralvie-ui-purple));
+}
+.employee-page .graph-bars i.is-current {
+  background: linear-gradient(180deg, #895fe1, #6840bd);
+}
+.employee-page .metric-icon.purple {
+  background: var(--ralvie-ui-purple);
+}
+.employee-page .metric-icon.green {
+  background: var(--ralvie-ui-green);
+}
+.employee-page .metric-icon.orange {
+  background: var(--ralvie-ui-orange);
+}
+.employee-page .metric-icon.pink {
+  background: #d95491;
+}
+.time-page .time-dashboard-body {
+  background: var(--ralvie-ui-canvas);
+}
+.time-page
+  :is(
+    .time-kpis article,
+    .day-track,
+    .time-bottom article,
+    .project-time-visual,
+    .application-visual
+  ) {
+  border-color: var(--ralvie-ui-border);
+  background: #fff;
+}
+.time-page .time-kpis article {
+  box-shadow: none;
+}
+.time-page .time-kpis article:nth-child(1) {
+  background: #f0ecfb;
+}
+.time-page .time-kpis article:nth-child(2) {
+  background: #edf7f2;
+}
+.time-page .time-kpis article:nth-child(3) {
+  background: #fff3e8;
+}
+.time-page .time-kpis strong,
+.time-page .visual-head > span {
+  color: var(--ralvie-ui-purple);
+}
+.time-page .day-track .dev {
+  background: var(--ralvie-ui-purple);
+}
+.time-page .day-track .meeting {
+  background: #3d8fdd;
+}
+.time-page .day-track .client {
+  background: #42a981;
+}
+.time-page .day-track .idle {
+  background: #d7d8de;
+}
+.time-page .day-track .research {
+  background: #e89a40;
+}
+.time-page .project-time-row > i,
+.time-page .app-row > i {
+  background: #ececf0;
+}
+.time-page .project-time-row > i b,
+.time-page .app-row > i b {
+  background: var(--ralvie-ui-purple);
+}
+.time-page .flow-step {
+  border: 1px solid transparent;
+}
+.time-page .flow-step > span {
+  background: var(--ralvie-ui-purple-soft);
+  color: var(--ralvie-ui-purple);
+}
+.time-page .flow-line-timer {
+  background: #e3e0ea;
+}
+.time-page .flow-line-timer:after {
+  background: var(--ralvie-ui-purple);
+}
+.productivity-page :is(.media-card, .dashboard-frame, .hero-visual) {
+  border: 1px solid var(--ralvie-ui-border);
+  box-shadow: 0 24px 58px rgba(43, 45, 65, 0.11);
+}
+.productivity-page .media-card img,
+.productivity-page .dashboard-frame img {
+  border: 1px solid #ececf0;
+}
+.productivity-page .media-card.lilac {
+  background: #f0ebfb;
+}
+.productivity-page .media-card.cyan {
+  background: #edf6fa;
+}
+.productivity-page .media-card.rose {
+  background: #f8eef5;
+}

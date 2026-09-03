@@ -1,0 +1,499 @@
+---
+import { Image } from 'astro:assets';
+import ralvieLogoWhite from '../assets/Ralvie-logo-white.svg';
+import ralvieLogo from '../assets/Ralvie-logo.svg';
+import torontoSkyline from '../assets/Toronto-light.svg';
+import canadaFlag from '../assets/Canada flag.svg';
+
+interface Props {
+  theme?: 'dark' | 'light';
+}
+const { theme = 'dark' } = Astro.props;
+
+const productGroups = [
+  {
+    title: 'Ralvie AI Productivity',
+    links: ['Automatic tracking', 'Time logs', 'Screen captures', 'Tasks & Projects', 'Dashboards'],
+  },
+  {
+    title: 'Ralvie AI Frontdesk',
+    links: [
+      'AI Phone Receptionist',
+      'AI Website Chatbot',
+      'AI Email Manager',
+      'AI Web Voicebot',
+      'Website Forms',
+    ],
+  },
+];
+const solutionGroups = [
+  {
+    title: 'Productivity',
+    links: [
+      'Employee Productivity',
+      'Time Tracking',
+      'Project Management',
+      'Task Management',
+      'Dashboards & Reports',
+    ],
+  },
+  {
+    title: 'Frontdesk',
+    links: [
+      '24/7 Customer Support',
+      'Capture Leads & Book Appointments',
+      'Human-Like AI Call & Chat Handling',
+      'Multilingual Support',
+      'Smart Call Routing',
+    ],
+  },
+];
+const resources = ['Blogs', 'Integrations', 'Contact us', 'Downloads', 'Knowledge base'];
+const legal = ['Privacy Policy', 'Terms of Use'];
+const industryGroups = [
+  { title: 'Productivity', links: ['Enterprise', 'SaaS', 'Agency', 'Consultancy', 'Professional Services'] },
+  { title: 'Frontdesk', links: ['Healthcare & Clinics', 'Hotels & Hospitality', 'Real estate', 'Education institutions', 'Financial services'] },
+];
+const getStarted = [
+  { label: 'Pricing', href: '/pricing', external: false },
+  { label: 'Book a Demo', href: '#', external: false },
+];
+const company: string[] = [];
+
+const productivityLinks: Record<string, string> = {
+  '24/7 Customer Support': '/frontdesk/use-cases/24-7-customer-support',
+  'Capture Leads & Book Appointments': '/frontdesk/use-cases/crm-lead-management',
+  'Multilingual Support': '/frontdesk/use-cases/multilingual-support',
+  'Smart Call Routing': '/frontdesk/use-cases/smart-call-routing',
+  'Human-Like AI Call & Chat Handling': '/frontdesk/use-cases/human-like-ai-call-chat-handling',
+  'Employee Productivity': '/productivity/use-cases/employee-productivity',
+  'Time Tracking': '/productivity/use-cases/time-tracking',
+  'Project Management': '/productivity/use-cases/project-management',
+  'Task Management': '/productivity/use-cases/task-management',
+  'Dashboards & Reports': '/productivity/use-cases/dashboards-reports',
+  'Automatic tracking': '/productivity#automatic-tracking',
+  'Time logs': '/productivity#ai-timesheets',
+  'Screen captures': '/productivity#privacy-control',
+  'Tasks & Projects': '/productivity#project-intelligence',
+  Dashboards: '/productivity#analytics',
+  Enterprise: '/productivity/industries/enterprise',
+  SaaS: '/productivity/industries/saas',
+  Agency: '/productivity/industries/agency',
+  Consultancy: '/productivity/industries/consultancy',
+  'Professional Services': '/productivity/industries/professional-services',
+  'Healthcare & Clinics': '/frontdesk/industries/healthcare-clinics',
+  'Hotels & Hospitality': '/frontdesk/industries/hotels-hospitality',
+  'Real estate': '/frontdesk/industries/real-estate',
+  'Education institutions': '/frontdesk/industries/education-institutions',
+  'Financial services': '/frontdesk/industries/financial-services',
+};
+const hrefFor = (link: string) =>
+  productivityLinks[link] ??
+  (link === 'AI Phone Receptionist'
+    ? '/ai-phone-receptionist'
+    : link === 'AI Website Chatbot'
+      ? '/ai-website-chatbot'
+      : link === 'AI Email Manager'
+        ? '/ai-email-manager'
+        : link === 'AI Web Voicebot'
+          ? '/ai-web-voicebot'
+          : link === 'Website Forms'
+            ? '/ai-website-forms'
+            : link === 'Blogs'
+              ? '/blog'
+              : '#');
+---
+
+<footer class:list={['footer', `footer--${theme}`]}>
+  <div class="container-page footer__directory">
+    <div class="footer__brand">
+      <a href="/" aria-label="Ralvie home"
+        ><Image src={theme === 'light' ? ralvieLogo : ralvieLogoWhite} alt="Ralvie" /></a
+      >
+      <p>
+        Ralvie AI Inc,<br />120 East Beaver Creek Rd Suite 200,<br />Richmond Hill, ON L4B 4V1,<br
+        />Canada.
+      </p>
+    </div>
+
+    <div class="footer__column">
+      {
+        productGroups.map((group) => (
+          <div class="footer__group">
+            <>
+              <h3>
+                <a href={group.title === 'Ralvie AI Productivity' ? '/productivity' : '/frontdesk'}>
+                  {group.title}
+                </a>
+              </h3>
+              <ul>
+                {group.links.map((link) => (
+                  <li>
+                    <a href={hrefFor(link)}>{link}</a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="footer__column footer__column--wide">
+      <h2>Use Cases</h2>
+      <div class="footer__paired-groups">
+        {solutionGroups.map((group) => (
+          <div class="footer__group">
+            <h4>{group.title}</h4>
+            <ul>{group.links.map((link) => <li><a href={hrefFor(link)}>{link}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer__column footer__column--wide">
+      <h2>Industries</h2>
+      <div class="footer__paired-groups">
+        {industryGroups.map((group) => (
+          <div class="footer__group">
+            <h4>{group.title}</h4>
+            <ul>{group.links.map((link) => <li><a href={hrefFor(link)}>{link}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer__column">
+      <h2>Resources</h2>
+      <ul>
+        {
+          resources.map((link) => (
+            <li>
+              <a href={hrefFor(link)}>{link}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="footer__group footer__group--secondary">
+        <h2>Legal</h2><ul>
+          {
+            legal.map((link) => (
+              <li>
+                <a href="#">{link}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="footer__group footer__group--secondary">
+        <h2>Get Started</h2>
+        <ul>{getStarted.map((item) => <li><a href={item.href}>{item.label}{item.external && <span class="footer__external" aria-hidden="true">↗</span>}</a></li>)}</ul>
+      </div>
+    </div>
+
+    <div class="footer__column footer__column--removed">
+      <h2>Get Started</h2>
+      <ul>
+        {
+          getStarted.map((item) => (
+            <li>
+              <a href={item.href}>
+                {item.label}
+                {item.external && (
+                  <span class="footer__external" aria-hidden="true">
+                    ↗
+                  </span>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="footer__group footer__group--secondary">
+        <h2>Company</h2><ul>
+          {
+            company.map((link) => (
+              <li>
+                <a href="#">{link}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__base">
+    <Image src={torontoSkyline} alt="" class="footer__skyline" aria-hidden="true" />
+    <div class="container-page footer__base-inner">
+      <div class="footer__canada">
+        <span class="footer__maple" aria-hidden="true">🍁</span><span class="footer__rule"
+        ></span><div>
+          <strong
+            >Proudly built in Canada <Image
+              src={canadaFlag}
+              alt="Canada flag"
+              class="footer__flag"
+            /></strong
+          ><p>Designed and engineered in Toronto, Ontario.</p>
+        </div>
+      </div>
+      <p class="footer__copyright">Copyright © 2026 Ralvie AI Inc, All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  :global(body) {
+    isolation: isolate;
+  }
+  :global(body > main) {
+    position: relative;
+    z-index: 1;
+  }
+  .footer {
+    --bg: #060513;
+    --title: #f0effa;
+    --copy: #686686;
+    --heading: #aaa7ca;
+    --line: rgba(123, 121, 157, 0.12);
+    --sky: 0.14;
+    position: sticky;
+    z-index: 0;
+    bottom: 0;
+    background: var(--bg);
+    color: var(--copy);
+  }
+  .footer--light {
+    --bg: #fff;
+    --title: #3f3e49;
+    --copy: #686772;
+    --heading: #74727e;
+    --line: #eeedf4;
+    --sky: 0.86;
+  }
+  .footer__directory {
+    display: grid;
+    grid-template-columns: 1.05fr 0.86fr 1.28fr 1.08fr 0.78fr;
+    gap: 2.35rem;
+    min-height: 478px;
+    padding-top: 74px;
+    padding-bottom: 47px;
+  }
+  .footer__brand img {
+    width: 139px;
+    height: auto;
+  }
+  .footer__brand p {
+    margin-top: 15px;
+    font-size: 13.2px;
+    line-height: 1.45;
+  }
+  .footer h2 {
+    color: var(--heading);
+    font-size: 11.55px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .footer h3 {
+    color: var(--title);
+    font-size: 13.2px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .footer h4 {
+    color: var(--heading);
+    font-size: 11.55px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .footer__group {
+    margin-top: 20px;
+  }
+  .footer__column > .footer__group:first-child {
+    margin-top: 0;
+  }
+  .footer__group + .footer__group {
+    margin-top: 22px;
+  }
+  .footer__group--secondary {
+    margin-top: 29px !important;
+  }
+  .footer__paired-groups {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .footer__paired-groups > .footer__group {
+    margin-top: 20px !important;
+  }
+  .footer__paired-groups > .footer__group + .footer__group {
+    margin-top: 28px !important;
+  }
+  .footer__paired-groups li a {
+    white-space: nowrap;
+  }
+  .footer__column--removed {
+    display: none;
+  }
+  .footer ul {
+    display: grid;
+    gap: 13px;
+    margin-top: 15px;
+    list-style: none;
+  }
+  .footer__group ul {
+    margin-top: 15px;
+  }
+  .footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer a:hover {
+    color: var(--title);
+  }
+  .footer li {
+    font-size: 13.2px;
+    line-height: 1.4;
+  }
+  .footer__external {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.8em;
+    line-height: 1;
+    transform: translateY(-2px);
+  }
+  .footer__base {
+    position: relative;
+    min-height: 72px;
+    overflow: visible;
+    border-top: 1px solid var(--line);
+  }
+  .footer__base-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer__canada {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer__maple {
+    width: 33px;
+    font-size: 28.05px;
+    line-height: 1;
+  }
+  .footer__rule {
+    width: 1px;
+    height: 33px;
+    background: var(--line);
+  }
+  .footer__canada strong {
+    display: block;
+    color: var(--title);
+    font-size: 12.375px;
+    line-height: 1.25;
+  }
+  .footer__canada p,
+  .footer__copyright {
+    font-size: 10.725px;
+    line-height: 1.3;
+  }
+  .footer__canada p {
+    margin-top: 2px;
+  }
+  .footer__flag {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    margin-left: 4px;
+    vertical-align: -2px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .footer__copyright {
+    margin-right: 37%;
+    white-space: nowrap;
+    color: var(--copy);
+  }
+  .footer__skyline {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    width: min(520px, 30vw);
+    height: 150px;
+    object-fit: fill;
+    opacity: var(--sky);
+    pointer-events: none;
+  }
+  @media (max-width: 1100px) {
+    .footer__directory {
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 2.625rem;
+    }
+    .footer__brand {
+      grid-row: span 2;
+    }
+    .footer__column--wide {
+      grid-column: span 2;
+    }
+    .footer__copyright {
+      margin-right: 0;
+    }
+    .footer__skyline {
+      opacity: calc(var(--sky) * 0.65);
+    }
+  }
+  @media (max-width: 700px) {
+    .footer__directory {
+      grid-template-columns: 1fr 1fr;
+      min-height: 0;
+      gap: 2.25rem 1.5rem;
+      padding-top: 52px;
+      padding-bottom: 36px;
+    }
+    .footer__brand {
+      grid-column: 1/-1;
+      grid-row: auto;
+    }
+    .footer__column--wide {
+      grid-column: 1/-1;
+    }
+    .footer__base-inner {
+      min-height: 128px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 15px;
+    }
+    .footer__skyline {
+      right: -160px;
+      width: 480px;
+    }
+    .footer__copyright {
+      white-space: normal;
+    }
+  }
+  @media (max-width: 440px) {
+    .footer__directory {
+      grid-template-columns: 1fr;
+    }
+    .footer__brand {
+      grid-column: auto;
+    }
+    .footer__column--wide {
+      grid-column: auto;
+    }
+    .footer__paired-groups {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,140 @@
+---
+import ralvieLogoIcon from '../../assets/Ralvie-logo-icon.svg';
+
+const actions = [
+  'Book appointments',
+  'Qualify leads',
+  'Send follow-ups',
+  'Create requests',
+  'Update CRM records',
+  'Transfer conversations',
+  'Trigger workflows',
+  'Record outcomes',
+];
+
+const orbitPositions = actions.map((_, i) => {
+  const angle = (i / actions.length) * Math.PI * 2 - Math.PI / 2;
+  const x = 50 + 40 * Math.cos(angle);
+  const y = 50 + 40 * Math.sin(angle);
+  return `top:${y}%; left:${x}%;`;
+});
+
+const audioWavePaths = Array.from({ length: 18 }, (_, ring) => {
+  const points = Array.from({ length: 161 }, (_, point) => {
+    const angle = (point / 160) * Math.PI * 2;
+    const baseRadius = 57 + ring * 1.25;
+    const audioWave =
+      Math.sin(angle * 3 + ring * 0.24) * (6.5 + ring * 0.12) +
+      Math.sin(angle * 5 - ring * 0.15) * 2.8;
+    const radius = baseRadius + audioWave;
+    const x = 100 + Math.cos(angle) * radius;
+    const y = 100 + Math.sin(angle) * radius;
+    return `${point === 0 ? 'M' : 'L'}${x.toFixed(2)},${y.toFixed(2)}`;
+  });
+  return `${points.join(' ')} Z`;
+});
+---
+
+<section class="section section-tint relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">From conversation to action</p>
+      <h2 class="text-headline-lg text-on-surface">More Than an Answering Service</h2>
+      <p class="text-body-lg text-on-surface-variant">
+        Ralvie does not simply respond to questions. It can complete actions during and after each customer
+        conversation — turning customer communication into a connected business process rather than another task
+        your team must complete manually.
+      </p>
+    </div>
+
+    <!-- Desktop: radial orbit. Mobile: wrapped chip cluster (avoids cramped overlap at small sizes) -->
+    <div class="reveal relative mx-auto hidden h-[26rem] max-w-2xl lg:block">
+      <div class="action-wave-node absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2">
+        <svg class="action-wave-ring absolute inset-0 h-full w-full" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="action-wave-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6f8cff" />
+              <stop offset="46%" stop-color="#9d62ff" />
+              <stop offset="78%" stop-color="#dd36e8" />
+              <stop offset="100%" stop-color="#ff7a35" />
+            </linearGradient>
+          </defs>
+          {audioWavePaths.map((path, index) => (
+            <path
+              class="action-wave-path"
+              d={path}
+              fill="none"
+              stroke="url(#action-wave-gradient)"
+              stroke-width={index % 4 === 0 ? 0.9 : 0.55}
+              style={`--wave-index:${index}`}
+            />
+          ))}
+        </svg>
+        <img
+          src={ralvieLogoIcon.src}
+          alt="Ralvie AI"
+          class="action-wave-logo absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 object-contain"
+        />
+      </div>
+      {actions.map((action, i) => (
+        <span class="chip text-label-sm absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap normal-case tracking-normal" style={orbitPositions[i]}>
+          {action}
+        </span>
+      ))}
+    </div>
+
+    <div class="reveal mx-auto flex max-w-2xl flex-wrap justify-center gap-3 lg:hidden">
+      {actions.map((action) => (
+        <span class="chip text-label-sm normal-case tracking-normal">{action}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .action-wave-ring {
+    overflow: visible;
+    filter:
+      drop-shadow(0 0 8px rgb(104 101 255 / 32%))
+      drop-shadow(0 0 18px rgb(209 54 232 / 18%));
+    animation: action-wave-rotate 28s linear infinite;
+  }
+
+  .action-wave-path {
+    opacity: 0.52;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: action-wave-pulse 3.8s ease-in-out infinite alternate;
+    animation-delay: calc(var(--wave-index) * -0.16s);
+  }
+
+  .action-wave-logo {
+    filter:
+      drop-shadow(0 10px 12px rgb(2 5 18 / 68%))
+      drop-shadow(0 0 14px rgb(171 63 255 / 44%));
+  }
+
+  @keyframes action-wave-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes action-wave-pulse {
+    0% {
+      opacity: 0.32;
+      transform: scale(0.92);
+    }
+    100% {
+      opacity: 0.82;
+      transform: scale(1.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .action-wave-ring,
+    .action-wave-path {
+      animation: none;
+    }
+  }
+</style>

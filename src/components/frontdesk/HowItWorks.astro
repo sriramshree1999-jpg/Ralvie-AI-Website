@@ -1,0 +1,47 @@
+---
+const steps = [
+  {
+    title: 'Add Your Business Knowledge',
+    description: 'Connect your website, upload documents and provide the information Ralvie needs to answer customer questions accurately.',
+  },
+  {
+    title: 'Personalise Your AI',
+    description: 'Choose the voice, greeting, communication style, supported languages and personality that best represent your business.',
+  },
+  {
+    title: 'Configure Your Workflows',
+    description: 'Define how Ralvie should qualify leads, schedule appointments, send messages, transfer conversations and trigger actions.',
+  },
+  {
+    title: 'Connect Your Channels',
+    description: 'Activate the phone receptionist, website chatbot, email manager, SMS agent, web voicebot and website forms according to your needs.',
+  },
+  {
+    title: 'Test and Launch',
+    description: 'Run real customer scenarios, review the responses and refine the experience before making Ralvie available to your customers.',
+  },
+];
+---
+
+<section id="how-it-works" class="section relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">From setup to launch</p>
+      <h2 class="text-headline-lg text-on-surface">Launch an AI Frontdesk Built Around Your Business</h2>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-4">
+      {steps.map((step, i) => (
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div class="flex w-full items-center gap-2">
+            <span class="node-dot h-10 w-10 shrink-0 text-body-md font-semibold text-secondary">{i + 1}</span>
+            {i < steps.length - 1 && <div class="flow-line hidden flex-1 lg:block"></div>}
+          </div>
+          <p class="text-label-sm mt-4 text-on-surface-variant/60">Step 0{i + 1}</p>
+          <h3 class="text-body-lg mt-1 font-semibold text-on-surface">{step.title}</h3>
+          <p class="text-body-md mt-3 text-on-surface-variant">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

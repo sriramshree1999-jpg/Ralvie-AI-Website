@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+interface Props { id?: string; }
+const { id = 'get-started' } = Astro.props;
+---
+<section class="productivity-shared-cta" id={id}>
+  <div class="cta-glow cta-glow-left" aria-hidden="true"></div>
+  <div class="cta-glow cta-glow-center" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <span class="cta-pill">RALVIE AI PRODUCTIVITY</span>
+    <h2><span>Improve Workforce Productivity</span><span class="gradient-line">With Ralvie AI</span></h2>
+    <p>Ralvie AI Productivity helps businesses improve workforce visibility, automate time tracking, simplify reporting, and gain actionable insights into how teams spend their time through AI-powered productivity management.</p>
+    <div class="cta-actions">
+      <a href="#" class="cta-primary">Start Free Trial <Icon name="arrow-right" /></a>
+      <a href="#" class="cta-secondary"><Icon name="calendar" /> Book a Demo</a>
+    </div>
+    <small>Smarter workforce visibility. Less manual reporting. Better productivity decisions.</small>
+  </div>
+</section>
+
+<style>
+  .productivity-shared-cta{position:relative;isolation:isolate;overflow:hidden;padding:7rem 1.5rem;background:linear-gradient(120deg,#25234f 0%,#132657 49%,#111b42 100%);color:#fff;text-align:center}.cta-glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(30px);pointer-events:none}.cta-glow-left{width:46rem;height:28rem;left:-13rem;bottom:-17rem;background:rgba(108,72,242,.37)}.cta-glow-center{width:36rem;height:24rem;left:43%;top:28%;background:rgba(43,104,188,.22)}.cta-inner{width:min(1180px,100%);margin:auto}.cta-pill{display:inline-flex;align-items:center;justify-content:center;padding:1rem 2.7rem;border:1px solid rgba(130,151,255,.28);border-radius:999px;background:linear-gradient(120deg,rgba(64,103,184,.45),rgba(99,70,167,.46));color:#bfc8f7;font:700 .78rem/1 var(--font-label);letter-spacing:.13em}.productivity-shared-cta h2{margin:2.7rem 0 1.55rem;font-size:clamp(2.75rem,5.15vw,4.9rem);font-weight:500;line-height:1.03;letter-spacing:-.055em;color:#fff}.productivity-shared-cta h2>span{display:block;white-space:nowrap}.productivity-shared-cta h2 .gradient-line{background:linear-gradient(90deg,#8da8ff 10%,#a889ff 48%,#64d4ed 90%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}.productivity-shared-cta p{max-width:950px;margin:auto;color:#aeb8d7;font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.75}.cta-actions{display:flex;justify-content:center;gap:1rem;margin:2.9rem 0 2.1rem}.cta-actions a{display:inline-flex;min-height:58px;align-items:center;justify-content:center;gap:.75rem;padding:0 2rem;border-radius:13px;font-weight:700;transition:transform .2s ease,filter .2s ease}.cta-actions a:hover{transform:translateY(-2px);filter:brightness(1.08)}.cta-primary{background:linear-gradient(120deg,#456ff0,#795bf0);box-shadow:0 14px 32px rgba(55,78,214,.28);color:#fff}.cta-secondary{border:1px solid rgba(255,255,255,.14);background:rgba(90,108,156,.48);color:#fff}.cta-actions svg{width:19px}.productivity-shared-cta small{display:block;color:#8793b6;font-size:.78rem;font-weight:700}
+  @media(max-width:640px){.productivity-shared-cta{padding:5rem 1.25rem}.cta-pill{padding:.85rem 1.5rem}.productivity-shared-cta h2{font-size:2.55rem;margin-top:2rem}.productivity-shared-cta h2>span{white-space:normal}.productivity-shared-cta p{font-size:.98rem}.cta-actions{flex-direction:column;max-width:320px;margin:2.2rem auto 1.8rem}.cta-actions a{width:100%}}
+</style>

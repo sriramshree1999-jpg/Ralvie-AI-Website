@@ -1,0 +1,543 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import ProductivityFinalCta from '../components/ProductivityFinalCta.astro';
+import activityImage from '../assets/Automatic Activity Intelligence.jpg';
+import timeLogsImage from '../assets/Smart Time Logs.jpg';
+import captureImage from '../assets/Intelligent Screen Capture.jpg';
+import projectImage from '../assets/Project Visibility.jpg';
+import dashboardImage from '../assets/AI Analytics Dashboard.jpg';
+import productivityPlatformImage from '../assets/Ralvie ai productivity platform.png';
+import ralvieLogoIcon from '../assets/Ralvie-logo-icon.svg';
+import biotimeLogo from '../assets/Biotime cloud.svg';
+import jiraLogo from '../assets/Jira.svg';
+import '../styles/productivity.css';
+import '../styles/ralvie-product-ui.css';
+import '../styles/productivity-integrations.css';
+
+const title = 'AI Productivity & Workforce Analytics Platform | Ralvie AI';
+const description =
+  'Understand how work happens with Ralvie AI Productivity. Automatically capture activity, map work to projects and tasks, generate AI timesheets and summaries, and turn workplace data into actionable productivity insights.';
+
+const steps = [
+  [
+    'Capture',
+    'Work activity is recorded automatically based on your organization’s configuration.',
+  ],
+  [
+    'Understand',
+    'Ralvie adds useful application, document, window, idle-time, and work-session context.',
+  ],
+  ['Organize', 'AI-assisted workflows connect work to the right projects and tasks.'],
+  [
+    'Analyze',
+    'Dashboards turn workplace data into practical productivity and workload intelligence.',
+  ],
+  [
+    'Summarize',
+    'Daily, weekly, and custom-period work summaries are generated from real activity.',
+  ],
+];
+
+const capabilities = [
+  [
+    'clock',
+    'AI Timesheets',
+    'Build accurate, structured time records from captured work context without reconstructing the day.',
+  ],
+  [
+    'folder',
+    'Project Intelligence',
+    'Understand where effort is going and connect activity, tasks, time, and progress.',
+  ],
+  [
+    'sparkles',
+    'AI Work Summaries',
+    'Turn detailed activity into concise daily, weekly, or custom updates in useful formats.',
+  ],
+  [
+    'chart-bar',
+    'Workforce Analytics',
+    'Explore focus, workload, project distribution, application use, and work patterns.',
+  ],
+  [
+    'monitor',
+    'Application Intelligence',
+    'See which applications support productive work and how tool usage changes over time.',
+  ],
+  [
+    'shield-check',
+    'Privacy & Control',
+    'Configure schedules, tracking, visibility, permissions, and capture settings for your policies.',
+  ],
+];
+
+const roles = [
+  [
+    'Employees',
+    'A clearer record of completed work and less time spent on timers, timesheets, and status updates.',
+  ],
+  [
+    'Managers',
+    'Reliable visibility into workload, capacity, focus, and progress without chasing updates.',
+  ],
+  [
+    'Project leads',
+    'Better project context, effort distribution, and earlier signals when work is drifting.',
+  ],
+  [
+    'Operations',
+    'Connected workforce data that improves reporting consistency and resource planning.',
+  ],
+  [
+    'Leadership',
+    'A high-level view of productivity patterns and how everyday activity supports strategy.',
+  ],
+];
+
+const faqs = [
+  [
+    'What is Ralvie AI Productivity?',
+    'Ralvie AI Productivity is a workforce productivity and work-intelligence platform that automatically captures workplace activity, organizes time around projects and tasks, generates AI-assisted timesheets and summaries, and analyzes productivity patterns.',
+  ],
+  [
+    'Does Ralvie automatically track activity?',
+    'Yes. The Ralvie Sundial desktop application can capture applicable workplace activity automatically according to your organization’s configuration.',
+  ],
+  [
+    'What operating systems are supported?',
+    'Ralvie Sundial supports supported Windows and macOS environments.',
+  ],
+  [
+    'Do employees need to manually start timers?',
+    'Ralvie is designed to reduce dependence on manual timers by using automatic activity tracking.',
+  ],
+  [
+    'What can Ralvie track?',
+    'Depending on your configuration, Ralvie can capture relevant information associated with applications, documents, windows, activity periods, idle time, and work sessions.',
+  ],
+  [
+    'Can Ralvie work offline?',
+    'Applicable activity can be captured locally when connectivity is unavailable and synchronized when the connection returns.',
+  ],
+  [
+    'Can activity be mapped to projects and tasks?',
+    'Yes. AI-assisted workflows help associate work activity with relevant projects and tasks.',
+  ],
+  [
+    'What are AI Timesheets?',
+    'AI Timesheets use captured work context to create structured time records, reducing the need for employees to reconstruct their workday manually.',
+  ],
+  [
+    'Can Ralvie generate work summaries?',
+    'Yes. The Summary Agent can turn work activity into structured daily, weekly, or custom-period summaries.',
+  ],
+  [
+    'Does Ralvie provide productivity analytics?',
+    'Yes. Reports and analytics cover workload, focus versus idle time, project distribution, application usage, and broader productivity patterns.',
+  ],
+  [
+    'Can managers compare team activity?',
+    'Ralvie provides team-level productivity views and reporting according to organizational roles and permissions.',
+  ],
+  [
+    'Can we configure work schedules?',
+    'Yes. Organizations can configure working hours and schedules to provide better context around captured activity.',
+  ],
+  [
+    'Is Ralvie only for remote teams?',
+    'No. Ralvie supports remote, hybrid, office-based, and project-based working environments.',
+  ],
+  [
+    'Can Ralvie integrate with our business tools?',
+    'Ralvie supports integrations that connect productivity information with project, task, accounting, and other business workflows.',
+  ],
+  [
+    'Is employee privacy configurable?',
+    'Organizations can configure tracking and visibility according to workplace policies, roles, schedules, and applicable privacy requirements.',
+  ],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+
+<Layout title={title} description={description} theme="light" showScene={false}>
+  <Header title="Ralvie AI" theme="light" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <main class="productivity-page pt-(--header-height)">
+    <section class="productivity-hero productivity-hero-reference">
+      <div class="productivity-shell hero-grid">
+        <div class="hero-copy">
+          <span class="hero-badge">Ralvie AI Productivity Platform</span>
+          <h1>AI Productivity Analytics<br />for <em>Modern Teams</em></h1>
+          <p>
+            Ralvie AI helps businesses understand how teams work and where time is spent through
+            AI-powered productivity insights, dashboards, and work summaries.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="#get-started"
+              >Book a demo <Icon name="arrow-right" /></a
+            >
+            <a class="button button-secondary" href="#capabilities"
+              >Explore features <Icon name="arrow-right" /></a
+            >
+          </div>
+          <div class="hero-points">
+            <span>AI-powered insights</span><span>Real-time dashboards</span><span
+              >Privacy controls</span
+            >
+          </div>
+        </div>
+        <div class="hero-showcase">
+          <div class="hero-visual glass-panel">
+            <Image
+              src={productivityPlatformImage}
+              alt="Ralvie AI Productivity Platform dashboard"
+              loading="eager"
+            />
+          </div>
+          <div class="floating-stat stat-one">
+            <span class="stat-icon purple"><Icon name="chart-bar" /></span><span
+              ><strong>87%</strong><small>Productivity score</small></span
+            >
+          </div>
+          <div class="floating-stat stat-two">
+            <span class="stat-icon orange"><Icon name="clock" /></span><span
+              ><strong>6.4h</strong><small>Avg active time</small></span
+            >
+          </div>
+          <div class="floating-stat stat-three">
+            <span class="stat-icon green"><Icon name="check" /></span><span
+              ><strong>24</strong><small>Tasks completed</small></span
+            >
+          </div>
+          <div class="floating-stat stat-four">
+            <span class="stat-icon pink"><Icon name="chart-bar" /></span><span
+              ><strong>3 projects</strong><small>On track today</small></span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="productivity-shell">
+        <div class="section-heading centered">
+          <span class="eyebrow">How Ralvie works</span><h2>
+            Understand the work<br /><em>behind the work.</em>
+          </h2><p>
+            Ralvie turns fragmented workplace activity into connected context your employees,
+            managers, and leaders can use.
+          </p>
+        </div>
+        <div class="work-flow-panel">
+          <header class="work-flow-head">
+            <div><span class="work-flow-mark"><Icon name="sparkles" /></span><p>RALVIE TASK INTELLIGENCE</p><h3>From assignment to actionable insight</h3></div>
+            <span class="work-flow-live">Live</span>
+          </header>
+          <div class="work-flow-body">
+            <div class="work-flow-line" aria-hidden="true"></div>
+            <div class="steps-grid">
+              {
+                steps.map(([name, copy], i) => (
+                  <article class:list={['step-card glass-card', i === 1 && 'is-active']}>
+                    <span class="step-icon"><Icon name={['list-check', 'monitor', 'clock', 'sparkles', 'chart-bar'][i]} /></span>
+                    <span class="step-number">0{i + 1}</span>
+                    <h3>{name}</h3>
+                    <p>{copy}</p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+          <footer><span><i></i> Context updates automatically</span><small>Each stage adds clearer execution intelligence</small></footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh" id="automatic-tracking">
+      <div class="productivity-shell split-grid">
+        <div class="media-card lilac">
+          <Image src={activityImage} alt="Automatic activity intelligence interface" />
+        </div>
+        <div class="section-copy">
+          <span class="eyebrow">Automatic activity intelligence</span><h2>
+            See how work happens—<em>without manual timers.</em>
+          </h2><p>
+            Ralvie Sundial quietly captures applicable workplace activity according to your
+            configuration, providing a reliable timeline of the workday while reducing manual
+            administration.
+          </p><ul class="check-list">
+            <li>Application, document, and active-window context</li><li>
+              Configurable idle-time and work-session detection
+            </li><li>Offline capture with synchronization when connectivity returns</li><li>
+              Windows and macOS support
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ai-timesheets">
+      <div class="productivity-shell split-grid reverse-mobile">
+        <div class="section-copy">
+          <span class="eyebrow">AI timesheets</span><h2>
+            Accurate time records, <em>built from real work.</em>
+          </h2><p>
+            AI Timesheets transform captured work context into detailed time logs. Employees spend
+            less time remembering what happened, while teams gain a stronger record for billing,
+            reviews, audits, and planning.
+          </p><div class="mini-grid">
+            <span>Project time breakdowns</span><span>Daily work records</span><span
+              >Reviewable entries</span
+            ><span>Export-ready reporting</span>
+          </div>
+        </div>
+        <div class="media-card cyan">
+          <Image src={timeLogsImage} alt="Ralvie smart time logs interface" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh" id="project-intelligence">
+      <div class="productivity-shell split-grid">
+        <div class="media-card rose">
+          <Image src={projectImage} alt="Ralvie project visibility interface" />
+        </div>
+        <div class="section-copy">
+          <span class="eyebrow">AI project mapping</span><h2>
+            Connect effort to the <em>work it supports.</em>
+          </h2><p>
+            Ralvie helps associate activity with the right projects and tasks, creating a live view
+            of effort, contribution, progress, and emerging risk across your organization.
+          </p><div class="flow-line">
+            <span>Activity</span><b>→</b><span>Project</span><b>→</b><span>Task</span><b>→</b><span
+              >Insight</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work-summaries">
+      <div class="productivity-shell summary-layout">
+        <div class="section-copy">
+          <span class="eyebrow">AI work summaries</span><h2>
+            Turn a detailed workday into a <em>clear update.</em>
+          </h2><p>
+            The Ralvie Summary Agent converts captured activity into structured daily, weekly, or
+            custom-period summaries. Choose concise, detailed, project-based, or outcome-oriented
+            formats for the audience that needs them.
+          </p>
+        </div>
+        <article class="summary-sample glass-panel">
+          <div class="sample-head">
+            <span>Weekly summary</span><span class="status-dot">AI generated</span>
+          </div><h3>Product & implementation</h3><ul>
+            <li>Advanced the onboarding workflow and resolved priority UI issues.</li><li>
+              Completed project planning and aligned next actions with the delivery team.
+            </li><li>Focused 68% of tracked time on high-priority project work.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section analytics-section" id="analytics">
+      <div class="productivity-shell">
+        <div class="section-heading centered light">
+          <span class="eyebrow">Reports & analytics</span><h2>
+            From work activity to <em>workforce intelligence.</em>
+          </h2><p>
+            Explore the patterns behind productivity, workload, application usage, project
+            distribution, focus, and progress from one connected dashboard.
+          </p>
+        </div>
+        <div class="dashboard-frame">
+          <Image src={dashboardImage} alt="Ralvie AI analytics and productivity dashboard" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capabilities">
+      <div class="productivity-shell">
+        <div class="section-heading">
+          <span class="eyebrow">One connected platform</span><h2>
+            Everything teams need to make <em>productivity actionable.</em>
+          </h2>
+        </div><div class="capability-grid">
+          {
+            capabilities.map(([icon, name, copy], i) => (
+              <article class={`capability-card tone-${i + 1}`}>
+                <>
+                  <span class="icon-box">
+                    <Icon name={icon} />
+                  </span>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh">
+      <div class="productivity-shell">
+        <div class="section-heading centered">
+          <span class="eyebrow">Intelligence for every team</span><h2>
+            Clarity at every level of <em>the organization.</em>
+          </h2>
+        </div><div class="roles-grid">
+          {
+            roles.map(([name, copy]) => (
+              <article class="role-card glass-card">
+                <>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section privacy-section" id="privacy-control">
+      <div class="productivity-shell privacy-grid">
+        <div>
+          <span class="eyebrow">Privacy & control</span><h2>
+            Useful visibility with <em>responsible configuration.</em>
+          </h2><p>
+            Work intelligence should support people, not create ambiguity. Ralvie gives
+            organizations control over what is captured, when it is captured, and who can see it.
+          </p>
+        </div><div class="control-list glass-panel">
+          <span>Configurable work schedules</span><span>Role-based permissions</span><span
+            >Capture and idle-time settings</span
+          ><span>Policy-aligned visibility</span><span>Screenshot-free work visibility options</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section comparison-section">
+      <div class="productivity-shell">
+        <div class="section-heading centered">
+          <span class="eyebrow">Ralvie vs traditional tracking</span><h2>
+            Move beyond <em>hours on a clock.</em>
+          </h2>
+        </div><div class="comparison-table">
+          <div class="table-row table-head">
+            <span>Capability</span><span>Traditional tracking</span><span
+              >Ralvie AI Productivity</span
+            >
+          </div>{
+            [
+              ['Work activity capture', 'Manual timers', 'Automatic'],
+              ['Project & task mapping', 'Manual', 'AI-assisted'],
+              ['Timesheets & summaries', 'Manual', 'AI-assisted and generated'],
+              ['Productivity analytics', 'Basic hours', 'Work-pattern intelligence'],
+              ['Manager visibility', 'Status updates', 'Connected productivity context'],
+              ['Reporting effort', 'High', 'Reduced'],
+            ].map((row) => (
+              <div class="table-row">
+                {row.map((cell, i) => (
+                  <span class:list={[i === 2 && 'positive']}>
+                    {i === 2 && <Icon name="check" />}
+                    {cell}
+                  </span>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section productivity-integrations">
+      <div class="integration-orb integration-orb-one" aria-hidden="true"></div>
+      <div class="integration-orb integration-orb-two" aria-hidden="true"></div>
+      <div class="productivity-shell">
+        <div class="section-heading integration-heading">
+          <span class="eyebrow">Connected productivity</span><h2>
+            Bring your work systems into <em>one intelligent view.</em>
+          </h2><p>
+            Connect attendance, projects, tasks, and worklogs with Ralvie AI to create unified productivity context without replacing the tools your teams already use.
+          </p>
+        </div>
+        <div class="integration-network" aria-label="BioTime Cloud and Jira connected with Ralvie AI">
+          <div class="integration-stack">
+            <article class="integration-card biotime-card">
+              <div class="integration-brand">
+                <img src={biotimeLogo.src} alt="BioTime Cloud" />
+              </div>
+              <div class="integration-copy"><div><h3>BioTime Cloud</h3><em>HR & attendance</em></div><p>Sync attendance and time-tracking data for complete workforce visibility.</p></div>
+              <button><Icon name="link"/> Connected</button>
+            </article>
+            <article class="integration-card jira-card">
+              <div class="integration-brand">
+                <img src={jiraLogo.src} alt="Jira" />
+              </div>
+              <div class="integration-copy"><div><h3>Jira</h3><em>Projects & tasks</em></div><p>Import members, projects, tasks, and worklogs for unified AI-powered insights.</p></div>
+              <button><Icon name="link"/> Connected</button>
+            </article>
+          </div>
+          <div class="integration-lines" aria-hidden="true">
+            <span class="line line-top"><i></i></span><span class="line line-bottom"><i></i></span>
+          </div>
+          <article class="ralvie-integration-node">
+            <span class="node-rings" aria-hidden="true"><i></i><i></i><i></i></span>
+            <img src={ralvieLogoIcon.src} alt="Ralvie AI" />
+            <b>Ralvie AI</b><small>Productivity intelligence</small><em><Icon name="shield-check"/> Secured</em>
+          </article>
+        </div>
+        <div class="integration-benefits"><span>Automatic data sync</span><span>Unified work context</span><span>AI-powered insights</span><span>Secure connections</span></div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="productivity-shell faq-layout">
+        <div class="faq-column">
+          <div class="section-heading">
+            <span class="eyebrow">Frequently asked questions</span><h2>
+              Everything you need to know about <em>Ralvie Productivity.</em>
+            </h2><p>
+              Looking for something specific? Book a demo and we’ll walk through your workflow.
+            </p>
+          </div><div class="faq-list">
+            {
+              faqs.slice(0, 6).map(([q, a], i) => (
+                <details open={i === 0}>
+                  <><summary>{q}<span>+</span></summary><p>{a}</p></>
+                </details>
+              ))
+            }
+          </div>
+        </div><div class="faq-column"><div class="faq-list">
+          {
+            faqs.slice(6).map(([q, a]) => (
+              <details>
+                <><summary>{q}<span>+</span></summary><p>{a}</p></>
+              </details>
+            ))
+          }
+        </div></div>
+      </div>
+    </section>
+
+    <ProductivityFinalCta />
+  </main>
+  <Footer theme="light" />
+</Layout>

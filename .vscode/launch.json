@@ -2,10 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "name": "Astro Dev Server",
+      "type": "node-terminal",
       "request": "launch",
-      "type": "node-terminal"
+      "command": "npm",
+      "args": ["run", "dev"],
+      "isBackground": true
+    },
+    {
+      "name": "Chrome - Attach",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "pathMapping": {
+        "/": "${workspaceRoot}/",
+        "/src/": "${workspaceRoot}/src/"
+      }
     }
   ]
 }

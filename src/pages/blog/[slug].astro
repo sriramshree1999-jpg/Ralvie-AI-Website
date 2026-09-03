@@ -1,0 +1,122 @@
+---
+import { toHTML } from '@portabletext/to-html';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { sanityClient, sanityConfigured, urlFor } from '../../lib/sanity';
+import { postBySlugQuery, postSlugsQuery } from '../../lib/queries';
+
+export async function getStaticPaths() {
+  if (!sanityConfigured) return [];
+
+  const slugs: string[] = await sanityClient.fetch(postSlugsQuery);
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+const post = await sanityClient.fetch(postBySlugQuery, { slug });
+
+if (!post) {
+  return Astro.redirect('/blog', 302);
+}
+
+const bodyHtml = post.body ? toHTML(post.body) : '';
+---
+
+<Layout title={`${post.title} - Ralvie AI`} description={post.excerpt}>
+  <Header title="Ralvie AI" />
+
+  <main class="pt-16">
+    <article class="mx-auto max-w-3xl px-6 py-20 lg:px-0">
+      <a href="/blog" class="text-body-md text-on-surface-variant transition-colors hover:text-on-surface">
+        ← Back to blog
+      </a>
+
+      {post.categories && post.categories.length > 0 && (
+        <p class="text-label-sm mt-6 text-secondary">
+          {post.categories.join(' · ')}
+        </p>
+      )}
+
+      <h1 class="text-headline-lg mt-4 text-on-surface">{post.title}</h1>
+
+      <div class="text-body-md mt-6 flex items-center gap-3 text-on-surface-variant/60">
+        <span>{post.author?.name || 'Ralvie AI'}</span>
+        <span>·</span>
+        <time datetime={post.publishedAt}>
+          {new Date(post.publishedAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+      </div>
+
+      {post.mainImage && (
+        <img
+          src={urlFor(post.mainImage).width(1200).height(675).url()}
+          alt={post.title}
+          class="rounded-lg mt-10 w-full object-cover"
+        />
+      )}
+
+      <div class="post-body mt-10" set:html={bodyHtml} />
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .post-body {
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+  .post-body :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-on-surface);
+  }
+  .post-body :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-on-surface);
+  }
+  .post-body :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .post-body :global(a) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .post-body :global(ul) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+  .post-body :global(blockquote) {
+    margin: 1.5rem 0;
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--color-on-surface-variant);
+    opacity: 0.85;
+  }
+  .post-body :global(img) {
+    border-radius: var(--radius-md);
+    margin: 1.5rem 0;
+  }
+  .post-body :global(code) {
+    background: var(--color-surface-container-high);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+  }
+</style>

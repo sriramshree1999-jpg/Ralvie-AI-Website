@@ -1,0 +1,46 @@
+---
+import Icon from '../Icon.astro';
+import Waveform from '../Waveform.astro';
+---
+
+<section class="section relative">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal">
+      <p class="chip text-label-sm">Conversational AI</p>
+      <h2 class="text-headline-lg mt-6 text-on-surface">No Phone Trees. No Robotic Scripts.</h2>
+
+      <div class="mt-6 space-y-5">
+        <p class="text-body-lg text-on-surface-variant">
+          Customers can explain what they need in their own words. Ralvie understands natural speech and written
+          messages, allowing conversations to flow without rigid phone menus or predefined commands.
+        </p>
+        <p class="text-body-lg text-on-surface-variant">
+          It can ask intelligent follow-up questions when more information is needed and adapt the conversation
+          based on each customer's response — for a faster and more personal experience across both voice and
+          digital channels.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal glass-card">
+      <div class="flex items-center justify-between">
+        <span class="text-label-sm text-on-surface-variant">Live conversation</span>
+        <Waveform bars={5} />
+      </div>
+
+      <div class="mt-5 space-y-3">
+        <p class="text-body-md rounded-lg rounded-tl-none bg-surface-container-high p-3 text-on-surface">
+          "I'm not sure if you can help — I need something fixed at my place sometime this week, maybe Thursday?"
+        </p>
+        <p class="text-body-md ml-6 rounded-lg rounded-tr-none bg-linear-to-br from-primary to-secondary p-3 text-on-primary">
+          "I can help with that. What needs attention, and does Thursday morning or afternoon work better?"
+        </p>
+      </div>
+
+      <div class="mt-5 flex items-center gap-2 border-t border-outline-variant pt-4">
+        <Icon name="sparkles" class="h-4 w-4 text-secondary" />
+        <p class="text-body-md text-on-surface-variant">Ralvie adapts the next question to what the customer just said</p>
+      </div>
+    </div>
+  </div>
+</section>

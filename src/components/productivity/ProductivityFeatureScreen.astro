@@ -33,10 +33,7 @@ const timeRows = [
 
 <div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
   <aside class="pf-sidebar">
-    <div class="pf-brand"><img src={RalvieLogo.src} alt="Ralvie" /><b>ralvie</b></div>
-    <div class="pf-workspace">Northstar Digital <Icon name="arrow-right" /></div>
-    <nav>{nav.map(([icon, label]) => <span class:list={[label === activeNav && 'active']}><Icon name={icon} />{label}</span>)}</nav>
-    <div class="pf-person"><i>OB</i><span><b>Olivia Bennett</b><small>Toronto, Canada</small></span></div>
+    <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
   </aside>
   <div class="pf-app-main">
     <header class="pf-appbar"><span>Productivity / <b>{type.replaceAll('-', ' ')}</b></span><div><i></i> Sundial active <em></em> Capture enabled</div></header>

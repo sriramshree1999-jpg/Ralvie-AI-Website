@@ -1,0 +1,10 @@
+.multilingual-hero .hero-copy h1 {
+  font-size: clamp(2.65rem, 4.25vw, 4.1rem);
+  line-height: 1.01;
+}
+
+@media (max-width: 650px) {
+  .multilingual-hero .hero-copy h1 {
+    font-size: clamp(2.35rem, 11vw, 3rem);
+  }
+}
