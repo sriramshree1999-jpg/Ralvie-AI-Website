@@ -6,10 +6,6 @@ import type { ProductivityFeatureKey } from '../../data/productivityFeaturePages
 interface Props { type: ProductivityFeatureKey; compact?: boolean }
 const { type, compact = false } = Astro.props;
 
-const nav = [
-  ['dashboard', 'Dashboard'], ['bolt', 'Activities'], ['folder', 'Projects'], ['list-check', 'Tasks'], ['users', 'People']
-];
-const activeNav = type === 'dashboard' ? 'Dashboard' : type === 'projects' ? 'Projects' : type === 'tasks' ? 'Tasks' : 'Activities';
 const projectRows = [
   ['Northern Lights Portal', 'Ralvie', 'Sep 18, 2026', '72%', 'On track'],
   ['Lakeview Health Launch', 'Jira', 'Oct 02, 2026', '46%', 'In progress'],
@@ -36,18 +32,18 @@ const timeRows = [
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
     <nav class="pf-sidebar-nav">
       <div class="pf-nav-item" class:list={[type === 'dashboard' && 'active']}>
-        <Icon name="grid-2x2" /><span>Dashboard</span>
+        <Icon name="squares" /><span>Dashboard</span>
       </div>
       <div class="pf-nav-group" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'expanded']}>
         <div class="pf-nav-item" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'active']}>
-          <Icon name="bolt" /><span>Activities</span><Icon name="chevron-up" class="chevron" />
+          <Icon name="bolt" /><span>Activities</span><Icon name="chevron-down" class="chevron" />
         </div>
         <div class="pf-nav-submenu" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'show']}>
           <div class="pf-nav-item sub" class:list={[type === 'time-logs' && 'active']}>
             <Icon name="clock" /><span>Time Logs</span>
           </div>
           <div class="pf-nav-item sub" class:list={[type === 'screen-captures' && 'active']}>
-            <Icon name="play-square" /><span>Screen Captures</span>
+            <Icon name="squares" /><span>Screen Captures</span>
           </div>
         </div>
       </div>
@@ -68,7 +64,7 @@ const timeRows = [
         <Icon name="users" /><span>Organization</span><Icon name="chevron-down" class="chevron" />
       </div>
       <div class="pf-nav-item">
-        <Icon name="gear" /><span>Settings</span>
+        <Icon name="wrench" /><span>Settings</span>
       </div>
     </nav>
   </aside>
