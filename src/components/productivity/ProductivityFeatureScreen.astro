@@ -27,6 +27,7 @@ const timeRows = [
 ];
 ---
 
+{type === 'automatic-activity-tracking' && <div class="sundial-content-wrapper">}
 <div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
   {type === 'automatic-activity-tracking' && <div class="sundial-overlay">
     <div class="sundial-titlebar"><span><i></i>Sundial</span><div>—　□　×</div></div>
@@ -64,6 +65,7 @@ const timeRows = [
       <li><Icon name="check" />Automatic tracking with zero manual input required</li>
     </ul>
   </section>}
+{type === 'automatic-activity-tracking' && </div>}
   <aside class="pf-sidebar">
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
     <nav class="pf-sidebar-nav">
