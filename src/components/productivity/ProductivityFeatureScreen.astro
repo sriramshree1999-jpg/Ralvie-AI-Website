@@ -50,8 +50,16 @@ const timeRows = [
           ].map(([app,context,duration,color])=><article class={`sun-${color}`}><div><b>{app}</b><small>{context}</small></div><strong>{duration}</strong></article>)}
         </div></section>
         <div class="sundial-settings-column">
-          <section class="sundial-settings"><header><div><small>GENERAL SETTINGS</small><b>Work preferences</b></div><Icon name="wrench" /></header><p><span>Launch on system startup<small>Start Sundial automatically</small></span><i class="sun-toggle on"></i></p><p><span>Enable idle detection<small>Use a 10 minute threshold</small></span><i class="sun-toggle on"></i></p><p><span>Language<small>Restart to apply changes</small></span><b>English⌄</b></p><footer>Version 1.4.2 <button>Check update</button></footer></section>
-          <section class="sundial-schedule"><header><div><small>SCHEDULE</small><b>Work hours</b></div><i class="sun-toggle on"></i></header><p>Record data only during scheduled work hours.</p><div class="sun-days">{['M','T','W','T','F','S','S'].map((day,index)=><span class:list={[index < 5 && 'active']}>{day}</span>)}</div><div class="sun-hours"><span><small>START</small><b>08:30 AM</b></span><span><small>END</small><b>05:30 PM</b></span></div><footer><Icon name="shield-check" /> Activity stops outside this schedule</footer></section>
+          <section class="sundial-activities-info">
+            <span class="pf-eyebrow-small">ACTIVITIES SCREEN</span>
+            <h2>See the day as a<br/><span class="highlight">clear application timeline.</span></h2>
+            <p class="description">Sundial lists each relevant application session, its duration, and the work context around it so employees can review the day without rebuilding it from memory. Track what matters, visualize how you spend time, and optimize your workflow.</p>
+            <ul class="features">
+              <li><Icon name="check" />Chronological application activity</li>
+              <li><Icon name="check" />Clear session durations</li>
+              <li><Icon name="check" />A live view employees can understand</li>
+            </ul>
+          </section>
         </div>
       </div>
     </main>
