@@ -49,21 +49,19 @@ const timeRows = [
             ['Visual Studio Code','Portal accessibility fixes','00h 52m','violet'],
           ].map(([app,context,duration,color])=><article class={`sun-${color}`}><div><b>{app}</b><small>{context}</small></div><strong>{duration}</strong></article>)}
         </div></section>
-        <div class="sundial-settings-column">
-          <section class="sundial-activities-info">
-            <span class="pf-eyebrow-small">ACTIVITIES SCREEN</span>
-            <h2>See the day as a<br/><span class="highlight">clear application timeline.</span></h2>
-            <p class="description">Sundial lists each relevant application session, its duration, and the work context around it so employees can review the day without rebuilding it from memory. Track what matters, visualize how you spend time, and optimize your workflow.</p>
-            <ul class="features">
-              <li><Icon name="check" />Chronological application activity</li>
-              <li><Icon name="check" />Clear session durations</li>
-              <li><Icon name="check" />A live view employees can understand</li>
-            </ul>
-          </section>
-        </div>
       </div>
     </main>
   </div>}
+  {type === 'automatic-activity-tracking' && <section class="sundial-activities-info-section">
+    <span class="pf-eyebrow-small">ACTIVITIES SCREEN</span>
+    <h2>See the day as a<br/><span class="highlight">clear application timeline.</span></h2>
+    <p class="description">Sundial lists each relevant application session, its duration, and the work context around it so employees can review the day without rebuilding it from memory. Track what matters, visualize how you spend time, and optimize your workflow.</p>
+    <ul class="features">
+      <li><Icon name="check" />Chronological application activity</li>
+      <li><Icon name="check" />Clear session durations</li>
+      <li><Icon name="check" />A live view employees can understand</li>
+    </ul>
+  </section>}
   <aside class="pf-sidebar">
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
     <nav class="pf-sidebar-nav">
