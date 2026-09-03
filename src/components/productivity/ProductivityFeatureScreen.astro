@@ -1,0 +1,75 @@
+---
+import Icon from '../Icon.astro';
+import RalvieLogo from '../../assets/Ralvie-logo-icon.svg';
+import type { ProductivityFeatureKey } from '../../data/productivityFeaturePages';
+
+interface Props { type: ProductivityFeatureKey; compact?: boolean }
+const { type, compact = false } = Astro.props;
+
+const nav = [
+  ['dashboard', 'Dashboard'], ['bolt', 'Activities'], ['folder', 'Projects'], ['list-check', 'Tasks'], ['users', 'People']
+];
+const activeNav = type === 'dashboard' ? 'Dashboard' : type === 'projects' ? 'Projects' : type === 'tasks' ? 'Tasks' : 'Activities';
+const projectRows = [
+  ['Northern Lights Portal', 'Ralvie', 'Sep 18, 2026', '72%', 'On track'],
+  ['Lakeview Health Launch', 'Jira', 'Oct 02, 2026', '46%', 'In progress'],
+  ['Cedar Commerce Refresh', 'Ralvie', 'Sep 29, 2026', '88%', 'On track'],
+  ['Pacific Support Hub', 'Ralvie', 'Oct 14, 2026', '31%', 'At risk'],
+  ['Boston Client Onboarding', 'Jira', 'Sep 24, 2026', '64%', 'In progress'],
+];
+const taskRows = [
+  ['NL-42', 'Finalize accessibility review', 'Northern Lights Portal', 'Olivia Bennett', '76%', 'In progress'],
+  ['LH-18', 'Validate intake workflow', 'Lakeview Health Launch', 'Ethan Walker', '100%', 'Completed'],
+  ['CC-09', 'Build product comparison', 'Cedar Commerce Refresh', 'Maya Thompson', '58%', 'In progress'],
+  ['PS-31', 'Document escalation rules', 'Pacific Support Hub', 'Noah Williams', '24%', 'At risk'],
+  ['BO-14', 'Prepare enablement kit', 'Boston Client Onboarding', 'Ava Collins', '89%', 'Review'],
+];
+const timeRows = [
+  ['1h 42m', 'Design system review', 'Northern Lights Portal', 'Figma', 'Mapped'],
+  ['2h 18m', 'Authentication integration', 'Lakeview Health Launch', 'VS Code', 'Mapped'],
+  ['48m', 'Client discovery notes', 'Boston Client Onboarding', 'Notion', 'Suggested'],
+];
+---
+
+<div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
+  <aside class="pf-sidebar">
+    <div class="pf-brand"><img src={RalvieLogo.src} alt="Ralvie" /><b>ralvie</b></div>
+    <div class="pf-workspace">Northstar Digital <Icon name="arrow-right" /></div>
+    <nav>{nav.map(([icon, label]) => <span class:list={[label === activeNav && 'active']}><Icon name={icon} />{label}</span>)}</nav>
+    <div class="pf-person"><i>OB</i><span><b>Olivia Bennett</b><small>Toronto, Canada</small></span></div>
+  </aside>
+  <div class="pf-app-main">
+    <header class="pf-appbar"><span>Productivity / <b>{type.replaceAll('-', ' ')}</b></span><div><i></i> Sundial active <em></em> Capture enabled</div></header>
+
+    {type === 'dashboard' && <div class="pf-app-content dashboard-view">
+      <div class="pf-title"><div><small>WORKFORCE OVERVIEW</small><h3>Productivity dashboard</h3><p>September 1–7, 2026</p></div><button>Download report</button></div>
+      <div class="pf-metrics"><article><Icon name="users" /><b>148</b><small>Active members</small><em>+8 this month</em></article><article><Icon name="clock" /><b>6,284h</b><small>Tracked work</small><em>+11.4%</em></article><article><Icon name="folder" /><b>24</b><small>Active projects</small><em>6 near completion</em></article><article><Icon name="chart-bar" /><b>74%</b><small>Focus rate</small><em>+4.2%</em></article></div>
+      <div class="pf-dashboard-grid"><article class="pf-chart"><header><b>Work distribution</b><small>This week</small></header>{[['Development','38%'],['Design','24%'],['Client work','21%'],['Operations','17%']].map(([n,v])=><p><span>{n}</span><i><em style={`--w:${v}`}></em></i><b>{v}</b></p>)}</article><article class="pf-insight"><span><Icon name="sparkles" /></span><small>RALVIE INSIGHT</small><h4>Focus time increased across delivery teams.</h4><p>Toronto and Seattle teams gained 4.2% more uninterrupted project time.</p></article></div>
+    </div>}
+
+    {type === 'projects' && <div class="pf-app-content table-view">
+      <div class="pf-title"><div><small>WORK / PROJECTS</small><h3>Projects <span>24 active</span></h3><p>Manage and understand project execution.</p></div><button>+ Create project</button></div><div class="pf-toolbar"><span><Icon name="search" /> Search projects...</span><span>All statuses⌄</span><span>All members⌄</span></div>
+      <div class="pf-table"><header><span>Project</span><span>Source</span><span>Due date</span><span>Progress</span><span>Status</span></header>{projectRows.map(([name,source,date,progress,status])=><article><span><i><Icon name="folder" /></i><b>{name}</b></span><span><em>{source}</em></span><span>{date}</span><span><strong>{progress}</strong><u><i style={`--w:${progress}`}></i></u></span><span><mark class={status.toLowerCase().replaceAll(' ','-')}>{status}</mark></span></article>)}</div>
+    </div>}
+
+    {type === 'tasks' && <div class="pf-app-content table-view">
+      <div class="pf-title"><div><small>WORK / TASKS</small><h3>Tasks <span>186 total</span></h3><p>Manage actionable work across every project.</p></div><button>+ New task</button></div><div class="pf-toolbar"><span><Icon name="search" /> Search tasks...</span><span>All projects⌄</span><span>All statuses⌄</span></div>
+      <div class="pf-table task-table"><header><span>ID / Task</span><span>Project</span><span>Owner</span><span>Progress</span><span>Status</span></header>{taskRows.map(([id,name,project,owner,progress,status])=><article><span><small>{id}</small><b>{name}</b></span><span>{project}</span><span><i class="pf-avatar">{owner.split(' ').map(x=>x[0]).join('')}</i>{owner}</span><span><strong>{progress}</strong><u><i style={`--w:${progress}`}></i></u></span><span><mark class={status.toLowerCase().replaceAll(' ','-')}>{status}</mark></span></article>)}</div>
+    </div>}
+
+    {type === 'time-logs' && <div class="pf-app-content time-view">
+      <div class="pf-title"><div><small>ACTIVITIES / TIME LOGS</small><h3>Time Logs</h3><p>Thursday, September 3, 2026</p></div><button>+ New entry</button></div><div class="pf-toolbar"><span>Olivia Bennett⌄</span><span>‹ &nbsp; Sep 03, 2026 &nbsp; ›</span><span><Icon name="search" /> Search activity...</span></div>
+      <div class="pf-time-grid"><section><header><b><Icon name="clock" /> Logged activity</b><em>4h 48m</em></header>{timeRows.map(([duration,name,project,app,status])=><article><strong>{duration}</strong><div><b>{name}</b><small><Icon name="folder" />{project}</small><span>{app}</span></div><mark>{status}</mark></article>)}</section><section class="pf-timeline"><header><b><Icon name="bolt" /> Tracked activity</b><em>31 events</em></header>{[['09:08','Figma · Design review','46m'],['10:02','VS Code · Auth service','1h 34m'],['11:44','Teams · Project sync','32m']].map(([t,n,d])=><article><time>{t}</time><i></i><div><b>{n}</b><small>{d} · Active</small></div></article>)}</section></div>
+    </div>}
+
+    {type === 'screen-captures' && <div class="pf-app-content captures-view">
+      <div class="pf-title"><div><small>ACTIVITIES / SCREEN CAPTURES</small><h3>Capture gallery</h3><p>Visual work context for September 2, 2026</p></div><button>Capture settings</button></div><div class="pf-toolbar"><span>Olivia Bennett⌄</span><span>Sep 01–03, 2026</span><span><Icon name="search" /> Search applications...</span></div>
+      <section class="pf-gallery"><header><b><Icon name="squares" /> Toronto workday</b><span>18 captures</span></header><div class="pf-hour"><b>9:00 AM – 11:00 AM</b><small>6 captures</small></div><div class="pf-thumbs">{[['Figma','9:12 AM','design'],['VS Code','9:36 AM','code'],['Notion','10:04 AM','notes'],['Chrome','10:28 AM','web'],['Teams','10:52 AM','chat'],['Excel','11:06 AM','sheet']].map(([app,time,kind])=><article><div class={`fake-shot ${kind}`}><span></span><i></i><i></i><i></i></div><p><b>{time}</b><small>{app}</small></p></article>)}</div></section>
+    </div>}
+
+    {type === 'automatic-activity-tracking' && <div class="pf-app-content activity-view">
+      <div class="pf-title"><div><small>ACTIVITIES / AUTOMATIC TRACKING</small><h3>Workday stream</h3><p>Live activity · Olivia Bennett</p></div><button>Tracking settings</button></div>
+      <div class="pf-activity-grid"><section class="pf-day"><header><div><b>Thursday, September 3</b><small>Toronto · Eastern Time</small></div><strong>6h 42m</strong></header>{[['09:04','Figma','Northern Lights Portal','1h 18m'],['10:22','VS Code','Lakeview Health Launch','2h 06m'],['13:14','Microsoft Teams','Client collaboration','42m'],['14:02','Notion','Project documentation','1h 12m'],['15:22','Chrome','Research & review','1h 24m']].map(([t,app,work,d],i)=><article><time>{t}</time><i class={`dot-${i}`}></i><div><b>{app}</b><small>{work}</small></div><strong>{d}</strong></article>)}</section><section class="pf-settings"><header><span><Icon name="bolt" /></span><div><small>SUNDIAL STATUS</small><b>Tracking is active</b></div><em>On</em></header><div class="focus-ring"><strong>74%</strong><small>Focus rate</small></div><p><span>Active time</span><b>6h 04m</b></p><p><span>Idle context</span><b>38m</b></p><p><span>Apps used</span><b>12</b></p><footer><Icon name="shield-check" /> Within configured work schedule</footer></section></div>
+    </div>}
+  </div>
+</div>
