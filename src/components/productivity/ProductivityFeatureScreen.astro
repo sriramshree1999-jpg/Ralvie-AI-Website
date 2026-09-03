@@ -28,6 +28,34 @@ const timeRows = [
 ---
 
 <div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
+  {type === 'automatic-activity-tracking' && <div class="sundial-overlay">
+    <div class="sundial-titlebar"><span><i></i>Sundial</span><div>—　□　×</div></div>
+    <aside class="sundial-sidebar">
+      <div class="sundial-logo"><span><i></i></span><b>Sundial</b></div>
+      <nav><span class="active"><Icon name="clock" />Activities</span><span><Icon name="wrench" />General settings</span><span><Icon name="calendar" />Schedule</span></nav>
+    </aside>
+    <main class="sundial-content">
+      <div class="sundial-heading"><div><small>THURSDAY · SEPTEMBER 3, 2026</small><h3>Activities</h3><p>Work activity recorded inside Olivia’s configured schedule.</p></div><span><i></i> Tracking now</span></div>
+      <div class="sundial-dashboard">
+        <section class="sundial-activities"><header><div><b>Today</b><small>Toronto · Eastern Time</small></div><strong>7h 18m</strong></header><div class="sundial-timeline">
+          {[
+            ['08:54','Microsoft Outlook','Inbox review & customer replies','00h 24m','pink'],
+            ['09:18','Figma','Northern Lights Portal · UI review','01h 06m','purple'],
+            ['10:24','Visual Studio Code','Lakeview Health · authentication','01h 42m','blue'],
+            ['12:06','Microsoft Teams','Product delivery stand-up','00h 38m','green'],
+            ['13:14','Notion','Boston onboarding documentation','00h 52m','orange'],
+            ['14:06','Google Chrome','Healthcare workflow research','01h 18m','cyan'],
+            ['15:24','Microsoft Excel','Q3 capacity planning','00h 46m','lime'],
+            ['16:10','Visual Studio Code','Portal accessibility fixes','00h 52m','violet'],
+          ].map(([time,app,context,duration,color],index)=><article class={`sun-${color}`}><time>{time}</time><i><span></span></i><div><b>{app}</b><small>{context}</small></div><strong>{duration}</strong>{index===7 && <em>Live</em>}</article>)}
+        </div></section>
+        <div class="sundial-settings-column">
+          <section class="sundial-settings"><header><div><small>GENERAL SETTINGS</small><b>Work preferences</b></div><Icon name="wrench" /></header><p><span>Launch on system startup<small>Start Sundial automatically</small></span><i class="sun-toggle on"></i></p><p><span>Enable idle detection<small>Use a 10 minute threshold</small></span><i class="sun-toggle on"></i></p><p><span>Language<small>Restart to apply changes</small></span><b>English⌄</b></p><footer>Version 1.4.2 <button>Check update</button></footer></section>
+          <section class="sundial-schedule"><header><div><small>SCHEDULE</small><b>Work hours</b></div><i class="sun-toggle on"></i></header><p>Record data only during scheduled work hours.</p><div class="sun-days">{['M','T','W','T','F','S','S'].map((day,index)=><span class:list={[index < 5 && 'active']}>{day}</span>)}</div><div class="sun-hours"><span><small>START</small><b>08:30 AM</b></span><span><small>END</small><b>05:30 PM</b></span></div><footer><Icon name="shield-check" /> Activity stops outside this schedule</footer></section>
+        </div>
+      </div>
+    </main>
+  </div>}
   <aside class="pf-sidebar">
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
     <nav class="pf-sidebar-nav">
