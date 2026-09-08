@@ -54,36 +54,42 @@ const customerVoices = [
 const platformFeatures = [
   {
     type: 'activity',
+    href: '/productivity/automatic-activity-tracking',
     title: 'Automatic Activity Intelligence',
     image: activityFeatureImage,
     copy: 'Ralvie AI continuously understands application usage, active work sessions, browser activity, and operational patterns without manual input. It classifies activity in real time, giving teams an accurate view of how work hours are spent.',
   },
   {
     type: 'time',
+    href: '/productivity/time-logs',
     title: 'Smart Time Logs',
     image: timeLogsFeatureImage,
     copy: 'Automatically build detailed time logs from real work activity. Generate project-ready breakdowns, daily summaries, and exportable reports without the friction of traditional timesheets.',
   },
   {
     type: 'capture',
+    href: '/productivity/screen-captures',
     title: 'Intelligent Screen Capture',
     image: screenCaptureFeatureImage,
     copy: 'Capture contextual screenshots at scheduled intervals with searchable activity details. Flexible frequency, scope, and privacy controls keep teams informed while supporting transparency and compliance.',
   },
   {
     type: 'tasks',
+    href: '/productivity/tasks',
     title: 'Task Management',
     image: taskManagementFeatureImage,
     copy: 'Create, assign, prioritize, and monitor tasks across projects with complete team visibility. Real-time progress tracking keeps deadlines, workload, and every next action clear.',
   },
   {
     type: 'projects',
+    href: '/productivity/projects',
     title: 'Project Visibility',
     image: projectVisibilityFeatureImage,
     copy: 'See every project in one live view, identify work that is on track or at risk, and understand where attention is needed most through clear progress and contribution insights.',
   },
   {
     type: 'analytics',
+    href: '/productivity/dashboard',
     title: 'AI Analytics Dashboard',
     image: analyticsFeatureImage,
     copy: 'Bring productivity data into one customizable view. Track performance, time distribution, project KPIs, and workflow patterns with AI-generated insights and downloadable reports.',
@@ -271,7 +277,7 @@ const frontdeskUseCases = [
                 projects and tasks. Turn daily progress into clear reports and productivity insights
                 without adding manual tracking.
               </p><div class="product-benefit">From activity to insight—in seconds</div><a
-                href="#productivity">Explore Productivity <span>→</span></a
+                href="/productivity">Explore Productivity <span>→</span></a
               >
             </div>
             <div class="product-visual productivity-visual reference-visual">
@@ -367,7 +373,7 @@ const frontdeskUseCases = [
         <div class="productivity-features-grid">
           {
             platformFeatures.map((feature) => (
-              <article class={`productivity-feature-card feature-${feature.type}`}>
+              <a href={feature.href} class={`productivity-feature-card feature-${feature.type}`} aria-label={`Explore ${feature.title}`}>
                 <div class="feature-screen" aria-hidden="true">
                   <Image src={feature.image} alt={`${feature.title} interface`} loading="lazy" />
                 </div>
@@ -375,9 +381,10 @@ const frontdeskUseCases = [
                   <>
                     <h3>{feature.title}</h3>
                     <p>{feature.copy}</p>
+                    <span class="feature-explore">Explore more <b>❯❯</b></span>
                   </>
                 </div>
-              </article>
+              </a>
             ))
           }
         </div>

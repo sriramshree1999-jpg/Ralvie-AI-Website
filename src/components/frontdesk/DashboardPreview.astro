@@ -31,7 +31,7 @@ const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 <section id="dashboard" class="section relative">
   <div class="container-page">
-    <div class="section-head reveal">
+    <div class="section-head dashboard-preview-head reveal">
       <p class="chip text-label-sm">One central workspace</p>
       <h2 class="text-headline-lg text-on-surface">Manage Every Conversation From One Dashboard</h2>
       <p class="text-body-lg text-on-surface-variant">
@@ -111,7 +111,7 @@ const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
       </div>
     </div>
 
-    <div class="section-head reveal mt-16">
+    <div class="section-head reveal mt-16" hidden>
       <p class="chip text-label-sm">Understand what your customers need</p>
       <h3 class="text-headline-md text-on-surface">Understand What Your Customers Need</h3>
       <p class="text-body-lg text-on-surface-variant">
@@ -123,3 +123,13 @@ const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
     </div>
   </div>
 </section>
+
+<style>
+  @media (min-width: 1024px) {
+    .dashboard-preview-head {
+      max-width: 1720px;
+      margin-inline: auto;
+      text-align: center;
+    }
+  }
+</style>

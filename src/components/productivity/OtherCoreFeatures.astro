@@ -1,0 +1,58 @@
+---
+import Icon from '../Icon.astro';
+import type { ProductivityFeatureKey } from '../../data/productivityFeaturePages';
+interface Props { current?: ProductivityFeatureKey; }
+const { current } = Astro.props;
+const features: { key: ProductivityFeatureKey; icon: string; title: string; text: string }[] = [
+  { key: 'automatic-activity-tracking', icon: 'bolt', title: 'Automatic tracking', text: 'Capture approved workplace activity and turn it into useful work context.' },
+  { key: 'time-logs', icon: 'clock', title: 'Time logs', text: 'Review tracked and logged work together in one clear day.' },
+  { key: 'screen-captures', icon: 'monitor', title: 'Screen captures', text: 'Add authorized visual context within transparent schedules and access boundaries.' },
+  { key: 'tasks', icon: 'list-check', title: 'Tasks', text: 'Connect work effort with clear ownership, priority, and task progress.' },
+  { key: 'projects', icon: 'folder', title: 'Projects', text: 'Understand effort, delivery health, and work distribution across initiatives.' },
+  { key: 'dashboard', icon: 'chart-bar', title: 'Dashboards', text: 'Turn connected work signals into useful trends and decisions.' },
+];
+const otherFeatures = current ? features.filter(feature => feature.key !== current) : features;
+const overviewFeature = { icon: 'sparkles', title: 'Ralvie AI Productivity', text: 'Explore the complete productivity platform for connected work visibility, time intelligence, project delivery, and actionable insights.', href: '/productivity' };
+---
+
+<section class:list={['other-core-features', !current && 'core-features-main']}>
+  <div class="pf-shell">
+    <div class="other-core-features-head"><span class="pf-eyebrow">{current ? 'Other core features' : 'Core features'}</span><h2>Explore the rest of the <em><span>connected<br />productivity platform.</span></em></h2><p>Each capability adds a useful layer of context, from captured activity and visual work records to time, tasks, projects, and productivity signals. Together, they help teams move from everyday work to clearer review, planning, and delivery decisions.</p></div>
+    <div class="other-core-features-grid">{otherFeatures.map((feature, index) => <article class={`other-feature other-${index + 1}`}><span><Icon name={feature.icon} /></span><h3>{feature.title}</h3><p>{feature.text}</p><a href={`/productivity/${feature.key}`}>Explore more <Icon name="arrow-right" /></a></article>)}{current && <article class="other-feature other-platform"><span><Icon name={overviewFeature.icon} /></span><h3>{overviewFeature.title}</h3><p>{overviewFeature.text}</p><a href={overviewFeature.href}>Explore more <Icon name="arrow-right" /></a></article>}</div>
+  </div>
+</section>
+
+<style>
+  .other-core-features{--pf-muted:#b6bfd9;--pf-line:rgba(173,188,255,.18);padding:7.5rem 0;color:#f5f7ff;background:radial-gradient(circle at 88% 16%,rgba(95,126,244,.3),transparent 31%),radial-gradient(circle at 8% 86%,rgba(126,81,220,.26),transparent 34%),#0d1230}
+  .other-core-features .pf-shell{width:100%}
+  .other-core-features.core-features-main .pf-shell{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+  .other-core-features-head{max-width:1200px;margin:0 auto 3.2rem;text-align:center}
+  .other-core-features-head h2{margin:1rem 0;color:#f7f8ff;font-size:clamp(2.4rem,4vw,4.1rem);line-height:1.08}
+  .other-core-features-head h2 em{font-style:normal}
+  .other-core-features-head h2 em span{background:linear-gradient(110deg,#465fe5,#8062ec 55%,#3f9ee6);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .other-core-features-head p{max-width:820px;margin-inline:auto;color:var(--pf-muted);line-height:1.7}
+  .other-core-features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .other-feature{min-height:245px;padding:1.6rem;border:1px solid rgba(174,188,255,.18);border-top:4px solid var(--feature-color);border-radius:22px;background:linear-gradient(145deg,rgba(31,39,82,.92),rgba(16,22,55,.9));box-shadow:inset 0 1px rgba(255,255,255,.06),0 15px 38px rgba(0,0,0,.2)}
+  .other-feature>span{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;color:var(--feature-color);background:color-mix(in srgb,var(--feature-color) 18%,#101633)}
+  .other-feature svg{width:23px}
+  .other-feature h3{margin:1.2rem 0 .55rem;color:#f7f8ff;font-size:1.1rem}
+  .other-feature p{color:var(--pf-muted);font-size:.88rem;line-height:1.65}
+  .other-feature a{display:flex;align-items:center;gap:.45rem;width:max-content;margin-top:1.15rem;color:var(--feature-color);font-size:.78rem;font-weight:750}
+  .other-feature a svg{width:15px}
+  .other-1{--feature-color:#376ee8;--feature-soft:#f3f7ff}
+  .other-2{--feature-color:#6e52de;--feature-soft:#f8f5ff}
+  .other-3{--feature-color:#9c5fd9;--feature-soft:#fcf7ff}
+  .other-4{--feature-color:#27a782;--feature-soft:#f2fcf8}
+  .other-5{--feature-color:#e28543;--feature-soft:#fff8f1}
+  .other-6{--feature-color:#5d78e8;--feature-soft:#f2f6ff}
+  .other-platform{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-top:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 91% 10%,rgba(96,207,229,.33),transparent 35%),radial-gradient(circle at 6% 92%,rgba(129,89,236,.45),transparent 42%),linear-gradient(135deg,#151a42,#172a58);box-shadow:0 20px 45px rgba(34,39,92,.22);color:#fff}
+  .other-platform:after{position:absolute;right:-45px;bottom:-48px;width:145px;height:145px;border:1px solid rgba(255,255,255,.18);border-radius:50%;content:''}
+  .other-platform>span{color:#fff;background:rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+  .other-platform h3{font-size:1.2rem}
+  .other-platform p{position:relative;z-index:1;color:#c7d0ed}
+  .other-platform a{position:relative;z-index:1;color:#fff}
+  .other-platform a svg{transition:transform .2s ease}
+  .other-platform a:hover svg{transform:translateX(4px)}
+  @media(max-width:800px){.other-core-features{padding:5rem 0}.other-core-features-head{max-width:780px}.other-core-features-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.other-core-features.core-features-main .pf-shell{width:min(1180px,calc(100% - 26px))}.other-core-features-grid{grid-template-columns:1fr}.other-feature{min-height:0}}
+</style>

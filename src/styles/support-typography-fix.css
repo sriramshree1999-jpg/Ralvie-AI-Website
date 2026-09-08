@@ -4,9 +4,20 @@
   margin: 28px 0 0 !important;
   color: #211e58 !important;
   font-size: clamp(46px, 4.2vw, 66px) !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
   line-height: 1 !important;
   letter-spacing: -0.055em !important;
+}
+
+/* Use the same lighter editorial display weight for major section titles. */
+.support-page h2 {
+  font-weight: 400 !important;
+}
+
+.support-page .hero-copy .hero-description {
+  margin-top: 22px;
+  font-size: 17px;
+  line-height: 1.72;
 }
 
 .support-page .hero-line {

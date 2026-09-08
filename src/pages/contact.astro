@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const address = '120 East Beaver Creek Rd Suite 200, Richmond Hill, ON L4B 4V1, Canada.';
+---
+
+<Layout title="Contact us | Ralvie AI" description="Contact the Ralvie AI team to discuss your customer communication and productivity needs.">
+  <Header title="Ralvie AI" theme="light" />
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container-page contact-hero__content">
+        <span class="contact-eyebrow">Contact us</span>
+        <h1>Let&rsquo;s make work and<br />customer conversations <em>simpler.</em></h1>
+        <p>Tell us what your team needs. We&rsquo;ll help you find the right Ralvie AI solution for your business.</p>
+      </div>
+    </section>
+
+    <section class="contact-main">
+      <div class="container-page contact-grid">
+        <div class="contact-copy">
+          <span class="contact-eyebrow">Talk to our team</span>
+          <h2>Prefer to talk it through?</h2>
+          <p>Speak with Ralvie AI right now. Ask a question, describe what your business needs, or explore the right next step before sending the form.</p>
+          <div class="contact-voice__widget">
+            <embeddable-voice id="6f99dc7d-3b52-442b-9941-76cf3b7aff95"></embeddable-voice>
+            <span class="contact-voice__note">Click to start the conversation</span>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <iframe title="Contact Ralvie AI" src="https://app.frontdesk.ralvie.ai/form/h5fax6f5" width="100%" height="720" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-map-section">
+      <div class="container-page">
+        <div class="contact-map-card">
+          <div class="contact-map-card__copy">
+            <span class="contact-eyebrow">Our office</span>
+            <h2>Come say hello in Richmond Hill.</h2>
+            <p>{address}</p>
+          </div>
+          <iframe title="Ralvie AI office location" src="https://www.google.com/maps?q=120%20East%20Beaver%20Creek%20Rd%20Suite%20200%2C%20Richmond%20Hill%2C%20ON%20L4B%204V1%2C%20Canada&output=embed" width="100%" height="430" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer theme="light" />
+</Layout>
+
+<script is:inline src="https://cdn.247aireceptionist.com/script.js"></script>
+<script>
+  const centerContactVoiceWidget = () => {
+    const card = document.querySelector<HTMLElement>('.contact-voice__widget');
+    const widget = document.querySelector<HTMLElement>('.contact-voice__widget embeddable-voice');
+    if (!card || !widget) return false;
+    const root = widget.shadowRoot;
+
+    const positionWrapper = (scope: ParentNode) => {
+      const wrapper = scope.querySelector<HTMLElement>('.widget-wrapper');
+      const floatingText = scope.querySelector<HTMLElement>('.floating-text');
+      if (!wrapper) return false;
+
+      const icon = wrapper.querySelector('svg');
+      let launcher = icon?.closest<HTMLElement>('button, [role="button"]') ?? null;
+      if (!launcher && icon) {
+        let parent = icon.parentElement;
+        while (parent && parent !== wrapper) {
+          const rect = parent.getBoundingClientRect();
+          if (rect.width >= 56 && rect.width <= 220 && Math.abs(rect.width - rect.height) < 24) {
+            launcher = parent;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+      wrapper.style.setProperty('position', 'absolute', 'important');
+      wrapper.style.setProperty('inset', '0', 'important');
+      wrapper.style.setProperty('width', '100%', 'important');
+      wrapper.style.setProperty('height', '100%', 'important');
+      wrapper.style.setProperty('transform', 'none', 'important');
+      const target = launcher ?? wrapper;
+      target.style.setProperty('position', 'absolute', 'important');
+      target.style.setProperty('inset', '50% auto auto 50%', 'important');
+      target.style.setProperty('margin', '0', 'important');
+      target.style.setProperty('transform', 'translate(-50%, -50%)', 'important');
+      target.style.setProperty('z-index', '20', 'important');
+      floatingText?.style.setProperty('display', 'none', 'important');
+      return true;
+    };
+
+    const centeredInDocument = positionWrapper(document);
+    if (!root) return centeredInDocument;
+
+    let style = root.querySelector<HTMLStyleElement>('#contact-voice-position');
+    if (!style) {
+      style = document.createElement('style');
+      style.id = 'contact-voice-position';
+      style.textContent = ':host{position:relative!important;display:block!important;width:100%!important;height:100%!important}.floating-text{display:none!important}';
+      root.appendChild(style);
+    }
+    return positionWrapper(root) || centeredInDocument;
+  };
+
+  const contactVoiceWidget = document.querySelector<HTMLElement>('.contact-voice__widget embeddable-voice');
+  const contactVoiceObserver = new MutationObserver(() => centerContactVoiceWidget());
+  if (contactVoiceWidget) {
+    contactVoiceObserver.observe(contactVoiceWidget, { attributes: true, childList: true, subtree: true });
+  }
+
+  const contactVoiceTimer = window.setInterval(centerContactVoiceWidget, 100);
+  window.addEventListener('resize', centerContactVoiceWidget);
+  window.setTimeout(() => {
+    window.clearInterval(contactVoiceTimer);
+    contactVoiceObserver.disconnect();
+    window.removeEventListener('resize', centerContactVoiceWidget);
+  }, 10000);
+</script>
+
+<style>
+  .contact-page{overflow:hidden;background:#f9fbff;color:#182044}.contact-hero{position:relative;padding:calc(var(--header-height) + 5.5rem) 0 6.5rem;background:radial-gradient(circle at 10% 14%,rgba(94,112,240,.25),transparent 28%),radial-gradient(circle at 88% 18%,rgba(161,107,237,.23),transparent 32%),radial-gradient(circle at 50% 100%,rgba(98,208,211,.14),transparent 34%),linear-gradient(145deg,#fbfcff,#edf2ff)}.contact-hero__content{max-width:1060px;text-align:center}.contact-eyebrow{display:inline-flex;align-items:center;padding:.42rem .95rem;border:1px solid rgba(77,102,212,.35);border-radius:999px;background:linear-gradient(110deg,rgba(225,232,255,.9),rgba(239,223,255,.88));color:#4a60bc;font:700 .7rem var(--font-label);letter-spacing:.13em;text-transform:uppercase}.contact-hero h1{max-width:900px;margin:1.35rem auto 1.25rem;font-size:clamp(3rem,5.6vw,6rem);font-weight:500;line-height:1.02;letter-spacing:-.065em}.contact-hero h1 em{font-style:normal;background:linear-gradient(100deg,#4665e8,#825fe9 55%,#4399e8);background-clip:text;-webkit-background-clip:text;color:transparent}.contact-hero p{max-width:690px;margin:auto;color:#69728d;font-size:1.08rem;line-height:1.75}.contact-main{position:relative;padding:7rem 0;background:radial-gradient(circle at 2% 18%,rgba(121,103,243,.13),transparent 29%),radial-gradient(circle at 96% 78%,rgba(77,176,222,.15),transparent 31%),linear-gradient(180deg,#f5f7ff,#fbfcff)}.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem;align-items:center}.contact-copy{padding:2.3rem;border:1px solid rgba(255,255,255,.88);border-radius:26px;background:rgba(255,255,255,.54);box-shadow:0 25px 62px rgba(42,55,112,.11),inset 0 1px rgba(255,255,255,.9);backdrop-filter:blur(22px)}.contact-copy h2,.contact-map-card h2{margin:1.1rem 0 1rem;font-size:clamp(2.4rem,3.8vw,4rem);font-weight:550;line-height:1.08;letter-spacing:-.055em}.contact-copy>p{max-width:490px;color:#68718b;font-size:1.03rem;line-height:1.75}.contact-form-card{overflow:hidden;border:1px solid rgba(255,255,255,.95);border-radius:26px;background:rgba(255,255,255,.72);box-shadow:0 30px 72px rgba(42,55,112,.15),inset 0 1px rgba(255,255,255,.92);backdrop-filter:blur(22px)}.contact-form-card iframe{display:block;border:0;border-radius:8px}.contact-voice__widget{position:relative;display:flex;min-height:250px;margin-top:1.8rem;padding:1rem 1rem 3.7rem;overflow:hidden;align-items:center;justify-content:center;border:1px solid rgba(115,132,229,.24);border-radius:22px;background:radial-gradient(circle at 82% 12%,rgba(120,94,233,.18),transparent 42%),rgba(236,240,255,.72);box-shadow:inset 0 1px rgba(255,255,255,.9),0 18px 38px rgba(65,73,150,.1)}.contact-voice__widget embeddable-voice{position:relative;display:block;width:100%;height:100%;max-width:none;max-height:none}.contact-voice__note{position:absolute;z-index:21;bottom:1.4rem;left:1rem;right:1rem;color:#657098;font-size:.84rem;font-weight:650;text-align:center}.contact-map-section{padding:0 0 7rem;background:#fbfcff}.contact-map-card{overflow:hidden;border:1px solid rgba(218,224,243,.95);border-radius:26px;background:#fff;box-shadow:0 22px 58px rgba(43,56,107,.1)}.contact-map-card__copy{padding:3.2rem 3.5rem}.contact-map-card__copy p{color:#68718b;font-size:1rem;line-height:1.7}.contact-map-card iframe{display:block;border:0}@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:3.5rem}.contact-form-card{max-width:720px;width:100%;margin:auto}.contact-map-card__copy{padding:2.5rem}}@media(max-width:600px){.contact-hero{padding-top:calc(var(--header-height) + 4rem);padding-bottom:4.5rem}.contact-main{padding:5rem 0}.contact-copy{padding:1.6rem}.contact-form-card iframe{height:760px}.contact-map-section{padding-bottom:5rem}.contact-map-card__copy{padding:2rem}.contact-map-card iframe{height:340px}.contact-voice__widget{min-height:210px}}
+  /* Keep the contact hero compact on wide screens. */
+  .contact-hero__content{max-width:920px}
+  .contact-hero h1{max-width:820px;margin:1.2rem auto 1rem;font-size:clamp(2.65rem,4.25vw,4.75rem);line-height:1.06;letter-spacing:-.06em}
+  .contact-hero p{max-width:620px;font-size:.96rem;line-height:1.65}
+  @media(min-width:901px){.contact-hero__content{max-width:1400px}.contact-hero h1{max-width:none;font-size:clamp(2.65rem,3.7vw,4rem)}.contact-hero p{max-width:none;white-space:nowrap}}
+</style>

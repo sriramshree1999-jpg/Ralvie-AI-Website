@@ -1,0 +1,52 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  current: 'phone' | 'chatbot' | 'email' | 'crm' | 'voicebot' | 'forms';
+}
+
+const { current } = Astro.props;
+
+const features = [
+  { id: 'phone', icon: 'phone', title: 'AI Phone Receptionist', copy: 'Answer calls, qualify enquiries, and route every customer conversation.', href: '/ai-phone-receptionist', tone: 'blue' },
+  { id: 'chatbot', icon: 'chat', title: 'AI Website Chatbot', copy: 'Turn website visits into helpful, real-time customer conversations.', href: '/ai-website-chatbot', tone: 'violet' },
+  { id: 'email', icon: 'mail', title: 'AI Email Manager', copy: 'Organize, understand, and prepare the next action for every email.', href: '/ai-email-manager', tone: 'pink' },
+  { id: 'crm', icon: 'database', title: 'AI CRM', copy: 'Connect every interaction into useful customer context and next steps.', href: '/ai-crm', tone: 'teal' },
+  { id: 'voicebot', icon: 'microphone', title: 'AI Web Voicebot', copy: 'Let visitors speak naturally with your business from any page.', href: '/ai-web-voicebot', tone: 'orange' },
+  { id: 'forms', icon: 'form', title: 'Website Forms', copy: 'Capture the detail your team needs and move enquiries forward.', href: '/ai-website-forms', tone: 'indigo' },
+] as const;
+
+const otherFeatures = features.filter((feature) => feature.id !== current);
+---
+
+<section class="other-features">
+  <div class="container-page">
+    <header class="other-features__head">
+      <span class="other-features__eyebrow">Other core features</span>
+      <h2>Explore the rest of the <em>connected<br />AI Frontdesk platform.</em></h2>
+      <p>Each capability shares the same business knowledge and customer context, helping your team respond, understand, and act across every conversation.</p>
+    </header>
+
+    <div class="other-features__grid">
+      {otherFeatures.map((feature) => (
+        <a class:list={['other-features__card', `tone-${feature.tone}`]} href={feature.href}>
+          <span class="other-features__icon"><Icon name={feature.icon} /></span>
+          <h3>{feature.title}</h3>
+          <p>{feature.copy}</p>
+          <span class="other-features__link">Explore more <Icon name="arrow-right" /></span>
+        </a>
+      ))}
+      <a class="other-features__card other-features__platform" href="/frontdesk">
+        <span class="other-features__icon"><Icon name="sparkles" /></span>
+        <h3>Ralvie AI Frontdesk</h3>
+        <p>Explore the complete customer communication platform for connected conversations and intelligent action.</p>
+        <span class="other-features__link">Explore more <Icon name="arrow-right" /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .other-features{position:relative;overflow:hidden;padding:7.5rem 0;background:radial-gradient(circle at 8% 16%,rgba(70,94,226,.17),transparent 28%),radial-gradient(circle at 92% 90%,rgba(104,71,221,.18),transparent 30%),#0d1535;color:#f5f7ff}
+  .other-features__head{max-width:980px;margin:0 auto 3.75rem;text-align:center}.other-features__eyebrow{display:inline-flex;padding:.48rem 1rem;border:1px solid rgba(166,180,255,.56);border-radius:999px;background:linear-gradient(110deg,rgba(209,222,255,.88),rgba(225,201,255,.88));color:#4760bb;font:700 .7rem var(--font-label);letter-spacing:.14em;text-transform:uppercase}.other-features h2{margin:1.2rem 0;color:#f5f7ff;font-size:clamp(2.5rem,4.55vw,4.7rem);font-weight:550;line-height:1.04;letter-spacing:-.055em}.other-features h2 em{font-style:normal;background:linear-gradient(100deg,#697bff,#9266f2 52%,#55a6f4);background-clip:text;-webkit-background-clip:text;color:transparent}.other-features__head p{max-width:760px;margin:auto;color:#aeb8d5;font-size:1rem;line-height:1.75}.other-features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}.other-features__card{display:flex;min-height:255px;flex-direction:column;align-items:flex-start;padding:1.7rem;border:1px solid rgba(154,173,255,.16);border-top:3px solid var(--feature-color);border-radius:22px;background:linear-gradient(145deg,rgba(32,45,91,.94),rgba(21,30,68,.94));box-shadow:inset 0 1px rgba(255,255,255,.04),0 18px 36px rgba(2,6,26,.15);color:#f4f6ff;transition:transform .2s ease,border-color .2s ease,background .2s ease}.other-features__card:hover{border-color:var(--feature-color);background:linear-gradient(145deg,rgba(42,57,112,.98),rgba(24,34,77,.98));transform:translateY(-4px)}.other-features__icon{display:grid;place-items:center;width:50px;height:50px;margin-bottom:1.55rem;border-radius:15px;background:color-mix(in srgb,var(--feature-color) 16%,transparent);color:var(--feature-color)}.other-features__icon :global(svg){width:21px;height:21px}.other-features h3{font-size:1.13rem;letter-spacing:-.03em}.other-features__card p{margin-top:.7rem;color:#aeb8d5;font-size:.88rem;line-height:1.65}.other-features__link{display:flex;align-items:center;gap:.5rem;margin-top:auto;padding-top:1.45rem;color:var(--feature-color);font-size:.8rem;font-weight:750}.other-features__link :global(svg){width:16px}.tone-blue{--feature-color:#4b85ff}.tone-violet{--feature-color:#9a65f5}.tone-pink{--feature-color:#e56bac}.tone-teal{--feature-color:#3acba5}.tone-orange{--feature-color:#f49a44}.tone-indigo{--feature-color:#7288f8}.other-features__platform{--feature-color:#d5d9ff;position:relative;overflow:hidden;border-color:rgba(152,182,255,.32);background:radial-gradient(circle at 100% 0,rgba(84,178,244,.42),transparent 44%),linear-gradient(135deg,rgba(74,53,157,.93),rgba(21,61,116,.98))}.other-features__platform:after{content:'';position:absolute;right:-60px;bottom:-85px;width:190px;height:190px;border:1px solid rgba(222,234,255,.2);border-radius:50%}.other-features__platform>*{position:relative;z-index:1}.other-features__platform p{color:#d3dcf2}.other-features__platform .other-features__link{color:#fff}@media(max-width:900px){.other-features{padding:6rem 0}.other-features__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.other-features{padding:5rem 0}.other-features__head{margin-bottom:2.75rem}.other-features__head p{font-size:.92rem}.other-features h2 br{display:none}.other-features__grid{grid-template-columns:1fr}.other-features__card{min-height:0}}
+</style>

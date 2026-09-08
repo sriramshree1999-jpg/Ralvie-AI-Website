@@ -1,0 +1,20 @@
+---
+const entries = [
+  { duration: '2.5h', billable: 'Billable', task: 'Design system update', project: 'Q3 Marketing Campaign', work: 'Component review', source: 'Auto logged', confidence: 'Prediction: 78%', tags: ['Development', 'UI/UX'] },
+  { duration: '1h', billable: 'Billable', task: 'Campaign planning', project: 'Q3 Marketing Campaign', work: 'API integration', source: 'Auto logged', confidence: 'Prediction: 92%', tags: ['Meeting', 'Planning'] },
+  { duration: '4.2h', billable: 'Non-billable', task: 'Authentication service', project: 'Northstar platform', work: 'Technical review', source: 'Auto logged', confidence: 'Prediction: 53%', tags: ['Development', 'Planning'] },
+  { duration: '2.4h', billable: 'Billable', task: 'Client handoff', project: 'Q3 Marketing Campaign', work: 'Delivery preparation', source: 'Auto logged', confidence: 'Prediction: 92%', tags: ['Meeting', 'Planning'] },
+];
+---
+
+<section class="logged-activity-screen" aria-label="Logged activities">
+  {entries.map((entry) => <article>
+    <div class="logged-activity-duration"><strong>{entry.duration}</strong><span class:list={[entry.billable === 'Non-billable' && 'non-billable']}>{entry.billable}</span></div>
+    <div class="logged-activity-detail">
+      <b>{entry.task}</b>
+      <p>{entry.project}</p>
+      <p>{entry.work}</p>
+      <footer><small>{entry.source}</small><small>{entry.confidence}</small>{entry.tags.map(tag => <em>{tag}</em>)}</footer>
+    </div>
+  </article>)}
+</section>

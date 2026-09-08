@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
-interface Props { id?: string; }
-const { id = 'get-started' } = Astro.props;
+interface Props { id?: string; trialHref?: string; }
+const { id = 'get-started', trialHref = 'https://me.ralvie.ai/auth/login' } = Astro.props;
 ---
 <section class="productivity-shared-cta" id={id}>
   <div class="cta-glow cta-glow-left" aria-hidden="true"></div>
@@ -11,7 +11,7 @@ const { id = 'get-started' } = Astro.props;
     <h2><span>Improve Workforce Productivity</span><span class="gradient-line">With Ralvie AI</span></h2>
     <p>Ralvie AI Productivity helps businesses improve workforce visibility, automate time tracking, simplify reporting, and gain actionable insights into how teams spend their time through AI-powered productivity management.</p>
     <div class="cta-actions">
-      <a href="#" class="cta-primary">Start Free Trial <Icon name="arrow-right" /></a>
+      <a href={trialHref} target="_blank" rel="noopener noreferrer" class="cta-primary">Start Free Trial <Icon name="arrow-right" /></a>
       <a href="#" class="cta-secondary"><Icon name="calendar" /> Book a Demo</a>
     </div>
     <small>Smarter workforce visibility. Less manual reporting. Better productivity decisions.</small>

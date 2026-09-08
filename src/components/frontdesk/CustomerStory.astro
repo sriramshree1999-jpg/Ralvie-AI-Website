@@ -76,43 +76,70 @@ const metrics = [
       0 0 58px rgb(171 63 255 / 8%),
       0 22px 55px rgb(2 5 18 / 38%);
   }
+
+  .metric-figure {
+    background: linear-gradient(105deg, #b9dcff 0%, #9fa8ff 52%, #c9a2ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 </style>
 
 <script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const customerStory = document.querySelector<HTMLElement>('#customer-story');
+  const counters = Array.from(document.querySelectorAll<HTMLElement>('[data-counter]'));
+  const animationFrames = new Map<HTMLElement, number>();
 
-  document.querySelectorAll<HTMLElement>('[data-counter]').forEach((el) => {
-    const target = Number(el.dataset.target ?? '0');
+  const render = (el: HTMLElement, value: number) => {
     const format = el.dataset.format;
+    const rounded = Math.round(value);
+    el.textContent = format === 'comma' ? rounded.toLocaleString('en-US') : String(rounded);
+  };
 
-    const render = (value: number) => {
-      const rounded = Math.round(value);
-      el.textContent = format === 'comma' ? rounded.toLocaleString('en-US') : String(rounded);
-    };
-
-    if (reducedMotion) {
-      render(target);
-      return;
-    }
-
-    const proxy = { value: 0 };
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.to(proxy, {
-          value: target,
-          duration: 1.6,
-          ease: 'power2.out',
-          onUpdate: () => render(proxy.value),
-        });
-      },
+  const resetCounters = () => {
+    counters.forEach((el) => {
+      const frame = animationFrames.get(el);
+      if (frame) cancelAnimationFrame(frame);
+      render(el, 0);
     });
-  });
+    animationFrames.clear();
+  };
+
+  const animateCounter = (el: HTMLElement, delay: number) => {
+    const target = Number(el.dataset.target ?? '0');
+    const duration = 1500;
+    const startedAt = performance.now() + delay;
+    const step = (now: number) => {
+      if (now < startedAt) {
+        animationFrames.set(el, requestAnimationFrame(step));
+        return;
+      }
+
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      render(el, target * eased);
+
+      if (progress < 1) animationFrames.set(el, requestAnimationFrame(step));
+    };
+    animationFrames.set(el, requestAnimationFrame(step));
+  };
+
+  if (customerStory) {
+    if (reducedMotion) {
+      counters.forEach((el) => render(el, Number(el.dataset.target ?? '0')));
+    } else {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          resetCounters();
+          counters.forEach((el, index) => animateCounter(el, index * 120));
+        } else {
+          resetCounters();
+        }
+      }, { threshold: 0.35 });
+
+      observer.observe(customerStory);
+    }
+  }
 </script>

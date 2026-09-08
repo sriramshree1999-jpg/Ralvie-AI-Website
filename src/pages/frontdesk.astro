@@ -5,7 +5,6 @@ import Footer from '../components/Footer.astro';
 
 import FrontdeskHero from '../components/frontdesk/FrontdeskHero.astro';
 import Intro from '../components/frontdesk/Intro.astro';
-import ChannelGrid from '../components/frontdesk/ChannelGrid.astro';
 import ConnectedJourney from '../components/frontdesk/ConnectedJourney.astro';
 import AvailabilitySection from '../components/frontdesk/AvailabilitySection.astro';
 import ConversationSection from '../components/frontdesk/ConversationSection.astro';
@@ -15,9 +14,9 @@ import KnowledgeEngine from '../components/frontdesk/KnowledgeEngine.astro';
 import BusinessActions from '../components/frontdesk/BusinessActions.astro';
 import FollowUpAutomation from '../components/frontdesk/FollowUpAutomation.astro';
 import DashboardPreview from '../components/frontdesk/DashboardPreview.astro';
+import CoreFeatures from '../components/frontdesk/CoreFeatures.astro';
 import IntegrationsSection from '../components/frontdesk/IntegrationsSection.astro';
 import HowItWorks from '../components/frontdesk/HowItWorks.astro';
-import AiRoles from '../components/frontdesk/AiRoles.astro';
 import IndustriesSection from '../components/frontdesk/IndustriesSection.astro';
 import CustomerStory from '../components/frontdesk/CustomerStory.astro';
 import PlatformComparison from '../components/frontdesk/PlatformComparison.astro';
@@ -42,7 +41,7 @@ const faqSchema = {
 ---
 
 <Layout title={title} description={description}>
-  <Header title="Ralvie AI" />
+  <Header title="Ralvie AI" darkScrolledHeader />
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 
@@ -65,7 +64,6 @@ const faqSchema = {
   <main class="frontdesk-page pt-(--header-height)">
     <FrontdeskHero />
     <Intro />
-    <ChannelGrid />
     <ConnectedJourney />
     <AvailabilitySection />
     <ConversationSection />
@@ -75,9 +73,9 @@ const faqSchema = {
     <BusinessActions />
     <FollowUpAutomation />
     <DashboardPreview />
+    <CoreFeatures />
     <IntegrationsSection />
     <HowItWorks />
-    <AiRoles />
     <IndustriesSection />
     <CustomerStory />
     <PlatformComparison />
@@ -97,6 +95,27 @@ const faqSchema = {
     min-height: 100vh;
     background: #060b1f;
     isolation: isolate;
+  }
+
+  /* Shared display treatment: the lighter, editorial weight and violet-to-blue
+     gradient keep every Frontdesk headline visually consistent. */
+  :global(.frontdesk-page .text-display-lg),
+  :global(.frontdesk-page .text-headline-lg),
+  :global(.frontdesk-page .text-headline-md) {
+    font-weight: 400 !important;
+    background: linear-gradient(105deg, #f5f6ff 0%, #a385ff 54%, #46b3f4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent !important;
+  }
+
+  :global(.frontdesk-page .hero-headline-gradient) {
+    font-weight: 400 !important;
+    background: linear-gradient(105deg, #f5f6ff 0%, #a385ff 54%, #46b3f4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 </style>
 

@@ -1,15 +1,124 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import Header from '../Header.astro';
 import Footer from '../Footer.astro';
 import Icon from '../Icon.astro';
+import ProductivityFinalCta from '../ProductivityFinalCta.astro';
 import ProductivityFeatureScreen from './ProductivityFeatureScreen.astro';
+import AutomaticTrackingExtras from './AutomaticTrackingExtras.astro';
+import ScreenCaptureDetailScreen from './ScreenCaptureDetailScreen.astro';
+import TrackedActivityScreen from './TrackedActivityScreen.astro';
+import LoggedActivityScreen from './LoggedActivityScreen.astro';
+import TimeDistributionScreen from './TimeDistributionScreen.astro';
+import TaskDetailScreen from './TaskDetailScreen.astro';
+import DashboardDetailScreen from './DashboardDetailScreen.astro';
+import OtherCoreFeatures from './OtherCoreFeatures.astro';
 import type { ProductivityFeaturePage } from '../../data/productivityFeaturePages';
+import automaticTrackingImage from '../../assets/automatic tracking.jpg';
+import timeLogsImage from '../../assets/time logs.jpg';
+import screenCapturesImage from '../../assets/Screen captures.jpg';
+import taskImage from '../../assets/Task.jpg';
+import projectImage from '../../assets/Project.jpg';
+import dashboardImage from '../../assets/Dashboard.jpg';
 import '../../styles/productivity-features.css';
 
 interface Props { page: ProductivityFeaturePage }
 const { page } = Astro.props;
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
+const faqTitles: Record<ProductivityFeaturePage['key'], string> = {
+  'automatic-activity-tracking': 'Automatic tracking',
+  'time-logs': 'Time logs',
+  'screen-captures': 'Screen captures',
+  'tasks': 'Task management',
+  'projects': 'Project intelligence',
+  'dashboard': 'Productivity dashboards',
+};
+const experienceContent: Record<ProductivityFeaturePage['key'], { eyebrow: string; title: string; text: string; signals: [string, string][] }> = {
+  'automatic-activity-tracking': { eyebrow: 'Product experience', title: 'Work context, in motion.', text: 'A focused workspace for reviewing the signals behind a workday.', signals: [['Activity signals', 'Review configured workplace context as work happens.']] },
+  'time-logs': { eyebrow: 'Explore the flow', title: 'Turn the workday into a <em><span>clear story.</span></em>', text: 'Move through activity, time records, and project context without losing the details that explain the day.', signals: [['Follow the timeline', 'Review logged and tracked activity together in chronological context.'], ['Connect the work', 'See the projects, tasks, and tools behind each record.'], ['Refine with confidence', 'Use the surrounding detail to review and finalize time records.']] },
+  'screen-captures': { eyebrow: 'Explore the flow', title: 'Bring visual context into <em><span>clear focus.</span></em>', text: 'Move through a focused capture gallery and use visual work context only where it is helpful and appropriately configured.', signals: [['Browse by moment', 'Scan captured context by day, employee, and application.'], ['Keep context connected', 'Link visual details with the work, projects, and time around them.'], ['Stay in control', 'Work within transparent schedules, permissions, and configuration.']] },
+  'tasks': { eyebrow: 'Explore the flow', title: 'Keep every task moving <em><span>with context.</span></em>', text: 'See the work behind each task, surface the next action, and keep delivery moving without chasing status updates.', signals: [['See the next move', 'Bring priority, ownership, and progress into one focused workspace.'], ['Connect real effort', 'Understand the activity and time supporting every task.'], ['Spot delivery signals', 'Find stalled work and changing priorities before they become blockers.']] },
+  'projects': { eyebrow: 'Explore the flow', title: 'See project progress <em><span>as it changes.</span></em>', text: 'Bring project health, work distribution, and delivery signals together in a workspace built for clearer decisions.', signals: [['Read project health', 'See progress, ownership, and workload signals at a glance.'], ['Trace the effort', 'Move from project totals into the work and time behind them.'], ['Respond early', 'Use changing delivery context to guide the next conversation.']] },
+  'dashboard': { eyebrow: 'Explore the flow', title: 'Turn live signals into <em><span>better decisions.</span></em>', text: 'Move from high-level trends into the context behind them, so every productivity conversation starts with a clearer picture.', signals: [['Start with the signal', 'See the patterns worth attention across people, projects, and time.'], ['Open the detail', 'Follow each trend back to the work context that explains it.'], ['Plan the next step', 'Turn fresh visibility into more useful workload and planning conversations.']] },
+};
+const experience = experienceContent[page.key];
+const heroSignals: Partial<Record<ProductivityFeaturePage['key'], [string, string][]>> = {
+  tasks: [['186', 'active tasks'], ['76%', 'on-track delivery'], ['12h', 'focused work today']],
+  projects: [['24', 'active projects'], ['8', 'milestones this week'], ['91%', 'delivery health']],
+  dashboard: [['42', 'team members'], ['186h', 'focused work'], ['+14%', 'weekly momentum']],
+  'screen-captures': [['8', 'recent captures'], ['3', 'connected apps'], ['100%', 'within schedule']],
+  'time-logs': [['36h', 'tracked this week'], ['14', 'linked tasks'], ['92%', 'time reviewed']],
+};
+const heroCards = heroSignals[page.key];
+const heroTopCard = page.key === 'tasks'
+  ? { eyebrow: 'TASK MOMENTUM', title: '12 active tasks', text: '8 assignments are on track this week.', value: '76%' }
+  : page.key === 'projects'
+    ? { eyebrow: 'PROJECT PULSE', title: 'Q3 website launch', text: 'Delivery is moving toward its next milestone.', value: '72%' }
+    : undefined;
+const stories = page.key === 'time-logs'
+  ? page.stories.map((story, index) => index === 0 ? {
+      ...story,
+      title: '<span class="pf-time-logs-gradient">Tracked activity and<br />logged work</span> in one clear day.',
+      text: 'Bring automatically captured activity and structured employee time logs into one reviewable timeline. See the applications and windows in use, the work they supported, billable or non-billable context, and the project or task each session belongs to—without rebuilding time records or timesheets from memory.',
+      points: ['Applications, windows, session duration, and time-tracking detail', 'Linked projects, tasks, billable work, timesheets, and work records', 'Active, idle, offline, and review context for accurate employee time logs'],
+    } : index === 1 ? {
+      ...story,
+      title: 'See the <span class="pf-time-logs-gradient">workday as a<br />timeline.</span>',
+      text: 'Follow the workday in sequence, from the first active session to the final handoff. Each record keeps the duration, application context, connected task, and review signal together, so teams can understand how the day unfolded without relying on memory.',
+      points: ['Review every session with its surrounding work context', 'Compare selected days, periods, projects, and people', 'Spot transitions, gaps, and handoffs without reconstructing the day'],
+    } : {
+      ...story,
+      title: 'Answer more than<br /><span class="pf-time-logs-gradient">“how long?”</span>',
+      text: 'Turn time-tracking totals into useful delivery and resource-planning context. See which projects and tasks received focused effort, where the workday became fragmented, and how application activity, billability, planned work, timesheet data, and employee productivity signals connect over time.',
+      points: ['Project, task, billable, non-billable, and timesheet-ready time', 'Application signals connected to each work record and delivery activity', 'Clearer workload planning, resource allocation, and project delivery conversations'],
+    })
+  : page.key === 'screen-captures'
+  ? page.stories.map((story, index) => index === 0 ? {
+      ...story,
+      title: 'Review visual work context<br />in <span class="pf-captures-gradient">one organized view.</span>',
+      text: 'Review authorized visual work context in one searchable gallery. Each capture stays connected to the employee, time, application, and related work so a screenshot is useful context—not an isolated artifact.',
+      points: ['Chronological captures with application and time labels', 'Searchable records across people, dates, and work periods', 'Visual context kept alongside the work it supports'],
+    } : index === 1 ? {
+      ...story,
+      title: '<span class="pf-captures-gradient">Monitor specific screens</span><br />with clear controls.',
+      text: 'Configure capture visibility around a clear workplace purpose. Schedules, application scope, and access permissions let teams use visual context where it is helpful while keeping the boundaries transparent.',
+      points: ['Capture only during approved schedules', 'Limit access by role, team, and responsibility', 'Keep visibility settings clear and reviewable'],
+    } : {
+      ...story,
+      title: 'See the work <span class="pf-captures-gradient">behind the time record.</span>',
+      text: 'Connect visual context with Time Logs, projects, tasks, and work records to make review conversations more informed. Captures support the surrounding story of work; they do not replace professional judgment.',
+      points: ['Link a capture to the time and work around it', 'Support review with context, not surveillance', 'Move from a visual moment to the related record'],
+    })
+  : page.key === 'tasks'
+  ? page.stories.map((story, index) => index === 0 ? {
+      ...story,
+      text: 'Create assignments with the project, owner, priority, due date, and working context already connected. Teams start with a clear next action and keep the information needed to move work forward in one place.',
+      points: ['Project, owner, priority, and date in one task record', 'Descriptions that preserve the intended outcome and next action', 'Activity mapping ready to connect the work as it happens'],
+    } : index === 1 ? {
+      ...story,
+      text: 'Review active work in one focused list instead of chasing updates across tools. Filter by project, owner, priority, due date, or status to find the work that needs attention now.',
+      points: ['A connected view of active, upcoming, and completed work', 'Fast filters for teams, projects, dates, and task status', 'Priority and due-date signals that make the next step clear'],
+    } : {
+      ...story,
+      text: 'See the time, activity, and work context behind each status. This adds useful detail to delivery conversations and helps teams estimate future work with a clearer picture of the effort involved.',
+      points: ['Time and focused activity connected to individual tasks', 'Status conversations grounded in the work already completed', 'Historical effort that supports more confident planning'],
+    })
+  : page.key === 'dashboard'
+  ? page.stories.map((story, index) => index === 0 ? {
+      ...story,
+      text: 'Bring the metrics, projects, workload, time, application use, and task signals that matter into one role-aware overview. Start with the bigger picture, then open the detail behind every trend.',
+      points: ['Key metrics paired with project and team allocation', 'Reporting periods designed for useful comparison', 'A clear route from a signal to its supporting context'],
+    } : index === 1 ? {
+      ...story,
+      text: 'Surface the changes worth discussing before they become delivery problems. Dashboard signals help managers investigate workload shifts, project effort, focus patterns, and application activity in the right context.',
+      points: ['Earlier visibility into changing workload and delivery signals', 'Trends connected to projects, people, and work periods', 'A focused starting point for the next action'],
+    } : {
+      ...story,
+      text: 'Pair visual patterns with a readable description of what teams completed during the period. Summary Agent helps turn connected work context into a more useful starting point for review conversations.',
+      points: ['Charts and work summaries designed to complement each other', 'Narrative context behind meaningful changes', 'More informed conversations without a leaderboard'],
+    })
+  : page.stories;
 ---
 
 <Layout title={page.title} description={page.description}>
@@ -22,45 +131,108 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
         <div class="pf-hero-copy pf-reveal">
           <span class="pf-eyebrow"><i></i>{page.eyebrow}</span>
           <h1 set:html={page.heroTitle}></h1>
-          <p class="pf-lead">{page.heroLead}</p>
-          <p>{page.heroBody}</p>
-          <div class="pf-actions"><a href="#get-started">Start Free Trial <Icon name="arrow-right" /></a><a href="#get-started"><Icon name="calendar" /> Book a Demo</a></div>
-          <div class="pf-support">{page.supporting.map(item => <span><Icon name="check" />{item}</span>)}</div>
+          {page.heroLead && <p class="pf-lead">{page.heroLead}</p>}
+          {page.heroBody && <p>{page.heroBody}</p>}
+          <div class="pf-actions"><a href="https://me.ralvie.ai/auth/login" target="_blank" rel="noopener noreferrer">Start Free Trial <Icon name="arrow-right" /></a><a href="#get-started"><Icon name="calendar" /> Book a Demo</a></div>
         </div>
-        <div class="pf-hero-product pf-reveal"><ProductivityFeatureScreen type={page.key} compact /></div>
+        <div class="pf-hero-product pf-reveal">
+          {page.key === 'automatic-activity-tracking'
+            ? <div class="pf-hero-image-wrap"><Image src={automaticTrackingImage} alt="Sundial automatic activity tracking timeline beside an employee at work" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+            : page.key === 'time-logs'
+              ? <div class="pf-hero-image-wrap"><Image src={timeLogsImage} alt="Ralvie Time Logs workspace showing logged and tracked activity" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+              : page.key === 'screen-captures'
+              ? <div class="pf-hero-image-wrap"><Image src={screenCapturesImage} alt="Ralvie Screen Captures workspace showing visual work context" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+              : page.key === 'tasks'
+              ? <div class="pf-hero-image-wrap"><Image src={taskImage} alt="Ralvie task management workspace" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+              : page.key === 'dashboard'
+              ? <div class="pf-hero-image-wrap"><Image src={dashboardImage} alt="Ralvie productivity dashboard with workforce and project insights" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+              : page.key === 'projects'
+              ? <div class="pf-hero-image-wrap"><Image src={projectImage} alt="Ralvie project intelligence workspace" widths={[640, 900, 1200]} sizes="(max-width: 1150px) 100vw, 52vw" loading="eager" /></div>
+              : <ProductivityFeatureScreen type={page.key} compact />}
+          {heroTopCard && <article class="pf-hero-top-card"><small>{heroTopCard.eyebrow}</small><b>{heroTopCard.title}</b><p>{heroTopCard.text}</p><footer><span><i style={`--progress:${heroTopCard.value}`}></i></span><strong>{heroTopCard.value}</strong></footer></article>}
+          {heroCards && <div class="pf-hero-signals" aria-label="Product highlights">{heroCards.map(([value, label], index) => <article class={`signal-${index + 1}`}><b>{value}</b><span>{label}</span></article>)}</div>}
+        </div>
       </div>
     </section>
 
-    <section class="pf-section pf-intro">
-      <div class="pf-shell pf-intro-grid">
-        <div><span class="pf-eyebrow">{page.introEyebrow}</span><h2 set:html={page.introTitle}></h2></div>
-        <p>{page.introText}</p>
-      </div>
-      <div class="pf-shell pf-highlight-grid">{page.highlights.map(([icon,title,text],index)=><article class={`pf-highlight tint-${index+1}`}><span><Icon name={icon} /></span><h3>{title}</h3><p>{text}</p></article>)}</div>
-    </section>
+    {page.key !== 'automatic-activity-tracking' && page.key !== 'time-logs' && page.key !== 'screen-captures' && page.key !== 'tasks' && page.key !== 'projects' && page.key !== 'dashboard' && (
+      <section class="pf-section pf-intro">
+        <div class="pf-shell pf-intro-grid">
+          <div><span class="pf-eyebrow">{page.introEyebrow}</span><h2 set:html={page.introTitle}></h2></div>
+          <p>{page.introText}</p>
+        </div>
+        <div class="pf-shell pf-highlight-grid">{page.highlights.map(([icon,title,text],index)=><article class={`pf-highlight tint-${index+1}`}><span><Icon name={icon} /></span><h3>{title}</h3><p>{text}</p></article>)}</div>
+      </section>
+    )}
 
-    <section class="pf-section pf-product-stage">
-      <div class="pf-mesh small" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">Ralvie product experience</span><h2>A clear workspace built around the way work actually happens.</h2><p>Recreated from the supplied Ralvie AI Productivity screens with fresh North American sample data.</p></div><ProductivityFeatureScreen type={page.key} /></div>
-    </section>
+    {page.key !== 'automatic-activity-tracking' && (
+      <section class="pf-section pf-product-stage">
+        <div class="pf-mesh small" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">Ralvie product experience</span><h2>A clear workspace built around the way <em><span>work actually happens.</span></em></h2><p>Recreated from the supplied Ralvie AI Productivity screens with fresh North American sample data.</p></div><ProductivityFeatureScreen type={page.key} /></div>
+      </section>
+    )}
+
+    {page.key !== 'automatic-activity-tracking' && (
+      <section class="pf-section pf-motion-section">
+        <div class="pf-motion-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pf-shell pf-motion-shell">
+          <div class="pf-motion-head">
+            <span class="pf-eyebrow">{experience.eyebrow}</span>
+            <h2 set:html={experience.title}></h2>
+            <p>{experience.text}</p>
+          </div>
+          <div class="pf-motion-layout">
+            <div class="pf-motion-screen-panel">
+              <div class="pf-motion-screen-label"><span><i></i> Live workspace</span><small>Explore a connected view</small></div>
+              <ProductivityFeatureScreen type={page.key} compact />
+              <div class="pf-motion-float pf-motion-float-one"><i></i><span>Context connected</span></div>
+              <div class="pf-motion-float pf-motion-float-two"><b>↗</b><span>Ready to review</span></div>
+            </div>
+            <div class="pf-motion-interactions">
+              <span class="pf-motion-kicker">Interaction guide</span>
+              {experience.signals.map(([title, text], index) => <details open={index === 0}><summary><span>0{index + 1}</span><b>{title}</b><i>+</i></summary><p>{text}</p></details>)}
+              <div class="pf-motion-note"><Icon name="sparkles" /><p><b>Built for clarity</b> Move from a signal to the context behind it without losing your place.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <section class="pf-section pf-stories">
-      <div class="pf-shell">{page.stories.map((story,index)=><article class:list={['pf-story', index % 2 && 'reverse']}><div class="pf-story-copy"><span class="pf-eyebrow">{story.eyebrow}</span><h2 set:html={story.title}></h2><p>{story.text}</p><ul>{story.points.map(point=><li><Icon name="check" />{point}</li>)}</ul></div><div class={`pf-story-art art-${index+1}`}><span class="art-orb"><Icon name={page.highlights[index][0]} /></span><div class="art-stack">{story.points.map((point,i)=><article style={`--i:${i}`}><small>0{i+1}</small><b>{point}</b><i></i></article>)}</div></div></article>)}</div>
+      <div class="pf-shell">{stories.map((story,index)=><article class:list={['pf-story', index % 2 && 'reverse']}><div class="pf-story-copy"><span class="pf-eyebrow">{story.eyebrow}</span><h2 class:list={[page.key === 'time-logs' && index === 0 && 'pf-time-logs-primary-heading', page.key === 'time-logs' && index === 1 && 'pf-time-logs-timeline-heading', page.key === 'time-logs' && index === 2 && 'pf-time-logs-distribution-heading']} set:html={story.title}></h2><p>{story.text}</p><p class="pf-story-detail">This connected view brings together {story.points.join(', ').toLowerCase()}, so teams can review the detail behind the work without switching between disconnected tools.</p></div>{page.key === 'time-logs' && index === 0 ? <div class="pf-story-screen pf-tracked-story-screen"><TrackedActivityScreen /></div> : page.key === 'time-logs' && index === 1 ? <div class="pf-story-screen pf-logged-story-screen"><LoggedActivityScreen /></div> : page.key === 'time-logs' && index === 2 ? <div class="pf-story-screen pf-distribution-story-screen"><TimeDistributionScreen /></div> : page.key === 'screen-captures' ? <div class="pf-story-screen pf-capture-story-screen"><ScreenCaptureDetailScreen view={index === 0 ? 'gallery' : index === 1 ? 'controls' : 'context'} /></div> : page.key === 'tasks' ? <div class="pf-story-screen pf-task-story-screen"><TaskDetailScreen view={index === 0 ? 'create' : index === 1 ? 'list' : 'progress'} /></div> : page.key === 'dashboard' ? <div class="pf-story-screen pf-dashboard-story-screen"><DashboardDetailScreen view={index === 0 ? 'overview' : index === 1 ? 'signals' : 'summary'} /></div> : page.key === 'automatic-activity-tracking' && index < 3 ? <div class="pf-story-screen"><ProductivityFeatureScreen type={page.key} automaticView={index === 0 ? 'activities' : index === 1 ? 'general-settings' : 'schedule'} /></div> : <div class="pf-story-screen pf-story-saas-screen"><div class="pf-story-screen-mesh" aria-hidden="true"><i></i><i></i></div><div class="pf-story-screen-label"><span><i></i> Ralvie workspace</span><small>{story.eyebrow}</small></div><ProductivityFeatureScreen type={page.key} compact storyVariant={index === 0 ? 'overview' : index === 1 ? 'workflow' : 'insights'} /></div>}</article>)}</div>
     </section>
 
+    {page.key === 'automatic-activity-tracking' && <AutomaticTrackingExtras />}
+
+    <OtherCoreFeatures current={page.key} />
+
     <section class="pf-section pf-compare-section">
-      <div class="pf-shell pf-compare-grid"><div><span class="pf-eyebrow">A clearer way to work</span><h2>Move from fragmented records to connected work intelligence.</h2><p>Keep the tools and workflows your team already knows while adding richer workplace context.</p></div><div class="pf-compare">{page.comparison.map(([before,after])=><article><span><Icon name="x-mark" />{before}</span><b><Icon name="check" />{after}</b></article>)}</div></div>
+      <div class="pf-shell pf-compare-grid"><div><span class="pf-eyebrow">A clearer way to work</span><h2>Move from fragmented records to <em><span>connected work intelligence.</span></em></h2><p>Keep the tools and workflows your team already knows while adding richer workplace context.</p></div><div class="pf-compare">{page.comparison.map(([before,after])=><article><span><Icon name="x-mark" />{before}</span><b><Icon name="check" />{after}</b></article>)}</div></div>
     </section>
 
     <section class="pf-section pf-process-section">
-      <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">How it works</span><h2>From everyday activity to useful context.</h2></div><div class="pf-process">{page.process.map((step,index)=><article><span>0{index+1}</span><h3>{step}</h3>{index < page.process.length-1 && <i><Icon name="arrow-right" /></i>}</article>)}</div></div>
+      <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">How it works</span><h2>From everyday activity to <em><span>useful context.</span></em></h2></div><div class="pf-process">{page.process.map((step,index)=><article><span>0{index+1}</span><h3>{step}</h3>{index < page.process.length-1 && <i><Icon name="arrow-right" /></i>}</article>)}</div></div>
     </section>
 
     <section class="pf-section pf-responsible"><div class="pf-shell"><div class="pf-responsible-card"><div><span class="pf-eyebrow">{page.responsibility.eyebrow}</span><h2 set:html={page.responsibility.title}></h2><p>{page.responsibility.text}</p></div><div>{page.responsibility.points.map((point,index)=><article><span>0{index+1}</span><p>{point}</p></article>)}</div></div></div></section>
 
-    <section class="pf-section pf-faq"><div class="pf-shell pf-faq-grid"><div><span class="pf-eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Learn how this Ralvie AI Productivity capability fits into a responsible, connected work-intelligence workflow.</p></div><div>{page.faqs.map(([question,answer],index)=><details open={index===0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
+    <section class="pf-section pf-faq">
+      <div class="pf-shell pf-faq-grid">
+        <div class="pf-faq-primary">
+          <div class="pf-faq-intro">
+            <span class="pf-faq-label">Frequently asked questions</span>
+            <h2>{faqTitles[page.key]}, <em><span>explained.</span></em></h2>
+            <p>Clear answers for a more informed, connected workplace.</p>
+          </div>
+          {page.faqs[0] && <details open><summary>{page.faqs[0][0]}<span aria-hidden="true">+</span></summary><p>{page.faqs[0][1]}</p></details>}
+        </div>
+        <div class="pf-faq-list">
+          {page.faqs.slice(1).map(([question,answer])=><details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}
+        </div>
+      </div>
+    </section>
 
-    <section class="pf-final" id="get-started"><div class="pf-mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="pf-shell"><span class="pf-eyebrow">{page.finalEyebrow}</span><h2 set:html={page.finalTitle}></h2><p>{page.finalText}</p><div class="pf-actions centered"><a href="#">Start Free Trial <Icon name="arrow-right" /></a><a href="#"><Icon name="calendar" /> Book a Demo</a></div></div></section>
+    <ProductivityFinalCta id="get-started" trialHref="https://me.ralvie.ai/auth/login" />
   </main>
   <Footer theme="light" />
 </Layout>

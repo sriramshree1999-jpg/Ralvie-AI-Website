@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import OtherFrontdeskFeatures from '../components/OtherFrontdeskFeatures.astro';
 import ralvieLogoIcon from '../assets/Ralvie-logo-icon.svg';
 
 const title = 'AI Website Chatbot for Business | Ralvie AI Frontdesk';
@@ -57,7 +58,7 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
           <h1>Turn Every Website Visit Into a <span>Conversation.</span></h1>
           <p class="lead">Answer instantly. Understand intent. Take action in real time.</p>
           <p>Ralvie AI Frontdesk answers questions, captures and qualifies leads, books appointments, accesses business knowledge, and guides every visitor toward the right next step—24/7.</p>
-          <div class="hero-actions"><a href="#demo" class="primary">Start your free trial <Icon name="arrow-right" /></a><a href="#demo" class="secondary"><Icon name="calendar" /> Book a demo</a></div>
+          <div class="hero-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Start your free trial <Icon name="arrow-right" /></a><a href="#demo" class="secondary"><Icon name="calendar" /> Book a demo</a></div>
           <div class="proof"><span>24/7 conversations</span><span>Lead capture</span><span>Multilingual</span><span>Human handover</span></div>
         </div>
         <div class="chat-shell reveal" id="live-demo">
@@ -106,7 +107,8 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
 
     <section class="section faq"><div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>See how Ralvie fits your website, knowledge, and customer workflows.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right"/></a></div><div>{faqs.map(([q,a],i)=><details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-    <section class="final-cta" id="demo"><div class="cta-orb" aria-hidden="true"></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="#" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a href="#" class="secondary dark-button"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+    <section class="final-cta" id="demo"><div class="cta-orb" aria-hidden="true"></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a href="#" class="secondary dark-button"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+    <OtherFrontdeskFeatures current="chatbot" />
   </main>
   <Footer theme="light" />
 </Layout>

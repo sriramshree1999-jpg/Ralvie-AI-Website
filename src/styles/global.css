@@ -80,8 +80,8 @@
   --spacing-section-gap: 7.5rem;
   --spacing-element-gap: 1.5rem;
 
-  /* Shared 1180px content width used by the 24/7 Customer Support page. */
-  --container-page: 1244px;
+  /* Shared wide content measure for every page and section. */
+  --container-page: 1840px;
   --container-prose: 720px;
 }
 
@@ -225,6 +225,8 @@ main[class~="pt-(--header-height)"] {
 /* Unified key-title capsule used across hero and section headings. */
 :is(
   .eyebrow,
+  .hero-eyebrow,
+  .pf-eyebrow,
   .pill,
   .hero-label,
   .hotel-pill,
@@ -239,7 +241,8 @@ main[class~="pt-(--header-height)"] {
   .customer-voices-chip,
   .trusted-awards-chip,
   .cta-pill,
-  .chip:not(.language-chip):not(.float-chip)
+  .workforce-cta__chip,
+  .chip:has(+ :is(h1, h2))
 ) {
   display: inline-flex !important;
   width: max-content;
@@ -247,13 +250,42 @@ main[class~="pt-(--header-height)"] {
   align-items: center;
   justify-content: center;
   padding: 0.35rem 1rem !important;
-  border: 1px solid rgba(91, 112, 244, 0.38) !important;
+  border: 1px solid rgba(82, 105, 225, 0.62) !important;
   border-radius: 999px !important;
-  background: linear-gradient(110deg, rgba(225, 236, 255, 0.96), rgba(231, 222, 255, 0.96)) !important;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(126, 151, 229, 0.2), transparent 56%),
+    radial-gradient(circle at 88% 88%, rgba(175, 124, 230, 0.18), transparent 58%),
+    linear-gradient(110deg, rgba(233, 238, 255, 0.8) 0%, rgba(233, 224, 255, 0.8) 52%, rgba(240, 220, 255, 0.8) 100%) !important;
   color: #465bb2 !important;
-  box-shadow: 0 12px 30px rgba(75, 88, 190, 0.1) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 30px rgba(75, 88, 190, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.78), inset 0 -1px 0 rgba(96, 106, 202, 0.1) !important;
+  backdrop-filter: blur(18px) saturate(1.12);
+  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  font-family: var(--font-label) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.13em !important;
+  line-height: 1.4 !important;
+  text-transform: uppercase;
+}
+
+/* Chips used as labels inside diagrams, cards, and controls stay as plain
+   text. Only a chip placed immediately above a heading is an eyebrow label. */
+.chip:not(.language-chip):not(.float-chip):not(:has(+ :is(h1, h2))) {
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Key titles use text only—remove decorative status dots and circles. */
+:is(.eyebrow, .hero-eyebrow, .pf-eyebrow) > i,
+:is(.eyebrow, .hero-eyebrow, .pf-eyebrow) > span:empty,
+:is(.eyebrow, .hero-eyebrow, .pf-eyebrow) > span > i:only-child {
+  display: none !important;
 }
 
 /* Base layer: royal-blue glow bleeding down from the top edge into near-black */
@@ -328,6 +360,7 @@ main[class~="pt-(--header-height)"] {
    ============================================================ */
 /* Page shell — 24px gutter on mobile, 32px from lg up, capped at 1280px */
 .container-page {
+  width: min(100%, var(--container-page));
   max-width: var(--container-page);
   margin-inline: auto;
   padding-inline: var(--spacing-margin-mobile);
@@ -335,6 +368,43 @@ main[class~="pt-(--header-height)"] {
 @media (min-width: 1024px) {
   .container-page {
     padding-inline: var(--spacing-gutter);
+  }
+}
+
+/* Some industry and productivity pages predate .container-page and use their
+   own shells. Keep those sections aligned with the shared site width. */
+:is(
+  .agency-shell,
+  .consult-shell,
+  .estate-shell,
+  .health-shell,
+  .hotel-shell,
+  .saas-shell,
+  .pro-shell,
+  .enterprise-shell,
+  .pf-page .pf-shell
+) {
+  width: min(var(--container-page), calc(100% - 48px)) !important;
+  margin-inline: auto;
+}
+
+@media (max-width: 620px) {
+  :is(
+    .agency-shell,
+    .consult-shell,
+    .estate-shell,
+    .health-shell,
+    .hotel-shell,
+    .saas-shell,
+    .pro-shell,
+    .enterprise-shell,
+    .pf-page .pf-shell
+  ) {
+    width: min(var(--container-page), calc(100% - 30px)) !important;
+  }
+
+  .pf-page .pf-shell {
+    width: min(var(--container-page), calc(100% - 26px)) !important;
   }
 }
 

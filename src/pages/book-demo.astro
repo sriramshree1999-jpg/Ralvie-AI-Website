@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+
+const title = 'Book a Demo | Ralvie AI';
+const description = 'Schedule a personalized demo of Ralvie AI Frontdesk and Productivity. Discover how AI can transform your business.';
+---
+
+<Layout title={title} description={description}>
+  <Header title="Ralvie AI" theme="light" />
+
+  <main class="book-demo-page pt-(--header-height)">
+    <h1 class="sr-only">Book a Ralvie AI demo</h1>
+    <section class="hero relative overflow-hidden">
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hero-centered">
+        <div class="calendly-container reveal glass">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ralvie-ai/30min" style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="benefits-section section">
+      <div class="container-page">
+        <div class="section-title reveal">
+          <span class="eyebrow">What to Expect</span>
+          <h2>Your personalized demo experience</h2>
+        </div>
+        <div class="benefits-grid">
+          {[
+            ['calendar', 'Quick 30-Minute Chat', 'No lengthy presentations. We focus on your specific needs.'],
+            ['sparkles', 'Live Product Demo', 'See Ralvie AI Frontdesk and Productivity in action.'],
+            ['target', 'Custom Recommendations', 'Get tailored suggestions based on your business goals.'],
+            ['bolt', 'Next Steps Planning', 'Understand pricing, timelines, and implementation.'],
+          ].map(([icon, title, desc]) => (
+            <article class="benefit-card glass reveal">
+              <span class="icon"><Icon name={icon} /></span>
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer theme="light" />
+</Layout>
+
+<style>
+  .book-demo-page {
+    --ink: #151c43;
+    --muted: #626984;
+    --line: rgba(38, 47, 93, 0.12);
+    --blue: #3d63f5;
+    --violet: #7669f8;
+    background: #fbfcff;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .book-demo-page :global(h1),
+  .book-demo-page :global(h2),
+  .book-demo-page :global(h3) {
+    letter-spacing: -0.035em;
+  }
+
+  .hero {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    padding: 5.5rem 0 6.5rem;
+    background: #fbfcff;
+    position: relative;
+  }
+
+  .mesh {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1280px;
+    max-width: 100vw;
+  }
+
+  .mesh i {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.3;
+  }
+
+  .mesh i:nth-child(1) {
+    width: 42rem;
+    height: 42rem;
+    background: #9bbcff;
+    top: -18rem;
+    right: -8rem;
+  }
+
+  .mesh i:nth-child(2) {
+    width: 34rem;
+    height: 34rem;
+    background: #d8b6ff;
+    bottom: -17rem;
+    left: -7rem;
+  }
+
+  .mesh i:nth-child(3) {
+    width: 26rem;
+    height: 26rem;
+    background: #8ff0ed;
+    top: 34%;
+    left: 39%;
+    opacity: 0.2;
+  }
+
+  .hero-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+
+
+  .calendly-container {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 30px 70px rgba(61, 77, 135, 0.14), inset 0 1px white;
+    backdrop-filter: blur(22px);
+    border-radius: 28px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 95%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .calendly-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(93, 122, 251, 0.08), rgba(174, 113, 243, 0.06));
+    pointer-events: none;
+  }
+
+  .calendly-container :global(> div) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 30px 70px rgba(61, 77, 135, 0.14), inset 0 1px white;
+    backdrop-filter: blur(22px);
+  }
+
+  .section {
+    padding: 7rem 0;
+  }
+
+  .soft {
+    background: linear-gradient(180deg, #f5f7ff, #fbfcff);
+  }
+
+
+
+  .reveal {
+    animation: fade-up 0.7s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .benefits-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .section {
+      padding: 5rem 0;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .calendly-container {
+      padding: 1rem;
+    }
+
+    .cta-actions {
+      gap: 0.6rem;
+    }
+
+    .primary,
+    .secondary {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>

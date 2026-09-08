@@ -5,11 +5,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import ProductivityFinalCta from '../components/ProductivityFinalCta.astro';
-import activityImage from '../assets/Automatic Activity Intelligence.jpg';
-import timeLogsImage from '../assets/Smart Time Logs.jpg';
+import ProductivityFeatureScreen from '../components/productivity/ProductivityFeatureScreen.astro';
+import OtherCoreFeatures from '../components/productivity/OtherCoreFeatures.astro';
 import captureImage from '../assets/Intelligent Screen Capture.jpg';
-import projectImage from '../assets/Project Visibility.jpg';
-import dashboardImage from '../assets/AI Analytics Dashboard.jpg';
 import productivityPlatformImage from '../assets/Ralvie ai productivity platform.png';
 import ralvieLogoIcon from '../assets/Ralvie-logo-icon.svg';
 import biotimeLogo from '../assets/Biotime cloud.svg';
@@ -17,6 +15,7 @@ import jiraLogo from '../assets/Jira.svg';
 import '../styles/productivity.css';
 import '../styles/ralvie-product-ui.css';
 import '../styles/productivity-integrations.css';
+import '../styles/productivity-features.css';
 
 const title = 'AI Productivity & Workforce Analytics Platform | Ralvie AI';
 const description =
@@ -72,29 +71,6 @@ const capabilities = [
     'shield-check',
     'Privacy & Control',
     'Configure schedules, tracking, visibility, permissions, and capture settings for your policies.',
-  ],
-];
-
-const roles = [
-  [
-    'Employees',
-    'A clearer record of completed work and less time spent on timers, timesheets, and status updates.',
-  ],
-  [
-    'Managers',
-    'Reliable visibility into workload, capacity, focus, and progress without chasing updates.',
-  ],
-  [
-    'Project leads',
-    'Better project context, effort distribution, and earlier signals when work is drifting.',
-  ],
-  [
-    'Operations',
-    'Connected workforce data that improves reporting consistency and resource planning.',
-  ],
-  [
-    'Leadership',
-    'A high-level view of productivity patterns and how everyday activity supports strategy.',
   ],
 ];
 
@@ -186,11 +162,11 @@ const faqSchema = {
             AI-powered productivity insights, dashboards, and work summaries.
           </p>
           <div class="button-row">
-            <a class="button button-primary" href="#get-started"
-              >Book a demo <Icon name="arrow-right" /></a
+            <a class="button button-primary" href="https://me.ralvie.ai/auth/login" target="_blank" rel="noopener noreferrer"
+              >Start a free trial <Icon name="arrow-right" /></a
             >
-            <a class="button button-secondary" href="#capabilities"
-              >Explore features <Icon name="arrow-right" /></a
+            <a class="button button-secondary" href="/book-demo"
+              >Book a demo <Icon name="arrow-right" /></a
             >
           </div>
           <div class="hero-points">
@@ -266,10 +242,10 @@ const faqSchema = {
       </div>
     </section>
 
-    <section class="section soft-mesh" id="automatic-tracking">
+    <section class="section soft-mesh workspace-section automatic-workspace" id="automatic-tracking">
       <div class="productivity-shell split-grid">
-        <div class="media-card lilac">
-          <Image src={activityImage} alt="Automatic activity intelligence interface" />
+        <div class="media-card lilac workspace-preview">
+          <ProductivityFeatureScreen type="automatic-activity-tracking" automaticView="activities" />
         </div>
         <div class="section-copy">
           <span class="eyebrow">Automatic activity intelligence</span><h2>
@@ -289,7 +265,7 @@ const faqSchema = {
       </div>
     </section>
 
-    <section class="section" id="ai-timesheets">
+    <section class="section workspace-section timesheet-workspace" id="ai-timesheets">
       <div class="productivity-shell split-grid reverse-mobile">
         <div class="section-copy">
           <span class="eyebrow">AI timesheets</span><h2>
@@ -304,16 +280,34 @@ const faqSchema = {
             ><span>Export-ready reporting</span>
           </div>
         </div>
-        <div class="media-card cyan">
-          <Image src={timeLogsImage} alt="Ralvie smart time logs interface" />
+        <div class="media-card cyan workspace-preview">
+          <ProductivityFeatureScreen type="time-logs" />
         </div>
       </div>
     </section>
 
-    <section class="section soft-mesh" id="project-intelligence">
+    <section class="section workspace-section task-workspace" id="task-management">
       <div class="productivity-shell split-grid">
-        <div class="media-card rose">
-          <Image src={projectImage} alt="Ralvie project visibility interface" />
+        <div class="media-card lilac workspace-preview">
+          <ProductivityFeatureScreen type="tasks" />
+        </div>
+        <div class="section-copy">
+          <span class="eyebrow">AI task management</span><h2>
+            Turn every next step into <em>work that moves forward.</em>
+          </h2><p>
+            Create, assign, and organize work with ownership, priority, due dates, and project
+            context connected from the outset. Ralvie turns every assignment into a shared,
+            actionable record—so teams can see what needs attention, understand the effort behind
+            each status, and keep progress moving without chasing updates across tools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-mesh workspace-section project-workspace" id="project-intelligence">
+      <div class="productivity-shell split-grid">
+        <div class="media-card rose workspace-preview">
+          <ProductivityFeatureScreen type="projects" />
         </div>
         <div class="section-copy">
           <span class="eyebrow">AI project mapping</span><h2>
@@ -322,7 +316,7 @@ const faqSchema = {
             Ralvie helps associate activity with the right projects and tasks, creating a live view
             of effort, contribution, progress, and emerging risk across your organization.
           </p><div class="flow-line">
-            <span>Activity</span><b>→</b><span>Project</span><b>→</b><span>Task</span><b>→</b><span
+            <span>Activity</span><b>→</b><span>Task</span><b>→</b><span>Project</span><b>→</b><span
               >Insight</span
             >
           </div>
@@ -353,22 +347,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <section class="section analytics-section" id="analytics">
-      <div class="productivity-shell">
-        <div class="section-heading centered light">
-          <span class="eyebrow">Reports & analytics</span><h2>
-            From work activity to <em>workforce intelligence.</em>
-          </h2><p>
-            Explore the patterns behind productivity, workload, application usage, project
-            distribution, focus, and progress from one connected dashboard.
-          </p>
-        </div>
-        <div class="dashboard-frame">
-          <Image src={dashboardImage} alt="Ralvie AI analytics and productivity dashboard" />
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="capabilities">
       <div class="productivity-shell">
         <div class="section-heading">
@@ -393,26 +371,7 @@ const faqSchema = {
       </div>
     </section>
 
-    <section class="section soft-mesh">
-      <div class="productivity-shell">
-        <div class="section-heading centered">
-          <span class="eyebrow">Intelligence for every team</span><h2>
-            Clarity at every level of <em>the organization.</em>
-          </h2>
-        </div><div class="roles-grid">
-          {
-            roles.map(([name, copy]) => (
-              <article class="role-card glass-card">
-                <>
-                  <h3>{name}</h3>
-                  <p>{copy}</p>
-                </>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <OtherCoreFeatures />
 
     <section class="section privacy-section" id="privacy-control">
       <div class="productivity-shell privacy-grid">
@@ -495,7 +454,7 @@ const faqSchema = {
             </article>
           </div>
           <div class="integration-lines" aria-hidden="true">
-            <span class="line line-top"><i></i></span><span class="line line-bottom"><i></i></span>
+            <span class="line line-top"><i></i></span><span class="line line-bottom"><i></i></span><span class="line line-merged"></span>
           </div>
           <article class="ralvie-integration-node">
             <span class="node-rings" aria-hidden="true"><i></i><i></i><i></i></span>

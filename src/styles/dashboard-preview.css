@@ -1,0 +1,280 @@
+.pf-screen .dashboard-view .pf-title button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pf-screen .dashboard-view .pf-title button svg { width: 12px; }
+
+.pf-dashboard-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  width: min(23rem, 58%);
+  margin: 0.85rem 0;
+  padding: 0.22rem;
+  border: 1px solid rgba(72, 76, 122, 0.08);
+  border-radius: 9px;
+  background: rgba(238, 240, 248, 0.72);
+}
+
+.pf-screen .pf-dashboard-tabs button {
+  padding: 0.45rem 0.6rem;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  box-shadow: none;
+  color: #798198;
+  font-size: 0.53rem;
+  font-weight: 700;
+}
+
+.pf-screen .pf-dashboard-tabs button.active {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(50, 55, 103, 0.08);
+  color: #343b54;
+}
+
+.pf-dashboard-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+}
+
+.pf-dashboard-section-head b {
+  color: #343b54;
+  font-size: 0.68rem;
+}
+
+.pf-dashboard-section-head span {
+  color: #8b93a7;
+  font-size: 0.45rem;
+}
+
+.pf-dashboard-rankings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.pf-ranking-card {
+  display: flex;
+  min-width: 0;
+  min-height: 10.6rem;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(67, 71, 116, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 28px rgba(49, 54, 102, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.pf-ranking-card > header {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.55rem 0.65rem;
+  border-bottom: 1px solid rgba(68, 73, 119, 0.08);
+}
+
+.pf-ranking-card header b,
+.pf-ranking-card header small {
+  display: block;
+}
+
+.pf-ranking-card header b {
+  color: #353c54;
+  font-size: 0.58rem;
+}
+
+.pf-ranking-card header small {
+  margin-top: 0.13rem;
+  color: #9299aa;
+  font-size: 0.4rem;
+}
+
+.pf-screen .pf-member-ranking header button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.32rem 0.38rem;
+  border: 1px solid rgba(78, 82, 129, 0.12);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+  color: #687188;
+  font-size: 0.37rem;
+}
+
+.pf-member-ranking header button svg { width: 9px; }
+
+.pf-ranking-head,
+.pf-ranking-table article {
+  display: grid;
+  grid-template-columns: 0.35fr 1.45fr 1fr 0.35fr;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.42rem 0.62rem;
+}
+
+.pf-ranking-head {
+  color: #949aaa;
+  background: rgba(248, 249, 252, 0.7);
+  font-size: 0.37rem;
+  font-weight: 750;
+}
+
+.pf-ranking-table article {
+  border-top: 1px solid rgba(79, 83, 124, 0.07);
+  color: #6f778b;
+  font-size: 0.39rem;
+}
+
+.pf-ranking-table article > strong {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: hidden;
+  color: #4a5269;
+  font-size: 0.41rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pf-ranking-table strong i {
+  display: grid;
+  width: 15px;
+  height: 15px;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e6e8ff, #eee8ff);
+  color: #625ce0;
+  font-size: 0.3rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.pf-ranking-table article > b {
+  color: #5e57d4;
+  font-size: 0.42rem;
+}
+
+.pf-project-ranking label {
+  display: flex;
+  align-items: center;
+  gap: 0.22rem;
+  padding: 0.33rem 0.4rem;
+  border: 1px solid rgba(78, 82, 129, 0.1);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.84);
+  color: #9aa1af;
+  font-size: 0.36rem;
+}
+
+.pf-project-ranking label svg { width: 9px; }
+
+.pf-project-usage article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42%;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.59rem 0.65rem;
+  border-top: 1px solid rgba(79, 83, 124, 0.07);
+}
+
+.pf-project-usage strong {
+  overflow: hidden;
+  color: #51596e;
+  font-size: 0.42rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pf-project-usage article > span {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: #5d57d4;
+  font-size: 0.39rem;
+  font-weight: 800;
+}
+
+.pf-project-usage i {
+  display: block;
+  height: 5px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #edf0f5;
+}
+
+.pf-project-usage i b {
+  display: block;
+  width: var(--usage);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--pf-accent), var(--pf-accent-2));
+}
+
+.pf-ranking-card > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 0.45rem 0.62rem;
+  border-top: 1px solid rgba(79, 83, 124, 0.08);
+  color: #9299aa;
+  font-size: 0.36rem;
+}
+
+.pf-ranking-card footer > div { display: flex; gap: 0.24rem; }
+
+.pf-screen .pf-ranking-card footer button {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid rgba(78, 82, 129, 0.16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: none;
+  color: #727b91;
+  font-size: 0.56rem;
+  line-height: 1;
+}
+
+.pf-screen.is-compact .pf-dashboard-tabs {
+  width: min(19rem, 68%);
+  margin: 0.52rem 0;
+  padding: 0.14rem;
+}
+
+.pf-screen.is-compact .pf-dashboard-tabs button { padding: 0.28rem 0.35rem; font-size: 0.38rem; }
+.pf-screen.is-compact .pf-dashboard-section-head b { font-size: 0.5rem; }
+.pf-screen.is-compact .pf-dashboard-section-head span { font-size: 0.36rem; }
+.pf-screen.is-compact .pf-dashboard-rankings { gap: 0.42rem; margin-top: 0.48rem; }
+.pf-screen.is-compact .pf-ranking-card { min-height: 7.6rem; border-radius: 9px; }
+.pf-screen.is-compact .pf-ranking-card > header { min-height: 2rem; padding: 0.38rem 0.45rem; }
+.pf-screen.is-compact .pf-ranking-card header b { font-size: 0.43rem; }
+.pf-screen.is-compact .pf-ranking-card header small { font-size: 0.31rem; }
+.pf-screen.is-compact .pf-ranking-head,
+.pf-screen.is-compact .pf-ranking-table article { gap: 0.18rem; padding: 0.28rem 0.42rem; font-size: 0.3rem; }
+.pf-screen.is-compact .pf-ranking-table article > strong { gap: 0.16rem; font-size: 0.32rem; }
+.pf-screen.is-compact .pf-ranking-table strong i { width: 11px; height: 11px; font-size: 0.23rem; }
+.pf-screen.is-compact .pf-ranking-table article > b { font-size: 0.32rem; }
+.pf-screen.is-compact .pf-project-ranking label { padding: 0.22rem 0.28rem; font-size: 0.3rem; }
+.pf-screen.is-compact .pf-project-usage article { gap: 0.3rem; padding: 0.39rem 0.44rem; }
+.pf-screen.is-compact .pf-project-usage strong { font-size: 0.32rem; }
+.pf-screen.is-compact .pf-project-usage article > span { font-size: 0.3rem; }
+.pf-screen.is-compact .pf-ranking-card > footer { padding: 0.3rem 0.42rem; font-size: 0.29rem; }
+.pf-screen.is-compact .pf-ranking-card footer button { width: 12px; height: 12px; font-size: 0.43rem; }
+
+@media (max-width: 700px) {
+  .pf-dashboard-rankings { grid-template-columns: 1fr; }
+  .pf-dashboard-tabs { width: 100%; }
+}

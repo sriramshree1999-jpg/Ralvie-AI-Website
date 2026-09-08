@@ -8,9 +8,41 @@ interface Props {
   image?: string;
   theme?: 'dark' | 'light';
   showScene?: boolean;
+  noindex?: boolean;
 }
 
-const { title = 'Ralvie AI', description = 'Transform your workflow with intelligent automation.', image = '/og-image.png', theme = 'dark', showScene = true } = Astro.props;
+const site = 'https://ralvie.ai';
+const {
+  title = 'Ralvie AI | AI Productivity and Customer Communication',
+  description = 'Ralvie AI helps teams improve productivity and automate customer conversations across calls, chat, email, SMS, web voice, and forms.',
+  image = '/favicon.svg',
+  theme = 'dark',
+  showScene = true,
+  noindex = false,
+} = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, site).href;
+const socialImage = new URL(image, site).href;
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Ralvie AI',
+  url: site,
+  logo: `${site}/favicon.svg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '120 East Beaver Creek Rd Suite 200',
+    addressLocality: 'Richmond Hill',
+    addressRegion: 'ON',
+    postalCode: 'L4B 4V1',
+    addressCountry: 'CA',
+  },
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Ralvie AI',
+  url: site,
+};
 ---
 
 <!doctype html>
@@ -19,15 +51,22 @@ const { title = 'Ralvie AI', description = 'Transform your workflow with intelli
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ralvie AI" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="twitter:image" content={socialImage} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=ralvie" />
+    <link rel="apple-touch-icon" href="/favicon.svg?v=ralvie" />
+    <link rel="stylesheet" href="https://embeddable-widgets.pages.dev/chat-widget.css" />
     <meta name="theme-color" content={theme === 'light' ? '#f8f9ff' : '#101415'} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,12 +77,27 @@ const { title = 'Ralvie AI', description = 'Transform your workflow with intelli
     />
 
     <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
   </head>
 
   <body class:list={["min-h-screen text-on-background", theme === 'light' && 'theme-light']}>
     {showScene && <div class="atmosphere-bg pointer-events-none fixed inset-0 -z-10"><HeroScene client:load /></div>}
 
     <slot />
+    <script>
+      const chatWidgetScript = document.createElement('script');
+      chatWidgetScript.src = 'https://embeddable-widgets.pages.dev/chat-widget.umd.js';
+      chatWidgetScript.dataset.ralvieChatWidget = 'true';
+      chatWidgetScript.onload = () => {
+        const chatWindow = window as typeof window & {
+          ChatWidget?: { initChatWidget?: (options: { agentId: string }) => void };
+        };
+        chatWindow.ChatWidget?.initChatWidget?.({ agentId: '4db7b11b-0d73-4232-a9a3-1b44b480a7a7' });
+      };
+      chatWidgetScript.onerror = (error) => console.error('Failed to load chat widget:', error);
+      document.head.appendChild(chatWidgetScript);
+    </script>
   </body>
 </html>
 

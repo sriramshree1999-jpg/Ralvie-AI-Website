@@ -1,0 +1,21 @@
+---
+const projects = [
+  { name: 'Northstar platform', detail: 'Authentication service', time: '4h 12m', width: '78%', tone: 'violet' },
+  { name: 'Q3 Marketing Campaign', detail: 'Design and planning', time: '2h 48m', width: '54%', tone: 'blue' },
+  { name: 'Client delivery', detail: 'Handoff preparation', time: '1h 36m', width: '32%', tone: 'teal' },
+];
+---
+
+<section class="time-distribution-screen" aria-label="Time distribution overview">
+  <header><div><small>WORKDAY DISTRIBUTION</small><b>Where time went today</b></div><span>Sep 03, 2026</span></header>
+  <div class="time-distribution-summary">
+    <div class="distribution-ring"><strong>8h 36m</strong><small>focused time</small></div>
+    <div class="distribution-stat"><small>Billable</small><b>6h 48m</b><span>79% of logged work</span></div>
+    <div class="distribution-stat"><small>Context switches</small><b>12</b><span>Across 5 applications</span></div>
+  </div>
+  <div class="distribution-projects">
+    <header><b>Project allocation</b><small>Logged and tracked work</small></header>
+    {projects.map(project => <article><div><span class:list={project.tone}></span><p><b>{project.name}</b><small>{project.detail}</small></p><strong>{project.time}</strong></div><i><em class={project.tone} style={`--width:${project.width}`}></em></i></article>)}
+  </div>
+  <footer><span>Focus window</span><b>10:00–12:30 was your longest uninterrupted session.</b></footer>
+</section>

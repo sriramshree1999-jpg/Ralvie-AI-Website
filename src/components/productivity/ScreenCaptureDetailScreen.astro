@@ -1,0 +1,31 @@
+---
+import Icon from '../Icon.astro';
+interface Props { view: 'gallery' | 'controls' | 'context'; }
+const { view } = Astro.props;
+const captureCards = [
+  ['10:18 AM', 'Figma', 'Design system review', 'design', 'squares'],
+  ['11:42 AM', 'VS Code', 'Authentication service', 'code', 'bolt'],
+  ['1:16 PM', 'Linear', 'Sprint planning', 'board', 'list-check'],
+  ['2:34 PM', 'Chrome', 'Client handoff', 'web', 'globe'],
+];
+---
+
+<section class:list={['capture-detail-screen', `capture-view-${view}`]} aria-label="Screen capture workspace">
+  {view === 'gallery' && <>
+    <header><div><small>CAPTURE GALLERY</small><b>September 3, 2026</b></div><span>Olivia Bennett⌄</span></header>
+    <div class="capture-filters"><span>All applications</span><span>9:00 AM – 5:00 PM</span><span>Search captures</span></div>
+    <div class="capture-gallery">{captureCards.map(([time, app, title, type, icon]) => <article><div class:list={['capture-preview', type]}><span class="capture-app-icon"><Icon name={icon} /></span><b>{app}</b></div><footer><small>{time} · {app}</small><strong>{title}</strong></footer></article>)}</div>
+  </>}
+  {view === 'controls' && <>
+    <header><div><small>CAPTURE CONTROLS</small><b>Screen Capture settings</b></div><span class="capture-live">Enabled</span></header>
+    <div class="capture-setting"><div><b>Capture schedule</b><small>Weekdays, 9:00 AM – 5:00 PM</small></div><strong>Active</strong></div>
+    <div class="capture-setting"><div><b>Applications in scope</b><small>Supported work applications only</small></div><strong>12 selected</strong></div>
+    <div class="capture-setting"><div><b>Access permissions</b><small>Managers review only assigned teams</small></div><strong>Configured</strong></div>
+    <footer class="capture-notice"><b>Privacy first</b><span>Captures follow the schedule, access, and visibility rules set by your organization.</span></footer>
+  </>}
+  {view === 'context' && <>
+    <header><div><small>CONNECTED CONTEXT</small><b>Capture detail</b></div><span>1:16 PM</span></header>
+    <div class="capture-context-preview"><div class="capture-preview board"><span class="capture-app-icon"><Icon name="list-check" /></span><b>Linear</b></div></div>
+    <div class="capture-context-info"><div><small>APPLICATION</small><b>Linear · Sprint planning</b></div><div><small>RELATED WORK</small><b>Website redesign · Q3 launch</b></div><div><small>TIME RECORD</small><b>42m focused activity</b></div></div>
+  </>}
+</section>

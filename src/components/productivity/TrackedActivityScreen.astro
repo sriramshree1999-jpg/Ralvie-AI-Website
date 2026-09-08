@@ -1,0 +1,25 @@
+---
+const entries = [
+  ['10:00 – 12:30', '1h 10m', 'Postman', 'Activity 5', 'Unlogged', 'Working on API collection', 'Reviewing request items'],
+  ['13:00 – 13:30', '1h 02m', 'Slack', 'Activity 5', 'Logged', 'Working on client handoff', 'Reviewing delivery notes'],
+  ['13:30 – 14:30', '0h 35m', 'VS Code', 'Activity 7', 'Logged', 'Working on authentication', 'Reviewing pull request'],
+  ['14:40 – 15:25', '0h 45m', 'Figma', 'Activity 3', 'Mapped', 'Working on design review', 'Reviewing component states'],
+];
+---
+
+<section class="tracked-activity-screen" aria-label="Tracked activities">
+  <header><div><span>⌁</span><b>Tracked Activities</b><em>17</em></div><small>Thursday, September 3, 2026</small></header>
+  <div class="tracked-activity-feed">
+    {entries.map(([time, duration, app, activity, status, primary, secondary]) =>
+      <article>
+        <div class="tracked-activity-time"><b>{time}</b><small>{duration}</small></div>
+        <i></i>
+        <div class="tracked-activity-entry">
+          <div><strong>{app} · {activity}</strong><mark class={status.toLowerCase()}>{status}</mark></div>
+          <p><small>13:05 – 13:45</small>{primary}</p>
+          <p><small>09:45 – 10:30</small>{secondary}</p>
+        </div>
+      </article>
+    )}
+  </div>
+</section>

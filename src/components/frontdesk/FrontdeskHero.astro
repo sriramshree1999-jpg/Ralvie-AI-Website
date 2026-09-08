@@ -35,7 +35,7 @@ const BOOK_DEMO_URL = 'https://cal.com/ralvie-ai-fd';
       <canvas id="hero-canvas" class="absolute inset-0 block h-full w-full" aria-hidden="true"></canvas>
       <div class="absolute left-1/2 top-1/2 z-20 w-full -translate-x-1/2 -translate-y-1/2 px-6">
         <div class="mx-auto flex w-full max-w-lg flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-          <a href="#phone" class="btn-primary">Start your free trial <Icon name="arrow-right" /></a>
+          <a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="btn-primary">Start your free trial <Icon name="arrow-right" /></a>
           <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer" class="btn-ghost hero-secondary-cta"><Icon name="calendar" /> Book a demo</a>
         </div>
       </div>
@@ -49,10 +49,12 @@ const BOOK_DEMO_URL = 'https://cal.com/ralvie-ai-fd';
   }
 
   .hero-label {
-    font-size: 1rem;
+    padding: 0.55rem 1.2rem;
+    background: linear-gradient(110deg, rgb(116 159 255 / 10%), rgb(171 123 242 / 10%));
     box-shadow:
-      0 0 18px rgb(79 114 255 / 38%),
-      0 0 42px rgb(170 65 255 / 24%);
+      0 0 12px rgb(79 114 255 / 18%),
+      0 0 26px rgb(170 65 255 / 10%);
+    font-size: 0.82rem;
   }
 
   .hero-headline-gradient {

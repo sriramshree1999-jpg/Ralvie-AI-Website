@@ -1,10 +1,31 @@
 ---
 import Icon from '../Icon.astro';
-import RalvieLogo from '../../assets/Ralvie-logo-icon.svg';
+import screenshot1 from '../../assets/Screenshot 1.png';
+import screenshot2 from '../../assets/Screenshot 2.png';
+import screenshot3 from '../../assets/Screenshot 3.png';
+import screenshot4 from '../../assets/Screenshot 4.png';
+import screenshot5 from '../../assets/Screenshot 5.png';
+import screenshot6 from '../../assets/Screenshot 6.png';
+import screenshot7 from '../../assets/Screenshot 7.png';
+import screenshot8 from '../../assets/Screenshot 8.png';
+import RalvieLogo from '../../assets/Ralvie-logo.svg';
 import type { ProductivityFeatureKey } from '../../data/productivityFeaturePages';
+import '../../styles/dashboard-preview.css';
 
-interface Props { type: ProductivityFeatureKey; compact?: boolean }
-const { type, compact = false } = Astro.props;
+interface Props {
+  type: ProductivityFeatureKey;
+  compact?: boolean;
+  automaticView?: 'activities' | 'general-settings' | 'schedule';
+  storyVariant?: 'overview' | 'workflow' | 'insights';
+}
+const { type, compact = false, automaticView = 'activities', storyVariant = 'overview' } = Astro.props;
+const storyVariantLabels = { overview: 'Workspace overview', workflow: 'Daily workflow', insights: 'Product insight' };
+const galleryCaptures: [string, string, string, { src: string }][] = [
+  ['Figma', '9:12 AM', 'design', screenshot1], ['VS Code', '9:36 AM', 'code', screenshot2],
+  ['Notion', '10:04 AM', 'notes', screenshot3], ['Chrome', '10:28 AM', 'web', screenshot4],
+  ['Teams', '10:52 AM', 'chat', screenshot5], ['Excel', '11:06 AM', 'sheet', screenshot6],
+  ['Slack', '11:24 AM', 'chat', screenshot7], ['Jira', '11:48 AM', 'web', screenshot8],
+];
 
 const projectRows = [
   ['Northern Lights Portal', 'Ralvie', 'Sep 18, 2026', '72%', 'On track'],
@@ -12,6 +33,9 @@ const projectRows = [
   ['Cedar Commerce Refresh', 'Ralvie', 'Sep 29, 2026', '88%', 'On track'],
   ['Pacific Support Hub', 'Ralvie', 'Oct 14, 2026', '31%', 'At risk'],
   ['Boston Client Onboarding', 'Jira', 'Sep 24, 2026', '64%', 'In progress'],
+  ['Atlas Partner Rollout', 'Ralvie', 'Oct 08, 2026', '53%', 'In progress'],
+  ['Harbor Support Transition', 'Jira', 'Oct 21, 2026', '37%', 'At risk'],
+  ['Westfield Renewal Plan', 'Ralvie', 'Nov 04, 2026', '81%', 'On track'],
 ];
 const taskRows = [
   ['NL-42', 'Finalize accessibility review', 'Northern Lights Portal', 'Olivia Bennett', '76%', 'In progress'],
@@ -19,6 +43,9 @@ const taskRows = [
   ['CC-09', 'Build product comparison', 'Cedar Commerce Refresh', 'Maya Thompson', '58%', 'In progress'],
   ['PS-31', 'Document escalation rules', 'Pacific Support Hub', 'Noah Williams', '24%', 'At risk'],
   ['BO-14', 'Prepare enablement kit', 'Boston Client Onboarding', 'Ava Collins', '89%', 'Review'],
+  ['NL-57', 'Confirm release notes', 'Northern Lights Portal', 'Liam Turner', '67%', 'In progress'],
+  ['LH-26', 'Map support handoff', 'Lakeview Health Launch', 'Sofia Patel', '42%', 'At risk'],
+  ['CC-18', 'Publish launch checklist', 'Cedar Commerce Refresh', 'Marcus Chen', '93%', 'Review'],
 ];
 const timeRows = [
   ['1h 42m', 'Design system review', 'Northern Lights Portal', 'Figma', 'Mapped'],
@@ -27,53 +54,85 @@ const timeRows = [
 ];
 ---
 
-{type === 'automatic-activity-tracking' && <div class="sundial-content-wrapper">}
-<div class:list={['pf-screen', `screen-${type}`, compact && 'is-compact']}>
-  {type === 'automatic-activity-tracking' && <div class="sundial-overlay">
-    <div class="sundial-titlebar"><span><i></i>Sundial</span><div>—　□　×</div></div>
-    <aside class="sundial-sidebar">
-      <div class="sundial-logo"><span><i></i></span><b>Sundial</b></div>
-      <nav><span class="active"><Icon name="clock" />Activities</span><span><Icon name="wrench" />General settings</span><span><Icon name="calendar" />Schedule</span></nav>
-    </aside>
-    <main class="sundial-content">
-      <div class="sundial-heading"><div><small>THURSDAY · SEPTEMBER 3, 2026</small><h3>Activities</h3><p>Work activity recorded inside Olivia’s configured schedule.</p></div><span><i></i> Tracking now</span></div>
-      <div class="sundial-dashboard">
-        <section class="sundial-activities"><header><div><b>Today</b><small>Toronto · Eastern Time</small></div><strong>7h 18m</strong></header><div class="sundial-timeline">
-          {[
-            ['Microsoft Outlook','Inbox review & customer replies','00h 00m 31s','pink'],
-            ['Figma','Northern Lights Portal · UI review','00h 00m 46s','purple'],
-            ['Visual Studio Code','Lakeview Health · authentication','01h 42m','blue'],
-            ['Microsoft Teams','Product delivery stand-up','00h 38m','green'],
-            ['Notion','Boston onboarding documentation','00h 52m','orange'],
-            ['Google Chrome','Healthcare workflow research','01h 18m','cyan'],
-            ['Microsoft Excel','Q3 capacity planning','00h 46m','lime'],
-            ['Visual Studio Code','Portal accessibility fixes','00h 52m','violet'],
-          ].map(([app,context,duration,color])=><article class={`sun-${color}`}><div><b>{app}</b><small>{context}</small></div><strong>{duration}</strong></article>)}
-        </div></section>
+<div class:list={['pf-screen', `screen-${type}`, `screen-story-${storyVariant}`, type === 'automatic-activity-tracking' && `screen-view-${automaticView}`, compact && 'is-compact']}>
+  {type === 'automatic-activity-tracking' && (
+    <div class="sundial-content-wrapper">
+      <div class="sundial-overlay">
+        <aside class="sundial-sidebar">
+          <div class="sundial-logo"><span><i></i></span><b>Sundial</b></div>
+          <nav>
+            <span class:list={[automaticView === 'activities' && 'active']}><Icon name="clock" />Activities</span>
+            <span class:list={[automaticView === 'general-settings' && 'active']}><Icon name="wrench" />General settings</span>
+            <span class:list={[automaticView === 'schedule' && 'active']}><Icon name="calendar" />Schedule</span>
+          </nav>
+        </aside>
+        <main class="sundial-content">
+          {automaticView === 'activities' ? (
+            <>
+              <div class="sundial-heading"><div><small>THURSDAY · SEPTEMBER 3, 2026</small><h3>Activities</h3><p>Work activity recorded inside Olivia’s configured schedule.</p></div><span><i></i> Tracking now</span></div>
+              <div class="sundial-dashboard">
+                <section class="sundial-activities"><header><div><b>Today</b><small>Toronto · Eastern Time</small></div><strong>7h 18m</strong></header><div class="sundial-timeline">
+                  {[
+                    ['Microsoft Outlook', 'Inbox review & customer replies', '00h 00m 31s', 'pink'],
+                    ['Figma', 'Northern Lights Portal · UI review', '00h 00m 46s', 'purple'],
+                    ['Visual Studio Code', 'Lakeview Health · authentication', '01h 42m', 'blue'],
+                    ['Microsoft Teams', 'Product delivery stand-up', '00h 38m', 'green'],
+                    ['Notion', 'Boston onboarding documentation', '00h 52m', 'orange'],
+                    ['Google Chrome', 'Healthcare workflow research', '01h 18m', 'cyan'],
+                    ['Microsoft Excel', 'Q3 capacity planning', '00h 46m', 'lime'],
+                    ['Visual Studio Code', 'Portal accessibility fixes', '00h 52m', 'violet'],
+                  ].map(([app,context,duration,color])=><article class={`sun-${color}`}><div><b>{app}</b><small>{context}</small></div><strong>{duration}</strong></article>)}
+                </div></section>
+              </div>
+            </>
+          ) : automaticView === 'general-settings' ? (
+            <>
+              <div class="sundial-heading sundial-general-heading"><div><small>SUNDIAL PREFERENCES</small><h3>General settings</h3><p>Choose how Sundial starts, detects inactivity, and displays your workspace.</p></div><span><i></i> Settings saved</span></div>
+              <section class="sundial-general-panel">
+                <article><div><b>Launch Sundial on system startup</b><small>Begin capturing configured work context when the computer starts.</small></div><i class="sun-toggle on"></i></article>
+                <article><div><b>Enable idle time detection</b><small>Pause the active session after the configured period of inactivity.</small></div><i class="sun-toggle on"></i></article>
+                <article><div><b>Change language</b><small>Restart Sundial to apply your language preference.</small></div><button>English (Canada) <span>⌄</span></button></article>
+                <article class="sundial-version-row"><div><small>DESKTOP APPLICATION</small><b>Version 1.6.2</b><em>Up to date</em></div><button>Check for updates</button></article>
+              </section>
+            </>
+          ) : (
+            <>
+              <div class="sundial-heading sundial-schedule-heading"><div><small>WORK SCHEDULE</small><h3>Schedule</h3><p>Record work context only during the days and hours you choose.</p></div><span><i></i> Schedule active</span></div>
+              <section class="sundial-schedule-panel">
+                <article class="sundial-schedule-toggle"><div><b>Record only during scheduled work hours</b><small>Sundial automatically stops tracking outside this schedule.</small></div><i class="sun-toggle on"></i></article>
+                <div class="sundial-schedule-config">
+                  <div class="sundial-workdays"><header><div><b>Working days</b><small>Select the days included in your regular work week.</small></div><Icon name="calendar" /></header><div>{['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((day,index)=><span class:list={[index < 5 && 'active']}><i><Icon name="check" /></i>{day}</span>)}</div></div>
+                  <div class="sundial-workhours"><b>Working hours</b><div><label><small>START TIME</small><span>08:30 AM <Icon name="clock" /></span></label><label><small>END TIME</small><span>05:30 PM <Icon name="clock" /></span></label></div></div>
+                  <footer><span><Icon name="shield-check" />Tracking pauses outside Monday–Friday, 8:30 AM–5:30 PM.</span><button>Save schedule</button></footer>
+                </div>
+              </section>
+            </>
+          )}
+        </main>
       </div>
-    </main>
-  </div>}
-  {type === 'automatic-activity-tracking' && <section class="sundial-activities-info-section">
-    <span class="pf-eyebrow-small">ACTIVITIES SCREEN</span>
-    <h2>See the day as a<br/><span class="highlight">clear application timeline.</span></h2>
-    <p class="description">Sundial automatically tracks and lists each relevant application session, its precise duration, and the work context around it. This gives employees a complete, accurate picture of their day so they can review their time without having to rebuild it from fragmented memory.</p>
-    <p class="description-secondary">Understand exactly where your time goes, identify patterns in your workflow, and optimize how you spend each hour. From morning standup to end-of-day wrap-up, see every application session in perfect chronological order with full context about what you were working on.</p>
-    <ul class="features">
-      <li><Icon name="check" />Chronological application activity with complete accuracy</li>
-      <li><Icon name="check" />Clear session durations down to the second</li>
-      <li><Icon name="check" />A live view employees can understand and act on</li>
-      <li><Icon name="check" />Automatic tracking with zero manual input required</li>
-    </ul>
-  </section>}
-{type === 'automatic-activity-tracking' && </div>}
+      <section class="sundial-activities-info-section">
+        <span class="pf-eyebrow-small">ACTIVITIES SCREEN</span>
+        <h2>See the day as a<br/><span class="highlight">clear application timeline.</span></h2>
+        <p class="description">Sundial automatically tracks and lists each relevant application session, its precise duration, and the work context around it. This gives employees a complete, accurate picture of their day so they can review their time without having to rebuild it from fragmented memory.</p>
+        <p class="description-secondary">Understand exactly where your time goes, identify patterns in your workflow, and optimize how you spend each hour. From morning standup to end-of-day wrap-up, see every application session in perfect chronological order with full context about what you were working on.</p>
+        <ul class="features">
+          <li><Icon name="check" />Chronological application activity with complete accuracy</li>
+          <li><Icon name="check" />Clear session durations down to the second</li>
+          <li><Icon name="check" />A live view employees can understand and act on</li>
+          <li><Icon name="check" />Automatic tracking with zero manual input required</li>
+        </ul>
+      </section>
+    </div>
+  )}
   <aside class="pf-sidebar">
     <div class="pf-brand-minimal"><img src={RalvieLogo.src} alt="Ralvie" /></div>
+    <div class="pf-workspace"><span>Northstar Labs</span><Icon name="chevron-down" /></div>
     <nav class="pf-sidebar-nav">
       <div class="pf-nav-item" class:list={[type === 'dashboard' && 'active']}>
         <Icon name="squares" /><span>Dashboard</span>
       </div>
       <div class="pf-nav-group" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'expanded']}>
-        <div class="pf-nav-item" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'active']}>
+        <div class="pf-nav-item" class:list={[type === 'automatic-activity-tracking' && 'active']}>
           <Icon name="bolt" /><span>Activities</span><Icon name="chevron-down" class="chevron" />
         </div>
         <div class="pf-nav-submenu" class:list={[['time-logs', 'screen-captures', 'automatic-activity-tracking'].includes(type) && 'show']}>
@@ -86,7 +145,7 @@ const timeRows = [
         </div>
       </div>
       <div class="pf-nav-group" class:list={[['projects', 'tasks'].includes(type) && 'expanded']}>
-        <div class="pf-nav-item" class:list={[['projects', 'tasks'].includes(type) && 'active']}>
+        <div class="pf-nav-item">
           <Icon name="briefcase" /><span>Work</span><Icon name="chevron-down" class="chevron" />
         </div>
         <div class="pf-nav-submenu" class:list={[['projects', 'tasks'].includes(type) && 'show']}>
@@ -105,14 +164,20 @@ const timeRows = [
         <Icon name="wrench" /><span>Settings</span>
       </div>
     </nav>
+    <div class="pf-person"><i>AM</i><div><b>Amelia Morgan</b><small>amelia@northstar.co</small></div></div>
   </aside>
   <div class="pf-app-main">
-    <header class="pf-appbar"><span>Productivity / <b>{type.replaceAll('-', ' ')}</b></span><div><i></i> Sundial active <em></em> Capture enabled</div></header>
+    <header class="pf-appbar"><span>Productivity / <b>{storyVariantLabels[storyVariant]}</b></span><div><i></i> Sundial active <em></em> Capture enabled <span class="pf-app-search"><Icon name="search" /> Search...</span><b class="pf-app-more">⋮</b></div></header>
 
     {type === 'dashboard' && <div class="pf-app-content dashboard-view">
-      <div class="pf-title"><div><small>WORKFORCE OVERVIEW</small><h3>Productivity dashboard</h3><p>September 1–7, 2026</p></div><button>Download report</button></div>
-      <div class="pf-metrics"><article><Icon name="users" /><b>148</b><small>Active members</small><em>+8 this month</em></article><article><Icon name="clock" /><b>6,284h</b><small>Tracked work</small><em>+11.4%</em></article><article><Icon name="folder" /><b>24</b><small>Active projects</small><em>6 near completion</em></article><article><Icon name="chart-bar" /><b>74%</b><small>Focus rate</small><em>+4.2%</em></article></div>
-      <div class="pf-dashboard-grid"><article class="pf-chart"><header><b>Work distribution</b><small>This week</small></header>{[['Development','38%'],['Design','24%'],['Client work','21%'],['Operations','17%']].map(([n,v])=><p><span>{n}</span><i><em style={`--w:${v}`}></em></i><b>{v}</b></p>)}</article><article class="pf-insight"><span><Icon name="sparkles" /></span><small>RALVIE INSIGHT</small><h4>Focus time increased across delivery teams.</h4><p>Toronto and Seattle teams gained 4.2% more uninterrupted project time.</p></article></div>
+      <div class="pf-title"><div><small>WORKFORCE OVERVIEW</small><h3>Productivity dashboard</h3><p>September 1-7, 2026</p></div><button><Icon name="download" /> Download report</button></div>
+      <div class="pf-dashboard-tabs" role="tablist" aria-label="Dashboard views"><button class="active" type="button">Usage insights</button><button type="button">Member activity center</button></div>
+      <div class="pf-dashboard-section-head"><b>Daily metrics</b><span>Updated today</span></div>
+      <div class="pf-metrics"><article><Icon name="users" /><b>148 / 12</b><small>Active / inactive members</small><em>+8 active this month</em></article><article><Icon name="monitor" /><b>126</b><small>Active Sundial users</small><em>85% of the workspace</em></article><article><Icon name="document" /><b>94</b><small>Work log creators</small><em>+16% from last week</em></article><article><Icon name="chart-bar" /><b>78%</b><small>Today's usage rate</small><em>+4.2% this week</em></article></div>
+      <div class="pf-dashboard-rankings">
+        <section class="pf-ranking-card pf-member-ranking"><header><div><b>Member ranking</b><small>Top contributors this week</small></div><button type="button">All departments <Icon name="chevron-down" /></button></header><div class="pf-ranking-table"><div class="pf-ranking-head"><span>Rank</span><span>Member</span><span>Department</span><span>Score</span></div>{[['1','OB','Olivia Bennett','Product design','97'],['2','EW','Ethan Walker','Engineering','94'],['3','MT','Maya Thompson','Customer success','91']].map(([rank,initials,name,department,score]) => <article><span>{rank}</span><strong><i>{initials}</i>{name}</strong><span>{department}</span><b>{score}</b></article>)}</div><footer><span>Showing 1 to 3 of 148 members</span><div><button type="button">‹</button><button type="button">›</button></div></footer></section>
+        <section class="pf-ranking-card pf-project-ranking"><header><div><b>Project usage ranking</b><small>Based on tracked work activity</small></div><label><Icon name="search" /><span>Search projects</span></label></header><div class="pf-project-usage">{[['Northern Lights Portal','92%'],['Lakeview Health Launch','78%'],['Cedar Commerce Refresh','64%']].map(([name,usage]) => <article><strong>{name}</strong><span><i><b style={`--usage:${usage}`}></b></i>{usage}</span></article>)}</div><footer><span>3 active projects shown</span><div><button type="button">‹</button><button type="button">›</button></div></footer></section>
+      </div>
     </div>}
 
     {type === 'projects' && <div class="pf-app-content table-view">
@@ -125,14 +190,24 @@ const timeRows = [
       <div class="pf-table task-table"><header><span>ID / Task</span><span>Project</span><span>Owner</span><span>Progress</span><span>Status</span></header>{taskRows.map(([id,name,project,owner,progress,status])=><article><span><small>{id}</small><b>{name}</b></span><span>{project}</span><span><i class="pf-avatar">{owner.split(' ').map(x=>x[0]).join('')}</i>{owner}</span><span><strong>{progress}</strong><u><i style={`--w:${progress}`}></i></u></span><span><mark class={status.toLowerCase().replaceAll(' ','-')}>{status}</mark></span></article>)}</div>
     </div>}
 
-    {type === 'time-logs' && <div class="pf-app-content time-view">
-      <div class="pf-title"><div><small>ACTIVITIES / TIME LOGS</small><h3>Time Logs</h3><p>Thursday, September 3, 2026</p></div><button>+ New entry</button></div><div class="pf-toolbar"><span>Olivia Bennett⌄</span><span>‹ &nbsp; Sep 03, 2026 &nbsp; ›</span><span><Icon name="search" /> Search activity...</span></div>
+    {type === 'time-logs' && storyVariant === 'overview' && <div class="pf-app-content pf-tracked-activity-view">
+      <div class="pf-tracked-heading"><div><span><Icon name="bolt" /> Tracked Activities</span><b>17</b></div><small>Thursday, September 3, 2026</small></div>
+      <section class="pf-tracked-feed">{[
+        ['10:00 – 12:30', '1h 10m', 'Postman', 'Activity 5', 'Unlogged', 'Working on API collection', 'Reviewing request items'],
+        ['13:00 – 13:30', '1h 02m', 'Slack', 'Activity 5', 'Logged', 'Working on client handoff', 'Reviewing delivery notes'],
+        ['13:30 – 14:30', '0h 35m', 'VS Code', 'Activity 7', 'Logged', 'Working on authentication', 'Reviewing pull request'],
+        ['14:40 – 15:25', '0h 45m', 'Figma', 'Activity 3', 'Mapped', 'Working on design review', 'Reviewing component states'],
+      ].map(([time,duration,app,activity,status,primary,secondary]) => <article><div class="pf-tracked-time"><b>{time}</b><small>{duration}</small></div><i></i><div class="pf-tracked-entry"><header><strong>{app} · {activity}</strong><mark class={status.toLowerCase()}>{status}</mark></header><p><small>13:05 – 13:45</small>{primary}</p><p><small>09:45 – 10:30</small>{secondary}</p></div></article>)}</section>
+    </div>}
+
+    {type === 'time-logs' && storyVariant !== 'overview' && <div class="pf-app-content time-view">
+      <div class="pf-title"><div><small>ACTIVITIES / TIME LOGS</small><h3>Time Logs</h3><p>Thursday, September 3, 2026</p></div><button>+ New entry</button></div><div class="pf-toolbar"><span>Olivia Bennett <Icon name="chevron-down" /></span><span>‹ &nbsp; Sep 03, 2026 &nbsp; ›</span><span><Icon name="search" /> Search activity...</span></div>
       <div class="pf-time-grid"><section><header><b><Icon name="clock" /> Logged activity</b><em>4h 48m</em></header>{timeRows.map(([duration,name,project,app,status])=><article><strong>{duration}</strong><div><b>{name}</b><small><Icon name="folder" />{project}</small><span>{app}</span></div><mark>{status}</mark></article>)}</section><section class="pf-timeline"><header><b><Icon name="bolt" /> Tracked activity</b><em>31 events</em></header>{[['09:08','Figma · Design review','46m'],['10:02','VS Code · Auth service','1h 34m'],['11:44','Teams · Project sync','32m']].map(([t,n,d])=><article><time>{t}</time><i></i><div><b>{n}</b><small>{d} · Active</small></div></article>)}</section></div>
     </div>}
 
     {type === 'screen-captures' && <div class="pf-app-content captures-view">
-      <div class="pf-title"><div><small>ACTIVITIES / SCREEN CAPTURES</small><h3>Capture gallery</h3><p>Visual work context for September 2, 2026</p></div><button>Capture settings</button></div><div class="pf-toolbar"><span>Olivia Bennett⌄</span><span>Sep 01–03, 2026</span><span><Icon name="search" /> Search applications...</span></div>
-      <section class="pf-gallery"><header><b><Icon name="squares" /> Toronto workday</b><span>18 captures</span></header><div class="pf-hour"><b>9:00 AM – 11:00 AM</b><small>6 captures</small></div><div class="pf-thumbs">{[['Figma','9:12 AM','design'],['VS Code','9:36 AM','code'],['Notion','10:04 AM','notes'],['Chrome','10:28 AM','web'],['Teams','10:52 AM','chat'],['Excel','11:06 AM','sheet']].map(([app,time,kind])=><article><div class={`fake-shot ${kind}`}><span></span><i></i><i></i><i></i></div><p><b>{time}</b><small>{app}</small></p></article>)}</div></section>
+      <div class="pf-title"><div><small>ACTIVITIES / SCREEN CAPTURES</small><h3>Capture gallery</h3><p>Visual work context for September 2, 2026</p></div><button>Capture settings</button></div><div class="pf-toolbar"><span>Olivia Bennett <Icon name="chevron-down" /></span><span>Sep 01–03, 2026</span><span><Icon name="search" /> Search applications...</span></div>
+      <section class="pf-gallery"><header><b><Icon name="squares" /> Toronto workday</b><span>18 captures</span></header><div class="pf-hour"><b>9:00 AM – 11:00 AM</b><small>8 captures</small></div><div class="pf-thumbs">{galleryCaptures.map(([app,time,kind,image])=><article><div class={`fake-shot ${kind}`}><img src={image.src} alt={`${app} workspace screenshot`} loading="lazy" /></div><p><b>{time}</b><small>{app}</small></p></article>)}</div></section>
     </div>}
 
     {type === 'automatic-activity-tracking' && <div class="pf-app-content activity-view">

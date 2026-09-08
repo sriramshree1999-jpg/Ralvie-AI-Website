@@ -1,0 +1,18 @@
+---
+interface Props { view: 'create' | 'list' | 'progress'; }
+const { view } = Astro.props;
+const tasks = [
+  ['Finalize launch plan', 'Q3 Website Redesign', 'Today', 'High'],
+  ['Review onboarding flow', 'Customer Onboarding', 'Tomorrow', 'Medium'],
+  ['Prepare client handoff', 'Northstar platform', 'Sep 06', 'High'],
+  ['Confirm release notes', 'Q3 Website Redesign', 'Sep 06', 'Medium'],
+  ['Map support handoff', 'Customer Onboarding', 'Sep 08', 'High'],
+  ['Publish launch checklist', 'Northstar platform', 'Sep 10', 'Medium'],
+];
+---
+
+<section class:list={['task-detail-screen', `task-view-${view}`]} aria-label="Task management workspace">
+  {view === 'create' && <><header><div><small>NEW TASK</small><b>Create a connected assignment</b></div><span>Draft</span></header><div class="task-form"><label>Task title<b>Finalize launch plan</b></label><label>Project<b>Q3 Website Redesign</b></label><div><label>Owner<b>Olivia Bennett</b></label><label>Priority<b>High</b></label></div><label>Description<b>Prepare the launch plan and connect supporting work context.</b></label><footer><span>Activity mapping enabled</span><button>Save task</button></footer></div></>}
+  {view === 'list' && <><header><div><small>TASK LIST</small><b>My active work</b></div><span>12 tasks</span></header><div class="task-list-filters"><b>All tasks</b><span>In progress</span><span>Due this week</span></div><div class="task-list">{tasks.map(([title, project, due, priority]) => <article><i></i><div><b>{title}</b><small>{project}</small></div><time>{due}</time><em class:list={[priority === 'High' && 'high']}>{priority}</em></article>)}</div></>}
+  {view === 'progress' && <><header><div><small>TASK CONTEXT</small><b>Finalize launch plan</b></div><span>In progress</span></header><div class="task-progress-summary"><div><small>WORK LOGGED</small><b>3h 42m</b></div><div><small>FOCUS TIME</small><b>2h 18m</b></div><div><small>STATUS</small><b>On track</b></div></div><div class="task-progress-activity"><b>Recent work context</b><article><span>10:12</span><i></i><p><b>Figma · Design review</b><small>46m focused activity</small></p></article><article><span>11:44</span><i></i><p><b>Docs · Launch brief</b><small>32m project planning</small></p></article></div></>}
+</section>

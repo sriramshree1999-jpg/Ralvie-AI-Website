@@ -1,0 +1,46 @@
+---
+import Icon from '../Icon.astro';
+import '../../styles/automatic-tracking-extras.css';
+import securityLockShield from '../../assets/security-lock-shield.png';
+
+const activityMix = [
+  ['Focused project work', '3h 42m', '74%'],
+  ['Communication', '1h 08m', '42%'],
+  ['Planning and review', '54m', '34%'],
+  ['Administration', '36m', '22%'],
+];
+
+---
+
+<section class="atx-section atx-benefit-section atx-editorial-section">
+  <div class="pf-shell atx-feature-row atx-editorial-layout">
+    <div class="atx-copy atx-editorial-copy">
+      <span class="pf-eyebrow">Productivity essentials</span>
+      <h2>Understand how <em><span>work time is used.</span></em></h2>
+      <p>Automatic tracking turns everyday application activity into useful productivity context. Employees can review active time, idle periods, app usage, daily totals, projects, and tasks from one connected work history.</p>
+      <p>Instead of depending on manual updates, teams gain a clearer picture of where time is going, which projects need attention, and where the workday is becoming fragmented.</p>
+    </div>
+    <div class="atx-visual atx-insight-screen atx-editorial-dashboard">
+      <header><div><small>WORK TIME INTELLIGENCE</small><h3>Today’s activity mix</h3></div><span><i></i> Live</span></header>
+      <div class="atx-kpis"><article><small>Active time</small><b>6h 20m</b><em>+42m</em></article><article><small>Focus rate</small><b>74%</b><em>+6%</em></article><article><small>Apps used</small><b>12</b><em>4 core</em></article></div>
+      <div class="atx-mix">{activityMix.map(([label,time,width],index)=><article><span><i class={`mix-${index}`}></i>{label}</span><div><u><i style={`--w:${width}`}></i></u><b>{time}</b></div></article>)}</div>
+      <footer><span><Icon name="sparkles" /></span><p><small>RALVIE INSIGHT</small><b>Deep-work time is strongest before noon.</b></p></footer>
+    </div>
+  </div>
+</section>
+
+<section class="atx-section atx-boundary-section">
+  <div class="pf-shell atx-feature-row">
+    <div class="atx-copy">
+      <span class="pf-eyebrow">Privacy-aware work tracking</span>
+      <h2>Track work with <em><span>clear boundaries.</span></em></h2>
+      <p>Ralvie AI supports responsible work tracking. Sundial lets teams define when activity is recorded through clear working days and hours.</p>
+      <p>Tracking stays focused on approved work periods, with configurable idle detection and screen-capture settings based on company policy.</p>
+      <p>Employees understand what is captured, while managers receive cleaner and more reliable productivity context.</p>
+    </div>
+    <div class="atx-visual atx-boundary-visual atx-network-visual atx-security-lock-visual">
+      <img src={securityLockShield.src} alt="Security shield with lock icons" width={securityLockShield.width} height={securityLockShield.height} loading="lazy" />
+    </div>
+  </div>
+</section>
+

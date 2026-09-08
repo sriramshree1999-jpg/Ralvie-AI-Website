@@ -3,52 +3,39 @@ import Icon from '../Icon.astro';
 
 const industries = [
   {
-    name: 'Hotels and Resorts',
-    icon: 'building',
-    accent: 'var(--accent-cyan)',
-    description: 'Ralvie can answer reservation and amenity questions, assist guests, handle after-hours enquiries and route conversations to the appropriate hotel department.',
-  },
-  {
-    name: 'Clinics and Healthcare Providers',
+    name: 'Healthcare & Clinics',
+    href: '/frontdesk/industries/healthcare-clinics',
     icon: 'heart',
     accent: 'var(--accent-coral)',
     description: 'Ralvie can manage general enquiries, collect patient information and assist with appointment requests while following the workflows defined by the organisation.',
   },
   {
-    name: 'Real Estate Businesses',
+    name: 'Hotels & Hospitality',
+    href: '/frontdesk/industries/hotels-hospitality',
+    icon: 'building',
+    accent: 'var(--accent-cyan)',
+    description: 'Ralvie can answer reservation and amenity questions, assist guests, handle after-hours enquiries and route conversations to the appropriate hotel department.',
+  },
+  {
+    name: 'Real Estate Offices',
+    href: '/frontdesk/industries/real-estate',
     icon: 'home',
     accent: 'var(--accent-blue)',
     description: 'Ralvie can qualify buyers, sellers and tenants, answer property questions and schedule conversations or viewings with the appropriate agent.',
   },
   {
-    name: 'Local and Home-Service Businesses',
-    icon: 'wrench',
-    accent: 'var(--accent-teal)',
-    description: 'Ralvie can collect service requirements, confirm service areas and help customers schedule an appointment without waiting for a manual response.',
-  },
-  {
-    name: 'Professional Services',
-    icon: 'briefcase',
-    accent: 'var(--accent-violet)',
-    description: 'Ralvie can manage initial enquiries, collect client information and route potential customers to the appropriate consultant or specialist.',
-  },
-  {
-    name: 'Educational Institutions',
+    name: 'Education Institutions',
+    href: '/frontdesk/industries/education-institutions',
     icon: 'academic-cap',
     accent: 'var(--accent-amber)',
     description: 'Ralvie can answer questions about programmes, admissions, enrolment and campus services while connecting specialised enquiries with the correct department.',
   },
   {
-    name: 'Sales and Marketing Teams',
-    icon: 'megaphone',
-    accent: 'var(--accent-magenta)',
-    description: 'Ralvie can engage inbound leads immediately, collect their requirements and ensure every opportunity receives a timely response.',
-  },
-  {
-    name: 'Customer Support Teams',
-    icon: 'headset',
-    accent: 'var(--accent-cyan)',
-    description: 'Ralvie can resolve frequently asked questions, create support requests and transfer complex issues with the relevant customer context.',
+    name: 'Financial Services',
+    href: '/frontdesk/industries/financial-services',
+    icon: 'currency-coin',
+    accent: 'var(--accent-violet)',
+    description: 'Ralvie can answer common enquiries, capture client details and route conversations to the appropriate financial-services professional.',
   },
 ];
 ---
@@ -60,15 +47,18 @@ const industries = [
       <h2 class="text-headline-lg text-on-surface">Adapt Ralvie to Your Industry and Workflow</h2>
     </div>
 
-    <div class="reveal grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="reveal grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {industries.map((industry) => (
-        <div class="glass-card">
+        <a href={industry.href} class="glass-card flex h-full flex-col transition-transform duration-200 hover:-translate-y-1">
           <span class="icon-tile" style={`--tint: ${industry.accent}`}>
             <Icon name={industry.icon} class="h-5 w-5" />
           </span>
           <h3 class="text-body-lg mt-4 font-semibold text-on-surface">{industry.name}</h3>
           <p class="text-body-md mt-3 text-on-surface-variant">{industry.description}</p>
-        </div>
+          <span class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold" style={`color: ${industry.accent}`}>
+            Explore more <Icon name="arrow-right" class="h-4 w-4" />
+          </span>
+        </a>
       ))}
     </div>
   </div>

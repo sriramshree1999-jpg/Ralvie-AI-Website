@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import OtherFrontdeskFeatures from '../components/OtherFrontdeskFeatures.astro';
 import ralvieLogoIcon from '../assets/Ralvie-logo-icon.svg';
 
 const formTypes = [
@@ -46,7 +47,7 @@ const schema = { '@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
           <h1><span class="keep-line">Turn every form</span> submission into the <span>next action.</span></h1>
           <p class="lead">Collect more than names and email addresses.</p>
           <p>Capture customer intent, qualify prospects, route requests, update your CRM and move every visitor toward the right next step.</p>
-          <div class="hero-actions"><a class="primary" href="#demo">Start your free trial <Icon name="arrow-right" /></a><a class="secondary" href="#demo"><Icon name="calendar" /> Book a demo</a></div>
+          <div class="hero-actions"><a class="primary" href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer">Start your free trial <Icon name="arrow-right" /></a><a class="secondary" href="#demo"><Icon name="calendar" /> Book a demo</a></div>
         </div>
 
         <div class="form-demo builder-demo" id="form-demo">
@@ -86,7 +87,8 @@ const schema = { '@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 
     <section class="section faq"><div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Build forms around your brand, customer journey and workflows.</p></div><div>{faqs.map(([q,a],i)=><details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-    <section class="final-cta" id="demo"><div class="mesh dark"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a class="primary" href="#">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a class="secondary dark-button" href="#"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+    <section class="final-cta" id="demo"><div class="mesh dark"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a class="primary" href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a class="secondary dark-button" href="#"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+    <OtherFrontdeskFeatures current="forms" />
   </main>
   <Footer theme="light" />
 </Layout>

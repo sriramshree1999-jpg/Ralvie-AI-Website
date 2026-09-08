@@ -560,6 +560,37 @@ p {
 .media-card.rose {
   background: linear-gradient(145deg, rgba(241, 207, 255, 0.85), rgba(235, 240, 255, 0.9));
 }
+.workspace-preview {
+  padding: 24px;
+  overflow: hidden;
+}
+.workspace-preview .pf-screen {
+  min-width: 0;
+  aspect-ratio: 1.35;
+}
+@media (min-width: 981px) {
+  .task-workspace .split-grid {
+    grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+    gap: 48px;
+  }
+  .timesheet-workspace .split-grid {
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    gap: 48px;
+  }
+  .project-workspace .split-grid {
+    grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+    gap: 48px;
+  }
+  .automatic-workspace .split-grid {
+    grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+    gap: 48px;
+  }
+}
+@media (max-width: 1200px) and (min-width: 981px) {
+  .workspace-section .split-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .check-list {
   display: grid;
   gap: 14px;
@@ -608,6 +639,8 @@ p {
   align-items: center;
   gap: 9px;
   margin-top: 28px;
+  height: auto;
+  background: none;
 }
 .flow-line b {
   color: #7567e8;
