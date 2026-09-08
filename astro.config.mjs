@@ -5,12 +5,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://ralvie.ai',
+  base: '/Ralvie-AI-Website',
   output: 'static',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      external: ['three']
-    }
-  }
+      external: ['three'],
+    },
+  },
 });
