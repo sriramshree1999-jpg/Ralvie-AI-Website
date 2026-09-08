@@ -171,6 +171,84 @@ const description = 'Schedule a personalized demo of Ralvie AI Frontdesk and Pro
     background: linear-gradient(180deg, #f5f7ff, #fbfcff);
   }
 
+  .benefits-section {
+    position: relative;
+    padding: 7rem 0;
+    background: linear-gradient(180deg, #f4f6ff 0%, #fbfcff 100%);
+  }
+
+  .section-title {
+    max-width: 720px;
+    margin: 0 auto 3.25rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.42rem 0.9rem;
+    border: 1px solid rgba(77, 102, 212, 0.3);
+    border-radius: 999px;
+    background: linear-gradient(110deg, rgba(225, 232, 255, 0.9), rgba(239, 223, 255, 0.88));
+    color: #4b60bd;
+    font: 700 0.7rem var(--font-label);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .section-title h2 {
+    margin: 1rem 0 0;
+    color: var(--ink);
+    font-size: clamp(2.2rem, 3.4vw, 3.7rem);
+    font-weight: 600;
+    line-height: 1.08;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .benefit-card {
+    min-height: 255px;
+    padding: 1.7rem;
+    border: 1px solid rgba(215, 222, 247, 0.9);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 20px 45px rgba(52, 65, 124, 0.1), inset 0 1px rgba(255, 255, 255, 0.95);
+  }
+
+  .benefit-card .icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.45rem;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #e0e6ff, #f0e5ff);
+    color: #546cea;
+  }
+
+  .benefit-card .icon :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .benefit-card h3 {
+    margin: 0 0 0.6rem;
+    color: var(--ink);
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+
+  .benefit-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
 
 
   .reveal {
