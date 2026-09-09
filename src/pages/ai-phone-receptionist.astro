@@ -424,6 +424,15 @@ const faqSchema = {
       animation: none !important;
     }
   }
+
+  /* The permanent track remains in place; the active card no longer adds a
+     second, vertically-shifted connector when it lifts above the row. */
+  .reception-step.is-active::after { display: none; }
+
+  /* Improve legibility of the inactive stages without competing with focus. */
+  .reception-step small { color: #929aaf; }
+  .reception-step h3 { color: #5f6881; }
+  .reception-step p { color: #7d879d; }
 </style>
 
 <style is:global>

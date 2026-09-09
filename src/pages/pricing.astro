@@ -11,7 +11,7 @@ import Icon from '../components/Icon.astro';
     <section class="pricing-hero">
       <div class="hero-copy"><span class="eyebrow">PRICING</span><h1>Pricing That<br /><span>Fits Every Business</span></h1><p>Find the right Ralvie plan to streamline daily work and transform customer communication — with flexible options built for growing teams.</p></div>
     </section>
-    <section class="plans-area"><div class="price-wrap"><div class="plans-toolbar"><div class="product-tabs" role="tablist" aria-label="Ralvie AI product"><button type="button" role="tab" class="product-tab active" data-product="productivity" aria-selected="true"><span class="tab-icon"><Icon name="chart-bar" /></span> Ralvie AI Productivity</button><button type="button" role="tab" class="product-tab" data-product="frontdesk" aria-selected="false"><span class="tab-icon"><Icon name="headset" /></span> Ralvie AI Frontdesk</button></div><div id="plans-heading" class="plans-heading"></div><div class="billing-controls"><span>Monthly</span><button type="button" class="billing-toggle" aria-label="Switch to yearly billing" aria-pressed="false"><i></i></button><span>Yearly</span><b>Save up to 17%</b></div></div>
+    <section class="plans-area"><div class="price-wrap"><div class="plans-toolbar"><div class="product-tabs" role="tablist" aria-label="Ralvie AI product"><button type="button" role="tab" class="product-tab active" data-product="productivity" aria-selected="true"><span class="tab-icon"><Icon name="chart-bar" /></span> Ralvie AI Productivity</button><button type="button" role="tab" class="product-tab" data-product="frontdesk" aria-selected="false"><span class="tab-icon"><Icon name="headset" /></span> Ralvie AI Frontdesk</button></div><div id="plans-heading" class="plans-heading"></div><div class="billing-controls"><span>Monthly</span><button type="button" class="billing-toggle active" aria-label="Switch to monthly billing" aria-pressed="true"><i></i></button><span>Yearly</span><b>Save up to 17%</b></div></div>
       <div id="pricing-content" class="pricing-content" aria-live="polite"></div>
     </div></section>
     <section id="demo" class="final-cta"><WorkforceProductivityCta variant="home" /></section>
@@ -35,7 +35,7 @@ import Icon from '../components/Icon.astro';
     ['Enterprise','Enterprise-ready with full customization.','1,199','11,990','',['5,000 voice minutes','5,000 SMS messages','HIPAA, SOC2, GDPR','Dedicated support representative','Custom integrations','Custom SLAs + guaranteed uptime']]],columns:['Solopreneur','Starter','Professional','Business','Enterprise'],rows:[
     ['Voice Minutes','150','300','1,000','2,500','5,000'],['SMS Messages','150','300','1,000','2,500','5,000'],['Premium Voices','100+','100+','100+','100+','100+'],['Multilingual Support',yes,yes,yes,yes,yes],['Call Routing','Basic','Basic','Advanced','Advanced','Advanced'],['Integrations',no,'6,000+','6,000+','6,000+','Custom'],['Transcriptions & Summaries',no,yes,yes,yes,yes],['Workflow Automations',no,'Up to 5','Unlimited','Unlimited','Unlimited'],['Analytics','Standard','Standard','Advanced','Advanced','Advanced'],['Data Retention','3 months','6 months','6 months','12 months','Custom'],['Support Level','Email','Email','Priority','Priority','Dedicated Rep'],['Call Whispering/Monitoring',no,no,yes,yes,yes],['Compliance',no,no,no,no,'HIPAA, SOC2, GDPR'],['Custom SLAs',no,no,no,no,yes]]};
   frontdesk.subtitle='Automate customer calls, SMS, and workflows — 24/7,<br>without hiring more staff.';
-  let product='productivity',billing='monthly'; const data={productivity,frontdesk};
+  let product='productivity',billing='yearly'; const data={productivity,frontdesk};
   const productLoginUrls={productivity:'https://me.ralvie.ai/auth/login',frontdesk:'https://app.frontdesk.ralvie.ai/login'};
   const originals={productivity:{'4':'48','3':'36','9':'108'},frontdesk:{'39':'468','99':'1,188','299':'3,588','599':'7,188','1,199':'14,388'}};
   function price(plan){const annual=billing==='yearly', amount=(annual?plan[3]:null)||plan[2];if(amount==='Custom')return '<div class="price custom">Custom</div><small>Enterprise-ready</small>';const old=annual&&amount!=='0'?`<del>$${originals[product][plan[2]]}</del>`:'';return `<div class="price">$${amount}<sup>/${annual?'yr':'mo'}</sup>${old}</div><small>${amount==='0'?'Free forever':annual?'Billed annually':plan[4]||'Billed monthly'}</small>`}
@@ -274,7 +274,10 @@ import Icon from '../components/Icon.astro';
     background: #fff !important;
   }
   .pricing-page .plans-area::before { display: none; }
-  .pricing-page button.billing-toggle,
+  .pricing-page button.billing-toggle {
+    background-color: #c8ccd6 !important;
+    background-image: none !important;
+  }
   .pricing-page button.billing-toggle.active {
     background-color: transparent !important;
     background-image: linear-gradient(110deg, #4163ed, #7658ed) !important;
