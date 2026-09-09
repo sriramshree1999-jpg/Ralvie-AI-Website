@@ -338,7 +338,7 @@ const solutionItemIcon = (item: string, category: string) => {
         </div>
       </div>
 
-      <a href="/book-demo" class="btn-primary px-6! py-2! text-sm">Book a demo</a>
+      <a href="/book-demo" class="btn-primary header-demo-button px-6! py-2! text-sm">Book a demo</a>
     </div>
 
     <button
@@ -359,8 +359,18 @@ const solutionItemIcon = (item: string, category: string) => {
     </button>
   </nav>
   <div id="mobile-site-menu" class="mobile-site-menu lg:hidden" data-mobile-menu hidden>
-    <a href="/productivity">Ralvie AI Productivity</a>
-    <a href="/frontdesk">Ralvie AI Frontdesk</a>
+    {products.map((product) => (
+      <details class="mobile-menu-group">
+        <summary>
+          <span>{product.name}</span>
+          <Icon name="chevron-down" class="h-4 w-4" />
+        </summary>
+        <div class="mobile-menu-list">
+          <a href={product.href}>Overview</a>
+          {product.features.map((feature) => <a href={feature.href}>{feature.name}</a>)}
+        </div>
+      </details>
+    ))}
     <a href="/pricing">Pricing</a>
     <a href="/contact">Contact us</a>
     <a href="/book-demo" class="mobile-menu-demo">Book a demo</a>
@@ -417,6 +427,13 @@ const solutionItemIcon = (item: string, category: string) => {
     background: rgba(9, 14, 43, 0.86);
     box-shadow: 0 18px 46px rgba(2, 5, 24, 0.42), inset 0 1px rgba(255, 255, 255, 0.08);
   }
+  .header-demo-button {
+    background: linear-gradient(100deg, #4568f5 0%, #7659e8 100%);
+    box-shadow: 0 12px 28px rgba(78, 89, 228, 0.28);
+  }
+  .header-demo-button:hover {
+    background: linear-gradient(100deg, #3f60eb 0%, #6f51dc);
+  }
   @media (max-width: 640px) {
     .site-header-nav { width: calc(100% - 1rem); }
     #site-header.is-scrolled { padding-top: 0.5rem; }
@@ -441,6 +458,36 @@ const solutionItemIcon = (item: string, category: string) => {
       -webkit-backdrop-filter: blur(18px);
     }
     .mobile-site-menu[hidden] { display: none; }
+    .mobile-menu-group {
+      border-radius: 0.7rem;
+    }
+    .mobile-menu-group summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.7rem;
+      color: #17204a;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+      list-style: none;
+    }
+    .mobile-menu-group summary::-webkit-details-marker { display: none; }
+    .mobile-menu-group summary svg { transition: transform 0.2s ease; }
+    .mobile-menu-group[open] summary { background: #f0f3ff; }
+    .mobile-menu-group[open] summary svg { transform: rotate(180deg); }
+    .mobile-menu-list {
+      display: grid;
+      gap: 0.15rem;
+      padding: 0.25rem 0 0.45rem 0.6rem;
+    }
+    .mobile-site-menu .mobile-menu-list a {
+      padding: 0.6rem 0.9rem;
+      color: #59617d;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
     .mobile-site-menu a {
       padding: 0.8rem 0.9rem;
       border-radius: 0.7rem;
