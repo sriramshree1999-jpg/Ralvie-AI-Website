@@ -45,7 +45,7 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
       </div>
     </div></section>
 
-    <section class="section statement"><div class="container-page narrow reveal"><span class="eyebrow">A calmer inbox</span><h2>Email shouldn’t become another full-time job.</h2><p>Finding important messages takes time. Rewriting the same answers takes more. Remembering every follow-up takes even more. Ralvie turns the inbox into an intelligent workflow that understands, organizes, and prepares the work around each decision.</p><strong>Inbox → Understanding → Action</strong></div></section>
+    <section class="section statement"><div class="container-page narrow reveal"><span class="eyebrow">A calmer inbox</span><h2>Email shouldn’t become <span class="heading-accent">another full-time job.</span></h2><p>Finding important messages takes time. Rewriting the same answers takes more. Remembering every follow-up takes even more. Ralvie turns the inbox into an intelligent workflow that understands, organizes, and prepares the work around each decision.</p><strong>Inbox → Understanding → Action</strong></div></section>
 
     <section class="section soft"><div class="container-page"><div class="section-title reveal"><span class="eyebrow">More than an email writer</span><h2>An AI manager for your inbox.</h2></div><div class="feature-grid">{features.map(([icon,name,copy],i)=><article class:list={['card reveal', i < 2 ? 'wide' : '']}><span class="icon"><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
 
@@ -63,10 +63,10 @@ const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 
     <section class="section comparison soft"><div class="container-page split"><div class="reveal"><span class="eyebrow">Before and after Ralvie</span><h2>Move beyond the manual inbox.</h2><p class="large">Let AI organize and prepare. Let your people decide and connect.</p></div><div class="comparison-list reveal">{[['Manual folders','AI-assisted organization'],['Write every reply','Contextual drafts prepared'],['Read every thread','Instant summaries'],['Notice leads manually','Buying intent detected'],['Remember follow-ups','Follow-ups surfaced'],['Copy into CRM','Connected workflows']].map(([oldWay,newWay])=><div><span><Icon name="x-mark"/>{oldWay}</span><b><Icon name="check"/>{newWay}</b></div>)}</div></div></section>
 
+    <OtherFrontdeskFeatures current="email" />
     <section class="section faq"><div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>See how Ralvie can fit your inbox, rules, knowledge, and workflows.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right"/></a></div><div>{faqs.map(([q,a],i)=><details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
     <section class="final-cta" id="demo"><div class="mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a href="#" class="secondary dark-button"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
-    <OtherFrontdeskFeatures current="email" />
   </main>
   <Footer theme="light" />
 </Layout>

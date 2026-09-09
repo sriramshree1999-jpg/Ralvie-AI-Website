@@ -65,7 +65,7 @@ const schema = { '@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
       </div>
     </section>
 
-    <section class="section intro"><div class="container-page narrow reveal"><span class="eyebrow">Submission → Understanding → Action</span><h2>Forms should do more than collect fields.</h2><p>A traditional form creates another inbox task. Ralvie structures the information, understands what the customer needs and starts the appropriate workflow while their intent is still fresh.</p></div></section>
+    <section class="section intro"><div class="container-page narrow reveal"><span class="eyebrow">Submission → Understanding → Action</span><h2>Forms should do more than <span class="heading-accent">collect fields.</span></h2><p>A traditional form creates another inbox task. Ralvie structures the information, understands what the customer needs and starts the appropriate workflow while their intent is still fresh.</p></div></section>
 
     <section class="section journeys"><div class="container-page"><div class="section-title reveal"><span class="eyebrow">Purpose-built journeys</span><h2>Build around the outcome you need.</h2><p>One flexible form platform for every customer entry point.</p></div><div class="type-grid">{formTypes.map(([icon,title,text])=><article class="type-card reveal"><span><Icon name={icon}/></span><h3>{title}</h3><p>{text}</p><small>Explore journey <Icon name="arrow-right"/></small></article>)}</div></div></section>
 
@@ -85,10 +85,10 @@ const schema = { '@context':'https://schema.org','@type':'FAQPage',mainEntity:fa
 
     <section class="section comparison"><div class="container-page split"><div class="reveal"><span class="eyebrow">Beyond contact forms</span><h2>A form that thinks ahead.</h2><p class="large">Replace the generic thank-you screen with qualification, routing and action.</p></div><div class="comparison-list reveal">{[['Static questions','Conditional journeys'],['Unstructured message','AI-assisted understanding'],['Manual lead review','Configured qualification'],['Inbox notification','Intelligent routing'],['Copy into CRM','Connected customer record'],['Wait for follow-up','Continue to booking']].map(([oldWay,newWay])=><div><span><Icon name="x-mark"/>{oldWay}</span><b><Icon name="check"/>{newWay}</b></div>)}</div></div></section>
 
+    <OtherFrontdeskFeatures current="forms" />
     <section class="section faq"><div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Build forms around your brand, customer journey and workflows.</p></div><div>{faqs.map(([q,a],i)=><details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
     <section class="final-cta" id="demo"><div class="mesh dark"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a class="primary" href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a class="secondary dark-button" href="#"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
-    <OtherFrontdeskFeatures current="forms" />
   </main>
   <Footer theme="light" />
 </Layout>

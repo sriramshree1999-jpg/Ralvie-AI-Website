@@ -210,7 +210,7 @@ const faqSchema = {
     <section class="section" id="how-it-works">
       <div class="productivity-shell">
         <div class="section-heading centered">
-          <span class="eyebrow">How Ralvie works</span><h2>
+          <span class="eyebrow how-works-eyebrow">How Ralvie works</span><h2>
             Understand the work<br /><em>behind the work.</em>
           </h2><p>
             Ralvie turns fragmented workplace activity into connected context your employees,
@@ -245,7 +245,7 @@ const faqSchema = {
     <section class="section soft-mesh workspace-section automatic-workspace" id="automatic-tracking">
       <div class="productivity-shell split-grid">
         <div class="media-card lilac workspace-preview">
-          <ProductivityFeatureScreen type="automatic-activity-tracking" automaticView="activities" />
+          <ProductivityFeatureScreen type="automatic-activity-tracking" automaticView="activities" showAppStatus={false} />
         </div>
         <div class="section-copy">
           <span class="eyebrow">Automatic activity intelligence</span><h2>
@@ -254,13 +254,11 @@ const faqSchema = {
             Ralvie Sundial quietly captures applicable workplace activity according to your
             configuration, providing a reliable timeline of the workday while reducing manual
             administration.
-          </p><ul class="check-list">
-            <li>Application, document, and active-window context</li><li>
-              Configurable idle-time and work-session detection
-            </li><li>Offline capture with synchronization when connectivity returns</li><li>
-              Windows and macOS support
-            </li>
-          </ul>
+          </p><p>
+            Ralvie captures application, document, and active-window context; supports configurable
+            idle-time and work-session detection; keeps recording offline until connectivity returns;
+            and works across Windows and macOS.
+          </p>
         </div>
       </div>
     </section>
@@ -281,7 +279,7 @@ const faqSchema = {
           </div>
         </div>
         <div class="media-card cyan workspace-preview">
-          <ProductivityFeatureScreen type="time-logs" />
+          <ProductivityFeatureScreen type="time-logs" showAppStatus={false} />
         </div>
       </div>
     </section>
@@ -289,7 +287,7 @@ const faqSchema = {
     <section class="section workspace-section task-workspace" id="task-management">
       <div class="productivity-shell split-grid">
         <div class="media-card lilac workspace-preview">
-          <ProductivityFeatureScreen type="tasks" />
+          <ProductivityFeatureScreen type="tasks" showAppStatus={false} />
         </div>
         <div class="section-copy">
           <span class="eyebrow">AI task management</span><h2>
@@ -307,7 +305,7 @@ const faqSchema = {
     <section class="section soft-mesh workspace-section project-workspace" id="project-intelligence">
       <div class="productivity-shell split-grid">
         <div class="media-card rose workspace-preview">
-          <ProductivityFeatureScreen type="projects" />
+          <ProductivityFeatureScreen type="projects" showAppStatus={false} />
         </div>
         <div class="section-copy">
           <span class="eyebrow">AI project mapping</span><h2>

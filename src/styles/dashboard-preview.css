@@ -34,6 +34,9 @@
   color: #343b54;
 }
 
+/* Keep the member-activity label legible against the light preview tab. */
+.pf-screen .pf-dashboard-tabs button:nth-child(2) { color: #28304d; }
+
 .pf-dashboard-section-head {
   display: flex;
   align-items: center;
@@ -273,6 +276,26 @@
 .pf-screen.is-compact .pf-project-usage article > span { font-size: 0.3rem; }
 .pf-screen.is-compact .pf-ranking-card > footer { padding: 0.3rem 0.42rem; font-size: 0.29rem; }
 .pf-screen.is-compact .pf-ranking-card footer button { width: 12px; height: 12px; font-size: 0.43rem; }
+
+/* A fuller desktop dashboard: larger type and enough visible ranking context. */
+.pf-screen:not(.is-compact) .dashboard-view > .pf-dashboard-rankings:not(.pf-expanded-rankings) { display: none; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings { gap: 1rem; margin-top: 1.1rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card { min-height: 17.8rem; border-radius: 15px; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card > header { min-height: 3.3rem; padding: .7rem .8rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card header b { font-size: .73rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card header small { font-size: .5rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-head,
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-table article { padding: .53rem .76rem; font-size: .48rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-table article > strong { gap: .34rem; font-size: .53rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-table strong i { width: 20px; height: 20px; font-size: .34rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-table article > b { font-size: .53rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-project-ranking label { padding: .42rem .5rem; font-size: .46rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-project-usage article { padding: .68rem .78rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-project-usage strong { font-size: .53rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-project-usage article > span { gap: .36rem; font-size: .48rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-project-usage i { height: 6px; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card > footer { padding: .58rem .76rem; font-size: .44rem; }
+.pf-screen:not(.is-compact) .pf-expanded-rankings .pf-ranking-card footer button { width: auto; min-width: 28px; height: 20px; padding: 0 .35rem; font-size: .38rem; }
 
 @media (max-width: 700px) {
   .pf-dashboard-rankings { grid-template-columns: 1fr; }

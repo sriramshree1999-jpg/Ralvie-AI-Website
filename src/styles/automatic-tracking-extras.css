@@ -318,24 +318,6 @@
   padding: 1.25rem 0;
 }
 
-.atx-editorial-copy .pf-eyebrow {
-  position: relative;
-  padding-left: 1rem;
-}
-
-.atx-editorial-copy .pf-eyebrow::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 0 5px rgba(64, 88, 245, 0.13);
-  content: '';
-  transform: translateY(-50%);
-}
-
 .atx-editorial-copy h2 {
   max-width: 560px;
   margin-top: 1.35rem;

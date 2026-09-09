@@ -86,6 +86,169 @@ const websiteSchema = {
 
     <slot />
     <script>
+      // Present shared title pills in sentence case, including legacy labels
+      // whose source content was authored in all capitals.
+      const labelSelector = [
+        '.eyebrow', '.hero-eyebrow', '.pf-eyebrow', '.pill', '.hero-label',
+        '.hotel-pill', '.estate-pill', '.health-pill', '.agency-pill', '.consult-pill',
+        '.pro-pill', '.saas-pill', '.features-chip', '.frontdesk-dark-chip',
+        '.customer-voices-chip', '.trusted-awards-chip', '.cta-pill', '.workforce-cta__chip',
+      ].join(', ');
+      const sentenceCaseLabel = (value: string) => {
+        const trimmed = value.trim();
+        if (!trimmed || trimmed !== trimmed.toUpperCase() || !/[A-Z]/.test(trimmed)) return value;
+        const normalized = trimmed.toLowerCase().replace(/\b(ai|api|crm|qa|seo|sms|ui|ux)\b/gi, (term) => term.toUpperCase());
+        const sentence = normalized.charAt(0).toUpperCase() + normalized.slice(1);
+        return value.replace(trimmed, sentence);
+      };
+      document.querySelectorAll<HTMLElement>(labelSelector).forEach((label) => {
+        const walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
+        const textNodes: Text[] = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+        textNodes.forEach((node) => { node.textContent = sentenceCaseLabel(node.textContent ?? ''); });
+      });
+
+      // Keep every Book a Demo CTA pointed at the shared scheduling page, even
+      // when a legacy page still uses an in-page CTA anchor.
+      document.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+        const label = link.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+        if (/^book(?: a)? demo$/i.test(label)) {
+          link.href = '/book-demo/';
+          link.removeAttribute('target');
+          link.removeAttribute('rel');
+        }
+      });
+
+      // Give simple editorial headings a visual key phrase. Headings that
+      // already use an explicit gradient span or emphasis element retain their
+      // authored styling unchanged.
+      document.querySelectorAll<HTMLElement>('main h1, main h2, main h3').forEach((heading) => {
+        if (heading.querySelector('em, .heading-gradient, [class*="gradient"]')) return;
+
+        const textNode = [...heading.childNodes].find(
+          (node): node is Text => node.nodeType === Node.TEXT_NODE && Boolean(node.textContent?.trim()),
+        );
+        if (!textNode?.textContent || heading.childElementCount > 0) return;
+
+        const text = textNode.textContent;
+        const match = text.match(/^(.*?)(\\s+[^\\s]+\\s+[^\\s]+)\\s*$/);
+        if (!match) return;
+
+        const phrase = match[2].trim();
+        const prefix = match[1];
+        const accent = document.createElement('span');
+        accent.className = 'heading-gradient';
+        accent.textContent = phrase;
+        heading.replaceChildren(document.createTextNode(prefix), document.createTextNode(' '), accent);
+      });
+
+      const referenceKeyTitles = new Set([
+        'how it works',
+        'feature & project intelligence',
+        'client & project visibility',
+        'client & project context',
+        'project intelligence',
+        'always-on patient access',
+        'healthcare knowledge engine',
+        'always-on hospitality',
+        'always-on lead capture',
+        'always-on education support',
+        'always-on financial services',
+      ]);
+      document.querySelectorAll<HTMLElement>('main .eyebrow').forEach((label) => {
+        const key = label.textContent?.trim().replace(/\s+/g, ' ').toLowerCase();
+        if (!key || !referenceKeyTitles.has(key)) return;
+
+        label.classList.add('key-title-reference');
+        const referenceStyle: Array<[string, string]> = [
+          ['background-color', 'transparent'],
+          ['background-image', 'none'],
+          ['border-width', '1.5px'],
+          ['border-style', 'solid'],
+          ['border-color', 'transparent'],
+          ['border-radius', '999px'],
+          ['min-height', '2.45rem'],
+          ['padding', '.24rem 1.45rem'],
+          ['color', '#a9a1ff'],
+          ['-webkit-text-fill-color', '#a9a1ff'],
+          ['font-family', 'var(--font-sans)'],
+          ['font-size', '.82rem'],
+          ['font-weight', '700'],
+          ['letter-spacing', '-.02em'],
+          ['line-height', '1.4'],
+          ['text-transform', 'none'],
+          ['box-shadow', 'inset 0 1px 0 rgb(255 255 255 / 55%), 0 13px 30px rgb(7 15 55 / 38%), 0 0 32px rgb(101 99 239 / 21%)'],
+        ];
+        referenceStyle.forEach(([property, value]) => label.style.setProperty(property, value, 'important'));
+      });
+
+      // Build independent FAQ columns instead of sharing CSS grid rows. This keeps both stacks
+      // compact regardless of the height of the heading or an expanded answer.
+      document.querySelectorAll<HTMLElement>('main .faq-grid, main .faq-layout').forEach((container) => {
+        if (container.querySelector(':scope > .faq-column')) return;
+
+        const children = [...container.children] as HTMLElement[];
+        const heading = children.find((child) => child.matches('.section-head, .reveal'));
+        const list = children.find((child) => [...child.children].some((item) => item.matches('details')));
+        if (!heading || !list) return;
+
+        const questions = [...list.children].filter((item): item is HTMLDetailsElement => item.matches('details'));
+        if (questions.length < 2) return;
+
+        const left = document.createElement('div');
+        left.className = 'faq-column faq-column-left';
+        const leftList = document.createElement('div');
+        leftList.className = 'faq-list';
+        const right = document.createElement('div');
+        right.className = 'faq-column';
+        const rightList = document.createElement('div');
+        rightList.className = 'faq-list';
+        const leftCount = Math.max(1, Math.ceil(questions.length / 2) - 1);
+
+        left.append(heading, leftList);
+        leftList.append(...questions.slice(0, leftCount));
+        rightList.append(...questions.slice(leftCount));
+        right.append(rightList);
+        container.replaceChildren(left, right);
+      });
+
+      requestAnimationFrame(() => {
+        document.querySelectorAll<HTMLElement>('main .faq-grid, main .faq-layout').forEach((container) => {
+          const columns = [...container.querySelectorAll<HTMLElement>(':scope > .faq-column')];
+          if (columns.length !== 2) return;
+
+          const [leftColumn, rightColumn] = columns;
+          const leftList = leftColumn.querySelector<HTMLElement>(':scope > .faq-list');
+          const rightList = rightColumn.querySelector<HTMLElement>(':scope > .faq-list');
+          if (!leftList || !rightList) return;
+
+          const questions = [
+            ...[...leftList.children].filter((item): item is HTMLDetailsElement => item.matches('details')),
+            ...[...rightList.children].filter((item): item is HTMLDetailsElement => item.matches('details')),
+          ];
+          if (questions.length < 3) return;
+
+          const headingHeight = leftColumn.querySelector<HTMLElement>('.section-head, .reveal')?.offsetHeight ?? 0;
+          const leftQuestions = [questions[0]];
+          const rightQuestions: HTMLDetailsElement[] = [];
+          let leftHeight = headingHeight + questions[0].offsetHeight;
+          let rightHeight = 0;
+
+          questions.slice(1).forEach((question) => {
+            if (leftHeight <= rightHeight) {
+              leftQuestions.push(question);
+              leftHeight += question.offsetHeight;
+            } else {
+              rightQuestions.push(question);
+              rightHeight += question.offsetHeight;
+            }
+          });
+
+          leftList.replaceChildren(...leftQuestions);
+          rightList.replaceChildren(...rightQuestions);
+        });
+      });
+
       const chatWidgetScript = document.createElement('script');
       chatWidgetScript.src = 'https://embeddable-widgets.pages.dev/chat-widget.umd.js';
       chatWidgetScript.dataset.ralvieChatWidget = 'true';

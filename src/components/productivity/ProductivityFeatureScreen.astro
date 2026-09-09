@@ -17,8 +17,9 @@ interface Props {
   compact?: boolean;
   automaticView?: 'activities' | 'general-settings' | 'schedule';
   storyVariant?: 'overview' | 'workflow' | 'insights';
+  showAppStatus?: boolean;
 }
-const { type, compact = false, automaticView = 'activities', storyVariant = 'overview' } = Astro.props;
+const { type, compact = false, automaticView = 'activities', storyVariant = 'overview', showAppStatus = true } = Astro.props;
 const storyVariantLabels = { overview: 'Workspace overview', workflow: 'Daily workflow', insights: 'Product insight' };
 const galleryCaptures: [string, string, string, { src: string }][] = [
   ['Figma', '9:12 AM', 'design', screenshot1], ['VS Code', '9:36 AM', 'code', screenshot2],
@@ -167,7 +168,7 @@ const timeRows = [
     <div class="pf-person"><i>AM</i><div><b>Amelia Morgan</b><small>amelia@northstar.co</small></div></div>
   </aside>
   <div class="pf-app-main">
-    <header class="pf-appbar"><span>Productivity / <b>{storyVariantLabels[storyVariant]}</b></span><div><i></i> Sundial active <em></em> Capture enabled <span class="pf-app-search"><Icon name="search" /> Search...</span><b class="pf-app-more">⋮</b></div></header>
+    <header class="pf-appbar"><span>Productivity / <b>{storyVariantLabels[storyVariant]}</b></span><div>{showAppStatus && <><i></i> Sundial active <em></em> Capture enabled </>}<span class="pf-app-search"><Icon name="search" /> Search...</span><b class="pf-app-more">⋮</b></div></header>
 
     {type === 'dashboard' && <div class="pf-app-content dashboard-view">
       <div class="pf-title"><div><small>WORKFORCE OVERVIEW</small><h3>Productivity dashboard</h3><p>September 1-7, 2026</p></div><button><Icon name="download" /> Download report</button></div>
@@ -177,6 +178,10 @@ const timeRows = [
       <div class="pf-dashboard-rankings">
         <section class="pf-ranking-card pf-member-ranking"><header><div><b>Member ranking</b><small>Top contributors this week</small></div><button type="button">All departments <Icon name="chevron-down" /></button></header><div class="pf-ranking-table"><div class="pf-ranking-head"><span>Rank</span><span>Member</span><span>Department</span><span>Score</span></div>{[['1','OB','Olivia Bennett','Product design','97'],['2','EW','Ethan Walker','Engineering','94'],['3','MT','Maya Thompson','Customer success','91']].map(([rank,initials,name,department,score]) => <article><span>{rank}</span><strong><i>{initials}</i>{name}</strong><span>{department}</span><b>{score}</b></article>)}</div><footer><span>Showing 1 to 3 of 148 members</span><div><button type="button">‹</button><button type="button">›</button></div></footer></section>
         <section class="pf-ranking-card pf-project-ranking"><header><div><b>Project usage ranking</b><small>Based on tracked work activity</small></div><label><Icon name="search" /><span>Search projects</span></label></header><div class="pf-project-usage">{[['Northern Lights Portal','92%'],['Lakeview Health Launch','78%'],['Cedar Commerce Refresh','64%']].map(([name,usage]) => <article><strong>{name}</strong><span><i><b style={`--usage:${usage}`}></b></i>{usage}</span></article>)}</div><footer><span>3 active projects shown</span><div><button type="button">‹</button><button type="button">›</button></div></footer></section>
+      </div>
+      <div class="pf-dashboard-rankings pf-expanded-rankings">
+        <section class="pf-ranking-card pf-member-ranking"><header><div><b>Member ranking</b><small>Top contributors this week</small></div><button type="button">All departments <Icon name="chevron-down" /></button></header><div class="pf-ranking-table"><div class="pf-ranking-head"><span>Rank</span><span>Member</span><span>Department</span><span>Score</span></div>{[['1','OB','Olivia Bennett','Product design','97'],['2','EW','Ethan Walker','Engineering','94'],['3','MT','Maya Thompson','Customer success','91'],['4','JR','James Rivera','Marketing','89'],['5','SK','Sophia Kim','Operations','87'],['6','AL','Avery Lewis','Sales','84']].map(([rank,initials,name,department,score]) => <article><span>{rank}</span><strong><i>{initials}</i>{name}</strong><span>{department}</span><b>{score}</b></article>)}</div><footer><span>Showing 1 to 6 of 148 members</span><div><button type="button">Prev</button><button type="button">Next</button></div></footer></section>
+        <section class="pf-ranking-card pf-project-ranking"><header><div><b>Project usage ranking</b><small>Based on tracked work activity</small></div><label><Icon name="search" /><span>Search projects</span></label></header><div class="pf-project-usage">{[['Northern Lights Portal','92%'],['Lakeview Health Launch','86%'],['Cedar Commerce Refresh','81%'],['Atlas Mobile Launch','76%'],['Client Onboarding Hub','69%'],['Brand Experience Update','63%']].map(([name,usage]) => <article><strong>{name}</strong><span><i><b style={`--usage:${usage}`}></b></i>{usage}</span></article>)}</div><footer><span>6 active projects shown</span><div><button type="button">Prev</button><button type="button">Next</button></div></footer></section>
       </div>
     </div>}
 
@@ -197,6 +202,9 @@ const timeRows = [
         ['13:00 – 13:30', '1h 02m', 'Slack', 'Activity 5', 'Logged', 'Working on client handoff', 'Reviewing delivery notes'],
         ['13:30 – 14:30', '0h 35m', 'VS Code', 'Activity 7', 'Logged', 'Working on authentication', 'Reviewing pull request'],
         ['14:40 – 15:25', '0h 45m', 'Figma', 'Activity 3', 'Mapped', 'Working on design review', 'Reviewing component states'],
+        ['15:30 – 16:10', '0h 40m', 'Chrome', 'Activity 6', 'Logged', 'Reviewing client feedback', 'Updating delivery checklist'],
+        ['16:15 – 16:45', '0h 30m', 'Notion', 'Activity 4', 'Mapped', 'Documenting release notes', 'Planning tomorrow’s priorities'],
+        ['16:50 – 17:25', '0h 35m', 'Microsoft Teams', 'Activity 8', 'Logged', 'Joining project wrap-up', 'Sharing next-step owners'],
       ].map(([time,duration,app,activity,status,primary,secondary]) => <article><div class="pf-tracked-time"><b>{time}</b><small>{duration}</small></div><i></i><div class="pf-tracked-entry"><header><strong>{app} · {activity}</strong><mark class={status.toLowerCase()}>{status}</mark></header><p><small>13:05 – 13:45</small>{primary}</p><p><small>09:45 – 10:30</small>{secondary}</p></div></article>)}</section>
     </div>}
 

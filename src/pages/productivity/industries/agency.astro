@@ -6,6 +6,7 @@ import Icon from '../../../components/Icon.astro';
 import ProductivityFinalCta from '../../../components/ProductivityFinalCta.astro';
 import { Image } from 'astro:assets';
 import agencyHeroImage from '../../../assets/agency hero section image.jpg';
+import ralvieLogoIcon from '../../../assets/Ralvie-logo-icon.svg';
 import '../../../styles/agency-industry.css';
 
 const title = 'AI Productivity & Time Tracking Software for Agencies | Ralvie AI';
@@ -33,7 +34,7 @@ const schema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq
       </div>
     </div></section>
 
-    <section class="section agency-intro"><div class="agency-shell intro-grid"><div><span class="eyebrow">AGENCY WORK INTELLIGENCE</span><h2>Client work happens everywhere. <em>Ralvie helps connect it.</em></h2><p>A single workday moves between client meetings, creative production, campaign management, research, reporting, email, and multiple accounts.</p></div><div class="client-orbit"><div class="orbit-core"><span>R</span><b>Work context</b></div>{[['megaphone','Campaigns'],['sparkles','Creative'],['monitor','Development'],['document','Reporting'],['chat','Client comms'],['users','Meetings']].map(([i,n],x)=><article class={`orbit-${x}`}><Icon name={i}/><span>{n}</span></article>)}</div></div></section>
+    <section class="section agency-intro"><div class="agency-shell intro-grid"><div><span class="eyebrow">AGENCY WORK INTELLIGENCE</span><h2>Client work happens everywhere. <em>Ralvie helps connect it.</em></h2><p>A single workday moves between client meetings, creative production, campaign management, research, reporting, email, and multiple accounts.</p></div><div class="client-orbit"><div class="orbit-core"><img src={ralvieLogoIcon.src} alt="Ralvie AI" /><b>Work context</b></div>{[['megaphone','Campaigns'],['sparkles','Creative'],['monitor','Development'],['document','Reporting'],['chat','Client comms'],['users','Meetings']].map(([i,n],x)=><article class={`orbit-${x}`}><Icon name={i}/><span>{n}</span></article>)}</div></div></section>
 
     <section class="section auto-section"><div class="agency-shell split"><div class="copy"><span class="eyebrow">AUTOMATIC ACTIVITY TRACKING</span><h2>Let your team focus on client work—<em>not the clock.</em></h2><p>Ralvie Sundial captures configured workplace context while creative, strategy, account, and delivery teams continue working in their existing tools.</p><div class="capture-grid">{[['monitor','Applications'],['document','Documents & windows'],['clock','Work sessions'],['bolt','Active time'],['refresh','Offline activity'],['shield-check','Privacy controls']].map(([i,n],x)=><span class={`capture-${x}`}><Icon name={i}/>{n}</span>)}</div></div><div class="day-stream agency-glass"><header><div><small>WORKDAY STREAM</small><h3>Tuesday · Client delivery</h3></div><b>7h 36m</b></header>{[['09:00','Northline Hotels','Campaign review','1h 18m'],['10:30','Brightpath Health','Design production','2h 12m'],['13:30','Internal','Creative planning','46m'],['14:16','Aster Finance','Website build','2h 34m']].map(([t,c,n,h],x)=><article><time>{t}</time><span class={`stream-${x}`}></span><div><small>{c}</small><b>{n}</b></div><strong>{h}</strong></article>)}</div></div></section>
 
@@ -54,4 +55,5 @@ const schema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq
     <section class="section faq"><div class="agency-shell faq-grid"><div class="section-head"><span class="eyebrow">FREQUENTLY ASKED QUESTIONS</span><h2>Agency productivity, <em>explained.</em></h2><p>Clearer work context without another spreadsheet.</p></div><div class="faq-list">{faqs.map(([q,a],x)=><details open={x===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
     <ProductivityFinalCta />
   </main><Footer theme="light"/>
+  <style>.orbit-core>img{display:block;width:52px;height:52px;object-fit:contain}.client-orbit{background:transparent}</style>
 </Layout>

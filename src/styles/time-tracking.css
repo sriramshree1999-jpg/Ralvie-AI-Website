@@ -1064,10 +1064,148 @@
 .distribution-row > i .tone-5 { background: linear-gradient(90deg, #788296, #aab1c0); }
 .time-intelligence-cards {
   background:
-    radial-gradient(circle at 12% 15%, rgba(229, 205, 255, 0.3), transparent 32%),
-    radial-gradient(circle at 86% 72%, rgba(188, 229, 255, 0.3), transparent 35%),
-    #fdfcff;
+    radial-gradient(circle at 12% 15%, rgba(119, 90, 239, 0.26), transparent 33%),
+    radial-gradient(circle at 86% 72%, rgba(48, 164, 212, 0.2), transparent 38%),
+    #10152f;
 }
+.time-intelligence-cards .section-head .eyebrow {
+  position: relative;
+  isolation: isolate;
+  min-height: 42px;
+  padding: 0 20px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(#10152f, #10152f) padding-box, linear-gradient(100deg, #b4cbff, #a663ef) border-box;
+  box-shadow: 0 12px 30px rgba(5, 8, 34, 0.32), inset 0 1px rgba(255, 255, 255, 0.08);
+  color: #a89dff;
+  font-size: 13px;
+  letter-spacing: -.02em;
+  text-transform: none;
+}
+.time-intelligence-cards .section-head h2 { color: #fff; }
+.time-intelligence-cards .section-head h2 em { color: #a9a1ff; }
+.time-intelligence-cards .section-head p { color: #c0c8e3; }
+.time-intelligence-cards .intelligence-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 45px rgba(3, 7, 30, 0.22);
+}
+.time-intelligence-cards .intelligence-card h3 { color: #fff; }
+.time-intelligence-cards .intelligence-card p { color: #c0c8df; }
+
+.project-time-intelligence {
+  background:
+    radial-gradient(circle at 10% 18%, rgba(109, 79, 229, 0.3), transparent 33%),
+    radial-gradient(circle at 88% 78%, rgba(46, 151, 210, 0.18), transparent 38%),
+    #10152f;
+}
+.project-time-intelligence .copy .eyebrow {
+  position: relative;
+  isolation: isolate;
+  min-height: 42px;
+  padding: 0 20px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(#10152f, #10152f) padding-box, linear-gradient(100deg, #b4cbff, #a663ef) border-box;
+  box-shadow: 0 12px 30px rgba(4, 7, 30, 0.32), inset 0 1px rgba(255, 255, 255, 0.08);
+  color: #a89dff;
+  font-size: 13px;
+  letter-spacing: -.02em;
+  text-transform: none;
+}
+.project-time-intelligence .copy h2 { color: #fff; }
+.project-time-intelligence .copy h2 em { color: #bcb6ff; }
+.project-time-intelligence .copy p,
+.project-time-intelligence .copy li { color: #c0c8e3; }
+.project-time-intelligence .copy li { border-color: rgba(255, 255, 255, 0.13); }
+.project-time-intelligence .project-time-visual {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 52px rgba(3, 7, 30, 0.28);
+}
+.project-time-intelligence .project-time-visual,
+.project-time-intelligence .project-time-visual h3,
+.project-time-intelligence .project-time-row strong { color: #fff; }
+.project-time-intelligence .project-time-visual small,
+.project-time-intelligence .project-time-row span { color: #bcc5df; }
+.project-time-intelligence .project-time-visual header,
+.project-time-intelligence .project-time-row { border-color: rgba(255, 255, 255, 0.12); }
+
+/* Match the shared Ralvie AI Productivity outlined chip exactly. */
+.time-intelligence-cards,
+.project-time-intelligence {
+  background: linear-gradient(120deg, #25234f 0%, #132657 49%, #111b42 100%) !important;
+}
+.time-intelligence-cards .section-head .eyebrow,
+.project-time-intelligence .copy .eyebrow {
+  position: relative !important;
+  isolation: isolate !important;
+  display: inline-flex !important;
+  min-height: 2.45rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: .24rem 1.45rem !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 13px 30px rgb(7 15 55 / 38%), 0 0 32px rgb(101 99 239 / 21%) !important;
+  color: #a9a1ff !important;
+  font-family: var(--font-sans) !important;
+  font-size: .82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+.time-intelligence-cards .section-head .eyebrow::before,
+.project-time-intelligence .copy .eyebrow::before {
+  position: absolute !important;
+  z-index: -1 !important;
+  inset: 0 !important;
+  padding: 1.5px !important;
+  border-radius: inherit !important;
+  background: linear-gradient(100deg, #a8c6ff 0%, #9f8df5 50%, #9a5cdf 100%) !important;
+  content: '' !important;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+  -webkit-mask-composite: xor !important;
+  mask-composite: exclude !important;
+}
+html body:not(:has(.frontdesk-page)) main .time-intelligence-cards .section-head .eyebrow,
+html body:not(:has(.frontdesk-page)) main .project-time-intelligence .copy .eyebrow {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #a9a1ff !important;
+}
+
+/* Project and task time follows the light audience-section treatment. */
+.project-time-intelligence {
+  background: radial-gradient(circle at 8% 12%, rgba(190, 180, 255, 0.2), transparent 33%), radial-gradient(circle at 92% 88%, rgba(151, 213, 255, 0.18), transparent 36%), #fbfcff !important;
+  color: #171a33;
+}
+.project-time-intelligence .copy h2 { color: #171a33; }
+.project-time-intelligence .copy h2 em { background: linear-gradient(90deg, #665be8, #4d99e7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.project-time-intelligence .copy p,
+.project-time-intelligence .copy li { color: #737b91; }
+.project-time-intelligence .copy li { border-color: rgba(70, 76, 125, 0.13); }
+html body:not(:has(.frontdesk-page)) main .project-time-intelligence .copy .eyebrow {
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(100deg, #e2d4ff 0%, #a9c2ff 52%, #e6d4ff 100%) border-box !important;
+  border-color: transparent !important;
+  box-shadow: 0 12px 30px rgb(78 69 180 / 8%) !important;
+  color: #6256e7 !important;
+}
+html body:not(:has(.frontdesk-page)) main .project-time-intelligence .copy .eyebrow::before { display: none !important; }
+.project-time-intelligence .project-time-visual {
+  border-color: rgba(70, 76, 125, 0.12);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 22px 52px rgba(42, 48, 101, 0.1);
+}
+.project-time-intelligence .project-time-visual,
+.project-time-intelligence .project-time-visual h3,
+.project-time-intelligence .project-time-row strong { color: #252b45; }
+.project-time-intelligence .project-time-visual small,
+.project-time-intelligence .project-time-row span { color: #8790a5; }
+.project-time-intelligence .project-time-visual header,
+.project-time-intelligence .project-time-row { border-color: rgba(70, 76, 125, 0.1); }
 .intelligence-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

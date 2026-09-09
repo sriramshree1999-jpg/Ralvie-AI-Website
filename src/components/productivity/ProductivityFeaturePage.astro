@@ -107,12 +107,14 @@ const stories = page.key === 'time-logs'
   : page.key === 'dashboard'
   ? page.stories.map((story, index) => index === 0 ? {
       ...story,
-      text: 'Bring the metrics, projects, workload, time, application use, and task signals that matter into one role-aware overview. Start with the bigger picture, then open the detail behind every trend.',
-      points: ['Key metrics paired with project and team allocation', 'Reporting periods designed for useful comparison', 'A clear route from a signal to its supporting context'],
+      title: 'Recognize the people <em><span>moving work forward.</span></em>',
+      text: 'See top contributors in one clear, department-aware ranking view. Review the work context behind each score and use the list as a starting point for useful recognition and support conversations.',
+      points: ['Top contributors shown with team context', 'Department filters for focused reviews', 'A clear route from a member signal to supporting work context'],
     } : index === 1 ? {
       ...story,
-      text: 'Surface the changes worth discussing before they become delivery problems. Dashboard signals help managers investigate workload shifts, project effort, focus patterns, and application activity in the right context.',
-      points: ['Earlier visibility into changing workload and delivery signals', 'Trends connected to projects, people, and work periods', 'A focused starting point for the next action'],
+      title: 'See which projects are <em><span>getting the most attention.</span></em>',
+      text: 'Compare active projects by their tracked work activity in one clear usage ranking. See where effort is concentrated, which initiatives are gaining momentum, and where a closer project review may be useful.',
+      points: ['Six active projects in a single ranked view', 'Usage bars make contribution levels easy to compare', 'Project signals connected to tracked work activity'],
     } : {
       ...story,
       text: 'Pair visual patterns with a readable description of what teams completed during the period. Summary Agent helps turn connected work context into a more useful starting point for review conversations.',
@@ -177,7 +179,7 @@ const stories = page.key === 'time-logs'
         <div class="pf-motion-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="pf-shell pf-motion-shell">
           <div class="pf-motion-head">
-            <span class="pf-eyebrow">{experience.eyebrow}</span>
+            <span class="pf-motion-label">{experience.eyebrow}</span>
             <h2 set:html={experience.title}></h2>
             <p>{experience.text}</p>
           </div>
@@ -214,7 +216,7 @@ const stories = page.key === 'time-logs'
       <div class="pf-shell"><div class="pf-section-head"><span class="pf-eyebrow">How it works</span><h2>From everyday activity to <em><span>useful context.</span></em></h2></div><div class="pf-process">{page.process.map((step,index)=><article><span>0{index+1}</span><h3>{step}</h3>{index < page.process.length-1 && <i><Icon name="arrow-right" /></i>}</article>)}</div></div>
     </section>
 
-    <section class="pf-section pf-responsible"><div class="pf-shell"><div class="pf-responsible-card"><div><span class="pf-eyebrow">{page.responsibility.eyebrow}</span><h2 set:html={page.responsibility.title}></h2><p>{page.responsibility.text}</p></div><div>{page.responsibility.points.map((point,index)=><article><span>0{index+1}</span><p>{point}</p></article>)}</div></div></div></section>
+    <section class="pf-section pf-responsible"><div class="pf-shell"><div class="pf-responsible-card"><div><span class="pf-responsible-label">{page.responsibility.eyebrow}</span><h2 set:html={page.responsibility.title}></h2><p>{page.responsibility.text}</p></div><div>{page.responsibility.points.map((point,index)=><article><span>0{index+1}</span><p>{point}</p></article>)}</div></div></div></section>
 
     <section class="pf-section pf-faq">
       <div class="pf-shell pf-faq-grid">

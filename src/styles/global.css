@@ -214,6 +214,28 @@
     background-color: var(--color-background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Mobile pages must paint across the viewport, keeping the fixed atmospheric
+   scene from appearing as a dark strip beside page content. */
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  main,
+  :is(.phone-page, .crm-page, .email-page, .voice-page, .chat-page, .forms-page) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .atmosphere-bg {
+    display: none;
   }
 }
 
@@ -1070,3 +1092,475 @@ main[class~="pt-(--header-height)"] {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+/* Keep desktop hero copy and visuals visually connected instead of leaving a wide empty centre column. */
+@media (min-width: 901px) {
+  main :is(.hero-grid, .hero-layout, .pf-hero-grid, .split, .product-split, .story-grid) {
+    column-gap: clamp(1.5rem, 2.5vw, 3rem) !important;
+  }
+
+  main :is(.hero-grid, .hero-layout, .pf-hero-grid, .split, .product-split, .story-grid) > :last-child {
+    justify-self: start !important;
+  }
+}
+
+/* Key-title labels use sentence-style casing across every product page. */
+html body main :is(
+  .eyebrow,
+  .hero-eyebrow,
+  .pf-eyebrow,
+  .pill,
+  .hero-label,
+  .hotel-pill,
+  .estate-pill,
+  .health-pill,
+  .agency-pill,
+  .consult-pill,
+  .pro-pill,
+  .saas-pill,
+  .features-chip,
+  .frontdesk-dark-chip,
+  .customer-voices-chip,
+  .trusted-awards-chip,
+  .cta-pill,
+  .workforce-cta__chip,
+  .chip:has(+ :is(h1, h2))
+) {
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+}
+
+/* At low browser zoom the viewport becomes very wide. Cap and center each
+   two-column group so its columns stay adjacent rather than drifting apart. */
+@media (min-width: 1600px) {
+  main :is(.hero-grid, .hero-layout, .pf-hero-grid, .split, .product-split, .story-grid) {
+    grid-template-columns: minmax(0, 760px) minmax(0, 760px) !important;
+    justify-content: center;
+  }
+}
+
+/* Shared CTA key-title treatment: a compact glass pill with the Ralvie mesh glow. */
+:is(.final-cta, .frontdesk-shared-cta, .workforce-cta) :is(.eyebrow, .cta-pill, .workforce-cta__chip) {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.65rem 1.45rem !important;
+  border: 1px solid rgb(198 208 255 / 60%) !important;
+  border-radius: 999px !important;
+  background:
+    radial-gradient(circle at 14% 12%, rgb(121 181 255 / 48%), transparent 48%),
+    radial-gradient(circle at 88% 88%, rgb(195 121 255 / 45%), transparent 54%),
+    linear-gradient(120deg, rgb(255 255 255 / 20%), rgb(125 106 237 / 28%)) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 48%),
+    0 10px 28px rgb(16 23 78 / 30%),
+    0 0 34px rgb(106 94 239 / 17%) !important;
+  color: #becbff !important;
+  font: 800 0.78rem/1 var(--font-label) !important;
+  letter-spacing: 0.13em !important;
+  text-align: center;
+  text-transform: uppercase;
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+
+/* Let the interactive product previews fill their hero column.  This keeps
+   the call, chat, and form canvases aligned with the page grid instead of
+   appearing as a smaller card floated at the edge of it. */
+@media (min-width: 901px) {
+  .phone-page .hero .call-shell,
+  .chat-page .hero .chat-shell,
+  .forms-page .hero .form-demo {
+    width: 100% !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+  }
+}
+
+/* Make the product canvases continue to scale at wide browser zoom instead of
+   being held to the generic two-column cap.  The copy remains comfortably
+   readable while the interactive preview receives the extra room. */
+@media (min-width: 1600px) {
+  .phone-page .hero-grid,
+  .chat-page .hero-grid,
+  .forms-page .hero .hero-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) !important;
+  }
+}
+
+/* The Website Forms canvas is intentionally a compact product UI; lift its
+   type scale slightly so labels and entered values stay clear at low zoom. */
+@media (min-width: 901px) {
+  .forms-page .hero .form-demo .builder-control label {
+    font-size: 0.66rem;
+  }
+
+  .forms-page .hero .form-demo .builder-control > div {
+    font-size: 0.8rem;
+  }
+
+  .forms-page .hero .form-demo .description-control > div {
+    font-size: 0.7rem;
+  }
+
+  .forms-page .hero .form-demo .builder-field b {
+    font-size: 0.68rem;
+  }
+
+  .forms-page .hero .form-demo .builder-field p {
+    font-size: 0.62rem;
+  }
+
+  .forms-page .hero .form-demo .submit-control > div {
+    font-size: 0.8rem;
+  }
+}
+
+/* Shared emphasis for the final key phrase in plain editorial headings. */
+.heading-gradient {
+  background: linear-gradient(105deg, #4569ef 0%, #8264ed 54%, #48a7e7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft lavender mesh for key-title pills across the light and productivity
+   pages. Frontdesk keeps its own dark-system labels, and CTA labels retain
+   their dedicated treatment. */
+body:not(:has(.frontdesk-page)) main :is(
+  .eyebrow,
+  .hero-eyebrow,
+  .pf-eyebrow,
+  .pill,
+  .hero-label,
+  .hotel-pill,
+  .estate-pill,
+  .health-pill,
+  .agency-pill,
+  .consult-pill,
+  .pro-pill,
+  .saas-pill,
+  .features-chip,
+  .customer-voices-chip,
+  .trusted-awards-chip,
+  .chip:has(+ :is(h1, h2))
+):not(.final-cta *, .frontdesk-shared-cta *, .workforce-cta *) {
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem) !important;
+  min-height: 2.2rem !important;
+  padding: 0.35rem 1rem !important;
+  border: 1.5px solid transparent !important;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(100deg, #e2d4ff 0%, #a9c2ff 52%, #e6d4ff 100%) border-box !important;
+  box-shadow: 0 12px 30px rgb(78 69 180 / 8%) !important;
+  color: #6256e7 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+
+/* Dark content bands use the stronger blue-to-violet key-title treatment.
+   Keep the main Ralvie AI Frontdesk page and final CTA components on their
+   own visual systems. */
+main:not(.frontdesk-page) section:is([class*="dark"], .conversation-band):not(.final-cta) :is(
+  .eyebrow,
+  .hero-eyebrow,
+  .pf-eyebrow,
+  .pill,
+  .hero-label,
+  .hotel-pill,
+  .estate-pill,
+  .health-pill,
+  .agency-pill,
+  .consult-pill,
+  .pro-pill,
+  .saas-pill,
+  .features-chip,
+  .customer-voices-chip,
+  .trusted-awards-chip,
+  .chip:has(+ :is(h1, h2))
+) {
+  border-color: rgb(194 206 255 / 72%) !important;
+  background:
+    radial-gradient(circle at 12% 15%, rgb(135 190 255 / 36%), transparent 48%),
+    radial-gradient(circle at 90% 88%, rgb(180 107 250 / 38%), transparent 58%),
+    linear-gradient(110deg, rgb(91 125 184 / 86%), rgb(89 94 177 / 88%) 52%, rgb(128 80 190 / 88%)) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 42%),
+    0 10px 26px rgb(12 20 70 / 35%),
+    0 0 26px rgb(106 97 237 / 18%) !important;
+  color: #d3d9ff !important;
+  backdrop-filter: blur(12px) saturate(1.18) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(1.18) !important;
+}
+
+main:not(.frontdesk-page) section:is([class*="dark"], .conversation-band):not(.final-cta) {
+  padding-top: clamp(4rem, 5vw, 5.5rem) !important;
+  padding-bottom: clamp(4rem, 5vw, 5.5rem) !important;
+}
+
+/* One shared key-title system for every dark background, including product
+   pages and CTA bands: blue illumination on the left, violet on the right. */
+main section:is(
+  [class*="dark"],
+  .conversation-band,
+  .knowledge-band,
+  .action-band,
+  .night-section,
+  .frontdesk-core-features,
+  .other-features,
+  .pf-motion-section,
+  .pf-responsible,
+  .pf-final,
+  .other-core-features,
+  .productivity-shared-cta,
+  .frontdesk-shared-cta,
+  .workforce-cta,
+  .final-cta
+) :is(
+  .eyebrow,
+  .hero-eyebrow,
+  .pf-eyebrow,
+  .pill,
+  .hero-label,
+  .hotel-pill,
+  .estate-pill,
+  .health-pill,
+  .agency-pill,
+  .consult-pill,
+  .pro-pill,
+  .saas-pill,
+  .features-chip,
+  .frontdesk-dark-chip,
+  .customer-voices-chip,
+  .trusted-awards-chip,
+  .cta-pill,
+  .workforce-cta__chip,
+  .chip:has(+ :is(h1, h2))
+) {
+  min-height: 2.45rem !important;
+  padding: 0.24rem 1.45rem !important;
+  position: relative;
+  isolation: isolate;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 13px 30px rgb(7 15 55 / 38%),
+    0 0 32px rgb(101 99 239 / 21%) !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #a9a1ff !important;
+  -webkit-text-fill-color: #a9a1ff !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+main section:is(
+  [class*="dark"],
+  .conversation-band,
+  .knowledge-band,
+  .action-band,
+  .night-section,
+  .workforce-cta,
+  .final-cta
+) {
+  padding-top: clamp(2.25rem, 3vw, 3.25rem) !important;
+  padding-bottom: clamp(2.25rem, 3vw, 3.25rem) !important;
+}
+
+main .workforce-cta {
+  min-height: 0 !important;
+}
+
+/* The shared Productivity CTA has component-local styles, so it needs a
+   direct rule to participate in the compact dark-section title system. */
+main .workforce-cta {
+  padding-top: clamp(2.25rem, 3vw, 3.25rem) !important;
+  padding-bottom: clamp(2.25rem, 3vw, 3.25rem) !important;
+}
+
+main .workforce-cta .workforce-cta__chip {
+  min-height: 2.45rem !important;
+  padding: 0.24rem 1.45rem !important;
+  position: relative;
+  isolation: isolate;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 13px 30px rgb(7 15 55 / 38%),
+    0 0 32px rgb(101 99 239 / 21%) !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #a9a1ff !important;
+  -webkit-text-fill-color: #a9a1ff !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+main section:is([class*="dark"], .conversation-band, .knowledge-band, .action-band, .night-section, .frontdesk-core-features, .other-features, .pf-motion-section, .pf-responsible, .pf-final, .other-core-features, .productivity-shared-cta, .frontdesk-shared-cta, .workforce-cta, .final-cta) :is(.eyebrow, .hero-eyebrow, .pf-eyebrow, .pill, .hero-label, .hotel-pill, .estate-pill, .health-pill, .agency-pill, .consult-pill, .pro-pill, .saas-pill, .features-chip, .frontdesk-dark-chip, .customer-voices-chip, .trusted-awards-chip, .cta-pill, .workforce-cta__chip, .chip:has(+ :is(h1, h2)))::before,
+main .workforce-cta .workforce-cta__chip::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(100deg, #a8c6ff 0%, #9f8df5 50%, #9a5cdf 100%);
+  content: '';
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Responsibility panels carry component-level label styles, so explicitly
+   keep their key title on the shared transparent dark-section treatment. */
+main .pf-page .pf-responsible-card .pf-eyebrow {
+  position: relative;
+  isolation: isolate;
+  min-height: 2.45rem !important;
+  padding: 0.24rem 1.45rem !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 13px 30px rgb(7 15 55 / 38%),
+    0 0 32px rgb(101 99 239 / 21%) !important;
+  color: #a9a1ff !important;
+  -webkit-text-fill-color: #a9a1ff !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+
+main .pf-page .pf-responsible-card .pf-eyebrow::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(100deg, #a8c6ff 0%, #9f8df5 50%, #9a5cdf 100%);
+  content: '';
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Dark-section labels that use component-specific class names. */
+main :is(.frontdesk-core-features, .other-features, .frontdesk-shared-cta, .final-cta-section) :is(.chip, .other-features__eyebrow, .cta-pill) {
+  position: relative;
+  isolation: isolate;
+  min-height: 2.45rem !important;
+  padding: 0.24rem 1.45rem !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 13px 30px rgb(7 15 55 / 38%),
+    0 0 32px rgb(101 99 239 / 21%) !important;
+  color: #a9a1ff !important;
+  -webkit-text-fill-color: #a9a1ff !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+
+main :is(.frontdesk-core-features, .other-features, .frontdesk-shared-cta, .final-cta-section) :is(.chip, .other-features__eyebrow, .cta-pill)::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(100deg, #a8c6ff 0%, #9f8df5 50%, #9a5cdf 100%);
+  content: '';
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Keep the visual side of split layouts aligned to the full width of its
+   grid column. This prevents right-side product screens from shrinking and
+   looking left-aligned when browser zoom changes. */
+@media (min-width: 901px) {
+  main :is(.hero-grid, .hero-layout, .pf-hero-grid, .split, .product-split, .story-grid, .intro-grid) > :last-child {
+    justify-self: stretch !important;
+  }
+
+  main :is(.hero-grid, .hero-layout, .pf-hero-grid, .split, .product-split, .story-grid, .intro-grid) > :last-child:is(
+    .day-stream,
+    .call-shell,
+    .chat-shell,
+    .form-demo,
+    .dashboard,
+    .app-window,
+    [class*="screen"],
+    [class*="panel"],
+    [class*="board"],
+    [class*="stream"]
+  ) {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* Final casing safeguard for all shared heading-label variants. */
+html body main :is(.eyebrow,.hero-eyebrow,.pf-eyebrow,.pill,.hero-label,.hotel-pill,.estate-pill,.health-pill,.agency-pill,.consult-pill,.pro-pill,.saas-pill,.features-chip,.frontdesk-dark-chip,.customer-voices-chip,.trusted-awards-chip,.cta-pill,.workforce-cta__chip,.chip:has(+ :is(h1,h2))){letter-spacing:-.02em!important;text-transform:none!important}
+
+/* Highlight the outcome phrase in each AI Frontdesk feature-page statement. */
+main :is(.phone-page,.chat-page,.email-page,.crm-page,.voice-page,.forms-page) :is(.statement,.intro) .heading-accent{background:linear-gradient(100deg,#4f64ed 0%,#7b60ec 52%,#3d9ce9 100%)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+
+/* Use the activity-tracking CTA's generous vertical rhythm everywhere. */
+main section:is(.final-cta,.productivity-shared-cta,.frontdesk-shared-cta,.workforce-cta,.task-final-cta,.pf-final){padding-top:clamp(5rem,7vw,7.5rem)!important;padding-bottom:clamp(5rem,7vw,7.5rem)!important}
+
+/* Shared FAQ presentation: editorial copy on the left, soft accordion cards on the right. */
+main :is(section.faq,section.faq-section){background:radial-gradient(circle at 8% 8%,rgb(143 132 255 / 14%),transparent 29%),radial-gradient(circle at 92% 12%,rgb(102 195 238 / 12%),transparent 27%),#f8f9fe!important}
+main :is(.faq-grid,.faq-layout){grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:start!important;gap:clamp(2rem,4vw,4.5rem)!important}
+main :is(section.faq,section.faq-section) :is(.section-head,.reveal)>.eyebrow{display:inline-flex!important;align-items:center!important;min-height:3rem!important;padding:.45rem 1.35rem!important;border:1px solid #dcd7ff!important;border-radius:999px!important;background:#fff!important;box-shadow:0 12px 28px rgb(88 75 205 / 9%)!important;color:#695df1!important;font-family:var(--font-sans)!important;font-size:.9rem!important;font-weight:700!important;letter-spacing:-.025em!important;line-height:1.2!important;text-transform:none!important}
+main :is(section.faq,section.faq-section) :is(.section-head,.reveal)>h2{max-width:620px!important;margin-top:1.55rem!important;margin-bottom:1.25rem!important;color:#171b43!important;font-size:clamp(2.75rem,4.55vw,5.25rem)!important;font-weight:500!important;letter-spacing:-.065em!important;line-height:1.02!important}
+main :is(section.faq,section.faq-section) :is(.section-head,.reveal)>p{max-width:650px!important;color:#75809c!important;font-size:clamp(1rem,1.35vw,1.3rem)!important;line-height:1.65!important}
+main :is(.faq-grid,.faq-layout) details{overflow:hidden!important;margin:0 0 1.5rem!important;padding:0!important;border:1px solid #e6e8f2!important;border-radius:1.9rem!important;background:rgb(255 255 255 / 88%)!important;box-shadow:0 14px 36px rgb(42 50 111 / 5%)!important;transition:border-color .2s ease,box-shadow .2s ease!important}
+main :is(.faq-grid,.faq-layout) details:hover,main :is(.faq-grid,.faq-layout) details[open]{border-color:#d8d6f7!important;box-shadow:0 18px 42px rgb(78 69 170 / 10%)!important}
+main :is(.faq-grid,.faq-layout) details summary{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1.5rem!important;min-height:5.8rem!important;padding:.95rem 1.75rem!important;color:#202748!important;cursor:pointer!important;font-family:var(--font-sans)!important;font-size:clamp(1rem,1.35vw,1.22rem)!important;font-weight:500!important;letter-spacing:-.045em!important;line-height:1.35!important;list-style:none!important}
+main :is(.faq-grid,.faq-layout) details summary::-webkit-details-marker{display:none!important}
+main :is(.faq-grid,.faq-layout) details summary span{flex:none!important;color:#6c5cf3!important;font-size:1.9rem!important;font-weight:400!important;line-height:1!important}
+main :is(.faq-grid,.faq-layout) details[open] summary span{transform:rotate(45deg)}
+main :is(.faq-grid,.faq-layout) details p{max-width:none!important;margin:0!important;padding:0 1.75rem 1.25rem!important;color:#707993!important;font-family:var(--font-sans)!important;font-size:.98rem!important;font-weight:400!important;letter-spacing:-.025em!important;line-height:1.7!important}
+@media(max-width:900px){main :is(.faq-grid,.faq-layout){grid-template-columns:1fr!important;gap:2.4rem!important}main :is(section.faq,section.faq-section) :is(.section-head,.reveal)>h2{font-size:clamp(2.55rem,9vw,4.25rem)!important}main :is(.faq-grid,.faq-layout) details summary{min-height:5.8rem!important;padding:.95rem 1.35rem!important}main :is(.faq-grid,.faq-layout) details p{padding:0 1.35rem 1.2rem!important}}
+
+/* Enterprise workflow label is intentionally isolated from the shared dark-label system. */
+html body main .enterprise-page .dark-section .section-head .eyebrow{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:2.45rem!important;padding:.24rem 1.45rem!important;border:1.5px solid transparent!important;border-radius:999px!important;background:transparent!important;background-image:none!important;box-shadow:inset 0 1px 0 rgb(255 255 255 / 55%),0 13px 30px rgb(7 15 55 / 38%),0 0 32px rgb(101 99 239 / 21%)!important;color:#a9a1ff!important;-webkit-text-fill-color:#a9a1ff!important;font-family:var(--font-sans)!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.4!important;text-transform:none!important}html body main .enterprise-page .dark-section .section-head .eyebrow::before{display:block!important;content:''!important}
+
+/* Reference token set for the compact outlined dark-section key labels. */
+html body main .key-title-reference{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:2.45rem!important;padding:.24rem 1.45rem!important;border:1.5px solid transparent!important;border-radius:999px!important;background:transparent!important;box-shadow:inset 0 1px 0 rgb(255 255 255 / 55%),0 13px 30px rgb(7 15 55 / 38%),0 0 32px rgb(101 99 239 / 21%)!important;color:#a9a1ff!important;-webkit-text-fill-color:#a9a1ff!important;font-family:var(--font-sans)!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.4!important;text-transform:none!important}html body main .key-title-reference::before{display:block!important;position:absolute!important;z-index:-1!important;inset:0!important;padding:1.5px!important;border-radius:inherit!important;background:linear-gradient(100deg,#a8c6ff 0%,#9f8df5 50%,#9a5cdf 100%)!important;content:''!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important}
+
+/* The Enterprise workflow title has a more-specific legacy rule; keep it on the
+   same compact reference system as every other key title. */
+html body main .enterprise-page .dark-section .section-head .eyebrow.key-title-reference::before{display:block!important;content:''!important}
+
+/* Shared reference treatment for every key title on the six AI Frontdesk feature pages. */
+html body main :is(.phone-page,.chat-page,.email-page,.crm-page,.voice-page,.forms-page) :is(.eyebrow,.hero-eyebrow,.cta-pill){position:relative!important;isolation:isolate!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:max-content!important;min-height:2.45rem!important;padding:.24rem 1.45rem!important;border:1.5px solid transparent!important;border-radius:999px!important;background:transparent!important;background-image:none!important;box-shadow:inset 0 1px 0 rgb(255 255 255 / 55%),0 13px 30px rgb(7 15 55 / 38%),0 0 32px rgb(101 99 239 / 21%)!important;color:#a9a1ff!important;-webkit-text-fill-color:#a9a1ff!important;font-family:var(--font-sans)!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.4!important;text-align:center!important;text-transform:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html body main :is(.phone-page,.chat-page,.email-page,.crm-page,.voice-page,.forms-page) :is(.eyebrow,.hero-eyebrow,.cta-pill)::before{display:block!important;position:absolute!important;z-index:-1!important;inset:0!important;padding:1.5px!important;border-radius:inherit!important;background:linear-gradient(100deg,#a8c6ff 0%,#9f8df5 50%,#9a5cdf 100%)!important;content:''!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important}

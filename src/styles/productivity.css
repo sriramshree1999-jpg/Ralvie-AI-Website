@@ -13,7 +13,7 @@
 .productivity-hero.productivity-hero-reference {
   position: relative;
   min-height: auto;
-  padding: 74px 0 0;
+  padding: 110px 0 0;
   background:
     radial-gradient(ellipse 48% 38% at 16% 62%, rgba(255, 209, 155, 0.37), transparent 70%),
     radial-gradient(ellipse 48% 42% at 84% 64%, rgba(191, 176, 255, 0.34), transparent 72%),
@@ -180,7 +180,7 @@
 }
 @media (max-width: 900px) {
   .productivity-hero-reference {
-    padding-top: 58px;
+    padding-top: 82px;
   }
   .hero-showcase {
     width: 100%;
@@ -301,6 +301,29 @@
   border-radius: 50%;
   background: #6180ff;
   box-shadow: 0 0 0 6px rgba(97, 128, 255, 0.12);
+}
+
+/* Outlined key-title treatment for the workflow section. */
+#how-it-works .how-works-eyebrow {
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 2.2rem !important;
+  max-height: none !important;
+  padding: 0.35rem 1rem !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 999px !important;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(100deg, #e2d4ff 0%, #a9c2ff 52%, #e6d4ff 100%) border-box !important;
+  color: #6256e7 !important;
+  box-shadow: 0 12px 30px rgba(78, 69, 180, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
 }
 h1,
 h2,
@@ -452,7 +475,7 @@ p {
 }
 .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
 .step-card { min-height: 220px; padding: 25px 22px; border-radius: 22px; }
-.step-number { color: #a9afc1; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.step-number { color: #8e96ac; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
 .step-card h3 { margin-top: 16px; font-size: 20px; }
 .step-card p,
 .capability-card p,
@@ -482,8 +505,8 @@ p {
 #how-it-works .step-card { position: relative; min-height: 300px; padding: 2.4rem 1rem 1.4rem; border: 1px solid #dfe4ef; border-radius: 26px; background: linear-gradient(135deg, #ffffff 0%, rgba(248,246,254,.5) 100%); box-shadow: none; text-align: center; transition: .4s ease; }
 #how-it-works .step-icon { display: grid; place-items: center; width: 60px; height: 60px; margin: 0 auto 1.25rem; border-radius: 18px; color: #8987c8; background: #ecebfa; transition: inherit; }
 #how-it-works .step-icon svg { width: 24px; height: 24px; }
-#how-it-works .step-card h3 { margin-top: .7rem; color: #2d2d2d; font-size: 1.55rem; font-weight: 700; }
-#how-it-works .step-card p { max-width: 175px; margin: .8rem auto 0; color: #555555; font-size: .88rem; line-height: 1.55; opacity: 1; transition: inherit; }
+#how-it-works .step-card h3 { margin-top: .7rem; color: #2d2d2d; font-size: 1.3rem; font-weight: 700; }
+#how-it-works .step-card p { max-width: 175px; margin: .8rem auto 0; color: #4e5568; font-size: .88rem; line-height: 1.55; opacity: 1; transition: inherit; }
 #how-it-works .step-card.is-active { transform: translateY(-8px); border-color: rgba(108,94,236,.2); background: #fff; box-shadow: 0 22px 38px rgba(54, 61, 126, .14); }
 #how-it-works .step-card.is-active .step-icon { color: white; background: linear-gradient(135deg, #5c58e7, #8067ec); box-shadow: 0 16px 30px rgba(91,82,222,.3); }
 #how-it-works .step-card.is-active h3 { color: #292b48; }
@@ -494,27 +517,27 @@ p {
 @media (prefers-reduced-motion: no-preference) {
   /* Highlight sweeps strictly left -> right, one card at a time */
   #how-it-works .step-card,
-  #how-it-works .step-card.is-active { animation: step-focus 25s linear infinite; }
+  #how-it-works .step-card.is-active { animation: step-focus 15s linear infinite; }
   #how-it-works .step-card:nth-child(1) { animation-delay: 0s; }
-  #how-it-works .step-card:nth-child(2) { animation-delay: -20s; }
-  #how-it-works .step-card:nth-child(3) { animation-delay: -15s; }
-  #how-it-works .step-card:nth-child(4) { animation-delay: -10s; }
-  #how-it-works .step-card:nth-child(5) { animation-delay: -5s; }
-  #how-it-works .step-card .step-icon { animation: step-icon-focus 25s linear infinite; }
+  #how-it-works .step-card:nth-child(2) { animation-delay: -12s; }
+  #how-it-works .step-card:nth-child(3) { animation-delay: -9s; }
+  #how-it-works .step-card:nth-child(4) { animation-delay: -6s; }
+  #how-it-works .step-card:nth-child(5) { animation-delay: -3s; }
+  #how-it-works .step-card .step-icon { animation: step-icon-focus 15s linear infinite; }
   #how-it-works .step-card:nth-child(1) .step-icon { animation-delay: 0s; }
-  #how-it-works .step-card:nth-child(2) .step-icon { animation-delay: -20s; }
-  #how-it-works .step-card:nth-child(3) .step-icon { animation-delay: -15s; }
-  #how-it-works .step-card:nth-child(4) .step-icon { animation-delay: -10s; }
-  #how-it-works .step-card:nth-child(5) .step-icon { animation-delay: -5s; }
-  #how-it-works .step-card h3 { animation: step-title-focus 25s linear infinite; }
+  #how-it-works .step-card:nth-child(2) .step-icon { animation-delay: -12s; }
+  #how-it-works .step-card:nth-child(3) .step-icon { animation-delay: -9s; }
+  #how-it-works .step-card:nth-child(4) .step-icon { animation-delay: -6s; }
+  #how-it-works .step-card:nth-child(5) .step-icon { animation-delay: -3s; }
+  #how-it-works .step-card h3 { animation: step-title-focus 15s linear infinite; }
   #how-it-works .step-card:nth-child(1) h3 { animation-delay: 0s; }
-  #how-it-works .step-card:nth-child(2) h3 { animation-delay: -20s; }
-  #how-it-works .step-card:nth-child(3) h3 { animation-delay: -15s; }
-  #how-it-works .step-card:nth-child(4) h3 { animation-delay: -10s; }
-  #how-it-works .step-card:nth-child(5) h3 { animation-delay: -5s; }
+  #how-it-works .step-card:nth-child(2) h3 { animation-delay: -12s; }
+  #how-it-works .step-card:nth-child(3) h3 { animation-delay: -9s; }
+  #how-it-works .step-card:nth-child(4) h3 { animation-delay: -6s; }
+  #how-it-works .step-card:nth-child(5) h3 { animation-delay: -3s; }
   @keyframes step-focus { 0%, 19.99% { transform: translateY(-8px); border-color: rgba(108,94,236,.2); background: #fff; box-shadow: 0 22px 38px rgba(54,61,126,.14); } 20%, 100% { transform: none; border-color: #dfe4ef; background: rgba(248,250,254,.88); box-shadow: none; } }
   @keyframes step-icon-focus { 0%, 19.99% { color: #fff; background: linear-gradient(135deg,#5c58e7,#8067ec); box-shadow: 0 16px 30px rgba(91,82,222,.3); } 20%, 100% { color: #8987c8; background: #ecebfa; box-shadow: none; } }
-  @keyframes step-title-focus { 0%, 19.99% { color: #292b48; } 20%, 100% { color: #73798e; } }
+  @keyframes step-title-focus { 0%, 19.99% { color: #292b48; } 20%, 100% { color: #5d6479; } }
 }
 @media (max-width: 900px) {
   #how-it-works .section-heading p { white-space: normal; }
@@ -546,6 +569,9 @@ p {
   padding: 20px;
   border-radius: 30px;
   box-shadow: 0 30px 65px rgba(53, 52, 107, 0.14);
+  overflow: hidden;
+  isolation: isolate;
+  background-clip: padding-box;
 }
 .media-card img {
   width: 100%;
@@ -563,6 +589,8 @@ p {
 .workspace-preview {
   padding: 24px;
   overflow: hidden;
+  border-radius: 30px;
+  background-clip: padding-box;
 }
 .workspace-preview .pf-screen {
   min-width: 0;
@@ -644,6 +672,14 @@ p {
 }
 .flow-line b {
   color: #7567e8;
+}
+.flow-line span {
+  background: #fff;
+}
+.productivity-page .pf-title button {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: linear-gradient(135deg, #5d59e8, #8067ed) !important;
+  box-shadow: 0 10px 22px rgba(88, 79, 218, 0.28) !important;
 }
 .summary-sample {
   padding: 32px;

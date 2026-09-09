@@ -169,7 +169,7 @@ const solutionItemIcon = (item: string, category: string) => {
   ]}
 >
   <nav class="site-header-nav container-page flex h-(--header-height) items-center justify-between">
-    <a href="/" class="flex items-center" aria-label={title}>
+    <a href="/" class="header-brand flex items-center" aria-label={title}>
       <Image
         src={theme === 'light' ? ralvieLogo : ralvieLogoWhite}
         alt={title}
@@ -341,7 +341,14 @@ const solutionItemIcon = (item: string, category: string) => {
       <a href="/book-demo" class="btn-primary px-6! py-2! text-sm">Book a demo</a>
     </div>
 
-    <button class="text-on-surface lg:hidden" aria-label="Open menu">
+    <button
+      type="button"
+      class="mobile-menu-trigger text-on-surface lg:hidden"
+      data-mobile-menu-trigger
+      aria-label="Open menu"
+      aria-controls="mobile-site-menu"
+      aria-expanded="false"
+    >
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
           stroke-linecap="round"
@@ -351,10 +358,18 @@ const solutionItemIcon = (item: string, category: string) => {
       </svg>
     </button>
   </nav>
+  <div id="mobile-site-menu" class="mobile-site-menu lg:hidden" data-mobile-menu hidden>
+    <a href="/productivity">Ralvie AI Productivity</a>
+    <a href="/frontdesk">Ralvie AI Frontdesk</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/contact">Contact us</a>
+    <a href="/book-demo" class="mobile-menu-demo">Book a demo</a>
+  </div>
 </header>
 
 <style>
   #site-header {
+    z-index: 1000;
     padding: 0;
     background: transparent;
     transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -389,6 +404,14 @@ const solutionItemIcon = (item: string, category: string) => {
     backdrop-filter: blur(22px) saturate(135%);
     -webkit-backdrop-filter: blur(22px) saturate(135%);
   }
+  .header-brand,
+  .header-brand img {
+    border: 0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
   #site-header.header-dark-scrolled.is-scrolled .site-header-nav {
     border-color: rgba(157, 171, 255, 0.28);
     background: rgba(9, 14, 43, 0.86);
@@ -400,6 +423,37 @@ const solutionItemIcon = (item: string, category: string) => {
     #site-header.is-scrolled .site-header-nav {
       width: calc(100% - 1rem);
       padding-inline: 1rem;
+    }
+    .mobile-site-menu {
+      position: fixed;
+      z-index: 1001;
+      top: calc(var(--header-height) - 0.2rem);
+      right: 0.5rem;
+      left: 0.5rem;
+      display: grid;
+      gap: 0.25rem;
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 22px 48px rgba(25, 32, 77, 0.2);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .mobile-site-menu[hidden] { display: none; }
+    .mobile-site-menu a {
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.7rem;
+      color: #17204a;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .mobile-site-menu a:hover { background: #f0f3ff; }
+    .mobile-site-menu .mobile-menu-demo {
+      margin-top: 0.25rem;
+      background: linear-gradient(135deg, #4666f3, #7b63e8);
+      color: #fff;
+      text-align: center;
     }
   }
   .header-light {
@@ -1054,6 +1108,27 @@ const solutionItemIcon = (item: string, category: string) => {
   });
 
   const header = document.getElementById('site-header');
+  const mobileMenuTrigger = document.querySelector<HTMLButtonElement>('[data-mobile-menu-trigger]');
+  const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  const closeMobileMenu = () => {
+    if (!mobileMenuTrigger || !mobileMenu) return;
+    mobileMenu.hidden = true;
+    mobileMenuTrigger.setAttribute('aria-expanded', 'false');
+    mobileMenuTrigger.setAttribute('aria-label', 'Open menu');
+  };
+  mobileMenuTrigger?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (!mobileMenu) return;
+    const isOpen = !mobileMenu.hidden;
+    mobileMenu.hidden = isOpen;
+    mobileMenuTrigger.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenuTrigger.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+  });
+  mobileMenu?.addEventListener('click', (event) => event.stopPropagation());
+  document.addEventListener('click', closeMobileMenu);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMobileMenu();
+  });
   const onScroll = () => {
     if (!header) return;
     header.classList.toggle('is-scrolled', window.scrollY > 8);

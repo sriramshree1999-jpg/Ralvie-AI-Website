@@ -75,3 +75,26 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
     <ProductivityFinalCta />
   </main><Footer theme="light"/>
 </Layout>
+
+<script>
+  const taskContextFlow = document.querySelector<HTMLElement>('.task-context-flow');
+  if (taskContextFlow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      taskContextFlow.classList.add('is-animated');
+      const steps = Array.from(taskContextFlow.querySelectorAll<HTMLElement>('.context-step'));
+      let activeIndex = 0;
+      const activateStep = () => {
+        steps.forEach((step) => step.classList.remove('is-current', 'is-filling'));
+        const activeStep = steps[activeIndex];
+        activeStep.classList.add('is-current');
+        requestAnimationFrame(() => activeStep.classList.add('is-filling'));
+        activeIndex = (activeIndex + 1) % steps.length;
+      };
+      activateStep();
+      window.setInterval(activateStep, 3000);
+      observer.unobserve(taskContextFlow);
+    }, { threshold: 0.35 });
+    observer.observe(taskContextFlow);
+  }
+</script>

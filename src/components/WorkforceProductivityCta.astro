@@ -45,7 +45,7 @@ const { variant = 'productivity' } = Astro.props;
       )
     }
     <div class="workforce-cta__actions">
-      <a class="workforce-cta__primary" href="#">Start Free Trial <Icon name="arrow-right" /></a><a
+      {variant !== 'home' && <a class="workforce-cta__primary" href="#">Start Free Trial <Icon name="arrow-right" /></a>}<a
         class="workforce-cta__secondary"
         href="#"><Icon name="calendar" /> Book a Demo</a
       >

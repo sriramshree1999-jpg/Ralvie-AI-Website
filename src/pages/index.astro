@@ -45,11 +45,56 @@ const outcomes = [
   { value: 37, suffix: '%', label: 'Increased lead conversion' },
 ];
 const customerVoices = [
-  { image: zktecoIndiaImage, alt: 'ZKTeco India office', category: 'Workforce operations', title: 'ZKTeco India', description: 'Ralvie AI Productivity gives ZKTeco India clearer workforce visibility, automated activity tracking, and simpler team reporting.', quote: 'Ralvie AI Productivity gives our teams clearer visibility into daily activity and reporting, so we can spend more time improving operations.' },
-  { image: livingWaterImage, alt: 'Living Water Resort waterfront', category: 'Hospitality experience', title: 'Living Water Resort', description: 'Ralvie AI Frontdesk answers reservation and spa enquiries quickly, helping the resort deliver a smoother guest experience.', quote: 'A honeymoon couple from Germany booked their suite through the AI concierge at 2 AM. It felt like having a personal assistant.' },
-  { image: lakesideImage, alt: 'Lakeside Seafood and Grill patio', category: 'Guest communication', title: 'Lakeside Seafood & Grill', description: 'Ralvie AI Frontdesk helps the restaurant answer guest questions and manage reservation communication during busy hours.', quote: 'In under a week, the system learned our menu, policies, and workflows, then handled daily reservations and after-hours enquiries.' },
-  { image: cranberryImage, alt: 'Cranberry Golf Course', category: 'Reservations & enquiries', title: 'Cranberry Golf Course', description: 'Cranberry Golf Course handles reservations and guest enquiries more efficiently with fast, reliable AI support.', quote: 'A group of golfers booked dinner for eight through the AI without waiting on hold. It was like having a host available anytime.' },
-  { image: zktecoUsaImage, alt: 'ZKTeco USA facility', category: 'Business communications', title: 'ZKTeco USA', description: 'Ralvie AI Frontdesk handles inbound enquiries, captures leads, and routes each conversation to the right team faster.', quote: 'Ralvie Frontdesk reduced operational pressure, improved the caller experience, and lowered routine handling costs.' },
+  {
+    image: zktecoIndiaImage,
+    alt: 'ZKTeco India office',
+    category: 'Workforce operations',
+    title: 'ZKTeco India',
+    description:
+      'Ralvie AI Productivity gives ZKTeco India clearer workforce visibility, automated activity tracking, and simpler team reporting.',
+    quote:
+      'Ralvie AI Productivity gives our teams clearer visibility into daily activity and reporting, so we can spend more time improving operations.',
+  },
+  {
+    image: livingWaterImage,
+    alt: 'Living Water Resort waterfront',
+    category: 'Hospitality experience',
+    title: 'Living Water Resort',
+    description:
+      'Ralvie AI Frontdesk answers reservation and spa enquiries quickly, helping the resort deliver a smoother guest experience.',
+    quote:
+      'A honeymoon couple from Germany booked their suite through the AI concierge at 2 AM. It felt like having a personal assistant.',
+  },
+  {
+    image: lakesideImage,
+    alt: 'Lakeside Seafood and Grill patio',
+    category: 'Guest communication',
+    title: 'Lakeside Seafood & Grill',
+    description:
+      'Ralvie AI Frontdesk helps the restaurant answer guest questions and manage reservation communication during busy hours.',
+    quote:
+      'In under a week, the system learned our menu, policies, and workflows, then handled daily reservations and after-hours enquiries.',
+  },
+  {
+    image: cranberryImage,
+    alt: 'Cranberry Golf Course',
+    category: 'Reservations & enquiries',
+    title: 'Cranberry Golf Course',
+    description:
+      'Cranberry Golf Course handles reservations and guest enquiries more efficiently with fast, reliable AI support.',
+    quote:
+      'A group of golfers booked dinner for eight through the AI without waiting on hold. It was like having a host available anytime.',
+  },
+  {
+    image: zktecoUsaImage,
+    alt: 'ZKTeco USA facility',
+    category: 'Business communications',
+    title: 'ZKTeco USA',
+    description:
+      'Ralvie AI Frontdesk handles inbound enquiries, captures leads, and routes each conversation to the right team faster.',
+    quote:
+      'Ralvie Frontdesk reduced operational pressure, improved the caller experience, and lowered routine handling costs.',
+  },
 ];
 const platformFeatures = [
   {
@@ -373,7 +418,11 @@ const frontdeskUseCases = [
         <div class="productivity-features-grid">
           {
             platformFeatures.map((feature) => (
-              <a href={feature.href} class={`productivity-feature-card feature-${feature.type}`} aria-label={`Explore ${feature.title}`}>
+              <a
+                href={feature.href}
+                class={`productivity-feature-card feature-${feature.type}`}
+                aria-label={`Explore ${feature.title}`}
+              >
                 <div class="feature-screen" aria-hidden="true">
                   <Image src={feature.image} alt={`${feature.title} interface`} loading="lazy" />
                 </div>
@@ -381,7 +430,9 @@ const frontdeskUseCases = [
                   <>
                     <h3>{feature.title}</h3>
                     <p>{feature.copy}</p>
-                    <span class="feature-explore">Explore more <b>❯❯</b></span>
+                    <span class="feature-explore">
+                      Explore more <b>❯❯</b>
+                    </span>
                   </>
                 </div>
               </a>
@@ -425,7 +476,7 @@ const frontdeskUseCases = [
       </header><div class="steps">
         {
           steps.map((step, i) => (
-            <div style={`--workflow-delay:${i * 7}s`}>
+            <div style={`--workflow-delay:${i * 3}s`}>
               <>
                 <span>0{i + 1}</span>
                 <i />
@@ -492,7 +543,9 @@ const frontdeskUseCases = [
       <div class="container-page">
         <header class="frontdesk-use-cases-head">
           <span class="features-chip">Use cases</span>
-          <h2 id="frontdesk-use-cases-title"><span>Ralvie AI <em>Frontdesk</em></span><br /><em>Use Cases</em></h2>
+          <h2 id="frontdesk-use-cases-title">
+            <span>Ralvie AI <em>Frontdesk</em></span><br /><em>Use Cases</em>
+          </h2>
           <p>
             Apply intelligent customer communication across the moments that matter most—from the
             first enquiry to qualification, booking, support, routing, and follow-up.
@@ -501,8 +554,17 @@ const frontdeskUseCases = [
         <div class="frontdesk-use-cases-grid">
           {
             frontdeskUseCases.map((useCase) => (
-              <a class="frontdesk-use-case-card" href={useCase.title === 'Customer Support' ? '/frontdesk/use-cases/customer-support' : '#'}>
-                <span class="frontdesk-use-case-icon"><Icon name={useCase.icon} /></span>
+              <a
+                class="frontdesk-use-case-card"
+                href={
+                  useCase.title === 'Customer Support'
+                    ? '/frontdesk/use-cases/customer-support'
+                    : '#'
+                }
+              >
+                <span class="frontdesk-use-case-icon">
+                  <Icon name={useCase.icon} />
+                </span>
                 <div class="frontdesk-use-case-copy">
                   <h3>{useCase.title}</h3>
                   <p>{useCase.copy}</p>
@@ -526,72 +588,136 @@ const frontdeskUseCases = [
 
         <div class="customer-voice-grid" aria-label="Customer stories">
           <div class="customer-voice-viewport">
-          <div class="customer-voice-track">
-            {[0, 1].map((copy) => (
-              <div class="customer-voice-set" aria-hidden={copy === 1 ? 'true' : undefined}>
-                {customerVoices.map((voice) => (
-                  <article class="customer-voice-card">
-                    <div class="customer-voice-image"><Image src={voice.image} alt={copy === 1 ? '' : voice.alt} loading="lazy" /></div>
-                    <div class="customer-voice-content">
-                      <span>{voice.category}</span>
-                      <h4>{voice.title}</h4>
-                      <p>{voice.description}</p>
-                      <blockquote>“{voice.quote}”</blockquote>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ))}
+            <div class="customer-voice-track">
+              {
+                [0, 1].map((copy) => (
+                  <div class="customer-voice-set" aria-hidden={copy === 1 ? 'true' : undefined}>
+                    {customerVoices.map((voice) => (
+                      <article class="customer-voice-card">
+                        <div class="customer-voice-image">
+                          <Image
+                            src={voice.image}
+                            alt={copy === 1 ? '' : voice.alt}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="customer-voice-content">
+                          <span>{voice.category}</span>
+                          <h4>{voice.title}</h4>
+                          <p>{voice.description}</p>
+                          <blockquote>“{voice.quote}”</blockquote>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                ))
+              }
+            </div>
           </div>
-          </div>
-          <button class="customer-voice-arrow customer-voice-arrow-prev" type="button" aria-label="Show previous customer story" data-customer-voice-prev>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+          <button
+            class="customer-voice-arrow customer-voice-arrow-prev"
+            type="button"
+            aria-label="Show previous customer story"
+            data-customer-voice-prev
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>
           </button>
-          <button class="customer-voice-arrow customer-voice-arrow-next" type="button" aria-label="Show next customer story" data-customer-voice-next>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+          <button
+            class="customer-voice-arrow customer-voice-arrow-next"
+            type="button"
+            aria-label="Show next customer story"
+            data-customer-voice-next
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
           </button>
           <div class="customer-voice-static" hidden>
-          <article class="customer-voice-card">
-            <div class="customer-voice-image"><Image src={zktecoIndiaImage} alt="ZKTeco India office" loading="lazy" /></div>
-            <div>
-              <span>Workforce operations</span>
-              <h4>ZKTeco India</h4>
-              <p>
-                Ralvie AI Productivity helps ZKTeco India improve workforce visibility, automate
-                activity tracking, and simplify reporting across teams. AI-powered productivity
-                insights, time analysis, and intelligent summaries support better planning,
-                stronger accountability, and more efficient day-to-day operations.
-              </p>
-              <blockquote>“Ralvie AI Productivity gave our teams clearer visibility into daily activity and reporting. We spend less time compiling information and more time using accurate insights to plan and improve operations.”</blockquote>
-            </div>
-          </article>
             <article class="customer-voice-card">
-              <div class="customer-voice-image"><Image src={livingWaterImage} alt="Living Water Resort waterfront" loading="lazy" /></div>
+              <div class="customer-voice-image">
+                <Image src={zktecoIndiaImage} alt="ZKTeco India office" loading="lazy" />
+              </div>
+              <div>
+                <span>Workforce operations</span>
+                <h4>ZKTeco India</h4>
+                <p>
+                  Ralvie AI Productivity helps ZKTeco India improve workforce visibility, automate
+                  activity tracking, and simplify reporting across teams. AI-powered productivity
+                  insights, time analysis, and intelligent summaries support better planning,
+                  stronger accountability, and more efficient day-to-day operations.
+                </p>
+                <blockquote>
+                  “Ralvie AI Productivity gave our teams clearer visibility into daily activity and
+                  reporting. We spend less time compiling information and more time using accurate
+                  insights to plan and improve operations.”
+                </blockquote>
+              </div>
+            </article>
+            <article class="customer-voice-card">
+              <div class="customer-voice-image">
+                <Image src={livingWaterImage} alt="Living Water Resort waterfront" loading="lazy" />
+              </div>
               <span>Hospitality experience</span>
               <h4>Living Water Resort</h4>
-              <p>A premier lakeside destination combining luxury accommodations, wellness experiences, and first-class hospitality. Ralvie AI Frontdesk helps answer reservation and spa enquiries quickly and consistently for a smoother guest experience.</p>
-              <blockquote>“A honeymoon couple from Germany booked their suite entirely through the AI concierge at 2 AM. It felt like having a personal assistant for our trip.”</blockquote>
+              <p>
+                A premier lakeside destination combining luxury accommodations, wellness
+                experiences, and first-class hospitality. Ralvie AI Frontdesk helps answer
+                reservation and spa enquiries quickly and consistently for a smoother guest
+                experience.
+              </p>
+              <blockquote>
+                “A honeymoon couple from Germany booked their suite entirely through the AI
+                concierge at 2 AM. It felt like having a personal assistant for our trip.”
+              </blockquote>
             </article>
             <article class="customer-voice-card">
-              <div class="customer-voice-image"><Image src={lakesideImage} alt="Lakeside Seafood and Grill patio" loading="lazy" /></div>
+              <div class="customer-voice-image">
+                <Image src={lakesideImage} alt="Lakeside Seafood and Grill patio" loading="lazy" />
+              </div>
               <span>Guest communication</span>
               <h4>Lakeside Seafood &amp; Grill</h4>
-              <p>Located in the heart of Collingwood, the restaurant uses Ralvie AI Frontdesk to respond faster to guest questions, support reservation communication, and maintain reliable service during busy hours.</p>
-              <blockquote>“In under a week, the system was trained on menu details, dining policies, and special-event workflows, then launched to cover both daily reservations and after-hours enquiries.”</blockquote>
+              <p>
+                Located in the heart of Collingwood, the restaurant uses Ralvie AI Frontdesk to
+                respond faster to guest questions, support reservation communication, and maintain
+                reliable service during busy hours.
+              </p>
+              <blockquote>
+                “In under a week, the system was trained on menu details, dining policies, and
+                special-event workflows, then launched to cover both daily reservations and
+                after-hours enquiries.”
+              </blockquote>
             </article>
             <article class="customer-voice-card">
-              <div class="customer-voice-image"><Image src={cranberryImage} alt="Cranberry Golf Course" loading="lazy" /></div>
+              <div class="customer-voice-image">
+                <Image src={cranberryImage} alt="Cranberry Golf Course" loading="lazy" />
+              </div>
               <span>Reservations &amp; enquiries</span>
               <h4>Cranberry Golf Course</h4>
-              <p>Known for its inviting atmosphere and memorable course experience, Cranberry Golf Course handles reservation enquiries and guest communication more efficiently with quick, reliable AI support.</p>
-              <blockquote>“A group of golfers easily secured a dinner booking for eight via the AI—without waiting on hold. It was like having a personal host ready to take care of us anytime.”</blockquote>
+              <p>
+                Known for its inviting atmosphere and memorable course experience, Cranberry Golf
+                Course handles reservation enquiries and guest communication more efficiently with
+                quick, reliable AI support.
+              </p>
+              <blockquote>
+                “A group of golfers easily secured a dinner booking for eight via the AI—without
+                waiting on hold. It was like having a personal host ready to take care of us
+                anytime.”
+              </blockquote>
             </article>
             <article class="customer-voice-card">
-              <div class="customer-voice-image"><Image src={zktecoUsaImage} alt="ZKTeco USA facility" loading="lazy" /></div>
+              <div class="customer-voice-image">
+                <Image src={zktecoUsaImage} alt="ZKTeco USA facility" loading="lazy" />
+              </div>
               <span>Business communications</span>
               <h4>ZKTeco USA</h4>
-              <p>Ralvie AI Frontdesk helps this leading physical security solutions provider handle inbound calls and enquiries intelligently, capture leads, and route each conversation to the right team faster.</p>
-              <blockquote>“Ralvie Frontdesk helped us reduce operational pressure while improving our caller experience. We optimized internal resources and lowered routine handling costs without compromising service quality.”</blockquote>
+              <p>
+                Ralvie AI Frontdesk helps this leading physical security solutions provider handle
+                inbound calls and enquiries intelligently, capture leads, and route each
+                conversation to the right team faster.
+              </p>
+              <blockquote>
+                “Ralvie Frontdesk helped us reduce operational pressure while improving our caller
+                experience. We optimized internal resources and lowered routine handling costs
+                without compromising service quality.”
+              </blockquote>
             </article>
           </div>
         </div>
@@ -611,10 +737,14 @@ const frontdeskUseCases = [
           const stepWidth = () => {
             const card = track.querySelector('.customer-voice-card');
             const set = track.querySelector('.customer-voice-set');
-            return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(set).gap || '0') : 0;
+            return card
+              ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(set).gap || '0')
+              : 0;
           };
           const render = (animate = true) => {
-            track.style.transition = animate ? 'transform 600ms cubic-bezier(.22,.75,.25,1)' : 'none';
+            track.style.transition = animate
+              ? 'transform 600ms cubic-bezier(.22,.75,.25,1)'
+              : 'none';
             track.style.transform = `translate3d(${-index * stepWidth()}px,0,0)`;
           };
           const moveNext = () => {
@@ -641,8 +771,14 @@ const frontdeskUseCases = [
               render(false);
             }
           });
-          previous.addEventListener('click', () => { movePrevious(); restart(); });
-          next.addEventListener('click', () => { moveNext(); restart(); });
+          previous.addEventListener('click', () => {
+            movePrevious();
+            restart();
+          });
+          next.addEventListener('click', () => {
+            moveNext();
+            restart();
+          });
           window.addEventListener('resize', () => render(false));
           render(false);
           restart();
@@ -654,25 +790,73 @@ const frontdeskUseCases = [
       <div class="container-page">
         <header class="trusted-awards-head">
           <span class="trusted-awards-chip">Trusted by</span>
-          <h2 id="trusted-awards-title">Award-Winning AI Platforms<br /><em>Trusted by Modern Businesses &amp; Growing Teams</em></h2>
-          <p>Recognized for innovation in AI productivity analytics, operational intelligence, customer engagement, and business automation.</p>
+          <h2 id="trusted-awards-title">
+            Award-Winning AI Platforms<br /><em>Trusted by Modern Businesses &amp; Growing Teams</em
+            >
+          </h2>
+          <p>
+            Recognized for innovation in AI productivity analytics, operational intelligence,
+            customer engagement, and business automation.
+          </p>
         </header>
         <div class="award-badges" aria-label="Ralvie AI awards and directory badges">
-          <a href="https://www.saashub.com/ralvie-ai?utm_source=badge&amp;utm_campaign=badge&amp;utm_content=ralvie-ai&amp;badge_variant=color&amp;badge_kind=approved" target="_blank" rel="noopener noreferrer">
-            <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Approved on SaaSHub" loading="lazy" />
+          <a
+            href="https://www.saashub.com/ralvie-ai?utm_source=badge&utm_campaign=badge&utm_content=ralvie-ai&badge_variant=color&badge_kind=approved"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+              alt="Approved on SaaSHub"
+              loading="lazy"
+            />
           </a>
           <a href="https://www.softwaresuggest.com" target="_blank" rel="noopener noreferrer">
-            <img class="software-suggest-badge" src="https://www.softwaresuggest.com/award_logo/customer-choice-winter-2025.png" alt="SoftwareSuggest Customer Choice Winter 2025" loading="lazy" />
+            <img
+              class="software-suggest-badge"
+              src="https://www.softwaresuggest.com/award_logo/customer-choice-winter-2025.png"
+              alt="SoftwareSuggest Customer Choice Winter 2025"
+              loading="lazy"
+            />
           </a>
-          <span class="aikaptan-badge"><iframe src="https://api.aikaptan.com/api/embed/featured-badge.html?slug=ralvie-ai-frontdesk" title="Ralvie AI Frontdesk — Featured on AI KAPTAN" width="270" height="62" loading="lazy" scrolling="no"></iframe></span>
-          <a href="https://www.producthunt.com/products/ralvie-ai/reviews/new?utm_source=badge-product_review&amp;utm_medium=badge&amp;utm_campaign=badge-ralvie-ai" target="_blank" rel="noopener noreferrer">
-            <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1090301&amp;theme=light" alt="Review Ralvie AI on Product Hunt" width="250" height="54" loading="lazy" />
+          <a
+            href="https://www.producthunt.com/products/ralvie-ai/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_campaign=badge-ralvie-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1090301&theme=light"
+              alt="Review Ralvie AI on Product Hunt"
+              width="250"
+              height="54"
+              loading="lazy"
+            />
           </a>
-          <div class="sf-root" data-id="3909336" data-badge="customers-love-us-black" data-variant-id="sf">
-            <a href="https://sourceforge.net/software/product/Ralvie-AI/" target="_blank" rel="noopener noreferrer">Ralvie AI Reviews</a>
+          <div
+            class="sf-root"
+            data-id="3909336"
+            data-badge="customers-love-us-black"
+            data-variant-id="sf"
+          >
+            <a
+              href="https://sourceforge.net/software/product/Ralvie-AI/"
+              target="_blank"
+              rel="noopener noreferrer">Ralvie AI Reviews</a
+            >
           </div>
-          <a href="https://open-launch.com" target="_blank" rel="noopener noreferrer" title="Powered by Open-Launch">
-            <img src="https://open-launch.com/images/badges/powered-by-light.svg" alt="Powered by Open-Launch" width="150" height="44" loading="lazy" />
+          <a
+            href="https://open-launch.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Powered by Open-Launch"
+          >
+            <img
+              src="https://open-launch.com/images/badges/powered-by-light.svg"
+              alt="Powered by Open-Launch"
+              width="150"
+              height="44"
+              loading="lazy"
+            />
           </a>
         </div>
       </div>

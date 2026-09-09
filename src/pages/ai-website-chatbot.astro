@@ -85,7 +85,7 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
       </div>
     </section>
 
-    <section class="section statement"><div class="container-page narrow reveal"><span class="eyebrow">Your most responsive page</span><h2>Your website should do more than display information.</h2><p>A contact form asks a visitor to submit and wait. Ralvie starts a conversation immediately—understanding what they want,<br/>answering in context, and moving them toward an outcome while their intent is still high.</p><strong>From website traffic to real conversations.</strong></div></section>
+    <section class="section statement"><div class="container-page narrow reveal"><span class="eyebrow">Your most responsive page</span><h2>Your website should do <span class="heading-accent">more than display information.</span></h2><p>A contact form asks a visitor to submit and wait. Ralvie starts a conversation immediately—understanding what they want,<br/>answering in context, and moving them toward an outcome while their intent is still high.</p><strong>From website traffic to real conversations.</strong></div></section>
 
     <section class="section soft"><div class="container-page"><div class="section-title reveal"><span class="eyebrow">Part of your team</span><h2>Meet the AI chatbot that gets things done.</h2></div><div class="feature-grid">{features.map(([icon,name,copy],i)=><article class:list={['card reveal',i<2&&'wide']}><span class="icon"><Icon name={icon}/></span><h3>{name}</h3><p>{copy}</p></article>)}</div></div></section>
 
@@ -105,10 +105,10 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
 
     <section class="section comparison soft"><div class="container-page split"><div class="reveal"><span class="eyebrow">A more useful website</span><h2>From a static website to an interactive front desk.</h2><p class="large">Give visitors a place to simply ask, “Can you help me?”—and let your website answer.</p></div><div class="comparison-list reveal">{[['Wait for a form reply','Immediate answers'],['Static fields','Conversational qualification'],['Business hours','Available 24/7'],['Separate booking page','Book in the conversation'],['Disconnected widget','Connected business workflows'],['Start over with an agent','Context-aware handover']].map(([oldWay,newWay])=><div><span><Icon name="x-mark"/>{oldWay}</span><b><Icon name="check"/>{newWay}</b></div>)}</div></div></section>
 
+    <OtherFrontdeskFeatures current="chatbot" />
     <section class="section faq"><div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>See how Ralvie fits your website, knowledge, and customer workflows.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right"/></a></div><div>{faqs.map(([q,a],i)=><details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
     <section class="final-cta" id="demo"><div class="cta-orb" aria-hidden="true"></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>—voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right"/></a><a href="#" class="secondary dark-button"><Icon name="calendar"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
-    <OtherFrontdeskFeatures current="chatbot" />
   </main>
   <Footer theme="light" />
 </Layout>
@@ -217,7 +217,7 @@ const faqSchema = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:
     const startTimer = () => {
       window.clearInterval(timer);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      timer = window.setInterval(() => selectStep((activeIndex + 1) % journeySteps.length), 5000);
+      timer = window.setInterval(() => selectStep((activeIndex + 1) % journeySteps.length), 3000);
     };
 
     journeySteps.forEach((step, index) => step.addEventListener('click', () => {

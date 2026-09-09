@@ -76,3 +76,14 @@
 .recording b{font-size:11px}
 .transcript p{font-size:8.5px}
 .transcript .ai i{font-size:7px}
+
+/* Shared Ralvie AI Productivity treatment for the knowledge story label. */
+.knowledge-band{background:linear-gradient(120deg,#25234f 0%,#132657 49%,#111b42 100%)!important}
+html body main .knowledge-band .section-head.light .eyebrow{position:relative!important;isolation:isolate!important;display:inline-flex!important;min-height:2.45rem!important;align-items:center!important;justify-content:center!important;margin-top:0!important;padding:.24rem 1.45rem!important;border:1px solid transparent!important;border-radius:999px!important;background:transparent!important;box-shadow:inset 0 1px 0 rgb(255 255 255 / 55%),0 13px 30px rgb(7 15 55 / 38%),0 0 32px rgb(101 99 239 / 21%)!important;color:#a9a1ff!important;font-family:var(--font-sans)!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.4!important;text-transform:none!important}
+html body main .knowledge-band .section-head.light .eyebrow::before{position:absolute!important;z-index:-1!important;inset:0!important;padding:1.5px!important;border-radius:inherit!important;background:linear-gradient(100deg,#a8c6ff 0%,#9f8df5 50%,#9a5cdf 100%)!important;content:''!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important}
+
+/* Workflow automation uses the same shared dark CTA label treatment. */
+.action-band{background:linear-gradient(120deg,#25234f 0%,#132657 49%,#111b42 100%)!important}
+html body main .action-band .copy.light .eyebrow{position:relative!important;isolation:isolate!important;display:inline-flex!important;min-height:2.45rem!important;align-items:center!important;justify-content:center!important;margin-top:0!important;padding:.24rem 1.45rem!important;border:1px solid transparent!important;border-radius:999px!important;background:transparent!important;box-shadow:inset 0 1px 0 rgb(255 255 255 / 55%),0 13px 30px rgb(7 15 55 / 38%),0 0 32px rgb(101 99 239 / 21%)!important;color:#a9a1ff!important;font-family:var(--font-sans)!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:-.02em!important;line-height:1.4!important;text-transform:none!important}
+html body main .action-band .copy.light .eyebrow::before{position:absolute!important;z-index:-1!important;inset:0!important;padding:1.5px!important;border-radius:inherit!important;background:linear-gradient(100deg,#a8c6ff 0%,#9f8df5 50%,#9a5cdf 100%)!important;content:''!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important}
+.action-band .closing{color:#fff!important}

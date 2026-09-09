@@ -410,9 +410,9 @@ body.theme-light{background:#fbfbfe;color:#17182b;overflow-x:hidden}.home{paddin
 .trust-proof-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 auto 55px}
 .trust-proof-grid>span{padding:15px 12px;border:1px solid #e1e5ef;border-radius:12px;background:#fff;text-align:center;box-shadow:0 7px 20px rgba(36,48,93,.04)}.trust-proof-grid b,.trust-proof-grid small{display:block}.trust-proof-grid b{color:#25304f;font-size:12px}.trust-proof-grid small{margin-top:5px;color:#818798;font-size:9px;line-height:1.4}
 .award-badges{display:flex;align-items:center;justify-content:space-between;gap:30px;min-height:190px;flex-wrap:nowrap}
-.award-badges>a,.award-badges>.sf-root,.award-badges>.aikaptan-badge{display:flex;align-items:center;justify-content:center;flex:0 1 auto;border:0;background:transparent}
-.award-badges img{display:block;max-width:250px;max-height:90px;width:auto;height:auto;object-fit:contain}.award-badges .software-suggest-badge{max-height:175px}.award-badges .aikaptan-badge{width:270px;height:62px;overflow:hidden}.award-badges iframe{display:block;width:270px;height:62px;border:0;overflow:hidden}.award-badges .sf-root{width:150px;min-height:135px}.award-badges .sf-root>a{color:#24459f;font-size:12px;font-weight:800}
-.award-badges>a:nth-child(1) img{max-width:185px;max-height:66px}.award-badges>a:nth-child(2) img{max-width:145px;max-height:125px}.award-badges .aikaptan-badge{width:365px;height:70px}.award-badges .aikaptan-badge iframe{width:365px;height:70px}
+.award-badges>a,.award-badges>.sf-root{display:flex;align-items:center;justify-content:center;flex:0 1 auto;border:0;background:transparent}
+.award-badges img{display:block;max-width:250px;max-height:90px;width:auto;height:auto;object-fit:contain}.award-badges .software-suggest-badge{max-height:175px}.award-badges .sf-root{width:150px;min-height:135px}.award-badges .sf-root>a{color:#24459f;font-size:12px;font-weight:800}
+.award-badges>a:nth-child(1) img{max-width:185px;max-height:66px}.award-badges>a:nth-child(2) img{max-width:145px;max-height:125px}
 @media(max-width:1150px){.award-badges{justify-content:center;flex-wrap:wrap;gap:28px 36px}}
 @media(max-width:720px){.customer-voices,.trusted-awards{padding:78px 0}.customer-voice-grid{grid-template-columns:1fr}.customer-voice-featured{grid-template-columns:1fr}.customer-voice-featured .customer-voice-image{height:200px;margin-bottom:2px}.voice-platform-block{padding:18px}.trust-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.award-badges{gap:22px}}
 @media(max-width:450px){.trust-proof-grid{grid-template-columns:1fr}.award-badges{flex-direction:column}.customer-voices-head h2,.trusted-awards-head h2{font-size:2.35rem}}
@@ -526,3 +526,13 @@ body.theme-light{background:#fbfbfe;color:#17182b;overflow-x:hidden}.home{paddin
 
 /* The shared key-title styling is defined in global.css. */
 .home .eyebrow>span:empty{display:none!important}
+
+/* Feature-card hover: leave the card stable and zoom only the image from its lower edge. */
+.productivity-feature-card .feature-screen img{transform-origin:center bottom;transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.productivity-feature-card:hover,.productivity-feature-card:focus-within{transform:none}
+.productivity-feature-card:hover .feature-screen img,.productivity-feature-card:focus-within .feature-screen img{transform:scale(1.035)}
+
+/* Each workflow stage remains active for three seconds before the next stage begins. */
+.workflow .steps>div:after,.workflow .steps span,.workflow .steps p{animation-duration:15s}
+
+@media(prefers-reduced-motion:reduce){.productivity-feature-card .feature-screen img{transition:none}.productivity-feature-card:hover .feature-screen img,.productivity-feature-card:focus-within .feature-screen img{transform:none}}

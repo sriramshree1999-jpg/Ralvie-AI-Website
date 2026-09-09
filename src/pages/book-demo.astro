@@ -12,13 +12,56 @@ const description = 'Schedule a personalized demo of Ralvie AI Frontdesk and Pro
   <Header title="Ralvie AI" theme="light" />
 
   <main class="book-demo-page pt-(--header-height)">
-    <h1 class="sr-only">Book a Ralvie AI demo</h1>
     <section class="hero relative overflow-hidden">
       <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="hero-centered">
+        <div class="booking-intro reveal">
+          <span class="eyebrow">Book a demo</span>
+          <h1>See Ralvie AI <span>in action.</span></h1>
+          <p>Choose a time that works for you and explore the right Ralvie AI solution for your team.</p>
+        </div>
         <div class="calendly-container reveal glass">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/ralvie-ai/30min" style="min-width:320px;height:700px;"></div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <div id="my-cal-inline-30min" class="cal-inline-embed"></div>
+          <script is:inline type="text/javascript">
+            (function (C, A, L) {
+              const push = function (api, args) { api.q.push(args); };
+              const documentRef = C.document;
+              C.Cal = C.Cal || function () {
+                const cal = C.Cal;
+                const args = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  documentRef.head.appendChild(documentRef.createElement('script')).src = A;
+                  cal.loaded = true;
+                }
+                if (args[0] === L) {
+                  const api = function () { push(api, arguments); };
+                  const namespace = args[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === 'string') {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    push(cal.ns[namespace], args);
+                    push(cal, ['initNamespace', namespace]);
+                  } else {
+                    push(cal, args);
+                  }
+                  return;
+                }
+                push(cal, args);
+              };
+            })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+            Cal('init', '30min', { origin: 'https://app.cal.com' });
+            Cal.config = Cal.config || {};
+            Cal.config.forwardQueryParams = true;
+            Cal.ns['30min']('inline', {
+              elementOrSelector: '#my-cal-inline-30min',
+              config: { layout: 'month_view', useSlotsViewOnSmallScreen: 'true' },
+              calLink: 'ralvie-ai-fd/30min',
+            });
+            Cal.ns['30min']('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+          </script>
         </div>
       </div>
     </section>
@@ -121,11 +164,42 @@ const description = 'Schedule a personalized demo of Ralvie AI Frontdesk and Pro
 
   .hero-centered {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     width: 100%;
     padding: 0 2rem;
+  }
+
+  .booking-intro {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto 2.25rem;
+    text-align: center;
+  }
+
+  .booking-intro h1 {
+    margin: 1rem 0 0.8rem;
+    color: var(--ink);
+    font-size: clamp(2.4rem, 4.6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.04;
+  }
+
+  .booking-intro h1 span {
+    background: linear-gradient(105deg, #4569ef 0%, #8264ed 54%, #48a7e7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .booking-intro p {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+    line-height: 1.65;
   }
 
 
@@ -154,6 +228,12 @@ const description = 'Schedule a personalized demo of Ralvie AI Frontdesk and Pro
   .calendly-container :global(> div) {
     position: relative;
     z-index: 1;
+  }
+
+  .cal-inline-embed {
+    width: 100%;
+    height: 700px;
+    overflow: auto;
   }
 
   .glass {
