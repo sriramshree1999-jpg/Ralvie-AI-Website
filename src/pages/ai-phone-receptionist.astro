@@ -77,8 +77,7 @@ const faqSchema = {
         <div class="hero-copy reveal">
           <span class="eyebrow"><span class="pulse"></span> AI phone receptionist</span>
           <h1><span class="hero-line ink">Your Frontdesk,</span><span class="hero-line">Now Powered</span><span class="hero-line">by Ralvie AI.</span></h1>
-          <p class="lead">Answer every call. Understand every customer. Take action in real time.</p>
-          <p>Ralvie AI Frontdesk handles enquiries naturally, accesses your business knowledge, books appointments, captures leads, and routes callers to the right teamâ€”24/7.</p>
+          <p>Ralvie AI Frontdesk handles every call naturally&mdash;answering questions, booking appointments, capturing leads, and routing customers to the right team, 24/7.</p>
           <div class="hero-actions">
             <a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Start your free trial <Icon name="arrow-right" class="h-4 w-4" /></a>
             <a href="#demo" class="secondary"><Icon name="calendar" class="h-4 w-4" /> Book a demo</a>
@@ -86,7 +85,7 @@ const faqSchema = {
         </div>
 
         <div class="call-shell reveal" id="conversation">
-          <div class="call-top"><span class="avatar"><Icon name="phone" /></span><div><b>Ralvie Frontdesk</b><small>Live incoming call</small></div><span class="live">â— Live</span></div>
+          <div class="call-top"><span class="avatar"><Icon name="phone" /></span><div><b>Ralvie Frontdesk</b><small>Live incoming call</small></div><span class="live">&#x25CF; Live</span></div>
           <div class="call-participants" data-call-demo>
             <div class="call-readout"><p class="call-status" data-call-status>Press play to hear the conversation</p><span class="call-timer" data-call-timer>00:00</span></div>
             <article class="participant" data-participant="ai"><span class="participant-avatar ralvie-avatar"><img src={ralvieLogoIcon.src} alt="Ralvie AI" /></span><div><b>Ralvie AI Frontdesk</b><small>AI receptionist</small></div><i class="voice-bars">{[1,2,3,4,5].map(() => <span></span>)}</i></article>
@@ -103,13 +102,13 @@ const faqSchema = {
       <div class="container-page narrow reveal">
         <span class="eyebrow">Always ready</span>
         <h2><span class="statement-line">Your business should never have to</span><span class="statement-line">choose between answering calls and</span><span class="statement-line heading-accent">getting work done.</span></h2>
-        <p>Customers call because they want something now. Ralvie becomes your intelligent first point of contactâ€”without voicemail dead ends, rigid phone menus, or asking customers to repeat themselves.</p>
+        <p>Customers call because they want something now. Ralvie becomes your intelligent first point of contact&mdash;without voicemail dead ends, rigid phone menus, or asking customers to repeat themselves.</p>
       </div>
     </section>
 
     <section class="section soft capabilities-section">
       <div class="container-page">
-        <div class="section-title reveal"><span class="eyebrow">One intelligent front desk</span><h2>More than an answering service.<br />An AI that gets things done.</h2></div>
+        <div class="section-title reveal"><span class="eyebrow">One intelligent front desk</span><h2>More than an answering service.<br /><span class="heading-accent">An AI that gets things done.</span></h2></div>
         <div class="feature-grid">
           {features.map(([icon, name, copy], index) => <article class:list={['glass reveal', index === 0 && 'featured']}><span class="icon"><Icon name={icon} /></span><h3>{name}</h3><p>{copy}</p></article>)}
         </div>
@@ -118,14 +117,13 @@ const faqSchema = {
 
     <section class="section process">
       <div class="container-page">
-        <div class="section-title reveal"><span class="eyebrow">How every call flows</span><h2>From hello to resolution.<br />All in one conversation.</h2></div>
+        <div class="section-title reveal"><span class="eyebrow">How every call flows</span><h2>From hello to resolution.<br /><span class="heading-accent">All in one conversation.</span></h2></div>
         <div class="reception-flow reveal" aria-label="Five stages of an AI receptionist call">
           <header class="reception-flow-head">
             <div><span class="flow-mark"><Icon name="sparkles" /></span><p>RALVIE AI FRONTDESK</p><h3>From every call to a clear next step</h3></div>
             <span class="flow-live"><i></i> Live</span>
           </header>
           <div class="reception-flow-body">
-            <div class="reception-flow-track" aria-hidden="true"></div>
             <div class="reception-steps">
               {[
                 ['phone', '01', 'Answer', 'Answers instantly, any time.'],
@@ -147,7 +145,7 @@ const faqSchema = {
     <section class="section knowledge-parallax" data-knowledge-parallax>
       <div class="knowledge-sticky">
         <div class="container-page split">
-          <div class="knowledge-copy"><span class="eyebrow">Dynamic knowledge</span><h2>Give your AI more than a static FAQ.</h2><p class="large">Ralvie works with approved information across your business, so answers can stay contextual and useful while conversations lead directly to action.</p><a href="#demo" class="text-link">Explore connected intelligence <Icon name="arrow-right" class="h-4 w-4" /></a></div>
+          <div class="knowledge-copy"><span class="eyebrow">Dynamic knowledge</span><h2>Give your AI more than a <span class="heading-accent">static FAQ.</span></h2><p class="large">Ralvie works with approved information across your business, so answers can stay contextual and useful while conversations lead directly to action.</p><a href="#demo" class="text-link">Explore connected intelligence <Icon name="arrow-right" class="h-4 w-4" /></a></div>
           <div class="source-grid knowledge-sources">{sources.map(([icon, label]) => <div class="source"><span><Icon name={icon} /></span><b>{label}</b><small>Connected knowledge</small></div>)}</div>
         </div>
       </div>
@@ -157,7 +155,7 @@ const faqSchema = {
     <div class="use-cases-slot">
     <section class="section use-cases-section">
       <div class="container-page">
-        <div class="section-title reveal"><span class="eyebrow">Built for real calls</span><h2>One receptionist. Every reason customers call.</h2></div>
+        <div class="section-title reveal"><span class="eyebrow">Built for real calls</span><h2>One receptionist. <span class="heading-accent">Every reason customers call.</span></h2></div>
         <div class="use-grid">{useCases.map(([icon, name, copy]) => <article class="use-card reveal"><span class="icon"><Icon name={icon} /></span><div><h3>{name}</h3><p>{copy}</p></div></article>)}</div>
       </div>
     </section>
@@ -165,46 +163,46 @@ const faqSchema = {
 
     <section class="section conversation-band">
       <div class="container-page split align-center">
-        <div class="reveal"><span class="eyebrow">Conversation, not navigation</span><h2>Lose the phone tree.<br />Keep the human feeling.</h2><p class="large">Customers speak naturally. Ralvie listens, understands context, asks relevant follow-up questions, and remembers what has already been discussed.</p></div>
-        <div class="compare-card reveal"><div class="old"><small>Traditional IVR</small><p>â€œPress 1 for Sales. Press 2 for Support. Press 3â€¦â€</p></div><div class="vs">instead</div><div class="new"><small>Ralvie</small><p>â€œHi, thanks for calling. How can I help you today?â€</p><div class="wave" aria-hidden="true">{[1,2,3,4,5,6,7,8,9,10,11,12].map((_,i) => <i style={`--h:${18 + (i % 5) * 8}px;--delay:${i * -0.09}s;--speed:${0.62 + (i % 4) * 0.08}s`}></i>)}</div></div></div>
+        <div class="reveal"><span class="conversation-label">Conversation, not navigation</span><h2>Lose the phone tree.<br /><span class="heading-accent">Keep the human feeling.</span></h2><p class="large">Customers speak in their own words. Ralvie listens for intent, understands the context behind every request, asks the right follow-up questions, and remembers the conversation from start to finish&mdash;so every caller reaches the right answer, booking, or team without navigating a rigid phone menu.</p></div>
+        <div class="compare-card reveal"><div class="old"><small>Traditional IVR</small><p>&ldquo;Press 1 for Sales. Press 2 for Support. Press 3&hellip;&rdquo;</p></div><div class="vs"><strong>Instead</strong><span>Let callers say what they need naturally.</span></div><div class="new"><small>Ralvie</small><p>&ldquo;Hi, thanks for calling. How can I help you today?&rdquo;</p><div class="wave" aria-hidden="true">{[1,2,3,4,5,6,7,8,9,10,11,12].map((_,i) => <i style={`--h:${18 + (i % 5) * 8}px;--delay:${i * -0.09}s;--speed:${0.62 + (i % 4) * 0.08}s`}></i>)}</div></div></div>
       </div>
     </section>
     </div>
 
     <section class="section soft">
       <div class="container-page split align-center">
-        <div class="language-card reveal"><div class="globe"><Icon name="globe" class="h-16 w-16" /></div><span class="lang l1">Hello</span><span class="lang l2">Bonjour</span><span class="lang l3">Hola</span><span class="lang l4">à¤¨à¤®à¤¸à¥à¤¤à¥‡</span><span class="lang l5">Hallo</span><span class="lang l6">OlÃ¡</span><span class="lang l7">Ù…Ø±Ø­Ø¨Ø§Ù‹</span><span class="lang l8">ã“ã‚“ã«ã¡ã¯</span></div>
-        <div class="reveal"><span class="eyebrow">Multilingual voice</span><h2>Serve customers in the language theyâ€™re comfortable with.</h2><p class="large">One intelligent front desk can help your business support more regions and language preferences without building a separate reception team for each one.</p><div class="checks"><span><Icon name="check" /> Natural conversations</span><span><Icon name="check" /> Global customer experience</span><span><Icon name="check" /> Smarter escalation</span></div></div>
+        <div class="language-card reveal"><div class="globe"><Icon name="globe" class="h-16 w-16" /></div><span class="lang l1">Hello</span><span class="lang l2">Bonjour</span><span class="lang l3">Hola</span><span class="lang l4">&#x928;&#x92E;&#x938;&#x94D;&#x924;&#x947;</span><span class="lang l5">Hallo</span><span class="lang l6">Ol&#xE1;</span><span class="lang l7">&#x645;&#x631;&#x62D;&#x628;&#x64B;&#x627;</span><span class="lang l8">&#x3053;&#x3093;&#x306B;&#x3061;&#x306F;</span></div>
+        <div class="reveal"><span class="eyebrow">Multilingual voice</span><h2>Serve customers in the <span class="heading-accent">language they&rsquo;re comfortable with.</span></h2><p class="large">One intelligent front desk can help your business support more regions and language preferences without building a separate reception team for each one.</p><div class="checks"><span><Icon name="check" /> Natural conversations</span><span><Icon name="check" /> Global customer experience</span><span><Icon name="check" /> Smarter escalation</span></div></div>
       </div>
     </section>
 
     <section class="section dashboard-section">
       <div class="container-page">
-        <div class="section-title reveal"><span class="eyebrow">Every call, visible</span><h2>Know what happened on every call.</h2><p>Monitor conversations, customer intent, transfers, appointments, and follow-up from one centralized view.</p></div>
+        <div class="section-title reveal"><span class="eyebrow">Every call, visible</span><h2>Know what happened <span class="heading-accent">on every call.</span></h2><p>Monitor conversations, customer intent, transfers, appointments, and follow-up from one centralized view.</p></div>
         <PhoneInboxDemo />
       </div>
     </section>
 
     <section class="section">
       <div class="container-page">
-        <div class="section-title reveal"><span class="eyebrow">Designed for your industry</span><h2>Built for businesses where every call matters.</h2></div>
+        <div class="section-title reveal"><span class="eyebrow">Designed for your industry</span><h2>Built for businesses where <span class="heading-accent">every call matters.</span></h2></div>
         <div class="industry-grid">{industries.map(([icon, name]) => <article class="industry reveal"><Icon name={icon} /><h3>{name}</h3><span>Explore use case <Icon name="arrow-right" class="h-4 w-4" /></span></article>)}</div>
       </div>
     </section>
 
     <section class="section comparison soft">
       <div class="container-page split">
-        <div class="reveal"><span class="eyebrow">A better first impression</span><h2>Move beyond traditional call handling.</h2><p class="large">AI when it helps. Humans when they matter.</p></div>
+        <div class="reveal"><span class="eyebrow">A better first impression</span><h2>Move beyond <span class="heading-accent">traditional call handling.</span></h2><p class="large">AI when it helps. Humans when they matter.</p></div>
         <div class="comparison-list reveal">{[['Phone-tree menus','Natural conversations'],['Business-hours coverage','Available 24/7'],['Send to voicemail','Answer immediately'],['Manual lead intake','Automated lead capture'],['Blind routing','Intent-based routing'],['Manual call notes','Conversation insights']].map(([oldWay,newWay]) => <div><span><Icon name="x-mark" />{oldWay}</span><b><Icon name="check" />{newWay}</b></div>)}</div>
       </div>
     </section>
 
     <OtherFrontdeskFeatures current="phone" />
     <section class="section faq">
-      <div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need to know.</h2><p>Still have a question? Our team can walk you through how Ralvie fits your call flow.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right" class="h-4 w-4" /></a></div><div>{faqs.map(([q,a],i) => <details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div>
+      <div class="container-page faq-grid"><div class="reveal"><span class="eyebrow">Questions, answered</span><h2>Everything you need <span class="heading-accent">to know.</span></h2><p>Still have a question? Our team can walk you through how Ralvie fits your call flow.</p><a href="#demo" class="text-link">Talk to our team <Icon name="arrow-right" class="h-4 w-4" /></a></div><div>{faqs.map(([q,a],i) => <details class="reveal" open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div>
     </section>
 
-    <section class="final-cta" id="demo"><div class="mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>â€”voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right" class="h-4 w-4"/></a><a href="#" class="secondary dark-button"><Icon name="calendar" class="h-4 w-4"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
+    <section class="final-cta" id="demo"><div class="mesh dark" aria-hidden="true"><i></i><i></i><i></i></div><div class="container-page reveal"><span class="eyebrow">Meet Ralvie AI Frontdesk</span><h2>Turn Every Customer Conversation <span class="cta-keep heading-accent">Into Action.</span></h2><p class="cta-description">Ralvie AI Frontdesk helps your business answer, understand, and act across every customer channel<br/>&mdash;voice calls, website chat, web voice, email, SMS, forms, and CRM. Be available 24/7. Respond instantly.<br/>Capture more opportunities. Connect every conversation to the right next step.</p><div class="cta-actions"><a href="https://app.frontdesk.ralvie.ai/login" target="_blank" rel="noopener noreferrer" class="primary">Try Ralvie AI Frontdesk <Icon name="arrow-right" class="h-4 w-4"/></a><a href="#" class="secondary dark-button"><Icon name="calendar" class="h-4 w-4"/> Book a Demo</a></div><small>One AI Frontdesk. Every customer channel. Always ready.</small></div></section>
   </main>
   <Footer theme="light" />
 </Layout>
@@ -270,7 +268,7 @@ const faqSchema = {
       demo.classList.remove('is-playing');
       toggle.setAttribute('aria-label', 'Play call');
       showSpeaker();
-      if (status) status.textContent = 'Call ended â€” press play to restart';
+      if (status) status.textContent = 'Call ended \u2014 press play to restart';
     });
   };
   setupCallDemo();
@@ -425,14 +423,24 @@ const faqSchema = {
     }
   }
 
-  /* The permanent track remains in place; the active card no longer adds a
-     second, vertically-shifted connector when it lifts above the row. */
-  .reception-step.is-active::after { display: none; }
+  /* Stages are intentionally unconnected: no track is drawn through cards or gaps. */
+  .reception-flow-track,
+  .reception-step::after { display: none !important; }
 
   /* Improve legibility of the inactive stages without competing with focus. */
   .reception-step small { color: #929aaf; }
   .reception-step h3 { color: #5f6881; }
-  .reception-step p { color: #7d879d; }
+  .reception-step p { color: #7d879d; font-size: 0.84rem; opacity: 1; transform: none; }
+  .conversation-band { padding-bottom: 3.5rem; }
+  .conversation-label { display: inline-flex; min-height: 3.55rem; align-items: center; justify-content: center; padding: 0.55rem 1.55rem; border: 1.5px solid transparent; border-radius: 999px; background: linear-gradient(#171e49, #171e49) padding-box, linear-gradient(100deg, #a8c6ff 0%, #9f8df5 50%, #9a5cdf 100%) border-box; box-shadow: inset 0 1px rgba(255,255,255,.22), 0 10px 24px rgba(13, 20, 62, .2); color: #aaa2ff; font-family: var(--font-sans); font-size: 1rem; font-weight: 700; letter-spacing: -0.025em; text-transform: none; }
+  .proof span:before { content: '\2713'; }
+  .conversation-band .compare-card { position: relative; display: flex; min-height: 480px; flex-direction: column; justify-content: space-between; }
+  .conversation-band .compare-card::before { display: none; }
+  .conversation-band .compare-card > * { position: relative; z-index: 1; }
+  .conversation-band .vs { display: grid; justify-items: center; gap: 0.4rem; padding: 1.25rem 0; color: #fff; }
+  .conversation-band .vs strong { color: #fff; font-size: 1.05rem; letter-spacing: 0.08em; text-shadow: 0 1px 8px rgba(15, 26, 73, 0.28); text-transform: uppercase; }
+  .conversation-band .vs span { color: #f3f5ff; font-size: 1rem; text-shadow: 0 1px 8px rgba(15, 26, 73, 0.24); }
+  @media (max-width: 600px) { .conversation-band { padding-bottom: 2.75rem; } .conversation-band .compare-card { min-height: 0; } }
 </style>
 
 <style is:global>
@@ -509,7 +517,6 @@ const faqSchema = {
     backdrop-filter: blur(16px);
   }
 
-  .conversation-band .eyebrow,
   .process .eyebrow,
   .final-cta .eyebrow {
     border-color: rgba(139, 157, 255, 0.36);
@@ -532,14 +539,19 @@ const faqSchema = {
   .statement-line {
     display: block;
     white-space: nowrap;
+    line-height: 1.15;
   }
 
-  .statement-line.heading-accent {
+  .phone-page .heading-accent {
     background: linear-gradient(100deg, #4f64ed 0%, #7b60ec 52%, #3d9ce9 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+  }
+
+  .statement-line.heading-accent {
+    padding-bottom: 0.12em;
   }
 
   .capabilities-section .section-title {

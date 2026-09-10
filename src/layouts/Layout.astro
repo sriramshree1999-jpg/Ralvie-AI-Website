@@ -212,6 +212,39 @@ const websiteSchema = {
         container.replaceChildren(left, right);
       });
 
+      const frontdeskPage = document.querySelector(
+        'main.phone-page, main.chat-page, main.email-page, main.crm-page, main.voice-page, main.forms-page',
+      );
+
+      frontdeskPage?.querySelectorAll('h1, h2').forEach((heading) => {
+        if (heading.querySelector('.heading-accent')) return;
+
+        const directSpans = [...heading.children].filter((child) => child.matches('span'));
+        if (directSpans.length) {
+          directSpans[directSpans.length - 1]?.classList.add('heading-accent');
+          return;
+        }
+
+        const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+        const textNodes: Text[] = [];
+        let node = walker.nextNode();
+        while (node) {
+          if (node.textContent?.trim()) textNodes.push(node as Text);
+          node = walker.nextNode();
+        }
+        const lastTextNode = textNodes[textNodes.length - 1];
+        const words = lastTextNode?.textContent?.trim().split(/\s+/) ?? [];
+        if (words.length < 2 || !lastTextNode) return;
+
+        const splitAt = Math.max(1, Math.floor(words.length * 0.55));
+        const leading = words.slice(0, splitAt).join(' ');
+        const accent = words.slice(splitAt).join(' ');
+        const accentSpan = document.createElement('span');
+        accentSpan.className = 'heading-accent';
+        accentSpan.textContent = accent;
+        lastTextNode.replaceWith(document.createTextNode(`${leading} `), accentSpan);
+      });
+
       requestAnimationFrame(() => {
         document.querySelectorAll<HTMLElement>('main .faq-grid, main .faq-layout').forEach((container) => {
           const columns = [...container.querySelectorAll<HTMLElement>(':scope > .faq-column')];
@@ -260,6 +293,34 @@ const websiteSchema = {
       };
       chatWidgetScript.onerror = (error) => console.error('Failed to load chat widget:', error);
       document.head.appendChild(chatWidgetScript);
+    </script>
+    <script is:inline>
+      (() => {
+        const applyFrontdeskHeadingGradients = () => {
+          const page = document.querySelector('main.phone-page, main.chat-page, main.email-page, main.crm-page, main.voice-page, main.forms-page');
+          if (!page) return;
+          page.querySelectorAll('h1, h2').forEach((heading) => {
+            if (heading.querySelector('.heading-accent')) return;
+            const spans = [...heading.children].filter((child) => child.matches('span'));
+            if (spans.length) {
+              spans[spans.length - 1]?.classList.add('heading-accent');
+              return;
+            }
+            if (heading.childElementCount) return;
+            const text = heading.textContent?.trim() ?? '';
+            const words = text.split(/\s+/);
+            if (words.length < 2) return;
+            const splitAt = Math.max(1, Math.floor(words.length * 0.55));
+            const accent = document.createElement('span');
+            accent.className = 'heading-accent';
+            accent.textContent = words.slice(splitAt).join(' ');
+            heading.replaceChildren(document.createTextNode(`${words.slice(0, splitAt).join(' ')} `), accent);
+          });
+        };
+        applyFrontdeskHeadingGradients();
+        window.addEventListener('load', applyFrontdeskHeadingGradients, { once: true });
+        document.addEventListener('astro:page-load', applyFrontdeskHeadingGradients);
+      })();
     </script>
   </body>
 </html>
