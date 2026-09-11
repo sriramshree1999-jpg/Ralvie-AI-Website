@@ -250,7 +250,7 @@
   }
 }
 .productivity-shell {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1280px, calc(100% - 40px));
   margin-inline: auto;
 }
 .section {
@@ -963,7 +963,7 @@ p {
 }
 @media (max-width: 680px) {
   .productivity-shell {
-    width: min(100% - 26px, 1180px);
+    width: min(100% - 26px, 1280px);
   }
   .section {
     padding: 76px 0;

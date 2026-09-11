@@ -48,8 +48,6 @@ const solutionGroups = [
     ],
   },
 ];
-const resources = ['Blogs', 'Integrations', 'Contact us', 'Downloads', 'Knowledge base'];
-const legal = ['Privacy Policy', 'Terms of Use'];
 const industryGroups = [
   { title: 'Productivity', links: ['Enterprise', 'SaaS', 'Agency', 'Consultancy', 'Professional Services'] },
   { title: 'Frontdesk', links: ['Healthcare & Clinics', 'Hotels & Hospitality', 'Real estate', 'Education institutions', 'Financial services'] },
@@ -57,6 +55,7 @@ const industryGroups = [
 const getStarted = [
   { label: 'Pricing', href: '/pricing', external: false },
   { label: 'Book a Demo', href: '/book-demo/', external: false },
+  { label: 'Contact us', href: '/contact', external: false },
 ];
 const company: string[] = [];
 
@@ -164,28 +163,17 @@ const hrefFor = (link: string) =>
     </div>
 
     <div class="footer__column">
-      <h2>Resources</h2>
+      <h2>Get Started</h2>
       <ul>
         {
-          resources.map((link) => (
+          getStarted.map((item) => (
             <li>
-              <a href={hrefFor(link)}>{link}</a>
+              <a href={item.href}>{item.label}</a>
             </li>
           ))
         }
       </ul>
-      <div class="footer__group footer__group--secondary">
-        <h2>Legal</h2><ul>
-          {
-            legal.map((link) => (
-              <li>
-                <a href="#">{link}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="footer__group footer__group--secondary">
+      <div class="footer__group footer__group--secondary footer__column--removed">
         <h2>Get Started</h2>
         <ul>{getStarted.map((item) => <li><a href={item.href}>{item.label}{item.external && <span class="footer__external" aria-hidden="true">↗</span>}</a></li>)}</ul>
       </div>

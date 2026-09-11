@@ -1,0 +1,80 @@
+---
+import flowVideo from '../../assets/Frontdesk-ai-flow.webm';
+---
+
+<section class="frontdesk-how-it-works section relative">
+  <div class="container-page">
+    <div class="section-head reveal">
+      <p class="chip text-label-sm">How Ralvie AI Frontdesk works</p>
+      <h2 class="text-headline-lg text-on-surface">One conversation, connected from start to finish.</h2>
+      <p class="text-body-lg text-on-surface-variant">
+        Ralvie listens across every channel, understands customer intent, and carries the right context into each
+        next step—from the first question to a completed action.
+      </p>
+    </div>
+
+    <div class="frontdesk-flow-video reveal">
+      <video src={flowVideo} autoplay loop muted playsinline preload="auto" aria-label="Ralvie AI Frontdesk customer journey flow"></video>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const flowVideos = document.querySelectorAll('.frontdesk-flow-video video');
+  flowVideos.forEach((video) => {
+    video.loop = true;
+    video.muted = true;
+    video.autoplay = true;
+    const resume = () => video.play().catch(() => {});
+    const restart = () => {
+      video.currentTime = 0;
+      resume();
+    };
+    video.addEventListener('loadeddata', resume, { once: true });
+    video.addEventListener('ended', restart);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) resume();
+    });
+    window.setInterval(() => {
+      if (!document.hidden && (video.paused || video.ended)) restart();
+    }, 1000);
+  });
+</script>
+
+<style>
+  .frontdesk-how-it-works {
+    overflow: hidden;
+    background: #080d27;
+  }
+
+  .frontdesk-how-it-works .section-head {
+    max-width: 900px;
+  }
+
+  .frontdesk-how-it-works :global(.text-on-surface) {
+    color: #f3f5ff;
+  }
+
+  .frontdesk-how-it-works :global(.text-on-surface-variant) {
+    color: #aab6d5;
+  }
+
+  .frontdesk-flow-video {
+    width: 100vw;
+    max-width: none;
+    margin: 2.5rem 0 0 calc(50% - 50vw);
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .frontdesk-flow-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+</style>

@@ -47,13 +47,13 @@ const serviceIcons: Record<string, typeof calComIcon> = {
     <div class="frontdesk-integration-network reveal" aria-label="Ralvie Frontdesk integrations">
       <svg class="frontdesk-integration-paths" viewBox="0 0 1200 400" aria-hidden="true" preserveAspectRatio="none">
         <g fill="none" stroke="currentColor" stroke-width="1.5">
-          <path id="fd-path-1" d="M430 145 C365 145 380 50 170 50" /><path id="fd-path-2" d="M430 170 C355 170 375 135 170 135" /><path id="fd-path-3" d="M430 205 C355 205 375 265 170 265" /><path id="fd-path-4" d="M430 230 C365 230 380 350 170 350" />
-          <path id="fd-path-5" d="M770 145 C835 145 820 50 1030 50" /><path id="fd-path-6" d="M770 170 C845 170 825 135 1030 135" /><path id="fd-path-7" d="M770 205 C845 205 825 265 1030 265" /><path id="fd-path-8" d="M770 230 C835 230 820 350 1030 350" />
+          <path id="fd-path-1" d="M500 145 C365 145 380 50 170 50" /><path id="fd-path-2" d="M500 170 C355 170 375 135 170 135" /><path id="fd-path-3" d="M500 205 C355 205 375 265 170 265" /><path id="fd-path-4" d="M500 230 C365 230 380 350 170 350" />
+          <path id="fd-path-5" d="M700 145 C835 145 820 50 1030 50" /><path id="fd-path-6" d="M700 170 C845 170 825 135 1030 135" /><path id="fd-path-7" d="M700 205 C845 205 825 265 1030 265" /><path id="fd-path-8" d="M700 230 C835 230 820 350 1030 350" />
         </g>
-        {Array.from({ length: 8 }, (_, index) => <circle r="5" class="integration-particle"><animateMotion dur={`${3.2 + (index % 3) * .45}s`} begin={`${index * -.42}s`} repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href={`#fd-path-${index + 1}`} /></animateMotion></circle>)}
+        {Array.from({ length: 8 }, (_, index) => <circle r="5" class="integration-particle"><animateMotion dur={`${3.2 + (index % 3) * .45}s`} begin={`${index * -.42}s`} repeatCount="indefinite"><mpath href={`#fd-path-${index + 1}`} /></animateMotion></circle>)}
       </svg>
-      {integrations.map((integration) => <article class:list={['frontdesk-service', integration.side, `slot-${integration.slot}`]}><span class="service-mark"><img src={serviceIcons[integration.tone].src} alt="" /></span><b>{integration.name}</b></article>)}
-      <article class="frontdesk-integration-hub">
+      {integrations.map((integration) => <article class:list={['frontdesk-service', integration.side, `slot-${integration.slot}`]} data-integration-card><span class="service-mark"><img src={serviceIcons[integration.tone].src} alt="" /></span><b>{integration.name}</b></article>)}
+      <article class="frontdesk-integration-hub" data-integration-hub>
         <span class="hub-ring ring-one"></span><span class="hub-ring ring-two"></span>
         <img src={ralvieLogoIcon.src} alt="Ralvie" />
         <div><small>RALVIE</small><strong>Frontdesk</strong><p>Connected customer operations</p></div>
@@ -61,6 +61,43 @@ const serviceIcons: Record<string, typeof calComIcon> = {
     </div>
   </div>
 </section>
+
+<script>
+  const syncIntegrationPaths = () => {
+    document.querySelectorAll('.frontdesk-integration-network').forEach((network) => {
+      const svg = network.querySelector('.frontdesk-integration-paths');
+      const hub = network.querySelector('[data-integration-hub]');
+      const cards = network.querySelectorAll('[data-integration-card]');
+      if (!(svg instanceof SVGElement) || !(hub instanceof HTMLElement) || !cards.length) return;
+
+      const bounds = network.getBoundingClientRect();
+      const hubBounds = hub.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+
+      svg.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
+      cards.forEach((card, index) => {
+        if (!(card instanceof HTMLElement)) return;
+        const path = svg.querySelector(`#fd-path-${index + 1}`);
+        if (!(path instanceof SVGPathElement)) return;
+
+        const cardBounds = card.getBoundingClientRect();
+        const fromLeft = card.classList.contains('left');
+        const startX = (fromLeft ? cardBounds.right : cardBounds.left) - bounds.left;
+        const startY = cardBounds.top + cardBounds.height / 2 - bounds.top;
+        const endX = (fromLeft ? hubBounds.left : hubBounds.right) - bounds.left;
+        const endY = hubBounds.top + hubBounds.height / 2 - bounds.top;
+        const bend = Math.max(48, Math.abs(endX - startX) * 0.42);
+        const startControlX = fromLeft ? startX + bend : startX - bend;
+        const endControlX = fromLeft ? endX - bend : endX + bend;
+        path.setAttribute('d', `M ${startX} ${startY} C ${startControlX} ${startY}, ${endControlX} ${endY}, ${endX} ${endY}`);
+      });
+    });
+  };
+
+  syncIntegrationPaths();
+  window.addEventListener('resize', syncIntegrationPaths, { passive: true });
+  new ResizeObserver(syncIntegrationPaths).observe(document.documentElement);
+</script>
 
 <style>
   .frontdesk-integrations{overflow:hidden;background:radial-gradient(circle at 10% 82%,rgba(102,74,230,.18),transparent 34%),radial-gradient(circle at 90% 18%,rgba(63,118,242,.2),transparent 32%),#070a1a}

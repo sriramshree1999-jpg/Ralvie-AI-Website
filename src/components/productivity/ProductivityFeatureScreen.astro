@@ -9,6 +9,7 @@ import screenshot6 from '../../assets/Screenshot 6.png';
 import screenshot7 from '../../assets/Screenshot 7.png';
 import screenshot8 from '../../assets/Screenshot 8.png';
 import RalvieLogo from '../../assets/Ralvie-logo.svg';
+import SundialLogo from '../../assets/Sundial.png';
 import type { ProductivityFeatureKey } from '../../data/productivityFeaturePages';
 import '../../styles/dashboard-preview.css';
 
@@ -60,11 +61,11 @@ const timeRows = [
     <div class="sundial-content-wrapper">
       <div class="sundial-overlay">
         <aside class="sundial-sidebar">
-          <div class="sundial-logo"><span><i></i></span><b>Sundial</b></div>
+          <div class="sundial-logo"><img src={SundialLogo.src} alt="" aria-hidden="true" /><b>Sundial</b></div>
           <nav>
             <span class:list={[automaticView === 'activities' && 'active']}><Icon name="clock" />Activities</span>
             <span class:list={[automaticView === 'general-settings' && 'active']}><Icon name="wrench" />General settings</span>
-            <span class:list={[automaticView === 'schedule' && 'active']}><Icon name="calendar" />Schedule</span>
+          <span class:list={[automaticView === 'schedule' && 'active']}><Icon name="calendar" />Schedule</span>
           </nav>
         </aside>
         <main class="sundial-content">

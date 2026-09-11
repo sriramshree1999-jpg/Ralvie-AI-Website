@@ -149,6 +149,10 @@
 .theme-tasks .pf-story,.theme-dashboard .pf-story{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:4.5rem}.theme-tasks .pf-story.reverse,.theme-dashboard .pf-story.reverse{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}.theme-tasks .pf-story-copy,.theme-dashboard .pf-story-copy{max-width:680px}.pf-task-story-screen,.pf-dashboard-story-screen{width:min(100%,700px);margin-inline:auto;padding:1rem;border:1px solid rgba(51,108,168,.14);border-radius:28px;background:radial-gradient(circle at 88% 9%,rgba(100,211,177,.24),transparent 38%),radial-gradient(circle at 7% 92%,rgba(106,147,246,.17),transparent 36%),linear-gradient(135deg,#f8fbff,#fff 58%,#f7fffc);box-shadow:0 26px 60px rgba(45,70,105,.11)}.task-detail-screen,.dashboard-detail-screen{overflow:hidden;border:1px solid rgba(255,255,255,.85);border-radius:19px;background:rgba(255,255,255,.85);box-shadow:0 18px 40px rgba(46,71,105,.1);color:#374157}.task-detail-screen>header,.dashboard-detail-screen>header{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 1.1rem;border-bottom:1px solid #e8eef1}.task-detail-screen>header small,.task-detail-screen>header b,.dashboard-detail-screen>header small,.dashboard-detail-screen>header b{display:block}.task-detail-screen>header small{color:#357dd4;font-size:.42rem;font-weight:850;letter-spacing:.08em}.task-detail-screen>header b,.dashboard-detail-screen>header b{margin-top:.28rem;font-size:.8rem}.task-detail-screen>header>span,.dashboard-detail-screen>header>span{padding:.3rem .45rem;border-radius:7px;color:#65708a;background:#f1f5f9;font-size:.42rem}.task-form{padding:1rem 1.1rem}.task-form label{display:grid;gap:.28rem;margin-top:.66rem;color:#8d96a7;font-size:.4rem;font-weight:800;letter-spacing:.05em}.task-form label:first-child{margin-top:0}.task-form label>b{padding:.55rem .62rem;border:1px solid #e1e8ec;border-radius:7px;color:#495267;background:#fff;font-size:.5rem;font-weight:600;letter-spacing:0}.task-form>div{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}.task-form footer{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem}.task-form footer span{color:#35866a;font-size:.4rem}.task-form button{padding:.48rem .7rem;border:0;border-radius:7px;color:#fff;background:linear-gradient(135deg,#2874d1,#53bfaa);font-size:.42rem;font-weight:800}.task-list-filters{display:flex;gap:.45rem;padding:.72rem 1.1rem;border-bottom:1px solid #edf1f3}.task-list-filters>*{padding:.32rem .42rem;border-radius:6px;color:#8a94a7;background:#f5f7f9;font-size:.4rem}.task-list-filters>b{color:#2874d1;background:#eaf3ff}.task-list{padding:.3rem 1.1rem .9rem}.task-list article{display:grid;grid-template-columns:11px 1fr auto auto;align-items:center;gap:.5rem;padding:.66rem 0;border-bottom:1px solid #eef1f4}.task-list article:last-child{border:0}.task-list i{width:8px;height:8px;border-radius:50%;background:#4db99c}.task-list article div>b,.task-list article div>small{display:block}.task-list article div>b{font-size:.52rem}.task-list article div>small{margin-top:.15rem;color:#9199a8;font-size:.39rem}.task-list time{color:#7f899d;font-size:.39rem}.task-list em{padding:.2rem .32rem;border-radius:5px;color:#a66a2c;background:#fff2df;font-size:.37rem;font-style:normal}.task-list em.high{color:#be5260;background:#ffe7ea}.task-progress-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;padding:1rem 1.1rem}.task-progress-summary div{padding:.65rem;border-radius:9px;background:#f5f9ff}.task-progress-summary small,.task-progress-summary b{display:block}.task-progress-summary small{color:#8d97a8;font-size:.36rem;font-weight:800}.task-progress-summary b{margin-top:.3rem;color:#3d78cb;font-size:.65rem}.task-progress-activity{margin:0 1.1rem 1rem;padding:.78rem;border:1px solid #e4eaef;border-radius:11px}.task-progress-activity>b{font-size:.52rem}.task-progress-activity article{display:grid;grid-template-columns:34px 8px 1fr;gap:.45rem;margin-top:.65rem}.task-progress-activity article>span{color:#8d96a6;font-size:.38rem}.task-progress-activity article>i{position:relative;width:7px;height:7px;margin-top:.1rem;border-radius:50%;background:#4d93dc}.task-progress-activity article>i:after{position:absolute;top:8px;left:3px;width:1px;height:28px;background:#dfe8ed;content:''}.task-progress-activity article:last-child>i:after{display:none}.task-progress-activity p b,.task-progress-activity p small{display:block}.task-progress-activity p b{font-size:.47rem}.task-progress-activity p small{margin-top:.14rem;color:#929aaa;font-size:.38rem}
 @media(max-width:950px){.pf-motion-section{padding:6.5rem 0}.pf-motion-layout{grid-template-columns:1fr;gap:2rem}.pf-motion-interactions{max-width:760px;margin:auto;width:100%}.pf-motion-float-one{right:0}.pf-motion-float-two{left:0}.theme-tasks .pf-story,.theme-tasks .pf-story.reverse,.theme-dashboard .pf-story,.theme-dashboard .pf-story.reverse{grid-template-columns:1fr;gap:2.5rem}.pf-hero-signals{right:0}}@media(max-width:620px){.pf-motion-section{padding:5rem 0}.pf-motion-head{margin-bottom:2.5rem;text-align:left}.pf-motion-head h2{font-size:2.75rem}.pf-motion-screen-panel{padding:.7rem;border-radius:21px;overflow:hidden}.pf-motion-screen-panel .pf-screen{min-width:650px}.pf-motion-screen-label small,.pf-motion-float{display:none}.pf-motion-interactions{padding:1rem;border-radius:19px}.pf-motion-interactions summary{padding:.9rem .15rem}.pf-motion-interactions details p{padding-left:1.8rem}.pf-story-saas-screen{overflow-x:auto}.pf-story-saas-screen>.pf-screen{min-width:650px}.pf-hero-signals{position:relative;right:auto;bottom:auto;width:100%;margin-top:.8rem}.task-form>div,.task-progress-summary{grid-template-columns:1fr}.task-list article{grid-template-columns:10px 1fr auto}}
 
+/* Keep translucent layers inside rounded card edges throughout product pages. */
+.pf-page :is(.pf-screen,.pf-highlight,.pf-motion-screen-panel,.pf-story-saas-screen,.pf-capture-story-screen,.pf-responsible-card,.pf-ranking-card,.sundial-activities,.sundial-settings,.sundial-schedule,.sundial-general-panel,.sundial-schedule-panel){overflow:hidden;background-clip:padding-box;isolation:isolate}
+.pf-page .pf-screen{clip-path:inset(0 round 27px)}
+
 .dashboard-detail-screen>header small{color:#6659d9;font-size:.42rem;font-weight:850;letter-spacing:.08em}.dashboard-detail-screen>header>span{color:#4f8a77;background:#e6f7f0}.dashboard-metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;padding:1rem 1.1rem}.dashboard-metric-row article{padding:.65rem;border-radius:9px;background:#f5f8ff}.dashboard-metric-row small,.dashboard-metric-row b,.dashboard-metric-row span{display:block}.dashboard-metric-row small{color:#8f97a8;font-size:.36rem}.dashboard-metric-row b{margin:.28rem 0;color:#5c57d1;font-size:.76rem}.dashboard-metric-row span{color:#3b9672;font-size:.36rem}.dashboard-chart{margin:0 1.1rem 1rem;padding:.75rem;border:1px solid #e5eaf0;border-radius:11px}.dashboard-chart header{display:flex;justify-content:space-between}.dashboard-chart header b{font-size:.52rem}.dashboard-chart header small{color:#9299a9;font-size:.39rem}.dashboard-chart p{display:grid;grid-template-columns:85px 1fr 26px;gap:.45rem;align-items:center;margin-top:.6rem;color:#747c90;font-size:.4rem}.dashboard-chart i{height:5px;border-radius:99px;background:#edf0f5;overflow:hidden}.dashboard-chart i em{display:block;width:var(--width);height:100%;border-radius:inherit;background:linear-gradient(90deg,#6659d9,#4fbcaf)}.dashboard-chart p>b{text-align:right}.dashboard-signal{display:grid;grid-template-columns:9px 1fr auto;gap:.55rem;align-items:start;padding:.85rem 1.1rem;border-bottom:1px solid #eef0f4}.dashboard-signal>i{width:8px;height:8px;margin-top:.2rem;border-radius:50%;background:#615bd7}.dashboard-signal:nth-of-type(3)>i{background:#4db99c}.dashboard-signal div>b{font-size:.54rem}.dashboard-signal p{margin-top:.17rem;color:#858da0;font-size:.41rem;line-height:1.5}.dashboard-signal>strong{padding:.24rem .36rem;border-radius:5px;color:#6258cf;background:#f0efff;font-size:.38rem}.dashboard-summary{display:flex;gap:.65rem;margin:1rem;padding:.85rem;border-radius:12px;background:linear-gradient(120deg,#f0efff,#edfaff)}.dashboard-summary>span{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;color:#fff;background:linear-gradient(135deg,#6858d8,#50b9ae);font-size:.65rem}.dashboard-summary div{flex:1}.dashboard-summary b{font-size:.55rem}.dashboard-summary p{margin-top:.28rem;color:#7d8699;font-size:.42rem;line-height:1.5}.dashboard-summary-list{margin:0 1rem 1rem}.dashboard-summary-list p{padding:.62rem 0;border-top:1px solid #edf0f4}.dashboard-summary-list span,.dashboard-summary-list b{display:block}.dashboard-summary-list span{color:#6659d9;font-size:.36rem;font-weight:800}.dashboard-summary-list b{margin-top:.2rem;font-size:.44rem;line-height:1.45}@media(max-width:620px){.dashboard-metric-row{grid-template-columns:1fr}.dashboard-chart p{grid-template-columns:72px 1fr 24px}}
 
 /* Member ranking story screen */
@@ -170,3 +174,161 @@
 .pf-hero-top-card{position:absolute;z-index:4;top:1.3rem;left:-1.15rem;width:205px;padding:1rem 1.05rem;border:1px solid rgba(255,255,255,.78);border-radius:17px;background:rgba(255,255,255,.86);box-shadow:0 18px 40px rgba(41,57,112,.2);backdrop-filter:blur(18px)}.pf-hero-top-card small,.pf-hero-top-card b{display:block}.pf-hero-top-card small{color:#596edd;font-size:.46rem;font-weight:850;letter-spacing:.09em}.pf-hero-top-card b{margin-top:.42rem;color:#252a46;font-size:.82rem}.pf-hero-top-card p{margin-top:.38rem;color:#747e93;font-size:.54rem;line-height:1.5}.pf-hero-top-card footer{display:flex;align-items:center;gap:.5rem;margin-top:.8rem}.pf-hero-top-card footer>span{flex:1;height:6px;overflow:hidden;border-radius:999px;background:#e9edf5}.pf-hero-top-card footer i{display:block;width:var(--progress);height:100%;border-radius:inherit;background:linear-gradient(90deg,#4569e7,#7c61e9)}.pf-hero-top-card footer strong{color:#5064d8;font-size:.58rem}@media(max-width:1150px){.pf-hero-top-card{left:.8rem}}@media(max-width:620px){.pf-hero-top-card{position:relative;top:auto;left:auto;width:100%;margin-top:.75rem}}
 .theme-tasks .pf-screen:not(.is-compact) .pf-title h3{font-size:1.55rem}.theme-tasks .pf-screen:not(.is-compact) .pf-title small{font-size:.62rem}.theme-tasks .pf-screen:not(.is-compact) .pf-title p{font-size:.72rem}.theme-tasks .pf-screen:not(.is-compact) .pf-title button{padding:.78rem 1rem;font-size:.7rem}.theme-tasks .pf-screen:not(.is-compact) .pf-toolbar>span{padding:.68rem .82rem;font-size:.65rem}.theme-tasks .pf-screen:not(.is-compact) .task-table header{font-size:.61rem}.theme-tasks .pf-screen:not(.is-compact) .task-table article{padding:.78rem .82rem;font-size:.63rem}.theme-tasks .pf-screen:not(.is-compact) .task-table article>span:first-child small{font-size:.52rem}.theme-tasks .pf-screen:not(.is-compact) .task-table strong{font-size:.6rem}.theme-tasks .pf-screen:not(.is-compact) .task-table mark{font-size:.52rem}.theme-tasks .pf-screen:not(.is-compact) .task-table .pf-avatar{width:28px;height:28px;font-size:.48rem}
 .theme-projects .pf-screen:not(.is-compact) .pf-title h3{font-size:1.55rem}.theme-projects .pf-screen:not(.is-compact) .pf-title small{font-size:.62rem}.theme-projects .pf-screen:not(.is-compact) .pf-title p{font-size:.72rem}.theme-projects .pf-screen:not(.is-compact) .pf-title button{padding:.78rem 1rem;font-size:.7rem}.theme-projects .pf-screen:not(.is-compact) .pf-toolbar>span{padding:.68rem .82rem;font-size:.65rem}.theme-projects .pf-screen:not(.is-compact) .pf-table header{font-size:.61rem}.theme-projects .pf-screen:not(.is-compact) .pf-table article{padding:.78rem .82rem;font-size:.63rem}.theme-projects .pf-screen:not(.is-compact) .pf-table strong{font-size:.6rem}.theme-projects .pf-screen:not(.is-compact) .pf-table mark{font-size:.52rem}.theme-projects .pf-screen:not(.is-compact) .pf-table em{font-size:.52rem}
+
+/* Deprecated overlapping preview-corner experiments.  Keep this section inert;
+   the single, deterministic clip below owns the Sundial frame. */
+@media not all {
+.pf-screen :is(.sundial-logo,.pf-brand-minimal){border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important}
+.pf-screen :is(.sundial-logo,.pf-brand-minimal)>img{display:block;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;filter:none!important}
+.pf-screen .sundial-logo>img{width:42px;height:34px;flex:none;object-fit:contain}
+.pf-page .screen-automatic-activity-tracking{overflow:hidden!important;border:0!important;border-radius:27px!important;outline:0!important;background:#fff!important;background-clip:padding-box!important;box-shadow:none!important;clip-path:none!important;contain:paint;-webkit-mask-image:none!important}
+.pf-page .screen-automatic-activity-tracking .sundial-content-wrapper,
+.pf-page .screen-automatic-activity-tracking .sundial-overlay{position:absolute!important;inset:0!important;width:auto!important;height:auto!important;overflow:hidden!important;border-radius:inherit!important;background-clip:padding-box!important;clip-path:none!important;contain:paint!important;-webkit-mask-image:none!important}
+.pf-page .pf-hero-product{isolation:isolate;background:transparent!important}
+.pf-page .pf-story-screen{overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;clip-path:none;contain:none;-webkit-mask-image:none}
+.theme-automatic-activity-tracking .pf-story>.screen-automatic-activity-tracking{width:min(100%,820px);margin-inline:auto}
+.theme-automatic-activity-tracking .pf-story>.screen-view-activities{aspect-ratio:1.28}
+.theme-automatic-activity-tracking .pf-story>.screen-view-general-settings{aspect-ratio:1.38}
+.theme-automatic-activity-tracking .pf-story>.screen-view-schedule{aspect-ratio:1.42}
+.theme-automatic-activity-tracking,.theme-automatic-activity-tracking .pf-stories,.theme-automatic-activity-tracking .pf-story{background:transparent!important}
+.pf-page{--pf-preview-radius:4rem}
+.screen-automatic-activity-tracking .sundial-overlay{border-radius:var(--pf-preview-radius)!important}
+.screen-automatic-activity-tracking .sundial-sidebar{border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;overflow:hidden!important}
+.screen-automatic-activity-tracking .sundial-content{border-radius:0 var(--pf-preview-radius) var(--pf-preview-radius) 0!important;overflow:hidden!important}
+.pf-page .pf-screen .pf-sidebar{border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important}
+.pf-page .pf-screen .pf-app-main{border-radius:0 var(--pf-preview-radius) var(--pf-preview-radius) 0!important;overflow:hidden!important;clip-path:inset(0 round 0 var(--pf-preview-radius) var(--pf-preview-radius) 0)!important}
+.pf-page .pf-screen{border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius))!important;contain:paint}
+.pf-page :is(.pf-tracked-story-screen,.pf-logged-story-screen,.pf-distribution-story-screen,.pf-task-story-screen,.pf-dashboard-story-screen,.pf-capture-story-screen,.pf-story-saas-screen,.pf-motion-screen-panel){border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius))!important}
+
+/* The dashboard preview is made of independent painted panels.  Clip each
+   painted surface, not only its parent, so no rectangular sidebar can show
+   through the lower-left curve. */
+.pf-page .pf-screen{border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;isolation:isolate!important;clip-path:inset(0 round var(--pf-preview-radius))!important}
+.pf-page .pf-screen>.pf-sidebar{border-top-left-radius:var(--pf-preview-radius)!important;border-bottom-left-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important}
+.pf-page .pf-screen>.pf-app-main{border-top-right-radius:var(--pf-preview-radius)!important;border-bottom-right-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round 0 var(--pf-preview-radius) var(--pf-preview-radius) 0)!important}
+.pf-page .screen-automatic-activity-tracking,.pf-page .screen-automatic-activity-tracking .sundial-content-wrapper,.pf-page .screen-automatic-activity-tracking .sundial-overlay{border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius))!important}
+.pf-page .screen-automatic-activity-tracking .sundial-sidebar{border-top-left-radius:var(--pf-preview-radius)!important;border-bottom-left-radius:var(--pf-preview-radius)!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important}
+.pf-page .screen-automatic-activity-tracking .sundial-content{border-top-right-radius:var(--pf-preview-radius)!important;border-bottom-right-radius:var(--pf-preview-radius)!important;clip-path:inset(0 round 0 var(--pf-preview-radius) var(--pf-preview-radius) 0)!important}
+.pf-page .pf-hero-product{position:relative!important;border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius))!important}
+/* A mask on the actual full-height paint layers guarantees the lower-left
+   quarter is transparent, including in browsers that do not clip grid
+   children to their parent's radius. */
+.pf-page .pf-screen,.pf-page .screen-automatic-activity-tracking .sundial-content-wrapper,.pf-page .screen-automatic-activity-tracking .sundial-overlay{--pf-left-corner:radial-gradient(circle var(--pf-preview-radius) at 0 100%,transparent calc(var(--pf-preview-radius) - 1px),#000 var(--pf-preview-radius));-webkit-mask-image:var(--pf-left-corner)!important;mask-image:var(--pf-left-corner)!important;-webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;-webkit-mask-size:100% 100%!important;mask-size:100% 100%!important}
+
+/* Sundial: one canvas owns all four outer corners. */
+main.pf-page .screen-automatic-activity-tracking{position:relative!important;border-radius:var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:transparent!important}
+main.pf-page .screen-automatic-activity-tracking>.sundial-content-wrapper{position:absolute!important;inset:0!important;display:block!important;border-radius:inherit!important;overflow:hidden!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:transparent!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-overlay{position:absolute!important;inset:0!important;display:grid!important;grid-template:1fr / 35.5% 1fr!important;border-radius:inherit!important;overflow:hidden!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:radial-gradient(circle at 20% 20%,rgba(139,178,255,.18),transparent 34%),radial-gradient(circle at 90% 15%,rgba(247,192,207,.18),transparent 34%),linear-gradient(145deg,#f7f9ff,#fbf8fc)!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar{grid-column:1!important;grid-row:1!important;border-radius:0!important;clip-path:none!important;overflow:hidden!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-content{grid-column:2!important;grid-row:1!important;border-radius:0!important;clip-path:none!important;overflow:hidden!important}
+main.pf-page .screen-automatic-activity-tracking{clip-path:url(#sundial-preview-clip)!important}
+.sundial-corner-clip{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+/* Literal outline for the visible Sundial canvas: rounded on every outer edge. */
+main.pf-page .screen-automatic-activity-tracking,main.pf-page .screen-automatic-activity-tracking>.sundial-content-wrapper,main.pf-page .screen-automatic-activity-tracking .sundial-overlay{clip-path:polygon(6% 0,94% 0,97% .5%,99% 2%,100% 6%,100% 94%,99% 98%,97% 99.5%,94% 100%,6% 100%,3% 99.5%,1% 98%,0 94%,0 6%,1% 2%,3% .5%)!important}
+/* The white sidebar is the layer that was still square: clip it explicitly. */
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar{clip-path:polygon(12% 0,100% 0,100% 100%,12% 100%,6% 99%,2% 96%,0 88%,0 12%,2% 4%,6% 1%)!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar{border-top-left-radius:var(--pf-preview-radius)!important;border-bottom-left-radius:var(--pf-preview-radius)!important;background-clip:padding-box!important;overflow:hidden!important}
+/* Physical lower-left crop for the sidebar surface. */
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar{position:relative!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar::after{position:absolute;z-index:5;bottom:0;left:0;width:var(--pf-preview-radius);height:var(--pf-preview-radius);border-top-right-radius:var(--pf-preview-radius);background:#efedfd;content:'';pointer-events:none}
+/* Do not leave a rectangular overlay behind the cropped sidebar. */
+main.pf-page .screen-automatic-activity-tracking .sundial-overlay{background:transparent!important}
+/* The overlay owns the pale backing background: crop its left edge itself. */
+main.pf-page .screen-automatic-activity-tracking .sundial-overlay{border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important;background:radial-gradient(circle at 20% 20%,rgba(139,178,255,.18),transparent 34%),radial-gradient(circle at 90% 15%,rgba(247,192,207,.18),transparent 34%),linear-gradient(145deg,#f7f9ff,#fbf8fc)!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-activities-info-section{border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;overflow:hidden!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important;background:transparent!important}
+/* The white <aside> is also a paint layer, so crop its own left edge. */
+main.pf-page .screen-automatic-activity-tracking aside.sundial-sidebar{border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;overflow:hidden!important;background-clip:padding-box!important;clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important}
+main.pf-page .screen-automatic-activity-tracking .sundial-sidebar-corner{position:absolute!important;z-index:99!important;bottom:0!important;left:0!important;display:block!important;width:var(--pf-preview-radius)!important;height:var(--pf-preview-radius)!important;border-top-right-radius:var(--pf-preview-radius)!important;background:#efedfd!important;content:'';pointer-events:none!important}
+}
+
+/* One physical frame clips every Sundial paint layer.  The sidebar itself
+   has the same left radius as the outer frame, so it cannot leave a square
+   white or lavender rectangle behind either left corner. */
+:is(.pf-page,.productivity-page){--pf-preview-radius:2rem}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  border:0;
+  border-radius:var(--pf-preview-radius);
+  background:transparent;
+  box-shadow:0 24px 52px rgba(67,58,128,.18);
+  isolation:isolate;
+}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking>.sundial-content-wrapper{
+  position:absolute;
+  inset:0;
+  display:block;
+  overflow:hidden;
+  border-radius:inherit;
+  background:transparent;
+}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking .sundial-overlay{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template:1fr / 35.5% 1fr;
+  overflow:hidden;
+  border-radius:inherit;
+  background:radial-gradient(circle at 20% 20%,rgba(139,178,255,.18),transparent 34%),radial-gradient(circle at 90% 15%,rgba(247,192,207,.18),transparent 34%),linear-gradient(145deg,#f7f9ff,#fbf8fc);
+}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking .sundial-sidebar{
+  grid-column:1;
+  grid-row:1;
+  position:relative;
+  overflow:hidden;
+  border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius);
+  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(250,250,255,.93));
+}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking .sundial-content{
+  grid-column:2;
+  grid-row:1;
+  overflow:hidden;
+  border-radius:0 var(--pf-preview-radius) var(--pf-preview-radius) 0;
+}
+:is(.pf-page,.productivity-page) .screen-automatic-activity-tracking .sundial-activities-info-section{display:none}
+
+/* The main Productivity page uses a different root class.  Apply the clip to
+   every painted layer there as well, rather than relying on ancestor overflow. */
+.productivity-page .screen-automatic-activity-tracking,
+.productivity-page .screen-automatic-activity-tracking>.sundial-content-wrapper,
+.productivity-page .screen-automatic-activity-tracking .sundial-overlay{
+  border-radius:var(--pf-preview-radius)!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round var(--pf-preview-radius))!important;
+}
+.productivity-page .screen-automatic-activity-tracking .sundial-sidebar{
+  border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important;
+}
+.productivity-page .screen-automatic-activity-tracking .sundial-content{
+  border-radius:0 var(--pf-preview-radius) var(--pf-preview-radius) 0!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round 0 var(--pf-preview-radius) var(--pf-preview-radius) 0)!important;
+}
+
+/* Match the same tighter frame on the Ralvie workspace previews. */
+.productivity-page .pf-screen{
+  border-radius:var(--pf-preview-radius)!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round var(--pf-preview-radius))!important;
+}
+.productivity-page .pf-screen>.pf-sidebar{
+  border-radius:var(--pf-preview-radius) 0 0 var(--pf-preview-radius)!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round var(--pf-preview-radius) 0 0 var(--pf-preview-radius))!important;
+}
+.productivity-page .pf-screen>.pf-app-main{
+  border-radius:0 var(--pf-preview-radius) var(--pf-preview-radius) 0!important;
+  overflow:hidden!important;
+  clip-path:inset(0 round 0 var(--pf-preview-radius) var(--pf-preview-radius) 0)!important;
+}
+
+/* Project mapping: lead with the message, then show the workspace. */
+.theme-projects .pf-hero-grid{grid-template-columns:minmax(0,.83fr) minmax(620px,1.17fr)}
+.theme-projects .pf-hero-copy{order:1}
+.theme-projects .pf-hero-product{order:2}
+.pf-screen :is(.sundial-logo,.pf-brand-minimal){border:0;outline:0;background:transparent;box-shadow:none}
+.pf-screen :is(.sundial-logo,.pf-brand-minimal)>img{display:block;border:0;outline:0;background:transparent;box-shadow:none;filter:none}
+.pf-screen .sundial-logo>img{width:42px;height:34px;flex:none;object-fit:contain}

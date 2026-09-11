@@ -23,25 +23,73 @@ const steps = [
 ];
 ---
 
-<section id="how-it-works" class="section relative">
+<section id="how-it-works" class="frontdesk-launch-flow section relative">
   <div class="container-page">
     <div class="section-head reveal">
       <p class="chip text-label-sm">From setup to launch</p>
       <h2 class="text-headline-lg text-on-surface">Launch an AI Frontdesk Built Around Your Business</h2>
     </div>
 
-    <div class="reveal grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-4">
+    <div class="launch-steps reveal">
       {steps.map((step, i) => (
-        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div class="flex w-full items-center gap-2">
-            <span class="node-dot h-10 w-10 shrink-0 text-body-md font-semibold text-secondary">{i + 1}</span>
-            {i < steps.length - 1 && <div class="flow-line hidden flex-1 lg:block"></div>}
+        <article class:list={['launch-step', i === 0 && 'is-active']} data-launch-step>
+          <div class="launch-step-rail" aria-hidden="true">
+            <span class="launch-step-number">0{i + 1}</span>
+            {i < steps.length - 1 && <i class="launch-connector" aria-hidden="true"></i>}
           </div>
-          <p class="text-label-sm mt-4 text-on-surface-variant/60">Step 0{i + 1}</p>
-          <h3 class="text-body-lg mt-1 font-semibold text-on-surface">{step.title}</h3>
-          <p class="text-body-md mt-3 text-on-surface-variant">{step.description}</p>
-        </div>
+          <div class="launch-step-card">
+            <p class="launch-step-label">Step 0{i + 1}</p>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </article>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.frontdesk-launch-flow').forEach((flow) => {
+    const steps = [...flow.querySelectorAll('[data-launch-step]')];
+    if (steps.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let activeIndex = 0;
+    window.setInterval(() => {
+      steps[activeIndex].classList.remove('is-active');
+      activeIndex = (activeIndex + 1) % steps.length;
+      steps[activeIndex].classList.add('is-active');
+    }, 3000);
+  });
+</script>
+
+<style>
+  .frontdesk-launch-flow {
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 14% 84%, rgb(87 67 208 / 18%), transparent 31%),
+      radial-gradient(circle at 88% 16%, rgb(48 126 228 / 16%), transparent 28%),
+      #070b20;
+  }
+
+  .frontdesk-launch-flow :global(.section-head) { max-width: 820px; }
+  .frontdesk-launch-flow :global(.text-on-surface) { color: #f1f3ff; }
+  .frontdesk-launch-flow :global(.chip) { border-color: rgb(142 154 255 / 42%); background: rgb(101 91 226 / 14%); color: #bbc5ff; }
+
+  .launch-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+  .launch-step { position: relative; min-width: 0; padding-top: 4.25rem; }
+  .launch-step-card { min-height: 100%; padding: 1.25rem; border: 1px solid rgb(126 139 207 / 18%); border-radius: 18px; background: linear-gradient(145deg, rgb(17 23 57 / 78%), rgb(8 12 33 / 92%)); box-shadow: inset 0 1px rgb(255 255 255 / 4%), 0 14px 30px rgb(0 0 0 / 16%); transition: border-color .45s ease, background .45s ease, box-shadow .45s ease, transform .45s ease; }
+  .launch-step.is-active .launch-step-card { border-color: rgb(139 129 255 / 72%); background: linear-gradient(145deg, rgb(57 55 137 / 68%), rgb(17 21 58 / 94%)); box-shadow: inset 0 1px rgb(216 220 255 / 16%), 0 18px 38px rgb(43 42 157 / 32%), 0 0 28px rgb(106 97 255 / 22%); transform: translateY(-7px); }
+  .launch-step-rail { position: absolute; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 2.75rem; }
+  .launch-step-number { position: relative; z-index: 2; display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgb(130 145 221 / 30%); border-radius: 50%; background: #161d49; color: #9eaeff; font-size: .82rem; font-weight: 800; transition: color .45s ease, background .45s ease, box-shadow .45s ease; }
+  .launch-step.is-active .launch-step-number { border-color: transparent; background: linear-gradient(135deg, #6472f2, #8a63e9); color: white; box-shadow: 0 0 0 8px rgb(101 113 244 / 12%), 0 8px 20px rgb(88 92 240 / 42%); }
+  .launch-connector { position: absolute; z-index: 1; top: calc(50% - 1px); left: calc(50% + 1.375rem); width: calc(100% - 1.5rem); height: 2px; overflow: hidden; background: rgb(115 131 211 / 22%); }
+  .launch-connector::after { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #6f7eff, #a471f3); box-shadow: 0 0 12px rgb(125 117 255 / 80%); content: ''; }
+  .launch-step.is-active .launch-connector::after { animation: launch-connector-fill 3s linear forwards; }
+  .launch-step-label { margin-top: 1.3rem; color: #8d98be; font: 800 .65rem/1 var(--font-label); letter-spacing: .1em; text-transform: uppercase; }
+  .launch-step h3 { margin-top: .5rem; color: #f0f2ff; font-size: 1rem; font-weight: 700; line-height: 1.3; }
+  .launch-step-card > p:last-child { margin-top: .85rem; color: #aab3d1; font-size: .75rem; line-height: 1.6; }
+
+  @keyframes launch-connector-fill { from { width: 0; } to { width: 100%; } }
+  @media (max-width: 1024px) { .launch-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .launch-connector { display: none; } }
+  @media (max-width: 620px) { .launch-steps { grid-template-columns: 1fr; margin-top: 2.5rem; } .launch-step-card { padding: 1.1rem; } }
+  @media (prefers-reduced-motion: reduce) { .launch-step-card { transition: none; } .launch-step.is-active .launch-step-card { transform: none; } .launch-connector::after { animation: none; } }
+</style>

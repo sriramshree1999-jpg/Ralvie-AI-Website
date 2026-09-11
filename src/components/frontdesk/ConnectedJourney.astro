@@ -12,19 +12,27 @@ const channels = [
 ];
 
 const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation', 'Support'];
+const randomMotion = () => `${(4.3 + Math.random() * 3.2).toFixed(2)}s`;
+const randomStart = () => `-${(Math.random() * 6.5).toFixed(2)}s`;
+const signalMotions = Array.from({ length: 6 }, () => ({
+  incomingDuration: randomMotion(),
+  incomingStart: randomStart(),
+  outgoingDuration: randomMotion(),
+  outgoingStart: randomStart(),
+  radius: (4.5 + Math.random() * 2.5).toFixed(1),
+}));
 ---
 
 <section class="section relative">
   <div class="container-page">
-    <div class="section-head connected-journey-head reveal">
-      <p class="chip text-label-sm">Unified customer experience</p>
-      <h2 class="text-headline-lg text-on-surface lg:whitespace-nowrap">
-        Six Customer Channels. One Connected Experience.
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-12">
+    <div class="connected-journey-layout grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-12">
       <div class="reveal">
+        <div class="section-head connected-journey-head">
+          <p class="chip text-label-sm">Unified customer experience</p>
+          <h2 class="text-headline-lg text-on-surface lg:whitespace-nowrap">
+            Six Customer Channels. One Connected Experience.
+          </h2>
+        </div>
         <div class="space-y-5">
           <p class="text-body-lg text-on-surface-variant">
             Every Ralvie channel works with the same business knowledge, customer context and automation rules.
@@ -45,7 +53,18 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
       <div class="reveal glass-card intelligence-card">
         <div class="intelligence-map">
           <svg class="intelligence-connections" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-            {[50, 150, 250, 350, 450, 550].map((y) => <><line x1="0" y1={y} x2="500" y2="300" /><line x1="1000" y1={y} x2="500" y2="300" /></>)}
+            {[50, 150, 250, 350, 450, 550].map((y, index) => <>
+              <path d={`M 0 ${y} L 225 ${y} Q 375 ${y} 500 300`} />
+              <path d={`M 1000 ${y} L 775 ${y} Q 625 ${y} 500 300`} />
+              <circle class="intelligence-signal" r={signalMotions[index].radius}>
+                <animateMotion dur={signalMotions[index].incomingDuration} begin={signalMotions[index].incomingStart} repeatCount="indefinite" path={`M 0 ${y} L 225 ${y} Q 375 ${y} 500 300`} />
+                <animate attributeName="opacity" values="0;.9;1;.75;0" keyTimes="0;.14;.52;.84;1" dur={signalMotions[index].incomingDuration} begin={signalMotions[index].incomingStart} repeatCount="indefinite" />
+              </circle>
+              <circle class="intelligence-signal" r={signalMotions[index].radius}>
+                <animateMotion dur={signalMotions[index].outgoingDuration} begin={signalMotions[index].outgoingStart} repeatCount="indefinite" path={`M 500 300 Q 625 ${y} 775 ${y} L 1000 ${y}`} />
+                <animate attributeName="opacity" values="0;.75;1;.9;0" keyTimes="0;.17;.47;.82;1" dur={signalMotions[index].outgoingDuration} begin={signalMotions[index].outgoingStart} repeatCount="indefinite" />
+              </circle>
+            </>)}
           </svg>
           <div class="intelligence-stack intelligence-channels">
             {channels.map((channel) => (
@@ -82,7 +101,16 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
 <style>
   .connected-journey-head {
     max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    padding-top: 2.5rem;
+    text-align: left;
   }
+
+  .connected-journey-layout > :first-child { order: 2; }
+  .connected-journey-layout > :last-child { order: 1; }
 
   .intelligence-card {
     min-height: 540px;
@@ -93,6 +121,12 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
       0 0 36px rgb(72 101 255 / 17%),
       0 0 62px rgb(171 63 255 / 8%),
       0 18px 50px rgb(2 5 18 / 24%);
+  }
+
+  @media (max-width: 1024px) {
+    .connected-journey-head { width: 100%; margin-left: 0; padding-top: 1.5rem; text-align: center; }
+    .connected-journey-layout > :first-child,
+    .connected-journey-layout > :last-child { order: initial; }
   }
 
   .intelligence-map {
@@ -113,11 +147,21 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
     overflow: visible;
   }
 
-  .intelligence-connections line {
-    stroke: rgb(145 163 255 / 30%);
-    stroke-width: 1.5;
+  .intelligence-connections path {
+    fill: none;
+    stroke: rgb(145 163 255 / 38%);
+    stroke-width: 1.8;
     stroke-linecap: round;
     filter: drop-shadow(0 0 5px rgb(108 118 255 / 22%));
+  }
+
+  .intelligence-signal {
+    fill: #a9b7ff;
+    filter: drop-shadow(0 0 5px rgb(156 177 255 / 95%)) drop-shadow(0 0 13px rgb(97 106 255 / 70%));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intelligence-signal animateMotion { display: none; }
   }
 
   .intelligence-stack {
@@ -128,15 +172,93 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
   }
 
   .intelligence-stack .chip {
-    width: max-content;
+    width: min(100%, 210px);
+    min-height: 54px;
     max-width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgb(119 106 220 / 36%) !important;
+    border-radius: 999px !important;
     position: relative;
     z-index: 1;
-    background: rgb(14 22 58 / 74%);
+    background: linear-gradient(105deg, rgb(8 14 39 / 98%), rgb(17 14 54 / 98%)) !important;
+    box-shadow:
+      inset 0 1px 0 rgb(195 208 255 / 13%),
+      0 8px 18px rgb(2 8 35 / 25%),
+      0 0 16px rgb(112 91 255 / 14%);
+    backdrop-filter: blur(8px);
+    color: rgb(218 226 255 / 92%);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .intelligence-stack .chip:hover {
+    border-color: rgb(152 175 255 / 72%);
+    box-shadow:
+      inset 0 1px 0 rgb(225 232 255 / 20%),
+      0 10px 24px rgb(2 8 35 / 34%),
+      0 0 22px rgb(74 111 255 / 24%);
+    transform: translateY(-2px);
+  }
+
+  .intelligence-channels .chip :global(svg) {
+    color: #9cb4ff;
+    filter: drop-shadow(0 0 5px rgb(111 142 255 / 46%));
+  }
+
+  .intelligence-channels .chip {
+    width: calc(100% - 2rem) !important;
+    max-width: none !important;
+    margin-inline: 1rem;
+  }
+
+  .intelligence-actions .chip {
+    justify-content: flex-end;
+    text-align: right;
+    width: calc(100% - 2rem);
+    margin-inline: 1rem;
+    background:
+      linear-gradient(105deg, rgb(8 14 39 / 98%), rgb(17 14 54 / 98%)) !important;
+    border-color: rgb(119 106 220 / 42%) !important;
   }
 
   .intelligence-actions {
     justify-items: end;
+  }
+
+  .intelligence-actions .chip {
+    margin-right: 1rem;
+  }
+
+  /* Reference-style compact capsules; icons remain visible. */
+  .intelligence-stack .chip {
+    width: max-content !important;
+    min-width: 180px;
+    min-height: 58px;
+    justify-content: center;
+    padding: 0.9rem 1.5rem;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: #070c28 !important;
+    box-shadow: inset 0 0 0 1px rgb(122 105 223 / 28%), 0 8px 18px rgb(0 0 0 / 18%);
+  }
+
+  .intelligence-actions .chip {
+    text-align: center;
+    margin-inline: 0;
+  }
+
+  .intelligence-stack .chip {
+    width: max-content !important;
+    min-width: 0;
+    margin-inline: 0 !important;
+    margin-block: 0.35rem;
+    padding: 0.9rem 1.6rem !important;
+    box-shadow:
+      inset 0 0 0 1px rgb(122 105 223 / 26%),
+      0 10px 22px rgb(0 0 0 / 34%),
+      0 5px 18px rgb(78 62 190 / 20%) !important;
   }
 
   .intelligence-core {
@@ -167,6 +289,7 @@ const actions = ['Booking', 'Routing', 'Lead capture', 'Follow-up', 'Automation'
     .intelligence-connections { display: none; }
     .intelligence-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
     .intelligence-stack .chip { width: 100%; }
+    .intelligence-channels .chip { width: calc(100% - 1rem) !important; margin-inline: 0.5rem; }
     .intelligence-actions { justify-items: start; }
     .intelligence-core { order: -1; min-height: 140px; }
   }
