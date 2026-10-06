@@ -111,12 +111,12 @@ export default function MyScene() {
 
 ## ✍️ Blog CMS (Sanity)
 
-The blog at `/blog` reads posts from Sanity. There's a separate Studio app in `studio/` where you write content — it is not deployed to Cloudflare, it runs on Sanity's own hosting (free tier).
+The blog at `/blog` reads posts from Sanity. The separate Studio app lives alongside this site in `../studio-ralvie-ai/`, where you write content. It is not deployed to Cloudflare; it runs on Sanity's own hosting (free tier).
 
 ### 1. Create a Sanity project
 
 ```bash
-cd studio
+cd ../studio-ralvie-ai
 npx sanity@latest login
 npx sanity@latest init --env
 ```
@@ -124,20 +124,20 @@ npx sanity@latest init --env
 - Choose **Create new project**, give it a name (e.g. "Ralvie AI").
 - Dataset: `production`.
 - When asked to add configuration files, say no (they already exist here).
-- This writes your **Project ID** into `studio/.env` — copy it.
+- This writes your **Project ID** into `studio-ralvie-ai/.env` — copy it.
 
 ### 2. Point the main site at your project
 
-In the site root (`ralvie-ai-website/`, not `studio/`), copy `.env.example` to `.env` and fill in:
+In the site root (`ralvie-ai-website/`, not `studio-ralvie-ai/`), copy `.env.example` to `.env` and fill in:
 ```
-SANITY_PROJECT_ID=<paste the project ID from studio/.env>
+SANITY_PROJECT_ID=<paste the project ID from studio-ralvie-ai/.env>
 SANITY_DATASET=production
 ```
 
 ### 3. Run the Studio locally to write posts
 
 ```bash
-cd studio
+cd ../studio-ralvie-ai
 npm install
 npm run dev
 ```
@@ -147,7 +147,7 @@ Opens at `http://localhost:3333`. Create **Post** documents there — title, slu
 ### 4. Deploy the Studio (so you can edit content from anywhere, not just your laptop)
 
 ```bash
-cd studio
+cd ../studio-ralvie-ai
 npm run deploy
 ```
 
