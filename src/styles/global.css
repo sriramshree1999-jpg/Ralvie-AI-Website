@@ -811,7 +811,7 @@ main[class~="pt-(--header-height)"] {
 
 /* ============================================================
    Frontdesk page refinements — scoped to `.frontdesk-page` (set on
-   <main> in frontdesk.astro) so the homepage and blog keep their
+   <main> in frontdesk.astro) so the homepage keeps its
    existing type scale and rhythm untouched.
    ============================================================ */
 

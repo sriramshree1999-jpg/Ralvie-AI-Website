@@ -57,7 +57,10 @@ const getStarted = [
   { label: 'Book a Demo', href: '/book-demo/', external: false },
   { label: 'Contact us', href: '/contact', external: false },
 ];
-const company: string[] = [];
+const company = [
+  { label: 'Privacy Policy', href: '/privacy-policy/', external: false },
+  { label: 'Terms & Conditions', href: '/terms-and-conditions/', external: false },
+];
 
 const productivityLinks: Record<string, string> = {
   '24/7 Customer Support': '/frontdesk/use-cases/24-7-customer-support',
@@ -96,10 +99,8 @@ const hrefFor = (link: string) =>
         ? '/ai-email-manager'
         : link === 'AI Web Voicebot'
           ? '/ai-web-voicebot'
-          : link === 'Website Forms'
-            ? '/ai-website-forms'
-            : link === 'Blogs'
-              ? '/blog'
+            : link === 'Website Forms'
+              ? '/ai-website-forms'
               : '#');
 ---
 
@@ -173,37 +174,12 @@ const hrefFor = (link: string) =>
           ))
         }
       </ul>
-      <div class="footer__group footer__group--secondary footer__column--removed">
-        <h2>Get Started</h2>
-        <ul>{getStarted.map((item) => <li><a href={item.href}>{item.label}{item.external && <span class="footer__external" aria-hidden="true">↗</span>}</a></li>)}</ul>
-      </div>
-    </div>
-
-    <div class="footer__column footer__column--removed">
-      <h2>Get Started</h2>
-      <ul>
-        {
-          getStarted.map((item) => (
-            <li>
-              <a href={item.href}>
-                {item.label}
-                {item.external && (
-                  <span class="footer__external" aria-hidden="true">
-                    ↗
-                  </span>
-                )}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
       <div class="footer__group footer__group--secondary">
-        <h2>Company</h2><ul>
+        <h2>Company</h2>
+        <ul>
           {
-            company.map((link) => (
-              <li>
-                <a href="#">{link}</a>
-              </li>
+            company.map((item) => (
+              <li><a href={item.href}>{item.label}</a></li>
             ))
           }
         </ul>

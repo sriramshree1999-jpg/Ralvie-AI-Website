@@ -8,10 +8,11 @@ const pages = [
   '/ai-web-voicebot/',
   '/ai-website-chatbot/',
   '/ai-website-forms/',
-  '/blog/',
   '/book-demo/',
   '/contact/',
   '/frontdesk/',
+  '/frontdesk-privacy-policy/',
+  '/frontdesk-terms-and-conditions/',
   '/frontdesk/industries/education-institutions/',
   '/frontdesk/industries/financial-services/',
   '/frontdesk/industries/healthcare-clinics/',
@@ -24,6 +25,7 @@ const pages = [
   '/frontdesk/use-cases/multilingual-support/',
   '/frontdesk/use-cases/smart-call-routing/',
   '/pricing/',
+  '/privacy-policy/',
   '/productivity/',
   '/productivity/automatic-activity-tracking/',
   '/productivity/dashboard/',
@@ -41,6 +43,7 @@ const pages = [
   '/productivity/use-cases/project-management/',
   '/productivity/use-cases/task-management/',
   '/productivity/use-cases/time-tracking/',
+  '/terms-and-conditions/',
 ];
 
 export const GET: APIRoute = () => {

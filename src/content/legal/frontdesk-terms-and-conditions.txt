@@ -1,0 +1,299 @@
+Ralvie AI Inc. — Ralvie Frontdesk
+Effective Date: January 5, 2026
+These Terms and Conditions ("Terms") constitute a legally binding agreement between Ralvie AI Inc. ("Ralvie," "Company," "we," "us," or "our") and the individual or organization ("Customer," "User," "you," or "your") accessing or using Ralvie Frontdesk.
+Ralvie AI Inc. is incorporated under the Business Corporations Act of Ontario, Canada, with Ontario Corporation Number 1000631176.
+These Terms govern access to and use of:
+- Website: [https://ralvie.ai](https://ralvie.ai/ "https://ralvie.ai/")
+- Application: [https://app.frontdesk.ralvie.ai](https://app.frontdesk.ralvie.ai/ "https://app.frontdesk.ralvie.ai/")
+- Related Ralvie Frontdesk software, APIs, communication services, and integrations.
+By registering, subscribing, or using the Services, you agree to comply with these Terms and the Ralvie Frontdesk Privacy Policy.
+If you enter into this agreement on behalf of an organization, you represent that you have the authority to legally bind that organization.
+If you do not agree to these Terms, you must not access or use the Services.
+Ralvie Frontdesk is an AI-powered customer communication and business automation platform.
+Depending on the subscribed plan, the Services may include:
+- 24/7 AI voice receptionists.
+- Automated inbound call answering.
+- Authorized outbound calling.
+- AI-powered website chatbots.
+- Web voice interactions.
+- SMS notifications and follow-ups.
+- Appointment scheduling and booking assistance.
+- Lead capture and qualification.
+- Customer inquiry management.
+- Multilingual voice and text interactions.
+- Call routing and live transfers.
+- AI knowledge-base management.
+- CRM and third-party integrations.
+- Workflow automation.
+- Communication analytics and reporting.
+- API-based business integrations.
+Service availability, usage allowances, and functionality may vary depending on the Customer's subscription, location, and configuration.
+Ralvie AI Inc. may update, improve, modify, or discontinue features in accordance with applicable legal and contractual obligations.
+To register for or use Ralvie Frontdesk, you must:
+- Be at least 18 years old.
+- Have the legal capacity to enter into binding agreements.
+- Provide accurate and complete registration information.
+- Maintain accurate account details.
+- Comply with applicable laws and these Terms.
+Customers are responsible for maintaining the confidentiality of their account credentials and securing access to their accounts.
+Customers are responsible for activities performed by their authorized users.
+Unauthorized account access or security concerns should be reported promptly to Ralvie AI Inc.
+Customers are responsible for properly configuring and managing their Ralvie Frontdesk accounts.
+This includes:
+- Providing accurate business and operational information.
+- Maintaining accurate AI knowledge-base content.
+- Configuring appointment and scheduling rules.
+- Establishing call routing and escalation procedures.
+- Managing user permissions.
+- Monitoring AI-generated responses.
+- Reviewing automated workflows.
+- Obtaining necessary communication consents.
+- Ensuring the lawful collection and use of customer information.
+Customers must ensure that information and instructions provided to Ralvie Frontdesk are accurate, appropriately authorized, and compliant with applicable laws.
+Ralvie Frontdesk uses artificial intelligence, natural language processing, speech recognition, speech generation, and business automation technologies.
+Customers acknowledge that AI-generated responses may occasionally be inaccurate, incomplete, inconsistent, or unsuitable for particular circumstances.
+Ralvie AI Inc. does not guarantee that every AI-generated response will be correct or that every automated workflow will produce the intended result.
+Customers are responsible for maintaining appropriate human oversight and reviewing important outcomes.
+Ralvie Frontdesk is not intended to replace professional medical, legal, financial, or emergency services.
+The Services should not be relied upon as an emergency communication system.
+Customers agree not to use Ralvie Frontdesk for unlawful or unauthorized purposes.
+Prohibited activities include:
+- Fraudulent or deceptive communications.
+- Unlawful automated calling or messaging.
+- Harassment or abusive communications.
+- Unauthorized impersonation.
+- Identity theft or unauthorized voice cloning.
+- Collection of personal information without lawful authority.
+- Unauthorized access to third-party systems.
+- Intellectual property infringement.
+- Distribution of malware or malicious content.
+- Attempts to bypass platform security controls.
+- Interference with platform operations.
+- Unauthorized resale or distribution of Services.
+- Other activities violating applicable laws or regulations.
+Ralvie AI Inc. may investigate suspected violations and suspend or terminate access where reasonably necessary, subject to applicable law.
+Customers using Ralvie Frontdesk for calling, SMS, or other communications must comply with applicable laws.
+Depending on the Customer's location and intended recipients, applicable requirements may include:
+- Canada's Anti-Spam Legislation (CASL).
+- Canadian telecommunications and Do Not Call rules.
+- The U.S. Telephone Consumer Protection Act (TCPA).
+- Applicable U.S. telemarketing regulations.
+- Relevant provincial, state, and international communication laws.
+Customers are responsible for obtaining required consent, maintaining appropriate contact records, complying with applicable calling restrictions, and honoring opt-out requests.
+Ralvie AI Inc. may restrict communications where there is reasonable concern about unlawful or abusive activity.
+Ralvie Frontdesk may provide call recording, transcription, voice processing, and AI-generated conversation summaries.
+Customers must comply with all applicable laws governing recording, monitoring, and automated communications.
+Customers are responsible for:
+- Providing required recording notices.
+- Obtaining consent where necessary.
+- Disclosing AI interactions where required.
+- Handling personal information lawfully.
+- Applying appropriate retention practices.
+- Configuring their AI agents according to applicable requirements.
+The availability of automated recording or disclosure functionality does not remove the Customer's legal responsibilities.
+Ralvie Frontdesk may offer monthly, annual, customized, or enterprise subscription plans.
+Subscription plans may differ in:
+- AI voice capabilities.
+- Included voice credits.
+- SMS allowances.
+- Number of AI agents.
+- Supported integrations.
+- Automation functionality.
+- Reporting and analytics.
+- Technical support.
+- Additional usage charges.
+The applicable subscription price, included allowances, billing period, and other commercial terms will be displayed during purchase or specified in the relevant agreement.
+Ralvie Frontdesk subscription payments are processed through Stripe, an authorized third-party payment processor.
+By purchasing a subscription, the Customer authorizes the collection of applicable subscription fees and usage charges through the payment method provided.
+Stripe may process payment information, billing details, and transaction records according to its applicable terms and privacy practices.
+Ralvie AI Inc. may receive information necessary for subscription management, invoicing, accounting, and customer support.
+Customers are responsible for maintaining valid payment information.
+For additional information about Stripe's practices, visit [https://stripe.com/privacy](https://stripe.com/privacy "https://stripe.com/privacy").
+Unless otherwise specified during checkout or in an applicable written agreement, Ralvie Frontdesk paid subscriptions automatically renew at the end of each billing period.
+Monthly subscriptions ordinarily renew monthly, and annual subscriptions ordinarily renew annually.
+The applicable renewal frequency, price, and other recurring charges will be disclosed when the Customer subscribes.
+Customers are responsible for canceling subscriptions before the next renewal if they do not wish to continue.
+Any legally required renewal reminders or notices will be provided.
+Ralvie Frontdesk subscription cancellation is managed through Stripe.
+Customers may cancel their subscriptions using the Stripe Customer Portal or other Stripe-supported cancellation process made available to them by Ralvie AI Inc.
+If a Customer cannot access the cancellation mechanism, they may contact [legal@ralvie.ai](mailto:legal@ralvie.ai "mailto:legal@ralvie.ai") for assistance.
+Unless otherwise stated in the Customer's subscription agreement or required by law:
+- Cancellation stops future subscription renewals.
+- Cancellation takes effect at the end of the current paid billing period.
+- Customers may continue using their subscribed Services until the end of that period.
+- Previously incurred usage charges remain payable.
+- Cancellation does not automatically result in a refund of previously paid subscription fees.
+Customers are encouraged to cancel before the next scheduled renewal date to avoid additional subscription charges.
+Unless otherwise required by applicable law or expressly agreed in writing, subscription payments are generally non-refundable.
+Refund requests may be submitted to [legal@ralvie.ai](mailto:legal@ralvie.ai "mailto:legal@ralvie.ai").
+Ralvie AI Inc. will review refund requests according to the applicable subscription terms, relevant circumstances, and legal requirements.
+If a refund is approved, it may be processed through Stripe to the original payment method.
+The timing of refunds may depend on Stripe, the payment method, and the relevant financial institution.
+Nothing in this section limits statutory cancellation or refund rights that cannot lawfully be excluded.
+Certain Ralvie Frontdesk services may involve usage-based billing.
+These may include:
+- AI voice call duration.
+- Voice usage credits.
+- SMS messages or SMS credits.
+- Additional telephone services.
+- Premium automation functionality.
+- Other separately priced services.
+Applicable rates, included allowances, billing increments, overage charges, and credit expiration rules are governed by the Customer's selected subscription or written agreement.
+Unless otherwise expressly provided, unused credits do not automatically roll over to subsequent billing periods.
+Customers are responsible for monitoring their usage and any applicable additional charges.
+Unless expressly stated otherwise, subscription fees and usage charges exclude applicable taxes.
+Taxes may include:
+- Goods and Services Tax (GST).
+- Harmonized Sales Tax (HST).
+- Provincial Sales Tax (PST).
+- Applicable U.S. state or local sales taxes.
+- Other legally applicable indirect taxes.
+Tax obligations depend on relevant laws, the nature of the Services, customer location, and transaction details.
+Ralvie AI Inc. will collect applicable taxes where legally required.
+Customers remain responsible for taxes legally payable by them.
+Ralvie AI Inc. may offer free trials, demonstrations, promotional credits, or limited-time offers.
+Trial availability, duration, feature restrictions, and usage limits will be specified in the relevant offer.
+Trial accounts may have limitations on features, AI agents, integrations, call volume, or communication credits.
+Any automatic conversion to a paid subscription must be disclosed as part of the applicable offer and supported by the Customer's authorization.
+Promotional arrangements may be modified or discontinued subject to applicable law.
+Customers retain their applicable rights in information they provide through Ralvie Frontdesk.
+Customer Data may include:
+- Business information.
+- Customer contact records.
+- Knowledge-base content.
+- Communication records.
+- Appointment information.
+- Business workflow data.
+- Other customer-provided information.
+Customers grant Ralvie AI Inc. a limited right to process Customer Data as necessary to provide, maintain, secure, and support the Services in accordance with the applicable agreements.
+Customers represent that they have the lawful authority to provide and process such information.
+Ralvie AI Inc. processes personal information in accordance with the Ralvie Frontdesk Privacy Policy and applicable data protection laws.
+Where Ralvie AI Inc. acts as a data processor or service provider, additional data processing terms may apply.
+Customers are responsible for obtaining required consents and ensuring lawful use of the personal information they collect through Ralvie Frontdesk.
+Privacy-related inquiries may be directed to [legal@ralvie.ai](mailto:legal@ralvie.ai "mailto:legal@ralvie.ai").
+Ralvie Frontdesk may produce AI-generated:
+- Voice responses.
+- Text messages.
+- Conversation transcripts.
+- Call summaries.
+- Appointment confirmations.
+- Lead qualification information.
+- Workflow outputs.
+- Analytics and reports.
+Customers may use generated outputs resulting from authorized use of the Services, subject to applicable law, third-party rights, and contractual restrictions.
+Ralvie AI Inc. does not guarantee that AI-generated outputs are always accurate, complete, or original.
+Customers are responsible for verifying important information before relying on it for consequential decisions.
+Ralvie AI Inc. owns or licenses the intellectual property rights associated with Ralvie Frontdesk, including its software, trademarks, application design, documentation, technology, and related proprietary materials.
+Customers receive a limited, non-exclusive, non-transferable right to access and use the Services during the authorized subscription period.
+Except where expressly permitted, Customers may not:
+- Copy or reproduce proprietary software.
+- Reverse engineer or decompile the platform in violation of applicable law.
+- Remove proprietary notices.
+- Redistribute or resell Services without authorization.
+- Misappropriate platform intellectual property.
+- Claim ownership of Ralvie AI Inc. proprietary technology.
+Ralvie Frontdesk may integrate with external platforms and providers, including CRM systems, scheduling software, telecommunications providers, messaging services, and payment platforms.
+The availability of these integrations may depend on third-party providers.
+Third-party integrations may be subject to independent terms, privacy policies, and service commitments.
+Ralvie AI Inc. is not responsible for independent third-party failures except to the extent required by law or an express written agreement.
+Customers authorize applicable data transfers when enabling integrations.
+Ralvie AI Inc. endeavors to provide reliable access to Ralvie Frontdesk.
+However, the Services may occasionally experience interruptions caused by:
+- Scheduled maintenance.
+- Infrastructure outages.
+- Network or internet failures.
+- Telecommunications interruptions.
+- Third-party service disruptions.
+- Security incidents.
+- Events beyond reasonable control.
+Unless a separate written service-level agreement provides otherwise, Ralvie AI Inc. does not guarantee uninterrupted or error-free operation.
+We may perform maintenance or updates necessary for security, reliability, or functionality.
+Ralvie AI Inc. maintains reasonable administrative, technical, and organizational measures designed to protect its systems and information.
+Customers must also protect their account credentials and access permissions.
+Customers are responsible for:
+- Restricting unauthorized access.
+- Maintaining secure passwords.
+- Protecting API credentials.
+- Managing user permissions.
+- Reviewing connected applications.
+- Reporting suspected security incidents promptly.
+Neither party may knowingly compromise the other's systems or information.
+Each party may receive confidential information belonging to the other party.
+The receiving party agrees to use reasonable care to protect such information and disclose it only where authorized or legally permitted.
+Confidential information may include proprietary technology, business plans, commercial information, operational records, customer data, and other non-public information.
+Confidentiality obligations do not apply to information that is publicly available without breach, independently developed, or lawfully obtained without confidentiality restrictions.
+Ralvie AI Inc. may authorize resellers, distributors, referral partners, or other business partners to promote and distribute Ralvie Frontdesk.
+Such arrangements must be governed by separate agreements.
+Unless expressly authorized, resellers and partners may not:
+- Represent themselves as the legal owner of Ralvie Frontdesk.
+- Enter into binding commitments on behalf of Ralvie AI Inc.
+- Make unauthorized pricing guarantees.
+- Modify these Terms on behalf of Ralvie AI Inc.
+- Use trademarks or branding outside approved permissions.
+Specific partner rights and obligations are determined by the relevant partner agreement.
+Except for warranties expressly provided in a written agreement or required by applicable law, the Services are provided on an "as available" basis.
+Ralvie AI Inc. does not guarantee that:
+- All AI-generated responses will be accurate.
+- Every call or message will be successfully completed.
+- All integrations will remain available.
+- All customer workflows will produce intended outcomes.
+- The Services will generate particular commercial results.
+- Platform operation will be uninterrupted.
+Customers acknowledge that outcomes may depend on customer configuration, third-party systems, telecommunications networks, and external circumstances.
+Nothing in these Terms excludes warranties that cannot lawfully be excluded.
+To the maximum extent permitted by applicable law, Ralvie AI Inc. will not be liable for indirect, incidental, special, punitive, or consequential losses arising from the use of the Services, including lost profits, lost revenue, or business interruption, except where such exclusions are prohibited.
+Any contractual cap on direct damages will be governed by the applicable subscription or enterprise agreement.
+Nothing in these Terms excludes liability for fraud, intentional misconduct, or other liability that cannot legally be excluded.
+Customers agree to defend and indemnify Ralvie AI Inc. against third-party claims to the extent arising from:
+- Unlawful use of the Services.
+- Material violations of these Terms.
+- Unauthorized processing of personal information.
+- Intellectual property infringement.
+- Unlawful communications or messaging practices.
+- Customer instructions that violate applicable laws.
+These obligations are subject to applicable law and do not extend to losses caused by Ralvie AI Inc.'s own unlawful conduct, negligence, or contractual breach.
+The parties will reasonably cooperate in handling applicable claims.
+Ralvie AI Inc. may suspend or terminate access to the Services where reasonably necessary because of:
+- Material violations of these Terms.
+- Fraudulent or unlawful activities.
+- Serious security risks.
+- Repeated non-payment.
+- Misuse of telecommunications services.
+- Regulatory or legal requirements.
+Where practicable and legally appropriate, Customers will receive notice and an opportunity to remedy the relevant issue.
+Customers may terminate their subscriptions according to the cancellation provisions and applicable agreements.
+Following termination, Customer Data will be retained, returned, or deleted according to the Privacy Policy, contractual obligations, and applicable laws.
+Neither party will be responsible for failures or delays resulting from extraordinary events beyond its reasonable control, subject to applicable law.
+Such events may include natural disasters, government restrictions, widespread infrastructure failures, telecommunications outages, war, civil unrest, or comparable circumstances.
+The affected party must take reasonable steps to minimize disruption.
+These Terms and Conditions shall be governed by and interpreted in accordance with the laws of the Province of Ontario and the applicable federal laws of Canada, without regard to conflict-of-law principles.
+Subject to mandatory legal protections and any applicable written agreement, disputes arising out of or relating to these Terms, Ralvie Frontdesk, or the Services shall be subject to the jurisdiction of the competent courts located in Ontario, Canada.
+Nothing in these Terms limits rights or remedies that cannot legally be waived under applicable law.
+Before initiating formal legal proceedings, the parties agree to make reasonable efforts to resolve disputes through good-faith discussions.
+Customers may submit disputes or legal notices to [legal@ralvie.ai](mailto:legal@ralvie.ai "mailto:legal@ralvie.ai").
+Where a separate written agreement establishes mediation, arbitration, or another dispute resolution process, that agreement will govern to the extent legally enforceable.
+Ralvie AI Inc. may update these Terms to reflect changes in:
+- Products and functionality.
+- Subscription arrangements.
+- Business operations.
+- Applicable legal requirements.
+- Security and technical practices.
+Material changes will be communicated in accordance with applicable law and contractual obligations.
+Where legally permitted, continued use of the Services after properly notified changes become effective may constitute acceptance of the revised Terms.
+Severability: If any provision is determined to be invalid or unenforceable, the remaining provisions will continue in effect.
+Entire Agreement: These Terms, together with applicable subscription agreements, order forms, and incorporated policies, constitute the agreement governing use of the Services.
+Assignment: Contractual rights and obligations may be assigned only as permitted by applicable law and the relevant agreement.
+No Waiver: Failure to enforce any provision does not constitute a permanent waiver of that provision.
+Independent Parties: These Terms do not create a partnership, joint venture, employment, or agency relationship between the Customer and Ralvie AI Inc.
+Survival: Provisions concerning confidentiality, intellectual property, payments, liability, and other obligations intended to survive termination will remain effective to the extent applicable.
+For questions, legal notices, billing disputes, or assistance regarding these Terms, contact:
+Ralvie AI Inc.
+Ontario Corporation Number: 1000631176
+Registered Office:
+507 King Street E
+Toronto, Ontario, Canada
+M5A 1M1
+Legal and Privacy Email: [legal@ralvie.ai](mailto:legal@ralvie.ai "mailto:legal@ralvie.ai")
+Website: [https://ralvie.ai](https://ralvie.ai/ "https://ralvie.ai/")
+Product: Ralvie Frontdesk
+Application: [https://app.frontdesk.ralvie.ai](https://app.frontdesk.ralvie.ai/ "https://app.frontdesk.ralvie.ai/")

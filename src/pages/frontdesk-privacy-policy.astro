@@ -1,0 +1,18 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+import frontdeskLegal from '../content/legal/frontdesk-privacy-policy.txt?raw';
+
+const privacyEnd = frontdeskLegal.indexOf('\nRalvie AI | AI Productivity & Customer Communication Platform');
+const policy = frontdeskLegal.slice(0, privacyEnd).trim();
+const sections = [
+  ['scope', 'Scope of This Privacy Policy', 'Ralvie AI Inc. — Ralvie Frontdesk'],
+  ['account-information', 'Account and Business Information', 'When you register for or use Ralvie Frontdesk'],
+  ['voice-communications', 'Voice Communications', 'Depending on customer settings and applicable law'],
+  ['chat-sms', 'Chat and SMS Communications', 'When individuals communicate with businesses through Ralvie Frontdesk'],
+  ['automatically-collected', 'Information Collected Automatically', 'We may automatically collect:'],
+  ['integrations', 'Third-Party Integrations', 'When customers authorize integrations with third-party applications'],
+  ['how-we-use-information', 'How We Use Information', 'Ralvie AI Inc. uses personal information for authorized purposes'],
+].map(([id, title, start]) => ({ id, title, start }));
+---
+
+<LegalDocument title="Privacy Policy" description="How Ralvie Frontdesk collects, uses, and protects information." document={policy} sections={sections} product="frontdesk" productivityHref="/privacy-policy/" frontdeskHref="/frontdesk-privacy-policy/" />

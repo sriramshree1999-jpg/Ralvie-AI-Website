@@ -1,0 +1,151 @@
+- [Scope of This Privacy Policy](https://me.ralvie.ai/auth/onboarding/profile#scope "https://me.ralvie.ai/auth/onboarding/profile#scope")
+- [Overview of OCR-Based Feature](https://me.ralvie.ai/auth/onboarding/profile#ocr-overview "https://me.ralvie.ai/auth/onboarding/profile#ocr-overview")
+- [Information We Collect and How We Use It](https://me.ralvie.ai/auth/onboarding/profile#information-collected "https://me.ralvie.ai/auth/onboarding/profile#information-collected")
+- [Screenshot Capture and OCR Processing](https://me.ralvie.ai/auth/onboarding/profile#screenshot-ocr "https://me.ralvie.ai/auth/onboarding/profile#screenshot-ocr")
+- [Information Collected Automatically](https://me.ralvie.ai/auth/onboarding/profile#automatically-collected "https://me.ralvie.ai/auth/onboarding/profile#automatically-collected")
+- [Data Retention](https://me.ralvie.ai/auth/onboarding/profile#data-retention "https://me.ralvie.ai/auth/onboarding/profile#data-retention")
+- [Privacy Safeguards](https://me.ralvie.ai/auth/onboarding/profile#privacy-safeguards "https://me.ralvie.ai/auth/onboarding/profile#privacy-safeguards")
+- [Security and Access Controls](https://me.ralvie.ai/auth/onboarding/profile#security-access "https://me.ralvie.ai/auth/onboarding/profile#security-access")
+- [Enterprise and User Controls](https://me.ralvie.ai/auth/onboarding/profile#enterprise-controls "https://me.ralvie.ai/auth/onboarding/profile#enterprise-controls")
+- [Transparency and In-App Disclosure](https://me.ralvie.ai/auth/onboarding/profile#transparency "https://me.ralvie.ai/auth/onboarding/profile#transparency")
+- [Use of Cookies and Similar Technologies](https://me.ralvie.ai/auth/onboarding/profile#cookies "https://me.ralvie.ai/auth/onboarding/profile#cookies")
+- [Sharing Your Information](https://me.ralvie.ai/auth/onboarding/profile#sharing "https://me.ralvie.ai/auth/onboarding/profile#sharing")
+- [Legal Basis for Processing](https://me.ralvie.ai/auth/onboarding/profile#legal-basis "https://me.ralvie.ai/auth/onboarding/profile#legal-basis")
+- [Data Transfer](https://me.ralvie.ai/auth/onboarding/profile#data-transfer "https://me.ralvie.ai/auth/onboarding/profile#data-transfer")
+- [Your Rights and Controls](https://me.ralvie.ai/auth/onboarding/profile#rights-controls "https://me.ralvie.ai/auth/onboarding/profile#rights-controls")
+- [Children's Privacy](https://me.ralvie.ai/auth/onboarding/profile#children "https://me.ralvie.ai/auth/onboarding/profile#children")
+- [Changes to This Privacy Policy](https://me.ralvie.ai/auth/onboarding/profile#changes "https://me.ralvie.ai/auth/onboarding/profile#changes")
+- [Third-Party Links](https://me.ralvie.ai/auth/onboarding/profile#third-party "https://me.ralvie.ai/auth/onboarding/profile#third-party")
+- [Contact Us](https://me.ralvie.ai/auth/onboarding/profile#contact "https://me.ralvie.ai/auth/onboarding/profile#contact")
+Ralvie Inc. is committed to protecting your privacy and being transparent about how we collect, use, and share information about you. This Privacy Policy covers our website, our Ralvie AI platform (including the Sundial application), and the OCR & Screenshot-Based Context Extraction feature
+This policy covers information we collect about you when you:
+- Visit our websites (ralvie.ai and related domains)
+- Sign up for a trial or purchase of Ralvie AI
+- Contact us directly for support or inquiries
+- Use the Ralvie AI platform, including the Sundial and OCR-based features
+"Ralvie", "we", and "us" refers to Ralvie Inc. and any of our corporate affiliates.
+We provide a feature that uses on-device Optical Character Recognition (OCR) to improve automatic project and task classification within the Ralvie AI platform. This feature works by:
+- Capturing screenshots of the active application window
+- Extracting limited textual signals from specific regions
+- Combining this with activity metadata to improve predictions
+OCR processing is designed to be privacy-aware, selective, and context-limited.
+We collect information when you sign up for a trial of Ralvie AI, request contact, or submit a support request. This includes:
+- Personal and corporate name and contact information
+- Company name, billing address, and support issue details
+- Payment information (processed via third-party services such as PayPal or Stripe — we do not store financial data such as credit card numbers)
+The Sundial application collects data related to user activity, including:
+- Name of the application and window title where mouse or keyboard input is active
+- Corresponding timestamps and time spent
+- User name and email address
+This data is initially stored locally within the Sundial application and subsequently synced to the Ralvie cloud under the "Timesheet" section. Even in incognito mode, window titles will be captured. Users may cease tracking by quitting the application. Sundial can be configured to relaunch automatically on system restart.
+Sundial does not collect sensitive personal information such as credit card numbers or passwords.
+- Images of active application windows during active usage
+- Stored securely for a limited duration (see Section 6 — Data Retention)
+- Extracted text tokens (e.g., keywords, labels) from specific screen regions
+- Confidence scores associated with extracted text
+- Region-level metadata
+- Application name and category
+- Window title
+- Time spent and timestamps
+- Activity patterns
+We use your information to:
+- Provide and improve our services and customize your experience
+- Improve project and task prediction accuracy via OCR
+- Reduce manual tagging effort and provide productivity insights
+- Communicate with you about updates, support, or offers
+- Enhance app security and prevent fraudulent activity
+- Marketing: notify you about special offers, product updates, and surveys
+We do not use this data for:
+- Advertising or marketing unrelated to Ralvie products
+- Monitoring personal communications
+- Building unrelated user profiles
+When the OCR feature is enabled, the application may capture screenshots of the active user interface during active usage, used to extract contextual signals and improve classification of work activity.
+OCR is performed locally on the user's device:
+- Raw image data is processed on-device
+- Text extraction occurs without sending full screenshots externally (unless explicitly configured otherwise)
+Text is extracted only from specific screen regions:
+- Left region — workspace/project context
+- Top region — active screen context
+- Bottom region — user intent signals
+The central content area is not processed by default, reducing exposure to sensitive information.
+The system captures screenshots and performs OCR only when:
+- The user is actively using their device
+- Application or window context changes
+- Interaction (e.g., typing or navigation) is detected
+The system does not capture or process data when:
+- The user is idle
+- Applications are minimized or inactive
+- No meaningful screen change occurs
+You can visit ralvie.ai without identifying yourself. We track internet domain addresses and analyze trends anonymously. Third-party services we use may collect:
+- Geography — for marketing purposes (Google Analytics, SEMrush, Ahrefs)
+- Referrer — for marketing funnel analysis
+- Browser information — for marketing (Google Analytics)
+- Operating system type — for marketing (Google Analytics)
+- Web pages visited — for marketing and SEO
+We use this data to understand website usage, improve quality, and serve relevant ads on third-party sites based on browsing activities.
+Screenshot Retention
+- Screenshots are stored for up to 90 days by default
+- Retention duration may be configured by the organization based on internal policies
+- After the retention period, screenshots are automatically deleted or anonymized
+OCR Data Retention
+- OCR-derived data is retained only as structured tokens and metadata
+- Raw textual reconstruction is not retained beyond operational necessity
+We implement multiple safeguards to minimize data exposure:
+- Only selected screen regions are processed; low-confidence or irrelevant text is discarded: Data Minimization
+- Short, duplicate, or non-meaningful tokens are removed; confidence thresholds limit noisy data usage: Filtering Mechanisms
+- Broader OCR processing may occur only when necessary and is automatically reverted: Controlled Escalation
+- Detection and filtering mechanisms reduce capture of personally identifiable information; extracted content is used strictly for prediction purposes: PII Guardrails
+We protect collected data through:
+- Encryption in transit and at rest
+- Secure, industry-standard storage systems
+Access to screenshot and OCR-derived data is governed by Role-Based Access Control (RBAC), ensuring:
+- Only authorized personnel can access such data
+- Access is granted based on role and business need
+- Access activities may be logged and monitored
+Given the nature of internet communications, Ralvie cannot guarantee absolute security of information during transmission or storage.
+This feature is governed by organizational policy controls:
+- Administrators may enable or disable OCR and screenshot capture
+- Retention settings may be controlled at the organization level
+Where permitted:
+- Users may have visibility into how their activity is classified
+- Users may edit or override predicted tasks or projects
+When the OCR feature is enabled, users receive clear in-product disclosures indicating:
+- Screenshots may be captured during active usage
+- OCR is used to extract limited contextual signals
+These disclosures ensure users are aware of how the feature operates at all times.
+We use our own and third-party cookies and similar technologies (e.g., single-pixel GIFs) to provide functionality and improve our websites. Cookie categories include:
+- Form prefilling for repeat visitors: Functionality
+- Enabling and supporting security features: Security
+- Aggregated, anonymous website performance data: Performance and Analytics
+By using our websites, you consent to cookie placement. You may instruct your browser to refuse cookies, though some website features may not function fully as a result.
+Information we collect is for Ralvie's use alone, except:
+- When we have your express permission
+- When required by law enforcement
+We will never share your personal name or company name with any third party for targeted advertising. Aggregated or de-identified data may be used for any legitimate business purpose.
+To the extent that Ralvie's processing of your Personal Information is subject to GDPR, we rely on the following legal grounds:
+- Contractual necessity — to register an account, respond to inquiries, or provide services
+- Consent — for product news and updates; you may withdraw consent at any time, free of charge
+- Legitimate interest — to market our products, conduct analytics, and protect our rights
+- Legal obligation — where required by applicable law
+For the OCR feature specifically, processing may rely on legitimate interest (productivity improvement) or consent, where enterprise/user controls implement it.
+If you are using our websites from regions with data protection laws, note that we may transfer your Personal Information to multiple countries, including the United States, which may have different data protection standards. By providing your information, you consent to transfer and processing in accordance with this Policy.
+For EEA organizations, we may transfer data to countries with adequacy decisions (e.g., Canada), or rely on third-party certifications such as the EU-U.S. Privacy Shield frameworks where applicable.
+Your Rights
+You have the right to:
+- Request a copy of your information
+- Object to our use of your information
+- Request deletion or restriction of your information
+- Request your data in a structured, electronic format (data portability under GDPR)
+Submit requests to: legal@ralvie.ai
+Opt Out of Communications
+Use the unsubscribe link in any email, or contact legal@ralvie.ai to be removed from our database.
+Opt Out of Analytics
+We use Google Analytics and similar services. You can opt out via the Google Analytics opt-out browser add-on.
+Opt Out of Advertising
+We work with trusted partners for advertising. Third parties may use cookies to serve interest-based ads. You may opt out through their respective platforms.
+We do not knowingly collect information from minors, as our products are intended for an adult audience. If we become aware that a minor has provided personal information, we will take steps to delete such information promptly.
+Ralvie Inc. may amend this Privacy Policy from time to time as required and without notice. We advise you to check this page periodically. Your continued use of our websites after modifications constitutes acknowledgment and acceptance of the updated policy.
+Our website may contain links to third-party sites. This Privacy Policy does not apply to those sites. We recommend reviewing their privacy policies directly. We assume no responsibility for the privacy or security practices of any third-party websites accessible through our site.
+If you have any questions or concerns about this Privacy Policy or how your information is handled, please contact us:
+Email: legal@ralvie.ai
+Website: [https://ralvie.ai](https://ralvie.ai "https://ralvie.ai/")

@@ -1,0 +1,43 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+import terms from '../content/legal/frontdesk-terms-and-conditions.txt?raw';
+
+const sections = [
+  ['scope', 'Scope and Acceptance', 'Ralvie AI Inc. — Ralvie Frontdesk'],
+  ['services', 'Ralvie Frontdesk Services', 'Ralvie Frontdesk is an AI-powered customer communication'],
+  ['eligibility', 'Eligibility and Registration', 'To register for or use Ralvie Frontdesk'],
+  ['customer-responsibilities', 'Customer Responsibilities', 'Customers are responsible for properly configuring'],
+  ['artificial-intelligence', 'Artificial Intelligence', 'Ralvie Frontdesk uses artificial intelligence'],
+  ['prohibited-use', 'Prohibited Use', 'Customers agree not to use Ralvie Frontdesk'],
+  ['communications-compliance', 'Communications Compliance', 'Customers using Ralvie Frontdesk for calling'],
+  ['recording-consent', 'Recording and Consent', 'Ralvie Frontdesk may provide call recording'],
+  ['subscriptions', 'Subscription Plans', 'Ralvie Frontdesk may offer monthly'],
+  ['payments', 'Payments and Stripe', 'Ralvie Frontdesk subscription payments are processed'],
+  ['renewals', 'Renewals', 'Unless otherwise specified during checkout'],
+  ['cancellation', 'Cancellation', 'Ralvie Frontdesk subscription cancellation is managed'],
+  ['refunds', 'Refunds', 'Unless otherwise required by applicable law'],
+  ['usage-billing', 'Usage-Based Billing', 'Certain Ralvie Frontdesk services may involve usage-based billing'],
+  ['taxes', 'Taxes', 'Unless expressly stated otherwise, subscription fees'],
+  ['trials', 'Trials and Promotions', 'Ralvie AI Inc. may offer free trials'],
+  ['customer-data', 'Customer Data and Privacy', 'Customers retain their applicable rights in information'],
+  ['ai-outputs', 'AI-Generated Outputs', 'Ralvie Frontdesk may produce AI-generated:'],
+  ['intellectual-property', 'Intellectual Property', 'Ralvie AI Inc. owns or licenses the intellectual property'],
+  ['third-party-integrations', 'Third-Party Integrations', 'Ralvie Frontdesk may integrate with external platforms'],
+  ['availability', 'Service Availability', 'Ralvie AI Inc. endeavors to provide reliable access'],
+  ['security', 'Security', 'Ralvie AI Inc. maintains reasonable administrative'],
+  ['confidentiality', 'Confidentiality', 'Each party may receive confidential information'],
+  ['partners', 'Partners and Resellers', 'Ralvie AI Inc. may authorize resellers'],
+  ['disclaimers', 'Disclaimers', 'Except for warranties expressly provided'],
+  ['liability', 'Limitation of Liability', 'To the maximum extent permitted by applicable law'],
+  ['indemnification', 'Indemnification', 'Customers agree to defend and indemnify'],
+  ['termination', 'Suspension and Termination', 'Ralvie AI Inc. may suspend or terminate access'],
+  ['force-majeure', 'Force Majeure', 'Neither party will be responsible for failures'],
+  ['governing-law', 'Governing Law', 'These Terms and Conditions shall be governed'],
+  ['disputes', 'Dispute Resolution', 'Before initiating formal legal proceedings'],
+  ['changes', 'Changes to These Terms', 'Ralvie AI Inc. may update these Terms'],
+  ['miscellaneous', 'Miscellaneous', 'Severability:'],
+  ['contact', 'Contact Information', 'For questions, legal notices, billing disputes'],
+].map(([id, title, start]) => ({ id, title, start }));
+---
+
+<LegalDocument title="Terms & Conditions" description="The terms that govern your use of Ralvie Frontdesk." document={terms} sections={sections} product="frontdesk" productivityHref="/terms-and-conditions/" frontdeskHref="/frontdesk-terms-and-conditions/" />

@@ -1,0 +1,64 @@
+- [Acceptance of Terms](https://me.ralvie.ai/auth/onboarding/profile#acceptance "https://me.ralvie.ai/auth/onboarding/profile#acceptance")
+- [Description of Service](https://me.ralvie.ai/auth/onboarding/profile#description "https://me.ralvie.ai/auth/onboarding/profile#description")
+- [Account Registration](https://me.ralvie.ai/auth/onboarding/profile#registration "https://me.ralvie.ai/auth/onboarding/profile#registration")
+- [License Grant](https://me.ralvie.ai/auth/onboarding/profile#license "https://me.ralvie.ai/auth/onboarding/profile#license")
+- [User Obligations](https://me.ralvie.ai/auth/onboarding/profile#obligations "https://me.ralvie.ai/auth/onboarding/profile#obligations")
+- [Subscription Plans and Fees](https://me.ralvie.ai/auth/onboarding/profile#subscription "https://me.ralvie.ai/auth/onboarding/profile#subscription")
+- [User Content](https://me.ralvie.ai/auth/onboarding/profile#user-content "https://me.ralvie.ai/auth/onboarding/profile#user-content")
+- [Privacy Policy](https://me.ralvie.ai/auth/onboarding/profile#privacy "https://me.ralvie.ai/auth/onboarding/profile#privacy")
+- [Data Security](https://me.ralvie.ai/auth/onboarding/profile#security "https://me.ralvie.ai/auth/onboarding/profile#security")
+- [Restrictions](https://me.ralvie.ai/auth/onboarding/profile#restrictions "https://me.ralvie.ai/auth/onboarding/profile#restrictions")
+- [Termination](https://me.ralvie.ai/auth/onboarding/profile#termination "https://me.ralvie.ai/auth/onboarding/profile#termination")
+- [Limitation of Liability](https://me.ralvie.ai/auth/onboarding/profile#liability "https://me.ralvie.ai/auth/onboarding/profile#liability")
+- [Indemnification](https://me.ralvie.ai/auth/onboarding/profile#indemnification "https://me.ralvie.ai/auth/onboarding/profile#indemnification")
+- [Governing Law](https://me.ralvie.ai/auth/onboarding/profile#governing "https://me.ralvie.ai/auth/onboarding/profile#governing")
+- [Changes to the Terms](https://me.ralvie.ai/auth/onboarding/profile#changes "https://me.ralvie.ai/auth/onboarding/profile#changes")
+- [Miscellaneous](https://me.ralvie.ai/auth/onboarding/profile#miscellaneous "https://me.ralvie.ai/auth/onboarding/profile#miscellaneous")
+- [Contact Information](https://me.ralvie.ai/auth/onboarding/profile#contact "https://me.ralvie.ai/auth/onboarding/profile#contact")
+- [Acknowledgment](https://me.ralvie.ai/auth/onboarding/profile#acknowledgment "https://me.ralvie.ai/auth/onboarding/profile#acknowledgment")
+By accessing or using "Ralvie AI", cloud based productivity platform provided by "Ralvie AI Inc" ("Company," "we," "our," "us"), you ("User" or "you") agree to comply with and be bound by these Terms of Use ("Terms") and any applicable laws and regulations. If you do not agree to these Terms, you must not use the Service.
+Ralvie AI is a cloud-based SaaS productivity software designed to help individuals and organizations to manage projects, collaborate on tasks, and streamline workflows using AI features. The Service is accessible via web interface, and we provide both free and paid subscription plans.
+To use certain features of the Service, you may be required to create an account with us. You agree to provide accurate, current, and complete information during the registration process and to update such information as necessary. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.
+If you believe that your account has been compromised or notice any unauthorized use of your account, you must immediately notify us.
+We grant you a limited, non-exclusive, non-transferable license to use the Service, subject to the restrictions outlined in these Terms. You may use the Service only for lawful purposes and in accordance with the applicable plan or subscription.
+You agree that you will:
+- Use the Service in compliance with all applicable laws and regulations.
+- Not use the Service to engage in any unlawful, fraudulent, or abusive activities.
+- Not attempt to interfere with the operation of the Service or the security of the Service.
+- Not share or disclose your account information to any unauthorized third parties.
+- Not violate the rights of other users, including the intellectual property and privacy rights of others.
+- Confidentiality & Non-Disclosure.
+The Service offers different subscription plans, including free and paid versions. The pricing and features of these plans are specified on our website. By subscribing to a paid plan, you agree to pay the applicable fees as outlined on the website. All fees are non-refundable, unless otherwise stated.
+We reserve the right to modify or terminate the pricing or subscription plans at our discretion. You will be notified of any significant changes, and you may cancel your subscription at any time before the next billing cycle.
+Annual Plan with Monthly Billing
+- Cancellation Fee: If you cancel your subscription before the one-year commitment is completed, you will be required to pay a cancellation fee equal to 50% of the remaining amount of the contract. For example, if you have 6 months left on your plan, you will pay 50% of those 6 months as a cancellation fee.
+- After 14 Days: If you cancel after the first 14 days of your subscription, you will be subject to this cancellation fee.
+Annual Plan with Prepaid Billing
+- Cancellation Fee: If you cancel a prepaid annual plan (where you pay upfront for the year), you will be charged a cancellation fee of 50% of the remaining value of the contract. For example, if you cancel midway through the year, you will receive a refund for the unused portion of the subscription, but the 50% cancellation fee applies to the remaining term.
+- No Refund After 14 Days: If you cancel after the initial 14 days, there will be no full refund. Only a pro-rated refund minus the 50% cancellation fee will be provided.
+Month-to-Month Plan
+- No Cancellation Fee: If you are on a month-to-month plan, you can cancel your subscription at any time without incurring a cancellation fee. However, you will continue to have access to the Service until the end of the current billing period.
+Other Terms
+- 14-Day Cooling-Off Period: For all plans (Annual and Monthly), you have a 14-day cooling-off period from the date of your subscription. If you cancel within this period, you are eligible for a full refund (provided no usage has occurred).
+- Refund Process: Refunds will generally be issued to the original payment method, but please note that it may take 7 days for the transaction to appear in your account.
+- Special Offers and Discounts: If you signed up for a special promotion or discount, the cancellation fee will be calculated based on the discounted rate.
+You retain ownership of any data, content, or materials ("User Content") you upload, input, or generate through the Service. By using the Service, you grant us a non-exclusive, worldwide, royalty-free license to use, store, and process your User Content to provide and improve the Service.
+Your use of the Service is also governed by our Privacy Policy, which can be found at "https://ralvie.ai". Please review our Privacy Policy to understand how we collect, use, and protect your personal data.
+We take reasonable measures to protect your data. By using the Service, you acknowledge that no method of transmission over the internet or method of electronic storage is 100% secure. You agree to notify us immediately if you suspect any unauthorized access to your account or data.
+You may not:
+- Copy, modify, distribute, or create derivative works of the Service or any part thereof.
+- Reverse-engineer, decompile, or disassemble the Service.
+- Rent, lease, or sublicense the Service.
+- Use the Service for any illegal or malicious activities, including but not limited to spamming, phishing, or distributing malware.
+We may suspend or terminate your access to the Service at any time, without prior notice, for violations of these Terms or if we determine that continued use of the Service is harmful to the operation of our platform. You may also terminate your account at any time by contacting us or through the account settings page.
+Upon termination, you may lose access to certain data and content within the Service, and you are responsible for backing up your data prior to termination.
+To the fullest extent permitted by law, the Company, its employees, agents, or affiliates shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of the Service, including but not limited to loss of data, profits, or business interruptions.
+Our total liability to you for any claim arising from these Terms or your use of the Service shall not exceed the amount you paid for the Service in the past 12 months.
+You agree to indemnify, defend, and hold harmless the Company, its affiliates, officers, employees, and agents from and against any claims, losses, liabilities, damages, or expenses (including legal fees) arising out of or in connection with your use of the Service, your violation of these Terms, or your infringement of any third-party rights.
+These Terms are governed by the laws Canada, without regard to its conflict of laws principles. Any disputes will be resolved exclusively in the courts of Ontario Jurisdiction.
+We may update or modify these Terms at any time. Any changes will be posted on this page with an updated "Effective Date." By continuing to use the Service after any modifications to the Terms, you agree to be bound by the revised Terms.
+- Entire Agreement: These Terms, along with our Privacy Policy, constitute the entire agreement between you and the Company regarding the Service.
+- Severability: If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect.
+- Waiver: Failure to enforce any provision of these Terms does not waive our right to do so in the future.
+If you have any questions about these Terms of Use, please contact us at: Ralvie AI Inc, 120 East Beaver Creek Road Suite 200, Richmond Hill, Ontario L4B4V1, Canada. legal@ralvie.ai
+By using the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use.

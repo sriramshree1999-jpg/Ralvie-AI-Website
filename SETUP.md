@@ -9,7 +9,6 @@ This is a modern, high-performance SaaS website built with cutting-edge technolo
 - **Styling**: Tailwind CSS 4 + CSS Variables
 - **3D Graphics**: Three.js + React Three Fiber + Drei
 - **Animations**: GSAP + Motion for React
-- **CMS**: Sanity (Free tier, blog content)
 - **Deployment**: Cloudflare Pages
 - **Version Control**: GitHub
 
@@ -67,7 +66,6 @@ Create `.astro` files in `src/pages/`:
 src/pages/
   ├── index.astro (homepage)
   ├── about.astro (about page)
-  ├── blog.astro (blog listing)
   └── contact.astro (contact form)
 ```
 
@@ -109,56 +107,6 @@ export default function MyScene() {
 }
 ```
 
-## ✍️ Blog CMS (Sanity)
-
-The blog at `/blog` reads posts from Sanity. The separate Studio app lives alongside this site in `../studio-ralvie-ai/`, where you write content. It is not deployed to Cloudflare; it runs on Sanity's own hosting (free tier).
-
-### 1. Create a Sanity project
-
-```bash
-cd ../studio-ralvie-ai
-npx sanity@latest login
-npx sanity@latest init --env
-```
-
-- Choose **Create new project**, give it a name (e.g. "Ralvie AI").
-- Dataset: `production`.
-- When asked to add configuration files, say no (they already exist here).
-- This writes your **Project ID** into `studio-ralvie-ai/.env` — copy it.
-
-### 2. Point the main site at your project
-
-In the site root (`ralvie-ai-website/`, not `studio-ralvie-ai/`), copy `.env.example` to `.env` and fill in:
-```
-SANITY_PROJECT_ID=<paste the project ID from studio-ralvie-ai/.env>
-SANITY_DATASET=production
-```
-
-### 3. Run the Studio locally to write posts
-
-```bash
-cd ../studio-ralvie-ai
-npm install
-npm run dev
-```
-
-Opens at `http://localhost:3333`. Create **Post** documents there — title, slug, image, body, etc.
-
-### 4. Deploy the Studio (so you can edit content from anywhere, not just your laptop)
-
-```bash
-cd ../studio-ralvie-ai
-npm run deploy
-```
-
-Sanity hosts it for free at `https://<your-project-name>.sanity.studio`.
-
-### 5. Allow your Cloudflare Pages domain to read the data
-
-In [sanity.io/manage](https://sanity.io/manage) → your project → **API** → **CORS origins**, add your Cloudflare Pages URL (and custom domain once you have one) so the built site can fetch content at build time and from the browser if needed.
-
-Once `SANITY_PROJECT_ID` is set, `/blog` automatically starts listing posts — no code changes needed.
-
 ## 🌐 Cloudflare Pages Deployment
 
 ### Prerequisites
@@ -195,9 +143,6 @@ git push -u origin main
 
 In Cloudflare Pages settings, add:
 ```
-SANITY_PROJECT_ID=your_project_id
-SANITY_DATASET=production
-SANITY_API_VERSION=2024-01-01
 PUBLIC_SITE_URL=https://your-domain.com
 ```
 
@@ -231,14 +176,8 @@ ralvie-ai-website/
 │   │   └── ...
 │   ├── layouts/             # Page layouts
 │   │   └── Layout.astro
-│   ├── lib/                 # Sanity client + GROQ queries
-│   │   ├── sanity.ts
-│   │   └── queries.ts
 │   ├── pages/               # Routes
 │   │   ├── index.astro      # Homepage
-│   │   ├── blog/
-│   │   │   ├── index.astro  # Blog listing
-│   │   │   └── [slug].astro # Blog post
 │   │   └── ...
 │   ├── styles/              # Global styles
 │   │   └── global.css
@@ -246,9 +185,6 @@ ralvie-ai-website/
 ├── public/                  # Static files
 │   ├── favicon.svg
 │   └── favicon.ico
-├── studio/                  # Sanity Studio (separate app, hosted by Sanity)
-│   ├── schemaTypes/         # post, author, category, blockContent
-│   └── sanity.config.ts
 ├── astro.config.mjs         # Astro config (Tailwind v4 configured via CSS, no config file needed)
 ├── tsconfig.json            # TypeScript config
 ├── wrangler.toml            # Cloudflare Pages config
@@ -292,7 +228,6 @@ cp .env.example .env.local
 ```
 
 Edit with your actual values:
-- Sanity CMS credentials
 - Analytics IDs
 - API keys
 

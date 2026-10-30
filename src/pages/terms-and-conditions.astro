@@ -1,0 +1,27 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+import terms from '../content/legal/terms-and-conditions.txt?raw';
+
+const sections = [
+  ['acceptance', 'Acceptance of Terms', 'By accessing or using "Ralvie AI"'],
+  ['description', 'Description of Service', 'Ralvie AI is a cloud-based SaaS productivity software'],
+  ['registration', 'Account Registration', 'To use certain features of the Service'],
+  ['license', 'License Grant', 'We grant you a limited, non-exclusive'],
+  ['obligations', 'User Obligations', 'You agree that you will:'],
+  ['subscription', 'Subscription Plans and Fees', 'The Service offers different subscription plans'],
+  ['user-content', 'User Content', 'You retain ownership of any data'],
+  ['privacy', 'Privacy Policy', 'Your use of the Service is also governed'],
+  ['security', 'Data Security', 'We take reasonable measures to protect your data.'],
+  ['restrictions', 'Restrictions', 'You may not:'],
+  ['termination', 'Termination', 'We may suspend or terminate your access'],
+  ['liability', 'Limitation of Liability', 'To the fullest extent permitted by law'],
+  ['indemnification', 'Indemnification', 'You agree to indemnify, defend, and hold harmless'],
+  ['governing', 'Governing Law', 'These Terms are governed by the laws Canada'],
+  ['changes', 'Changes to the Terms', 'We may update or modify these Terms'],
+  ['miscellaneous', 'Miscellaneous', '- Entire Agreement:'],
+  ['contact', 'Contact Information', 'If you have any questions about these Terms of Use'],
+  ['acknowledgment', 'Acknowledgment', 'By using the Service, you acknowledge'],
+].map(([id, title, start]) => ({ id, title, start }));
+---
+
+<LegalDocument title="Terms & Conditions" description="The terms that govern your use of Ralvie AI." document={terms} sections={sections} product="productivity" productivityHref="/terms-and-conditions/" frontdeskHref="/frontdesk-terms-and-conditions/" />

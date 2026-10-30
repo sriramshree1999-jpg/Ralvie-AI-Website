@@ -1,0 +1,28 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+import policy from '../content/legal/privacy-policy.txt?raw';
+
+const sections = [
+  ['scope', 'Scope of This Privacy Policy', 'Ralvie Inc. is committed to protecting your privacy'],
+  ['ocr-overview', 'Overview of OCR-Based Feature', 'We provide a feature that uses on-device'],
+  ['information-collected', 'Information We Collect and How We Use It', 'We collect information when you sign up'],
+  ['screenshot-ocr', 'Screenshot Capture and OCR Processing', 'When the OCR feature is enabled, the application may capture'],
+  ['automatically-collected', 'Information Collected Automatically', 'You can visit ralvie.ai without identifying yourself.'],
+  ['data-retention', 'Data Retention', 'Screenshot Retention'],
+  ['privacy-safeguards', 'Privacy Safeguards', 'We implement multiple safeguards'],
+  ['security-access', 'Security and Access Controls', 'We protect collected data through:'],
+  ['enterprise-controls', 'Enterprise and User Controls', 'This feature is governed by organizational policy controls:'],
+  ['transparency', 'Transparency and In-App Disclosure', 'When the OCR feature is enabled, users receive clear'],
+  ['cookies', 'Use of Cookies and Similar Technologies', 'We use our own and third-party cookies'],
+  ['sharing', 'Sharing Your Information', 'Information we collect is for Ralvie\'s use alone'],
+  ['legal-basis', 'Legal Basis for Processing', 'To the extent that Ralvie\'s processing'],
+  ['data-transfer', 'Data Transfer', 'If you are using our websites from regions'],
+  ['rights-controls', 'Your Rights and Controls', 'Your Rights\nYou have the right to:'],
+  ['children', 'Children\'s Privacy', 'We do not knowingly collect information from minors'],
+  ['changes', 'Changes to This Privacy Policy', 'Ralvie Inc. may amend this Privacy Policy'],
+  ['third-party', 'Third-Party Links', 'Our website may contain links to third-party sites.'],
+  ['contact', 'Contact Us', 'If you have any questions or concerns about this Privacy Policy'],
+].map(([id, title, start]) => ({ id, title, start }));
+---
+
+<LegalDocument title="Privacy Policy" description="How Ralvie collects, uses, and protects information." document={policy} sections={sections} product="productivity" productivityHref="/privacy-policy/" frontdeskHref="/frontdesk-privacy-policy/" />
